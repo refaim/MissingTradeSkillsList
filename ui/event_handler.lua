@@ -304,7 +304,7 @@ MTSLUI_EVENT_HANDLER = {
         -- Create an "empty" frame to hook onto
         local event_frame = CreateFrame("FRAME")
         -- Set function how to react on event
-        event_frame:SetScript("OnEvent", function(eventframe, event, arg1)
+        event_frame:SetScript("OnEvent", function()
             -- only execute the event if the addon is loaded OR the event = player_login
             if self.addon_loaded == 1 or event == "PLAYER_LOGIN" then
                 self[event](self)
