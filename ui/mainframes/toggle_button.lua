@@ -13,7 +13,7 @@ MTSLUI_TOGGLE_BUTTON.FRAME_HEIGHT = 20
 function MTSLUI_TOGGLE_BUTTON:Initialise()
     self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLUI_ToggleButton", nil, "UIPanelButtonTemplate", self.FRAME_WITDH, self.FRAME_HEIGHT)
     self.ui_frame:SetText("MTSL")
-    self.ui_frame:SetScript("OnClick", function ()
+    self.ui_frame:SetScript("OnClick", function()
         MTSLUI_MISSING_TRADESKILLS_FRAME:Toggle()
     end)
     -- Hide by default after creating

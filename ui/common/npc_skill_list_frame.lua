@@ -94,7 +94,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the skill list of the current npc
     ----------------------------------------------------------------------------------------------------------
-    UpdateList = function (self, skills_of_npc)
+    UpdateList = function(self, skills_of_npc)
         self.skills_of_npc = skills_of_npc
         self.amount_skills_of_npc = MTSL_TOOLS:CountItemsInArray(self.skills_of_npc)
 
@@ -128,7 +128,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the npcbuttons of MissingNpcsListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateButtons = function (self)
+    UpdateButtons = function(self)
         local amount_to_show = self.amount_skills_of_npc
         local slider_active = 0
         -- have more then we can show so limit
@@ -203,7 +203,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     --
     -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
-    HandleScrollEvent = function (self, offset)
+    HandleScrollEvent = function(self, offset)
         -- Only handle the event if slider is visible
         if self.slider_active == 1 then
             -- Update the index of the selected npc if any
@@ -268,7 +268,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Selects the current selected npc skill buton
     ----------------------------------------------------------------------------------------------------------
-    SelectCurrentSkillButton = function (self)
+    SelectCurrentSkillButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -279,7 +279,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Deselects the current selected npc skill buton
     ----------------------------------------------------------------------------------------------------------
-    DeselectCurrentSkillButton = function (self)
+    DeselectCurrentSkillButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then

@@ -65,7 +65,7 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- First row of the filter frame = search bar + button
     ----------------------------------------------------------------------------------------------------------
-    InitialiseFirstRow = function (self)
+    InitialiseFirstRow = function(self)
         -- Search box with button
         self.ui_frame.search_box = CreateFrame("EditBox", self.filter_frame_name .. "_TF", self.ui_frame)
         self.ui_frame.search_box:SetBackdrop({
@@ -100,7 +100,7 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Second row of the filter frame = drop down source types & drop down phase
     ----------------------------------------------------------------------------------------------------------
-    InitialiseSecondRow = function (self)
+    InitialiseSecondRow = function(self)
         -- create a filter for source type
         -- self.ui_frame.source_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("learned from"), 5, -34, "LABEL", "TOPLEFT")
         self.ui_frame.source_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_SOURCES", self.ui_frame, "UIDropDownMenuTemplate")
@@ -122,7 +122,7 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Third row of the filter frame = drop down factions & drop down specialisation
     ----------------------------------------------------------------------------------------------------------
-    InitialiseThirdRow = function (self)
+    InitialiseThirdRow = function(self)
         -- Factions drop down
         -- self.ui_frame.factions_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("faction"), 215, -34, "LABEL", "TOPLEFT")
         self.ui_frame.faction_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_FACTIONS", self.ui_frame, "UIDropDownMenuTemplate")
@@ -142,7 +142,7 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Fourth row of the filter frame = drop down continents & drop down zone
     ----------------------------------------------------------------------------------------------------------
-    InitialiseFourthRow = function (self)
+    InitialiseFourthRow = function(self)
         -- Continents & zones
         -- self.ui_frame.zone_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("zone"), 5, -94, "LABEL", "TOPLEFT")
         -- Continent more split up with types as well, to reduce number of items shown
@@ -158,7 +158,7 @@ MTSLUI_FILTER_FRAME = {
     end,
 
     -- Initialise the filters to default values
-    InitFilters = function (self)
+    InitFilters = function(self)
         self.filter_values = {
             skill_name = "",
             profession = nil,
@@ -483,7 +483,7 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Generic method to handle change of when checkbox is clicked
     ----------------------------------------------------------------------------------------------------------
-    ChangeCheckboxValue = function (self, value_name, value)
+    ChangeCheckboxValue = function(self, value_name, value)
         local dropdownitem = MTSL_TOOLS:GetItemFromArrayByKeyValue(self.drop_down_lists[value_name], "id", value)
         if dropdownitem then
             if dropdownitem.checked == true then
@@ -496,7 +496,7 @@ MTSLUI_FILTER_FRAME = {
     end,
 
     -- (un)checks 1 checkbox in category and gives other ones opposite status
-    InvertCheckboxValues = function (self, value_name, value)
+    InvertCheckboxValues = function(self, value_name, value)
         local dropdownitem = MTSL_TOOLS:GetItemFromArrayByKeyValue(self.drop_down_lists[value_name], "id", value)
         local inverse_value = nil
         if dropdownitem then
@@ -657,21 +657,21 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Shows if the filtering is enabled
     ----------------------------------------------------------------------------------------------------------
-    IsFilteringEnabled = function (self)
+    IsFilteringEnabled = function(self)
         return self.filtering_active == 1
     end,
 
     ----------------------------------------------------------------------------------------------------------
     -- Enable the filtering
     ----------------------------------------------------------------------------------------------------------
-    EnableFiltering = function (self)
+    EnableFiltering = function(self)
         self.filtering_active = 1
     end,
 
     ----------------------------------------------------------------------------------------------------------
     -- Disable the filtering
     ----------------------------------------------------------------------------------------------------------
-    DisableFiltering = function (self)
+    DisableFiltering = function(self)
         self.filtering_active = 0
     end,
 

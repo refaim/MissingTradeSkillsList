@@ -103,7 +103,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the list of MissingSkillsListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateList = function (self, missing_skills)
+    UpdateList = function(self, missing_skills)
         self.profession_skills = missing_skills
 
         self.shown_skills = MTSL_LOGIC_PROFESSION:FilterListOfSkills(self.profession_skills, self.profession_name,
@@ -135,7 +135,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the skillbuttons of MissingSkillsListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateButtons = function (self)
+    UpdateButtons = function(self)
         for i=1,self.MAX_ITEMS_SHOWN_CURRENTLY do
             if self.MAX_ITEMS_SHOWN_CURRENTLY == self.MAX_ITEMS_SHOWN_HORIZONTAL then
                 self.LIST_BUTTONS[i]:UpdateWidth(self.FRAME_WIDTH_HORIZONTAL - 12)
@@ -224,7 +224,7 @@ MTSLUI_LIST_FRAME = {
     --
     -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
-    HandleScrollEvent = function (self, offset)
+    HandleScrollEvent = function(self, offset)
         -- Only handle the event if slider is visible
         if self.slider_active == 1 then
             -- Update the index of the selected skill if any
@@ -283,7 +283,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Selects the current selected skillbuton
     ----------------------------------------------------------------------------------------------------------
-    SelectCurrentSkillButton = function (self)
+    SelectCurrentSkillButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -294,7 +294,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Deselects the current selected skillbuton
     ----------------------------------------------------------------------------------------------------------
-    DeselectCurrentSkillButton = function (self)
+    DeselectCurrentSkillButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -312,7 +312,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Checks if current player is still missing the selected skill
     ----------------------------------------------------------------------------------------------------------
-    StillMissingSkill = function (self)
+    StillMissingSkill = function(self)
         if self.selected_list_item_id ~= nil then
             return not IsSpellKnown(self.selected_list_item_id)
         end

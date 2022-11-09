@@ -92,7 +92,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the list of MissingPlayersListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateList = function (self)
+    UpdateList = function(self)
         self.shown_players = self:FilterListOfPlayers()
         self.amount_shown_players = MTSL_TOOLS:CountItemsInNamedArray(self.shown_players)
         if self.amount_shown_players <= 0 then
@@ -145,7 +145,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the playerbuttons of MissingPlayersListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateButtons = function (self)
+    UpdateButtons = function(self)
         local amount_to_show = self.amount_shown_players
         -- have more then we can show so limit
         if amount_to_show > self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -231,7 +231,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     --
     -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
-    HandleScrollEvent = function (self, offset)
+    HandleScrollEvent = function(self, offset)
         -- Only handle the event if slider is visible
         if self.slider_active == 1 then
             -- Update the index of the selected player if any
@@ -302,7 +302,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Selects the current selected playerbuton
     ----------------------------------------------------------------------------------------------------------
-    SelectCurrentPlayerButton = function (self)
+    SelectCurrentPlayerButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -313,7 +313,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Deselects the current selected playerbuton
     ----------------------------------------------------------------------------------------------------------
-    DeselectCurrentPlayerButton = function (self)
+    DeselectCurrentPlayerButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then

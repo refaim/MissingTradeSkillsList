@@ -50,7 +50,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     --
     -- return           number      The standing with the rep (0-8) for the faction
     -----------------------------------------------------------------------------------------
-    GetReputationLevelWithFaction = function (self, faction_name)
+    GetReputationLevelWithFaction = function(self, faction_name)
         for factionIndex = 1, GetNumFactions() do
             local name, _, standingId, _, _, _, _, _, isHeader = GetFactionInfo(factionIndex)
             -- check if localised
@@ -69,7 +69,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     --
     -- return       Array       The replevel
     -----------------------------------------------------------------------------------------
-    GetReputationLevelById = function (self, rep_id)
+    GetReputationLevelById = function(self, rep_id)
         return MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["reputation_levels"], rep_id)
     end,
 
@@ -80,7 +80,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     --
     -- return       number      The standing with the rep (0-8)
     -----------------------------------------------------------------------------------------
-    GetReputationLevelByLevelName = function (self, rep_name)
+    GetReputationLevelByLevelName = function(self, rep_name)
         local rep_level = 0
         for _, v in pairs(MTSL_DATA["reputation_levels"]) do
             if v["name"][MTSLUI_CURRENT_LANGUAGE] == rep_name then
@@ -92,7 +92,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     end,
 
 
-    GetEnglishReputationLevelNameFromLocalisedName = function (self, rep_level)
+    GetEnglishReputationLevelNameFromLocalisedName = function(self, rep_level)
         local rep_level_eng = nil
 
         for k, v in pairs(MTSL_DATA["reputation_levels"]) do

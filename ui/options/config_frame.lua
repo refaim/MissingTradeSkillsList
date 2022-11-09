@@ -15,7 +15,7 @@ MTSLOPTUI_CONFIG_FRAME = {
     ---------------------------------------------------------------------------------------
     -- Initialises the titleframe
     ----------------------------------------------------------------------------------------
-    Initialise = function (self, parent_frame)
+    Initialise = function(self, parent_frame)
         self.FRAME_WIDTH = MTSLUI_OPTIONS_MENU_FRAME.FRAME_WIDTH
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "MTSLOPTUI_ConfigFrame", parent_frame, nil, self.FRAME_WIDTH, self.FRAME_HEIGHT, false)
         -- below title frame
@@ -202,7 +202,7 @@ MTSLOPTUI_CONFIG_FRAME = {
         self.ui_frame.minimap_reset_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_MINIMLAP_BTN_RESET", self.ui_frame, "UIPanelButtonTemplate", self.WIDTH_DD + 20, 26)
         self.ui_frame.minimap_reset_btn:SetPoint("TOPLEFT", self.ui_frame.minimap_radius_drop_down, "TOPRIGHT", -5, 0)
         self.ui_frame.minimap_reset_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("reset"))
-        self.ui_frame.minimap_reset_btn:SetScript("OnClick", function () MTSLUI_MINIMAP:ResetButton() end)
+        self.ui_frame.minimap_reset_btn:SetScript("OnClick", function() MTSLUI_MINIMAP:ResetButton() end)
 
         self.ui_frame.minimap_radius_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame.minimap_reset_btn, "Position", 0, 20, "LABEL", "CENTER")
     end,
@@ -226,7 +226,7 @@ MTSLOPTUI_CONFIG_FRAME = {
         self.ui_frame.chat_channel_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame.chat_channel_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("channel"), 0, self.TOP_LABEL_ABOVE_DD, "LABEL", "CENTER")
     end,
 
-    InitialiseOptionsMTSLFrameLocation = function (self, margin_top)
+    InitialiseOptionsMTSLFrameLocation = function(self, margin_top)
         self.ui_frame.location_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, "MTSL", self.MARGIN_LEFT, margin_top, "LABEL", "TOPLEFT")
 
         self.ui_frame.location_mtsl_button_drop_down = MTSLUI_TOOLS:CreateDropDown("MTSLOPTUI_CONFIG_FRAME_DD_location_MTSL_button", self.ui_frame, self.ui_frame, "TOPLEFT", self.MARGIN_RIGHT, margin_top + 7, self.CreateDropDownLocationMTSLbutton, self.WIDTH_DD)
@@ -236,7 +236,7 @@ MTSLOPTUI_CONFIG_FRAME = {
         self.ui_frame.location_frame_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame.location_mtsl_frame_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("mtsl frame location"), 0, self.TOP_LABEL_ABOVE_DD, "LABEL", "CENTER")
     end,
 
-    InitialiseOptionsUISplitOrientation = function (self, margin_top)
+    InitialiseOptionsUISplitOrientation = function(self, margin_top)
         self.ui_frame.ui_split_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("ui split orientation"), self.MARGIN_LEFT, margin_top, "LABEL", "TOPLEFT")
 
         self.ui_frame.ui_split_MTSL_drop_down = MTSLUI_TOOLS:CreateDropDown("MTSLOPTUI_CONFIG_FRAME_DD_ui_split_MTSL", self.ui_frame, self.ui_frame.location_mtsl_button_drop_down, "BOTTOMLEFT", 0, -18, self.CreateDropDownOrientationMTSL, self.WIDTH_DD)
@@ -255,7 +255,7 @@ MTSLOPTUI_CONFIG_FRAME = {
         self.ui_frame.ui_split_npc_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame.ui_split_NPC_drop_down, "NPC Explorer", 0, self.TOP_LABEL_ABOVE_DD, "LABEL", "CENTER")
     end,
 
-    InitialiseOptionsUISplitScale = function (self, margin_top)
+    InitialiseOptionsUISplitScale = function(self, margin_top)
         self.ui_frame.ui_scale_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("ui scale"), self.MARGIN_LEFT, margin_top, "LABEL", "TOPLEFT")
 
         self.ui_frame.ui_scale_MTSL_drop_down = MTSLUI_TOOLS:CreateDropDown("MTSLOPTUI_CONFIG_FRAME_DD_SCALE_MTSL", self.ui_frame, self.ui_frame.ui_split_MTSL_drop_down, "BOTTOMLEFT", 0, -18, self.CreateDropDownScaleMTSL, self.WIDTH_DD)
@@ -277,7 +277,7 @@ MTSLOPTUI_CONFIG_FRAME = {
         self.ui_frame.ui_scale_options_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame.ui_scale_OPTIONSMENU_drop_down, "Options menu", 0, self.TOP_LABEL_ABOVE_DD, "LABEL", "CENTER")
     end,
 
-    InitialiseOptionsFonts = function (self, margin_top)
+    InitialiseOptionsFonts = function(self, margin_top)
         self.ui_frame.font_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("font") .. " (" .. MTSLUI_TOOLS:GetLocalisedLabel("reload UI") .. ")", self.MARGIN_LEFT, margin_top, "LABEL", "TOPLEFT")
 
         self.ui_frame.font_name_drop_down = MTSLUI_TOOLS:CreateDropDown("MTSLOPTUI_CONFIG_FRAME_DD_font_MTSL", self.ui_frame, self.ui_frame.ui_scale_MTSL_drop_down, "BOTTOMLEFT", 0, -18, self.CreateDropDownFontType, self.WIDTH_DD)
@@ -513,12 +513,12 @@ MTSLOPTUI_CONFIG_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Generic method to handle change of a config value
     ----------------------------------------------------------------------------------------------------------
-    ChangeValue = function (self, value_name, value, text)
+    ChangeValue = function(self, value_name, value, text)
         self.config_values[value_name] = value
         UIDropDownMenu_SetText(text, self.ui_frame[value_name .. "_drop_down"])
     end,
 
-    ChangeWithSubValue = function (self, value_name, sub_value_name, value, text)
+    ChangeWithSubValue = function(self, value_name, sub_value_name, value, text)
         self.config_values[value_name][sub_value_name] = value
         UIDropDownMenu_SetText(text, self.ui_frame[value_name .. "_" .. sub_value_name .. "_drop_down"])
     end,
@@ -561,7 +561,7 @@ MTSLOPTUI_CONFIG_FRAME = {
     end,
 
     -- Show all the current values in the UI
-    ResetUI = function (self)
+    ResetUI = function(self)
         self:ShowValueInCheckBox(self.welcome_check, self.config_values.welcome)
 
         self:ShowValueInCheckBox(self.autoshow_check, self.config_values.auto_show)

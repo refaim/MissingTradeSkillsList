@@ -184,21 +184,21 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Shows if the filtering is enabled
     ----------------------------------------------------------------------------------------------------------
-    IsFilteringEnabled = function (self)
+    IsFilteringEnabled = function(self)
         return self.filtering_active == 1
     end,
 
     ----------------------------------------------------------------------------------------------------------
     -- Enable the filtering
     ----------------------------------------------------------------------------------------------------------
-    EnableFiltering = function (self)
+    EnableFiltering = function(self)
         self.filtering_active = 1
     end,
 
     ----------------------------------------------------------------------------------------------------------
     -- Disable the filtering
     ----------------------------------------------------------------------------------------------------------
-    DisableFiltering = function (self)
+    DisableFiltering = function(self)
         self.filtering_active = 0
     end,
 

@@ -259,13 +259,13 @@ MTSLUI_SAVED_VARIABLES = {
         MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN = self.DEFAULT_TOOTLITP_SHOW_KNOWN
     end,
 
-    ResetLinkToChat = function (self)
+    ResetLinkToChat = function(self)
         MTSLUI_PLAYER.LINK_TO_CHAT = {}
         MTSLUI_PLAYER.LINK_TO_CHAT.CHANNEL = self.DEFAULT_CHAT_CHANNEL
         MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE = 1
     end,
 
-    ResetMTSLLocation = function (self)
+    ResetMTSLLocation = function(self)
         MTSLUI_PLAYER.MTSL_LOCATION = {}
         MTSLUI_PLAYER.MTSL_LOCATION.BUTTON = "right"
         MTSLUI_PLAYER.MTSL_LOCATION.FRAME = "right"

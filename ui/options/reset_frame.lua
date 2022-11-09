@@ -15,7 +15,7 @@ MTSLOPTUI_RESET_FRAME = {
     ---------------------------------------------------------------------------------------
     -- Initialises the titleframe
     ----------------------------------------------------------------------------------------
-    Initialise = function (self, parent_frame)
+    Initialise = function(self, parent_frame)
         self.FRAME_WIDTH = MTSLUI_OPTIONS_MENU_FRAME.FRAME_WIDTH
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "MTSLOPTUI_SaveFrame", parent_frame, nil, self.FRAME_WIDTH, self.FRAME_HEIGHT, false)
         -- below config frame
@@ -45,7 +45,7 @@ MTSLOPTUI_RESET_FRAME = {
         self.remove_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_RemoveChar_Button", self.ui_frame, "UIPanelButtonTemplate", self.BUTTON_WIDTH - 50, self.BUTTON_HEIGHT)
         self.remove_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left + 50, -21)
         self.remove_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("delete"))
-        self.remove_btn:SetScript("OnClick", function ()
+        self.remove_btn:SetScript("OnClick", function()
             -- only remove if realm & player chosen
             if MTSLOPTUI_RESET_FRAME.current_realm ~= nil and MTSLOPTUI_RESET_FRAME.current_player ~= nil then
                 -- If delete was succesfull, refresh the list
@@ -73,7 +73,7 @@ MTSLOPTUI_RESET_FRAME = {
         self.reset_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_ResetAll_Button", self.ui_frame, "UIPanelButtonTemplate",  self.BUTTON_WIDTH + 50, self.BUTTON_HEIGHT)
         self.reset_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left - 50, -65)
         self.reset_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("delete all"))
-        self.reset_btn:SetScript("OnClick", function ()
+        self.reset_btn:SetScript("OnClick", function()
             MTSL_LOGIC_SAVED_VARIABLES:RemoveAllCharacters()
         end)
     end,

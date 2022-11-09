@@ -16,7 +16,7 @@ MTSLUI_PROGRESSBAR = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises  the progressbar
     ----------------------------------------------------------------------------------------------------------
-    Initialise = function (self, parent_frame, name, title_text)
+    Initialise = function(self, parent_frame, name, title_text)
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", name, parent_frame, nil, self.FRAME_WIDTH_VERTICAL, self.FRAME_HEIGHT, false)
         self.ui_frame.text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, title_text, 5, 0, "TEXT", "LEFT")
 
@@ -44,7 +44,7 @@ MTSLUI_PROGRESSBAR = {
     -- @max_value           number
     -- @current_value       number
     ----------------------------------------------------------------------------------------------------------
-    UpdateStatusbar = function (self, min_value, phase_max_value, max_value, current_value)
+    UpdateStatusbar = function(self, min_value, phase_max_value, max_value, current_value)
         self.ui_frame.progressbar.ui_frame.texture:SetMinMaxValues(min_value, phase_max_value)
         self.ui_frame.progressbar.ui_frame.texture:SetValue(current_value)
         self.ui_frame.progressbar.ui_frame.texture:SetStatusBarColor(0.0, 1.0, 0.0, 0.95)

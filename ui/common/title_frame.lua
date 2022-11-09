@@ -12,7 +12,7 @@ MTSLUI_TITLE_FRAME = {
     ---------------------------------------------------------------------------------------
     -- Initialises the titleframe
     ----------------------------------------------------------------------------------------
-    Initialise = function (self, parent_frame, type_frame, frame_width_vertical, frame_width_horizontal)
+    Initialise = function(self, parent_frame, type_frame, frame_width_vertical, frame_width_horizontal)
         self.FRAME_WIDTH_VERTICAL = frame_width_vertical
         self.FRAME_WIDTH_HORIZONTAL = frame_width_horizontal
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", parent_frame, nil, self.FRAME_WIDTH_VERTICAL, self.FRAME_HEIGHT, false)

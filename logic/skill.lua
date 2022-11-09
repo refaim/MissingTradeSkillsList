@@ -502,7 +502,7 @@ MTSL_LOGIC_SKILL = {
         return factions_found
     end,
 
-    AddFactionForDataToArray = function (self, array, data)
+    AddFactionForDataToArray = function(self, array, data)
         if data.reputation then
             array[tonumber(data.reputation.faction_id)] = 1
         else

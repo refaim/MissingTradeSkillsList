@@ -19,7 +19,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Loads the saved data of the logged in player or creates a new save
     -- Triggerd by game event "PLAYER_LOGIN"
     ---------------------------------------------------------------------------------------
-    LoadPlayer = function (self)
+    LoadPlayer = function(self)
         local name = UnitName("player")
         local realm = GetRealmName()
         local faction = UnitFactionGroup("player")
@@ -102,7 +102,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Scan the skillframe to update skill levels
     ------------------------------------------------------------------------------------------------
-    UpdatePlayerSkillLevels = function (self)
+    UpdatePlayerSkillLevels = function(self)
         local i = 1
 
         while GetSkillLineInfo(i) ~= nil  do
@@ -145,7 +145,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Scan the skillframe to add a new learned profession to saved data
     ------------------------------------------------------------------------------------------------
-    AddLearnedProfessions = function (self)
+    AddLearnedProfessions = function(self)
         local i = 1
 
         local have_learned_profession = false
@@ -210,7 +210,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Scan the skillframe to remove unlearned professions from saved data
     ------------------------------------------------------------------------------------------------
-    RemoveUnlearnedProfessions = function (self)
+    RemoveUnlearnedProfessions = function(self)
         local i = 1
 
         local profession_names = {}
@@ -275,7 +275,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- returns  Number      The number of chars on that realm
     ------------------------------------------------------------------------------------------------
-    GetPlayerOnRealm = function (self, name, realm)
+    GetPlayerOnRealm = function(self, name, realm)
         if MTSL_PLAYERS[realm] ~= nil then
             return MTSL_PLAYERS[realm][name]
         end
@@ -368,7 +368,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- returns  Number      The number of chars on that realm
     ------------------------------------------------------------------------------------------------
-    PlayerExists = function (self, name, realm)
+    PlayerExists = function(self, name, realm)
         if MTSL_PLAYERS[realm] ~= nil and MTSL_PLAYERS[realm][name] ~= nil then
             return true
         end
@@ -384,7 +384,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- returns              Array       List of missing skills for the profession ({} if not found)
     ------------------------------------------------------------------------------------------------
-    GetMissingSkillsForProfessionOfPlayer = function (self, player_name, player_realm, profession_name)
+    GetMissingSkillsForProfessionOfPlayer = function(self, player_name, player_realm, profession_name)
         local player = self:GetPlayerOnRealm(player_name, player_realm)
         local missing_skills = {}
         -- Check if player exits
@@ -405,7 +405,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- returns              Array       List of missing skills for the profession ({} if not found)
     ------------------------------------------------------------------------------------------------
-    GetMissingSkillsForProfessionCurrentPlayer = function (self, profession_name)
+    GetMissingSkillsForProfessionCurrentPlayer = function(self, profession_name)
         return self:GetMissingSkillsForProfessionOfPlayer(MTSL_CURRENT_PLAYER.NAME, MTSL_CURRENT_PLAYER.REALM, profession_name)
     end,
 
@@ -416,7 +416,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- returns              Array       List of missing skills for the profession ({} if not found)
     ------------------------------------------------------------------------------------------------
-    GetAmountMissingSkillsForProfessionCurrentPlayer = function (self, profession_name)
+    GetAmountMissingSkillsForProfessionCurrentPlayer = function(self, profession_name)
         local amount_missing = 0
         if MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_MISSING"] then amount_missing = tonumber(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_MISSING"]) end
 
@@ -456,7 +456,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- returns              Number      The amount of missing skills
     ------------------------------------------------------------------------------------------------
-    GetAmountOfLearnedSkillsForProfession = function (self, player_name, player_realm, profession_name)
+    GetAmountOfLearnedSkillsForProfession = function(self, player_name, player_realm, profession_name)
         local player = self:GetPlayerOnRealm(player_name, player_realm)
         -- Check if player exits
         if player ~= nil and player.TRADESKILLS[profession_name] ~= nil and player.TRADESKILLS[profession_name] ~= 0 then
@@ -723,7 +723,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ----------------------------------------------------------------------------------------
     -- Check if we unlearned a specialisation
     ----------------------------------------------------------------------------------------
-    CheckSpecialisations = function (self)
+    CheckSpecialisations = function(self)
         local unlearned = false
         if MTSL_CURRENT_PLAYER ~= nil and MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil then
             for _, v in pairs(MTSL_CURRENT_PLAYER.TRADESKILLS) do
@@ -900,15 +900,15 @@ MTSL_LOGIC_PLAYER_NPC = {
         return amount
     end,
 
-    GetCurrentPlayerIsInGuild = function (self)
+    GetCurrentPlayerIsInGuild = function(self)
         return MTSL_CURRENT_PLAYER.GUILD  ~= ""
     end,
 
-    GetCurrentPlayerIsInParty = function (self)
+    GetCurrentPlayerIsInParty = function(self)
         return GetNumGroupMembers() > 1
     end,
 
-    GetCurrentPlayerIsInRaid = function (self)
+    GetCurrentPlayerIsInRaid = function(self)
         return UnitInRaid("player") ~= nil
     end,
 

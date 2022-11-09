@@ -100,7 +100,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Adds data from skills/recipes/quests/objects to NPC to optimize filtering afterwards
     ----------------------------------------------------------------------------------------------------------
-    EnhanceNpcData = function (self)
+    EnhanceNpcData = function(self)
         -- Merge data for each filter to each NPC so we access it later straightaway
         -- Available filters: name, faction, profession, source, zone
         -- Temp array to hold new data for each npc
@@ -266,7 +266,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the list of MissingNpcsListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateList = function (self)
+    UpdateList = function(self)
         self.shown_npcs = self:FilterListOfNpcs()
         self.amount_shown_npcs = MTSL_TOOLS:CountItemsInArray(self.shown_npcs)
         if self.amount_shown_npcs <= 0 then
@@ -353,7 +353,7 @@ MTSLUI_NPC_LIST_FRAME = {
         return false
     end,
 
-    IsNpcAvailableInZone = function (self, npc, zone_id)
+    IsNpcAvailableInZone = function(self, npc, zone_id)
         local available = true
         if self.filter_values["zone"] and self.filter_values["zone"] ~= 0 and npc.zone_id ~= self.filter_values["zone"] then
             available = false
@@ -378,7 +378,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the npcbuttons of MissingNpcsListFrame
     ----------------------------------------------------------------------------------------------------------
-    UpdateButtons = function (self)
+    UpdateButtons = function(self)
         local amount_to_show = self.amount_shown_npcs
         -- have more then we can show so limit
         if amount_to_show > self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -464,7 +464,7 @@ MTSLUI_NPC_LIST_FRAME = {
     --
     -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
-    HandleScrollEvent = function (self, offset)
+    HandleScrollEvent = function(self, offset)
         -- Only handle the event if slider is visible
         if self.slider_active == 1 then
             -- Update the index of the selected npc if any
@@ -523,7 +523,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Selects the current selected npcbuton
     ----------------------------------------------------------------------------------------------------------
-    SelectCurrentNpcButton = function (self)
+    SelectCurrentNpcButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
@@ -534,7 +534,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Deselects the current selected npcbuton
     ----------------------------------------------------------------------------------------------------------
-    DeselectCurrentNpcButton = function (self)
+    DeselectCurrentNpcButton = function(self)
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then

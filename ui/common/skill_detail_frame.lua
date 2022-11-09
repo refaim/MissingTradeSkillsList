@@ -59,7 +59,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     --
     -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
-    Initialise = function (self, parent_frame, frame_name)
+    Initialise = function(self, parent_frame, frame_name)
         -- make local copy of this instance to hook the events too
         local event_class = self
         -- create the frame
@@ -252,7 +252,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         if self.tooltip_alt_source_name then self:LinkToChat(self.tooltip_alt_source_name, is_alt_down, is_ctrl_down, is_shift_down) end
     end,
 
-    LinkToChat = function (self, item_name, is_alt_down, is_ctrl_down, is_shift_down)
+    LinkToChat = function(self, item_name, is_alt_down, is_ctrl_down, is_shift_down)
         if MTSLUI_SAVED_VARIABLES:GetChatLinkEnabled()  == 1 then
             local link = self:GetItemLink(item_name)
             if link then
@@ -290,7 +290,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         end
     end,
 
-    GetItemLink = function (self, item_name)
+    GetItemLink = function(self, item_name)
         local _, link = GetItemInfo(item_name)
         local attempts = 0
         while link == nil and attempts < 5 do
@@ -461,7 +461,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- @min_xp_level        Number      The minimum XP level required to learn the skill
     -- @current_xp_level    Number      The current XP level of the player
     ----------------------------------------------------------------------------
-    SetRequiredXPLevel = function (self, min_xp_level, current_xp_level)
+    SetRequiredXPLevel = function(self, min_xp_level, current_xp_level)
         -- Check if we need certain XP level to learn
         if min_xp_level == nil or min_xp_level <= 0 then
             self.labels.requires_xp.value:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. "-")
@@ -671,7 +671,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- @is_alternative_source   Number      Indicates if quest is primary (=0) or secondary (=1) source for skill
     -- @is_primary_type         Number      Indicates if quest is primary (=0) or secondary (=1) type for skill
     ----------------------------------------------------------------------------------------------------
-    ShowDetailsOfSkillTypeObject = function (self, oject_id, is_alternative_source, is_primary_type)
+    ShowDetailsOfSkillTypeObject = function(self, oject_id, is_alternative_source, is_primary_type)
         local object = MTSL_LOGIC_ITEM_OBJECT:GetObjectById(oject_id)
         self:SetSourceType(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedData(object), is_alternative_source, is_primary_type)
         local objects = { object }
@@ -837,14 +837,14 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------------------
     -- Hides the frame
     ----------------------------------------------------------------------------------------
-    Hide = function (self)
+    Hide = function(self)
         self.ui_frame:Hide()
     end,
 
     ---------------------------------------------------------------------------------------
     -- Shows the frame
     ----------------------------------------------------------------------------------------
-    Show = function (self)
+    Show = function(self)
         self.ui_frame:Show()
     end,
 

@@ -12,7 +12,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when our addon is fully loaded
     ---------------------------------------------------------------------------------------
-    PLAYER_LOGIN = function (self)
+    PLAYER_LOGIN = function(self)
         if MTSL_TOOLS:CheckIfDataIsValid() then
             if MTSLUI_TOOLS:SetAddonLocale() then
                 -- load the data for the player
@@ -72,7 +72,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a crafting window is closed
     ---------------------------------------------------------------------------------------
-    CRAFT_CLOSE = function (self)
+    CRAFT_CLOSE = function(self)
         self.ui_craft_open = 0
         -- if we have a tradeskill window open, reanchor togglebutton and refresh frame
         if self.ui_trade_open > 0 then
@@ -88,7 +88,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a crafting window is opened
     ---------------------------------------------------------------------------------------
-    CRAFT_SHOW = function (self)
+    CRAFT_SHOW = function(self)
         -- Check if we effectively opened a CraftFrame
         if CraftFrame then
             -- make it drageable
@@ -108,7 +108,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a crafting window is updated
     ---------------------------------------------------------------------------------------
-    CRAFT_UPDATE = function (self)
+    CRAFT_UPDATE = function(self)
         -- only trigger update event if we have the window opened
         local localised_name, current_skill_level, max_level = GetCraftDisplaySkillLine()
         local profession_name = MTSL_LOGIC_PROFESSION:GetEnglishProfessionNameFromLocalisedName(localised_name)
@@ -121,7 +121,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a skill point is gained or unlearned a profession / specialisation
     ---------------------------------------------------------------------------------------
-    SKILL_LINES_CHANGED = function (self)
+    SKILL_LINES_CHANGED = function(self)
         local has_learned = MTSL_LOGIC_PLAYER_NPC:AddLearnedProfessions()
         MTSL_LOGIC_PLAYER_NPC:UpdatePlayerSkillLevels()
         -- Check if we (un)learned a profession (only possbile if SkillFrame is shown and active and player exists)
@@ -144,7 +144,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a trade skill windows is closed
     ---------------------------------------------------------------------------------------
-    TRADE_SKILL_CLOSE = function (self)
+    TRADE_SKILL_CLOSE = function(self)
         self.ui_trade_open = 0
         -- if we have a tradeskill window open, reanchor togglebutton and refresh frame
         if self.ui_craft_open > 0 then
@@ -160,7 +160,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a trade skill windows is opened
     ---------------------------------------------------------------------------------------
-    TRADE_SKILL_SHOW = function (self)
+    TRADE_SKILL_SHOW = function(self)
         -- If we have a tradeskillframe
         if TradeSkillFrame then
             -- make it drageable
@@ -179,7 +179,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a trade skill windows is updated
     ---------------------------------------------------------------------------------------
-    TRADE_SKILL_UPDATE = function (self)
+    TRADE_SKILL_UPDATE = function(self)
         -- only trigger update event if we have the window opened
         local localised_name, current_skill_level, max_level = GetTradeSkillLine()
         local profession_name = MTSL_LOGIC_PROFESSION:GetEnglishProfessionNameFromLocalisedName(localised_name)
@@ -212,7 +212,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Event started when a skill is learned from trainer
     ---------------------------------------------------------------------------------------
-    TRAINER_UPDATE = function (self)
+    TRAINER_UPDATE = function(self)
         local has_learned = MTSL_LOGIC_PLAYER_NPC:AddLearnedProfessions()
         -- only possible react if we have a craft or tradeskill open
         if self.ui_craft_open > 0 or self.ui_trade_open > 0 then
@@ -255,7 +255,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Update the current XP level of the char when he "dings"
     ---------------------------------------------------------------------------------------
-    CHARACTER_POINTS_CHANGED = function (self)
+    CHARACTER_POINTS_CHANGED = function(self)
         MTSL_LOGIC_PLAYER_NPC:UpdatePlayerInfo()
         -- TODO refresh player info show in ACC or DB explorer
     end,
@@ -265,7 +265,7 @@ MTSLUI_EVENT_HANDLER = {
     --
     -- @msg:            string      The argument for the slash command
     ---------------------------------------------------------------------------------------
-    SLASH_COMMAND = function (self, msg)
+    SLASH_COMMAND = function(self, msg)
         -- remove case sensitive options by setting all passed text to lowercase
         if msg then msg = string.lower(msg) end
         if msg == "acc" or msg == "account" then
@@ -300,7 +300,7 @@ MTSLUI_EVENT_HANDLER = {
     ---------------------------------------------------------------------------------------
     -- Initialise the handler and hook all events
     ---------------------------------------------------------------------------------------
-    Initialise = function (self)
+    Initialise = function(self)
         -- Create an "empty" frame to hook onto
         local event_frame = CreateFrame("FRAME")
         -- Set function how to react on event
@@ -336,7 +336,7 @@ MTSLUI_EVENT_HANDLER = {
     --
     -- returns      Boolean     Flag indicating if addon is loaded
     ---------------------------------------------------------------------------------------
-    IsAddonLoaded = function (self)
+    IsAddonLoaded = function(self)
         return self.addon_loaded == 1
     end,
 

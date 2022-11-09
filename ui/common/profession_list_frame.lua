@@ -91,7 +91,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
         icon:SetTexture(MTSLUI_ICONS_PROFESSION[self.shown_professions[i]])
         button.icon = icon
 
-        button:SetScript("OnClick", function ()
+        button:SetScript("OnClick", function()
             event_class:HandleSelectedListItem(i)
         end)
         return button

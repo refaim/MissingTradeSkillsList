@@ -21,7 +21,7 @@ MTSLUI_TOOLS = {
     --
     -- returns          Frame       Returns the created frame
     ----------------------------------------------------------------------------------------
-    CreateBaseFrame = function (self, type, name, parent, template, width, height, has_backdrop)
+    CreateBaseFrame = function(self, type, name, parent, template, width, height, has_backdrop)
         local generic_frame = CreateFrame(type, name, parent, template)
         generic_frame:SetWidth(width)
         generic_frame:SetHeight(height)
@@ -136,7 +136,7 @@ MTSLUI_TOOLS = {
     --
     -- returns      Object      The created label
     ----------------------------------------------------------------------------------------
-    CreateLabel = function (self, owner, text, left, top, font_size, position)
+    CreateLabel = function(self, owner, text, left, top, font_size, position)
         local new_label = owner:CreateFontString()
         new_label:SetFont(MTSLUI_FONTS.FONTS[font_size]:GetFont())
 
@@ -182,7 +182,7 @@ MTSLUI_TOOLS = {
         t:SetPoint("LEFT", 3, 0)
         b.texture = t
 
-        b:SetScript("OnClick", function (btn)
+        b:SetScript("OnClick", function(btn)
             event_class:HandleSelectedListItem(nr_in_list)
         end)
 
@@ -219,7 +219,7 @@ MTSLUI_TOOLS = {
     --
     -- returns              Frame       Returns the created frame
     ----------------------------------------------------------------------------------------
-    CreateScrollFrame = function (self, parent_class, parent_frame, width, height, has_backdrop, height_slider_step)
+    CreateScrollFrame = function(self, parent_class, parent_frame, width, height, has_backdrop, height_slider_step)
         local scroll_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", parent_frame, nil, width, height, has_backdrop)
         -- add the vertical slider on the right to the frame
         scroll_frame.slider = MTSL_TOOLS:CopyObject(MTSLUI_VERTICAL_SLIDER)
@@ -246,7 +246,7 @@ MTSLUI_TOOLS = {
     ----------------------------------------------------------------------------------------
     -- Prints info about addon to chat
     ----------------------------------------------------------------------------------------
-    PrintAboutMessage = function (self)
+    PrintAboutMessage = function(self)
         print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME)
         print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_FONTS.TAB .. self:GetLocalisedLabel("author") .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_ADDON.AUTHOR)
         print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_FONTS.TAB .. self:GetLocalisedLabel("version") .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_ADDON.VERSION)
@@ -255,7 +255,7 @@ MTSLUI_TOOLS = {
     ----------------------------------------------------------------------------------------
     -- Prints help about addon to chat
     ----------------------------------------------------------------------------------------
-    PrintHelpMessage = function (self)
+    PrintHelpMessage = function(self)
         self:PrintAboutMessage()
         local slashtext = "/mtsl"
         print(slashtext  .. "                     Opens the character explorer frame")
@@ -318,7 +318,7 @@ MTSLUI_TOOLS = {
     --
     -- returns              Frame       Returns the created frame
     ----------------------------------------------------------------------------------------
-    CreateDropDown = function (self, name, frame_owner, point_owner, point_anchor, margin_left, margin_top, initialiser, width_dd)
+    CreateDropDown = function(self, name, frame_owner, point_owner, point_anchor, margin_left, margin_top, initialiser, width_dd)
         local drop_down = CreateFrame("Frame", name, frame_owner, "UIDropDownMenuTemplate")
         drop_down:SetPoint("TOPLEFT", point_owner, point_anchor, margin_left, margin_top)
         drop_down.initialize = initialiser

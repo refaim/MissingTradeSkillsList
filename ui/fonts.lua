@@ -120,7 +120,7 @@ MTSLUI_FONTS = {
     --
     -- returns          String  The color for the text for the given quality
     --------------------------------------------------------------------------
-    GetTextColorByItemQuality = function (self, item_quality)
+    GetTextColorByItemQuality = function(self, item_quality)
         if item_quality ~= nil then
             item_quality = string.upper(item_quality)
             -- Return the found quality

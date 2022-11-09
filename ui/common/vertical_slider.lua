@@ -20,7 +20,7 @@ MTSLUI_VERTICAL_SLIDER = {
     -- @slider_steps        Number      The mount of steps the vertical slider has
     -- @height_step         Number      The height of 1 step in the slider
     ----------------------------------------------------------------------------------------------------------
-    Initialise = function (self, parent_class, parent_frame, height, height_step)
+    Initialise = function(self, parent_class, parent_frame, height, height_step)
         self.STEP_HEIGHT = height_step
         -- create a container frame for the border
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", parent_frame, nil, self.FRAME_WIDTH, height, false)
@@ -80,7 +80,7 @@ MTSLUI_VERTICAL_SLIDER = {
     ---------------------------------------------------------------------------------------
     -- Scrolls the slider up by SLIDER_STEP
     ----------------------------------------------------------------------------------------
-    ScrollUp = function (self)
+    ScrollUp = function(self)
         local new_value = self:GetSliderValue() - self.SLIDER_STEP
         -- Set the new value of the slider, this executes "OnValueChanged"
         -- Does not set new value if not in MinMaxValues range
@@ -90,7 +90,7 @@ MTSLUI_VERTICAL_SLIDER = {
     ---------------------------------------------------------------------------------------
     -- Scrolls the slider down by SLIDER_STEP
     ----------------------------------------------------------------------------------------
-    ScrollDown = function (self)
+    ScrollDown = function(self)
         local new_value = self:GetSliderValue() + self.SLIDER_STEP
         -- Set the new value of the slider, this executes "OnValueChanged"
         -- Does not set new value if not in MinMaxValues range
@@ -116,21 +116,21 @@ MTSLUI_VERTICAL_SLIDER = {
     ---------------------------------------------------------------------------------------
     -- Hides the slider
     ----------------------------------------------------------------------------------------
-    Hide = function (self)
+    Hide = function(self)
         self.ui_frame:Hide()
     end,
 
     ---------------------------------------------------------------------------------------
     -- Shows the slider
     ----------------------------------------------------------------------------------------
-    Show = function (self)
+    Show = function(self)
         self.ui_frame:Show()
     end,
 
     ---------------------------------------------------------------------------------------
     -- Sets the height of  the slider
     ----------------------------------------------------------------------------------------
-    SetHeight = function (self, height)
+    SetHeight = function(self, height)
         self.ui_frame:SetHeight(height)
         self.ui_frame.slider:SetHeight(height - 40)
     end,

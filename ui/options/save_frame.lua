@@ -12,7 +12,7 @@ MTSLOPTUI_SAVE_FRAME = {
     ---------------------------------------------------------------------------------------
     -- Initialises the titleframe
     ----------------------------------------------------------------------------------------
-    Initialise = function (self, parent_frame)
+    Initialise = function(self, parent_frame)
         self.FRAME_WIDTH = MTSLUI_OPTIONS_MENU_FRAME.FRAME_WIDTH
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "MTSLOPTUI_SaveFrame", parent_frame, nil, self.FRAME_WIDTH, self.FRAME_HEIGHT, false)
         -- below config frame
@@ -23,7 +23,7 @@ MTSLOPTUI_SAVE_FRAME = {
         self.save_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_Cancel_Button", self.ui_frame, "UIPanelButtonTemplate", 2 * self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
         self.save_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left, 0)
         self.save_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("save"))
-        self.save_btn:SetScript("OnClick", function ()
+        self.save_btn:SetScript("OnClick", function()
             MTSLOPTUI_CONFIG_FRAME:Save()
             MTSLUI_OPTIONS_MENU_FRAME:Hide()
         end)
@@ -32,7 +32,7 @@ MTSLOPTUI_SAVE_FRAME = {
         self.reset_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_Save_Button", self.ui_frame, "UIPanelButtonTemplate", self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
         self.reset_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left, 0)
         self.reset_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("default"))
-        self.reset_btn:SetScript("OnClick", function ()
+        self.reset_btn:SetScript("OnClick", function()
             MTSLOPTUI_CONFIG_FRAME:Reset()
             MTSLUI_FONTS:Initialise()
             ReloadUI()
@@ -43,7 +43,7 @@ MTSLOPTUI_SAVE_FRAME = {
         self.cancel_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_Save_Button", self.ui_frame, "UIPanelButtonTemplate", self.BUTTON_WIDTH, self.BUTTON_HEIGHT)
         self.cancel_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left, 0)
         self.cancel_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("cancel"))
-        self.cancel_btn:SetScript("OnClick", function ()
+        self.cancel_btn:SetScript("OnClick", function()
             MTSLUI_OPTIONS_MENU_FRAME:Hide()
         end)
     end,

@@ -70,7 +70,7 @@ MTSLUI_NPC_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- First row of the filter frame = search bar + button
     ----------------------------------------------------------------------------------------------------------
-    InitialiseFirstRow = function (self)
+    InitialiseFirstRow = function(self)
         -- Search box with button
         self.ui_frame.search_box = CreateFrame("EditBox", self.filter_frame_name .. "_TF", self.ui_frame)
         self.ui_frame.search_box:SetBackdrop({
@@ -104,7 +104,7 @@ MTSLUI_NPC_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Second row of the filter frame = drop down factions & drop down profession
     ----------------------------------------------------------------------------------------------------------
-    InitialiseSecondRow = function (self)
+    InitialiseSecondRow = function(self)
         -- Factions drop down
         self.ui_frame.faction_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_FACTIONS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.faction_drop_down:SetPoint("TOPLEFT", self.ui_frame.search_box, "BOTTOMLEFT", -15, -1)
@@ -122,7 +122,7 @@ MTSLUI_NPC_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Third row of the filter frame = drop down source types & drop down rank
     ----------------------------------------------------------------------------------------------------------
-    InitialiseThirdRow = function (self)
+    InitialiseThirdRow = function(self)
         -- create a filter for source type of npc
         self.ui_frame.source_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_SOURCES", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.source_drop_down:SetPoint("TOPLEFT", self.ui_frame.faction_drop_down, "BOTTOMLEFT", 0, 4)
@@ -140,7 +140,7 @@ MTSLUI_NPC_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Fourth row of the filter frame = drop down continents & drop down zone
     ----------------------------------------------------------------------------------------------------------
-    InitialiseFourthRow = function (self)
+    InitialiseFourthRow = function(self)
         -- Continents & zones
         -- Continent more split up with types as well, to reduce number of items shown
         self.ui_frame.continent_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_CONTS", self.ui_frame, "UIDropDownMenuTemplate")
@@ -157,7 +157,7 @@ MTSLUI_NPC_FILTER_FRAME = {
     end,
 
     -- Initialise the filters to default values
-    InitFilters = function (self)
+    InitFilters = function(self)
         self.filter_values = {
             npc_name = "",
             faction = "any",

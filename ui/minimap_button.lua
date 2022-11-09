@@ -27,7 +27,7 @@ MTSLUI_MINIMAP = {
         self:Hide()
     end,
 
-    OnMouseDown = function (self, button)
+    OnMouseDown = function(self, button)
         -- Only allow dragging with RMB
         if button == "RightButton" then
             MTSLUI_MINIMAP.mouse_down = true
@@ -44,7 +44,7 @@ MTSLUI_MINIMAP = {
         return self.mouse_down == true
     end,
 
-    OnMouseUp = function (self, button)
+    OnMouseUp = function(self, button)
         -- Only allow dragging with RMB
         if button == "RightButton" or MTSLUI_MINIMAP:IsMouseDown() == true then
             MTSLUI_MINIMAP.mouse_down = false

@@ -13,7 +13,7 @@ MTSL_TOOLS = {
     --
     -- returns          String      Number converted to xx g xx s xx c
     ----------------------------------------------------------------------------------------
-    GetNumberAsMoneyString = function (self, money_number)
+    GetNumberAsMoneyString = function(self, money_number)
         if type(money_number) ~= "number" then
             return "-"
         end
@@ -66,7 +66,7 @@ MTSL_TOOLS = {
     --
     -- returns      Object      A copy of the original object
     ----------------------------------------------------------------------------------------------------------
-    CopyObject = function (self, orig)
+    CopyObject = function(self, orig)
         local orig_type = type(orig)
         local copy
         if orig_type == 'table' then
@@ -371,7 +371,7 @@ MTSL_TOOLS = {
     --
     -- return           String      Text trimmed of spaces and put into lowercase
     ------------------------------------------------------------------------------------------------
-    StripSpacesAndLower = function (self, text)
+    StripSpacesAndLower = function(self, text)
         local lowered = string.lower(text)
         local stripped_text,_ = string.gsub(lowered, "%s", "")
         return stripped_text
@@ -384,9 +384,9 @@ MTSL_TOOLS = {
     --
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
-    SortArray = function (self, array)
+    SortArray = function(self, array)
         if array ~= nil and array ~= {} then
-            table.sort(array, function (a, b) return a < b end)
+            table.sort(array, function(a, b) return a < b end)
         end
         return array
     end,
@@ -398,9 +398,9 @@ MTSL_TOOLS = {
     --
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
-    SortArrayNumeric = function (self, array)
+    SortArrayNumeric = function(self, array)
         if array ~= nil and array ~= {} then
-            table.sort(array, function (a, b) return tonumber(a) < tonumber(b) end)
+            table.sort(array, function(a, b) return tonumber(a) < tonumber(b) end)
         end
         return array
     end,
@@ -413,9 +413,9 @@ MTSL_TOOLS = {
     --
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
-    SortArrayByProperty = function (self, array, property)
+    SortArrayByProperty = function(self, array, property)
         if array ~= nil and array ~= {} then
-            table.sort(array, function (a, b) return a[property] < b[property] end)
+            table.sort(array, function(a, b) return a[property] < b[property] end)
         end
         return array
     end,
@@ -428,9 +428,9 @@ MTSL_TOOLS = {
     --
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
-    SortArrayByPropertyReversed = function (self, array, property)
+    SortArrayByPropertyReversed = function(self, array, property)
         if array ~= nil and array ~= {} then
-            table.sort(array, function (a, b) return a[property] > b[property] end)
+            table.sort(array, function(a, b) return a[property] > b[property] end)
         end
         return array
     end,
@@ -444,9 +444,9 @@ MTSL_TOOLS = {
     --
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
-    SortArrayByLocalisedProperty = function (self, array, property)
+    SortArrayByLocalisedProperty = function(self, array, property)
         if array ~= nil and array ~= {} then
-            table.sort(array, function (a, b) return a[property][MTSLUI_CURRENT_LANGUAGE] < b[property][MTSLUI_CURRENT_LANGUAGE] end)
+            table.sort(array, function(a, b) return a[property][MTSLUI_CURRENT_LANGUAGE] < b[property][MTSLUI_CURRENT_LANGUAGE] end)
         end
         return array
     end,
@@ -454,7 +454,7 @@ MTSL_TOOLS = {
     ------------------------------------------------------------------------------------------------
     -- Counts the number of skills each profession has in each phase and for each specialisation
     ------------------------------------------------------------------------------------------------
-    CountSkillsPerProfessionAndPhase = function (self)
+    CountSkillsPerProfessionAndPhase = function(self)
         MTSL_DATA["AMOUNT_SKILLS"] = {}
 
         local current_phase = MTSL_DATA.MIN_PATCH_LEVEL

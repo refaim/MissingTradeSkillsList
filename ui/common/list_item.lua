@@ -21,7 +21,7 @@ MTSLUI_LIST_ITEM = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the SkillButton
     ----------------------------------------------------------------------------------------------------------
-    Initialise = function (self, id, parent_frame, width, height, position_left, position_top)
+    Initialise = function(self, id, parent_frame, width, height, position_left, position_top)
         self.FRAME_WIDTH_NO_SLIDER = width
         self.FRAME_WIDTH_SLIDER = width - MTSLUI_VERTICAL_SLIDER.FRAME_WIDTH + 8
         self.FRAME_HEIGHT = height
@@ -73,14 +73,14 @@ MTSLUI_LIST_ITEM = {
     ---------------------------------------------------------------------------------------
     -- Hides the button
     ----------------------------------------------------------------------------------------
-    Hide = function (self)
+    Hide = function(self)
         self.ui_frame:Hide()
     end,
 
     ---------------------------------------------------------------------------------------
     -- Shows the button
     ----------------------------------------------------------------------------------------
-    Show = function (self)
+    Show = function(self)
         self.ui_frame:Show()
     end,
 
@@ -89,14 +89,14 @@ MTSLUI_LIST_ITEM = {
     --
     -- returns      Number      Flag that indicates if button is selected (1 = selected)
     ----------------------------------------------------------------------------------------
-    IsSelected = function (self)
+    IsSelected = function(self)
         return self.is_selected
     end,
 
     ---------------------------------------------------------------------------------------
     -- Deselects the button
     ----------------------------------------------------------------------------------------
-    Deselect = function (self)
+    Deselect = function(self)
         self.is_selected = 0
         self.ui_frame:SetNormalTexture(self.TEXTURES.NOT_SELECTED)
     end,
@@ -104,7 +104,7 @@ MTSLUI_LIST_ITEM = {
     ---------------------------------------------------------------------------------------
     -- Selects the button
     ----------------------------------------------------------------------------------------
-    Select = function (self)
+    Select = function(self)
         self.is_selected = 1
         self.ui_frame:SetNormalTexture(self.TEXTURES.SELECTED)
     end,
