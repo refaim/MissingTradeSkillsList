@@ -307,7 +307,8 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     end,
 
     ToolTipShowSkillName = function(self)
-        self:ToolTipShow(self.labels.name.tooltip_frame, self.tooltip_skill_name)
+        -- TODO: Show tooltip for item from GetTradeSkillItemLink()
+        -- self:ToolTipShow(self.labels.name.tooltip_frame, self.tooltip_skill_name)
     end,
 
     ToolTipShowSourceName = function(self)
