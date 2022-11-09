@@ -327,7 +327,7 @@ MTSL_LOGIC_SKILL = {
         end
 
         -- convert table
-        unique_classes = {}
+        local unique_classes = {}
 
         for class, _ in pairs(classes) do
             table.insert(unique_classes, class)
