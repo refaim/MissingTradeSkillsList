@@ -111,7 +111,7 @@ MTSL_TOOLS = {
         local i = 1
 
         if list ~= nil then
-            for k, v in pairs(list) do
+            for _, v in pairs(list) do
                 if index == i then
                     return v
                 end
@@ -171,7 +171,7 @@ MTSL_TOOLS = {
         if list == nil then
             return 0
         end
-        for _, v in pairs(list) do
+        for _, _ in pairs(list) do
             amount = amount + 1
         end
         return amount
@@ -188,7 +188,7 @@ MTSL_TOOLS = {
     ------------------------------------------------------------------------------------------------
     GetItemFromArrayByKeyValue = function(self, array, key_name, key_value)
         if key_value ~= nil and array ~= nil then
-            for k, v in pairs(array) do
+            for _, v in pairs(array) do
                 if v[key_name] ~= nil and v[key_name] == key_value then
                     return v
                 end
@@ -208,7 +208,7 @@ MTSL_TOOLS = {
     ------------------------------------------------------------------------------------------------
     GetItemFromArrayByKeyArrayValue = function(self, array, key_name, key_value)
         if key_value ~= nil and array ~= nil then
-            for k, v in pairs(array) do
+            for _, v in pairs(array) do
                 if v[key_name] ~= nil and type(v[key_name]) == "table" and self:ListContainsKey(v[key_name], key_value) then
                     return v
                 end
@@ -229,7 +229,7 @@ MTSL_TOOLS = {
     ------------------------------------------------------------------------------------------------
     GetItemFromLocalisedArrayByKeyValue = function(self, array, key_name, key_value)
         if key_value ~= nil and array ~= nil then
-            for k, v in pairs(array) do
+            for _, v in pairs(array) do
                 if v[key_name] ~= nil and v[key_name][MTSLUI_CURRENT_LANGUAGE] == key_value then
                     return v
                 end
@@ -250,7 +250,7 @@ MTSL_TOOLS = {
     ------------------------------------------------------------------------------------------------
     GetItemFromArrayByKeyValueIgnoringLocalisation = function(self, array, key_name, key_value)
         if key_value ~= nil and array ~= nil then
-            for k, v in pairs(array) do
+            for _, v in pairs(array) do
                 if v[key_name] ~= nil and v[key_name]["English"] == key_value then
                     return v
                 end
@@ -272,7 +272,7 @@ MTSL_TOOLS = {
     GetAllItemsFromArrayByKeyValue = function(self, array, key_name, key_value)
         local items = {}
         if key_value ~= nil and array ~= nil then
-            for k, v in pairs(array) do
+            for _, v in pairs(array) do
                 if v[key_name] ~= nil and v[key_name] == key_value then
                     table.insert(items, v)
                 end
@@ -355,7 +355,7 @@ MTSL_TOOLS = {
         if list == nil or list == {} then
             return false
         end
-        for k, v in pairs(list) do
+        for k, _ in pairs(list) do
             if k == key then
                 return true
             end
@@ -513,7 +513,7 @@ MTSL_TOOLS = {
                         end
                     end
                     if class_only then
-                        for b, c in pairs(classes) do
+                        for _, c in pairs(classes) do
                             if MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_" .. c] == nil then
                                 MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_" .. c] = 1
                             else

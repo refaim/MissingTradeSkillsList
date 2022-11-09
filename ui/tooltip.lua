@@ -47,7 +47,7 @@ GameTooltip:HookScript("OnTooltipSetItem", function(self)
                     -- Empty line
                     GameTooltip:AddLine(" ")
                     GameTooltip:AddLine(MTSLUI_TOOLS:GetLocalisedLabel("status other characters"), true)
-                    for k, v in pairs(other_players) do
+                    for _, v in pairs(other_players) do
                         -- Check if learned or not
                         -- default color = learned (green)
                         local status_color = MTSLUI_FONTS.COLORS.AVAILABLE.YES

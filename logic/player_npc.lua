@@ -331,7 +331,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local other_players = self:GetOtherPlayersOnCurrentRealm()
         local players = {}
         -- loop all players on the current realm
-        for k, v in pairs(other_players) do
+        for _, v in pairs(other_players) do
            -- skip if he doesnt know the profession
             if v.TRADESKILLS ~= nil and v.TRADESKILLS[profession_name] ~= nil and v.TRADESKILLS[profession_name] ~= 0 then
                 table.insert(players, v)
@@ -350,7 +350,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local other_players = self:GetOtherPlayersOnCurrentRealmSameFaction()
         local players = {}
         -- loop all players on the current realm
-        for k, v in pairs(other_players) do
+        for _, v in pairs(other_players) do
             -- skip if he doesnt know the profession
             if v.TRADESKILLS ~= nil and v.TRADESKILLS[profession_name] ~= nil and v.TRADESKILLS[profession_name] ~= 0 then
                 table.insert(players, v)
@@ -756,7 +756,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     GetNpcsByIds = function(self, ids)
         local npcs = {}
 
-        for k, id in pairs(ids)
+        for _, id in pairs(ids)
         do
             local npc = self:GetNpcById(id)
             -- If we found one, check if the faction is valid (= neutral OR the same faction as player
@@ -783,7 +783,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     GetNpcsIgnoreFactionByIds = function(self, ids)
         local npcs = {}
 
-        for k, id in pairs(ids)
+        for _, id in pairs(ids)
         do
             local npc = self:GetNpcById(id)
             -- If we found one, check if the faction is valid (= neutral OR the same faction as player
@@ -819,7 +819,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     GetMobsByIds = function(self, ids)
         local mobs = {}
 
-        for k, id in pairs(ids)
+        for _, id in pairs(ids)
         do
             local mob = self:GetNpcById(id)
             -- Check if we found one
@@ -844,7 +844,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     GetRealmsWithPlayers = function(self)
         local realm_names = {}
-        for k, r in pairs(MTSL_PLAYERS) do
+        for k, _ in pairs(MTSL_PLAYERS) do
             if self:CountPlayersOnRealm(k) > 0 then
                 table.insert(realm_names, k)
             end
@@ -867,7 +867,7 @@ MTSL_LOGIC_PLAYER_NPC = {
 
         for k, r in pairs(MTSL_PLAYERS) do
             -- loop all chars on realm until we find one with the profession
-            for l, p in pairs(r) do
+            for _, p in pairs(r) do
                 if k ~= last_added_realm and MTSL_TOOLS:NamedListContainsKey(p.TRADESKILLS, profession_name) then
                     table.insert(realm_names, k)
                     last_added_realm = k
@@ -888,9 +888,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     GetAmountOfPlayersKnowingProfession = function(self, profession_name)
         local amount = 0
 
-        for k, r in pairs(MTSL_PLAYERS) do
+        for _, r in pairs(MTSL_PLAYERS) do
             -- loop all chars on realm until we find one with the profession
-            for l, p in pairs(r) do
+            for _, p in pairs(r) do
                 if MTSL_TOOLS:NamedListContainsKey(p.TRADESKILLS, profession_name) then
                     amount = amount + 1
                 end

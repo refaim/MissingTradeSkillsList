@@ -52,8 +52,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     -----------------------------------------------------------------------------------------
     GetReputationLevelWithFaction = function (self, faction_name)
         for factionIndex = 1, GetNumFactions() do
-            local name, description, standingId, bottomValue, topValue, earnedValue, atWarWith,
-            canToggleAtWar, isHeader = GetFactionInfo(factionIndex)
+            local name, _, standingId, _, _, _, _, _, isHeader = GetFactionInfo(factionIndex)
             -- check if localised
             if (isHeader == nil or isHeader == false) and name == faction_name then
                 return standingId

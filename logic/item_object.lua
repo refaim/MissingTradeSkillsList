@@ -13,7 +13,7 @@ MTSL_LOGIC_ITEM_OBJECT = {
     GetObjectsByIds = function(self, ids)
         local objects = {}
 
-        for k, id in pairs(ids)
+        for _, id in pairs(ids)
         do
             local object = self:GetObjectById(id)
             -- If we found one add to list
@@ -50,7 +50,7 @@ MTSL_LOGIC_ITEM_OBJECT = {
     GetItemsForProfessionByIds = function(self, ids, profession_name)
         local items = {}
 
-        for k, id in pairs(ids)
+        for _, id in pairs(ids)
         do
             local item = self:GetItemForProfessionById(id, profession_name)
             -- If we found one add to list

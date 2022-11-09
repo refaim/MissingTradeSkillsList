@@ -300,7 +300,7 @@ MTSL_LOGIC_PROFESSION = {
         local amount = 0
         -- No specilisation learned, so return the max number
         if MTSL_TOOLS:CountItemsInArray(specialisation_ids) <= 0 then
-            for k, s in pairs(MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]) do
+            for _, s in pairs(MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]) do
                 amount = amount + tonumber(s)
             end
         else
@@ -353,7 +353,7 @@ MTSL_LOGIC_PROFESSION = {
     GetProfessionNameBySkill = function(self, skill)
         local profession_name = ""
         -- loop each profession until we find it
-        for k, v in pairs(MTSL_DATA["professions"]) do
+        for k, _ in pairs(MTSL_DATA["professions"]) do
             -- loop each skill for this profession and compare to skill we seek
             local skills = self:GetAllSkillsAndLevelsForProfession(k)
             local s = 1

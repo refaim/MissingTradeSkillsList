@@ -100,7 +100,7 @@ MTSLOPTUI_RESET_FRAME = {
             self.player_on_realms = {}
         -- Auto select first one if none yet selected
         elseif self.current_realm == nil then
-            local key, realm = next(self.realms)
+            local _, realm = next(self.realms)
             self.current_realm = realm.name
         end
     end,
@@ -121,7 +121,7 @@ MTSLOPTUI_RESET_FRAME = {
             -- sort on player name
             MTSL_TOOLS:SortArrayByProperty(self.player_on_realms, "name")
             -- Auto select first one
-            local key, player = next(self.player_on_realms)
+            local _, player = next(self.player_on_realms)
             self.current_player = player.name
         end
     end,

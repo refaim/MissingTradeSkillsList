@@ -360,7 +360,7 @@ MTSLUI_NPC_FILTER_FRAME = {
             table.insert(self.continents, zone_filter)
         end
         -- add each type of "continent
-        for k, v in pairs(MTSL_DATA["continents"]) do
+        for _, v in pairs(MTSL_DATA["continents"]) do
             local new_continent = {
                 ["name"] = MTSLUI_TOOLS:GetLocalisedData(v),
                 ["id"] = v.id,
@@ -374,9 +374,9 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.zones_in_continent = {}
 
         -- add each zone of current "continent unless its "Any" or "Current location"
-        for k, c in pairs(MTSL_DATA["continents"]) do
+        for _, c in pairs(MTSL_DATA["continents"]) do
             self.zones_in_continent[c.id] = {}
-            for l, z in pairs(MTSL_LOGIC_WORLD:GetZonesInContinentById(c.id)) do
+            for _, z in pairs(MTSL_LOGIC_WORLD:GetZonesInContinentById(c.id)) do
                 local new_zone = {
                     ["name"] = MTSLUI_TOOLS:GetLocalisedData(z),
                     ["id"] = z.id,
@@ -482,7 +482,7 @@ MTSLUI_NPC_FILTER_FRAME = {
                 MTSLUI_TOOLS:FillDropDown(self.current_available_zones, self.ChangeZoneHandler, self.filter_frame_name)
                 -- auto select first zone in the continent if possible
                 self.filter_values["continent"] = id
-                local key, zone = next(self.current_available_zones)
+                local _, zone = next(self.current_available_zones)
                 if zone then
                     UIDropDownMenu_SetText(zone.name, self.ui_frame.zone_drop_down)
                     self.filter_values["zone"] = zone.id
