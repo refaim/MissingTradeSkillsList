@@ -291,7 +291,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local players = {}
         if MTSL_CURRENT_PLAYER ~= nil then
             -- loop all players on the current realm
-            for k, v in pairs (MTSL_PLAYERS[MTSL_CURRENT_PLAYER.REALM]) do
+            for k, v in pairs(MTSL_PLAYERS[MTSL_CURRENT_PLAYER.REALM]) do
                 -- skip if name is same as current player
                 if k ~= MTSL_CURRENT_PLAYER.NAME then
                     table.insert(players, v)
@@ -311,7 +311,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local players = {}
         if MTSL_CURRENT_PLAYER then
             -- loop all players on the current realm
-            for k, v in pairs (MTSL_PLAYERS[MTSL_CURRENT_PLAYER.REALM]) do
+            for k, v in pairs(MTSL_PLAYERS[MTSL_CURRENT_PLAYER.REALM]) do
                 -- skip if name is same as current player
                 if k ~= MTSL_CURRENT_PLAYER.NAME and v.FACTION == MTSL_CURRENT_PLAYER.FACTION then
                     table.insert(players, v)
@@ -331,7 +331,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local other_players = self:GetOtherPlayersOnCurrentRealm()
         local players = {}
         -- loop all players on the current realm
-        for k, v in pairs (other_players) do
+        for k, v in pairs(other_players) do
            -- skip if he doesnt know the profession
             if v.TRADESKILLS ~= nil and v.TRADESKILLS[profession_name] ~= nil and v.TRADESKILLS[profession_name] ~= 0 then
                 table.insert(players, v)
@@ -350,7 +350,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local other_players = self:GetOtherPlayersOnCurrentRealmSameFaction()
         local players = {}
         -- loop all players on the current realm
-        for k, v in pairs (other_players) do
+        for k, v in pairs(other_players) do
             -- skip if he doesnt know the profession
             if v.TRADESKILLS ~= nil and v.TRADESKILLS[profession_name] ~= nil and v.TRADESKILLS[profession_name] ~= 0 then
                 table.insert(players, v)
@@ -603,7 +603,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local amount_specs_learned = 0
         local unlearned_specs = {}
 
-        for _, s in pairs (specialisations) do
+        for _, s in pairs(specialisations) do
             if IsSpellKnown(s.id) then
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].SPELLIDS_SPECIALISATION, s.id)
                 amount_specs_learned = amount_specs_learned + 1
