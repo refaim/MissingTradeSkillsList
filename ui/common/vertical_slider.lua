@@ -23,7 +23,7 @@ MTSLUI_VERTICAL_SLIDER = {
     Initialise = function (self, parent_class, parent_frame, height, height_step)
         self.STEP_HEIGHT = height_step
         -- create a container frame for the border
-        self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", parent_frame, "", self.FRAME_WIDTH, height, false)
+        self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", parent_frame, nil, self.FRAME_WIDTH, height, false)
         self.ui_frame:SetPoint("TOPRIGHT", parent_frame, "TOPRIGHT", 0, 0)
         -- place the slider inside the container frame
         self.ui_frame.slider = MTSLUI_TOOLS:CreateBaseFrame("Slider", "", self.ui_frame, "UIPanelScrollBarTemplate", self.FRAME_WIDTH, height - 40, false)

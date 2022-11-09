@@ -82,7 +82,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
     CreateProfessionButton = function(self, name, i)
         local event_class = self
         -- Create the button:
-        local button = CreateFrame("Button", name, event_class.ui_frame, "")
+        local button = CreateFrame("Button", name, event_class.ui_frame)
         button:SetWidth(21)
         button:SetHeight(21)
         -- Add the icon:
