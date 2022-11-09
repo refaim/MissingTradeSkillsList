@@ -1,4 +1,4 @@
-﻿## Interface: 11307
+﻿## Interface: 11200
 ## Title: Missing TradeSkills List
 ## Author: Thumbkin
 ## Notes: Shows missing skills & recipes for a profession and where to get them.
