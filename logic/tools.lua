@@ -10,6 +10,11 @@ MTSL_TOOLS = {
         DEFAULT_CHAT_FRAME:AddMessage(string.format("|cffffff00%s", text or "nil"))
     end,
 
+    BindArguments = function(self, callback, ...)
+        local what_to_bind = unpack(arg)
+        return function(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) return callback(what_to_bind, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10) end
+    end,
+
     ---------------------------------------------------------------------------------------
     -- Conver a number to xx g xx s xx c
     --

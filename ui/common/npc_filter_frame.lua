@@ -109,13 +109,13 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.ui_frame.faction_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_FACTIONS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.faction_drop_down:SetPoint("TOPLEFT", self.ui_frame.search_box, "BOTTOMLEFT", -15, -1)
         self.ui_frame.faction_drop_down.filter_frame_name = self.filter_frame_name
-        self.ui_frame.faction_drop_down.initialize = self.CreateDropDownFactions
+        self.ui_frame.faction_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownFactions, self)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("any faction"), self.ui_frame.faction_drop_down)
         -- Professions
         self.ui_frame.profession_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_PROFS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.profession_drop_down:SetPoint("TOPLEFT", self.ui_frame.faction_drop_down, "TOPRIGHT", -31, 0)
         self.ui_frame.profession_drop_down.filter_frame_name = self.filter_frame_name
-        self.ui_frame.profession_drop_down.initialize = self.CreateDropDownProfessions
+        self.ui_frame.profession_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownProfessions, self)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("any profession"), self.ui_frame.profession_drop_down)
     end,
 
@@ -127,13 +127,13 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.ui_frame.source_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_SOURCES", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.source_drop_down:SetPoint("TOPLEFT", self.ui_frame.faction_drop_down, "BOTTOMLEFT", 0, 4)
         self.ui_frame.source_drop_down.filter_frame_name = self.filter_frame_name
-        self.ui_frame.source_drop_down.initialize = self.CreateDropDownSources
+        self.ui_frame.source_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownSources, self)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("any source"), self.ui_frame.source_drop_down)
         -- create a filter for rank of trainer
         self.ui_frame.rank_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_RANKS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.rank_drop_down:SetPoint("TOPLEFT", self.ui_frame.source_drop_down, "TOPRIGHT", -31, 0)
         self.ui_frame.rank_drop_down.filter_frame_name = self.filter_frame_name
-        self.ui_frame.rank_drop_down.initialize = self.CreateDropDownRanks
+        self.ui_frame.rank_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownRanks, self)
         UIDropDownMenu_SetText("", self.ui_frame.rank_drop_down)
     end,
 
@@ -146,13 +146,13 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.ui_frame.continent_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_CONTS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.continent_drop_down:SetPoint("TOPLEFT", self.ui_frame.source_drop_down, "BOTTOMLEFT", 0, 4)
         self.ui_frame.continent_drop_down.filter_frame_name = self.filter_frame_name
-        self.ui_frame.continent_drop_down.initialize = self.CreateDropDownContinents
+        self.ui_frame.continent_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownContinents, self)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("any zone"), self.ui_frame.continent_drop_down)
         -- default continent "any" so no need for sub zone to show
         self.ui_frame.zone_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_ZONES", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.zone_drop_down:SetPoint("TOPLEFT", self.ui_frame.continent_drop_down, "TOPRIGHT", -31, 0)
         self.ui_frame.zone_drop_down.filter_frame_name = self.filter_frame_name
-        self.ui_frame.zone_drop_down.initialize = self.CreateDropDownZones
+        self.ui_frame.zone_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownZones, self)
         UIDropDownMenu_SetText("", self.ui_frame.zone_drop_down)
     end,
 

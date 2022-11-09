@@ -330,7 +330,7 @@ MTSLUI_TOOLS = {
     -- @change_frame_name   String          The name of the frame to handle the change event
     ------------------------------------------------------------------------------------------------
     FillDropDown = function(self, values, change_handler, change_frame_name)
-        local info = UIDropDownMenu_CreateInfo()
+        local info = {}
         -- add all values
         for _, v in pairs(values) do
             -- already localised in array so no need to index
@@ -338,14 +338,14 @@ MTSLUI_TOOLS = {
             -- Dont allow it to be checked/ticked
             info.notCheckable = true
             -- top level has no submenu
-            info.func = function()
+            info.func = MTSL_TOOLS:BindArguments(function(value)
                 if change_frame_name and _G[change_frame_name] then
-                    change_handler(_G[change_frame_name], v.id, v.name)
+                    change_handler(_G[change_frame_name], value.id, value.name)
                 else
-                    change_handler(v.id, v.name)
+                    change_handler(value.id, value.name)
                 end
                 CloseDropDownMenus()
-            end
+            end, v)
             info.hasArrow = false
             UIDropDownMenu_AddButton(info)
         end
@@ -361,20 +361,20 @@ MTSLUI_TOOLS = {
     -- @ddl_id_name         String          The base tag for each dropdownbutton of the dropdownlist
     ------------------------------------------------------------------------------------------------
     FillDropDownCheckable = function(self, values, change_handler, change_frame_name)
-        local info = UIDropDownMenu_CreateInfo()
+        local info = {}
         -- add all values
         for _, v in pairs(values) do
             -- already localised in array so no need to index
             info.text = v.name
             info.checked = v.checked
             -- top level has no submenu
-            info.func = function()
+            info.func = MTSL_TOOLS:BindArguments(function(value)
                 if change_frame_name and _G[change_frame_name] then
-                    change_handler(_G[change_frame_name], v.id, v.name)
+                    change_handler(_G[change_frame_name], value.id, value.name)
                 else
-                    change_handler(v.id, v.name)
+                    change_handler(value.id, value.name)
                 end
-            end
+            end, v)
             -- keep it open so we can (un)check multiple items at once
             info.keepShownOnClick = true
             info.hasArrow = false
