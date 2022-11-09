@@ -1296,7 +1296,6 @@ MTSLUI_LOCALES_LABELS = {
         ["Russian"] = " уровня",
         ["Korean"] = "",
         ["Chinese"] = "",
-        ["Taiwanese"] = "",
         ["Spanish"] = "",
         ["Mexican"] = "",
         ["Portuguese"] = "",
