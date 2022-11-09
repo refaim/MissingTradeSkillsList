@@ -5,7 +5,7 @@
 -------------------------------------------------------
 
 MTSLUI_SKILL_DETAIL_FRAME = {
-    ui_frame,
+    ui_frame = nil,
     -- array holding all labels shown on this panel, for easy acces later
     labels = {
         name = {},
@@ -50,9 +50,9 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- shows up to 7 alternative sources
     MAX_SOURCES_SHOWN_SECONDARY = 6,
     -- save the texts for the tooltips
-    tooltip_skill_name,
-    tooltip_source_name,
-    tooltip_alt_source_name,
+    tooltip_skill_name = nil,
+    tooltip_source_name = nil,
+    tooltip_alt_source_name = nil,
 
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the DetailsSelectedSkillFrame
@@ -152,10 +152,10 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             text_label_top = text_label_top - text_gap
             -- add possibility to save waypoint info
             string_sources_content.waypoint = {
-                name,
-                x,
-                y,
-                zone,
+                name = nil,
+                x = nil,
+                y = nil,
+                zone = nil,
             }
             table.insert(self.labels.sources.values, string_sources_content)
         end
@@ -204,10 +204,10 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             text_label_top = text_label_top - text_gap
             -- add possibility to save waypoint info
             string_sources_content.waypoint = {
-                name,
-                x,
-                y,
-                zone,
+                name = nil,
+                x = nil,
+                y = nil,
+                zone = nil,
             }
             table.insert(self.labels.alt_sources.values, string_sources_content)
         end
@@ -872,19 +872,19 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             labels_sources.values[1]:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedLabel("not available faction"))
             labels_sources.values[1]:Show()
             labels_sources.values[1].waypoint = {
-                name,
-                x,
-                y,
-                zone,
+                name = nil,
+                x = nil,
+                y = nil,
+                zone = nil,
             }
             -- Hide the other labels
             for i=2,amount_labels do
                 labels_sources.values[i]:Hide()
                 labels_sources.values[i].waypoint = {
-                    name,
-                    x,
-                    y,
-                    zone,
+                    name = nil,
+                    x = nil,
+                    y = nil,
+                    zone = nil,
                 }
             end
         else
@@ -939,10 +939,10 @@ MTSLUI_SKILL_DETAIL_FRAME = {
                 else
                     labels_sources.values[i]:Hide()
                     labels_sources.values[i].waypoint = {
-                        name,
-                        x,
-                        y,
-                        zone,
+                        name = nil,
+                        x = nil,
+                        y = nil,
+                        zone = nil,
                     }
                 end
             end
@@ -970,18 +970,18 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         label_sources.values[1]:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. drop_text)
         label_sources.values[1]:Show()
         label_sources.values[1].waypoint = {
-            name,
-            x,
-            y,
-            zone,
+            name = nil,
+            x = nil,
+            y = nil,
+            zone = nil,
         }
         for i=2,amount_labels do
             label_sources.values[i]:Hide()
             label_sources.values[i].waypoint = {
-                name,
-                x,
-                y,
-                zone,
+                name = nil,
+                x = nil,
+                y = nil,
+                zone = nil,
             }
         end
     end,
@@ -1029,10 +1029,10 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             else
                 labels_sources.values[i]:Hide()
                 labels_sources.values[i].waypoint = {
-                    name,
-                    x,
-                    y,
-                    zone,
+                    name = nil,
+                    x = nil,
+                    y = nil,
+                    zone = nil,
                 }
             end
         end
@@ -1077,10 +1077,10 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             else
                 labels_sources.values[i]:Hide()
                 labels_sources.values[i].waypoint = {
-                    name,
-                    x,
-                    y,
-                    zone,
+                    name = nil,
+                    x = nil,
+                    y = nil,
+                    zone = nil,
                 }
             end
         end

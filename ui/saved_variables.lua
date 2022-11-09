@@ -6,49 +6,49 @@
 -----------------------------------------
 MTSLUI_PLAYER = {
     -- order as shown in options menu
-    WELCOME_MSG,
-    AUTO_SHOW_MTSL,
+    WELCOME_MSG = nil,
+    AUTO_SHOW_MTSL = nil,
     -- first load after new version
     NEW_VERSION = 1,
     MINIMAP = {
-        ACTIVE,
-        ANGLE,
-        RADIUS,
-        SHAPE,
+        ACTIVE = nil,
+        ANGLE = nil,
+        RADIUS = nil,
+        SHAPE = nil,
     },
-    PATCH_LEVEL_MTSL,
+    PATCH_LEVEL_MTSL = nil,
     TOOLTIP = {
-        ACTIVE,
-        FACTIONS,
-        SHOW_KNOWN,
+        ACTIVE = nil,
+        FACTIONS = nil,
+        SHOW_KNOWN = nil,
     },
-    MTSL_LOCATION,
+    MTSL_LOCATION = nil,
     UI_SPLIT_MODE = {
-        MTSL,
-        ACCOUNT,
-        CHAR,
-        DATABASE,
-        NPC,
+        MTSL = nil,
+        ACCOUNT = nil,
+        CHAR = nil,
+        DATABASE = nil,
+        NPC = nil,
     },
     UI_SCALE = {
-        MTSL,
-        ACCOUNT,
-        CHAR,
-        DATABASE,
-        NPC,
-        OPTIONSMENU,
+        MTSL = nil,
+        ACCOUNT = nil,
+        CHAR = nil,
+        DATABASE = nil,
+        NPC = nil,
+        OPTIONSMENU = nil,
     },
     FONT = {
-        NAME,
+        NAME = nil,
         SIZE = {
-            TITLE,
-            LABEL,
-            TEXT,
+            TITLE = nil,
+            LABEL = nil,
+            TEXT = nil,
         },
     },
     LINK_TO_CHAT = {
-        ACTIVE,
-        CHANNEL
+        ACTIVE = nil,
+        CHANNEL = nil,
     }
 }
 

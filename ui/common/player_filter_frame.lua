@@ -7,7 +7,7 @@ local _G = _G or getfenv(0)
 
 MTSLUI_PLAYER_FILTER_FRAME = {
     -- Keeps the current created frame
-    ui_frame,
+    ui_frame = nil,
     -- width of the frame
     FRAME_WIDTH = 305,
     -- height of the frame
@@ -15,7 +15,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     -- keep track of current sort mehod (1 = name (default), 2 = level)
     current_sort = 1,
     -- keeps track of current phase used for filtering
-    current_realm,
+    current_realm = nil,
     phases= {},
     sorts = {},
     -- all contintents
@@ -24,8 +24,8 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     zones_in_continent = {},
     -- all zones for the current continent
     current_available_zones = {},
-    current_contintent_id,
-    current_zone_id,
+    current_contintent_id = nil,
+    current_zone_id = nil,
     -- widhts of the drops downs according to layout
     WIDTH_DD = 150,
     -- Filtering active (flag indicating if changing drop downs has effect, default on)

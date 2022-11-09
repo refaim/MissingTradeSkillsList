@@ -5,12 +5,12 @@
 
 MTSLUI_LIST_ITEM = {
     -- The "slider"
-    ui_frame,
+    ui_frame = nil,
     -- Keep if it is selected or not
     is_selected = 0,
-    FRAME_WIDTH_SLIDER,
-    FRAME_WIDTH_NO_SLIDER,
-    FRAME_HEIGHT,
+    FRAME_WIDTH_SLIDER = nil,
+    FRAME_WIDTH_NO_SLIDER = nil,
+    FRAME_HEIGHT = nil,
     -- Different textures to use for the button
     TEXTURES = {
         SELECTED = "Interface/Buttons/UI-Listbox-Highlight",

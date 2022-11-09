@@ -5,10 +5,10 @@
 ----------------------------------------------------------
 
 MTSLUI_MINIMAP = {
-    ui_frame,
-    button_angle,
-    button_radius,
-    shape,
+    ui_frame = nil,
+    button_angle = nil,
+    button_radius = nil,
+    shape = nil,
     BUTTON_DIAMETER = 24,
     HALF_BUTTON_DIAMETER = 12,
 

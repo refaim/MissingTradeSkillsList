@@ -51,9 +51,9 @@ MTSLUI_FONTS = {
     },
     -- our saved fonts
     FONTS = {
-        TEXT,
-        LABEL,
-        TITLE,
+        TEXT = nil,
+        LABEL = nil,
+        TITLE = nil,
     },
     AVAILABLE_FONT_SIZES = {
         {

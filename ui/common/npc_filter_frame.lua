@@ -7,12 +7,12 @@ local _G = _G or getfenv(0)
 
 MTSLUI_NPC_FILTER_FRAME = {
     -- Keeps the current created frame
-    ui_frame,
+    ui_frame = nil,
     -- width of the frame (only 1 width needed since vertical & horizontal mode does not stretch this)
     FRAME_WIDTH = 450, -- 385,
     -- height of the frame
     FRAME_HEIGHT = 110,
-    current_rank,
+    current_rank = nil,
     ranks = {},
     -- all contintents
     continents = {},
@@ -20,14 +20,14 @@ MTSLUI_NPC_FILTER_FRAME = {
     zones_in_continent = {},
     -- all zones for the current continent
     current_available_zones = {},
-    current_continent_id,
-    current_zone_id,
+    current_continent_id = nil,
+    current_zone_id = nil,
     -- current specialisation for profession
-    current_profession,
+    current_profession = nil,
     -- all ranks for the current source type (only used for trainer)
     current_available_ranks = {},
     -- source type to show
-    current_source_type,
+    current_source_type = nil,
     -- widths of the drops downs according to layout
     WIDTH_DD = 206, --173, -- (+/- half of the width of frame)
     -- widths of the search box according to layout
@@ -36,13 +36,13 @@ MTSLUI_NPC_FILTER_FRAME = {
     filtering_active = 1,
     -- array holding the values of the current filters
     filter_values = {
-        npc_name,
-        faction,
-        profession,
-        source,
-        rank,
-        continent,
-        zone,
+        npc_name = nil,
+        faction = nil,
+        profession = nil,
+        source = nil,
+        rank = nil,
+        continent = nil,
+        zone = nil,
     },
 
     ----------------------------------------------------------------------------------------------------------

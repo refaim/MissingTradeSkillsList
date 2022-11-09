@@ -7,7 +7,7 @@ local _G = _G or getfenv(0)
 
 MTSLUI_FILTER_FRAME = {
     -- Keeps the current created frame
-    ui_frame,
+    ui_frame = nil,
     -- width of the frame
     FRAME_WIDTH_VERTICAL = 385,
     FRAME_WIDTH_HORIZONTAL = 515,
@@ -30,13 +30,13 @@ MTSLUI_FILTER_FRAME = {
     -- Filtering active (flag indicating if changing drop downs has effect, default on)
     filtering_active = 1,
     -- currently used profession for filtering
-    current_profession,
+    current_profession = nil,
     -- array holding the values of the current filters
     filter_values = {},
     -- holding the list items for all the drop downs
     drop_down_lists = {},
     -- we need this for when filters are reset
-    max_used_patch_level,
+    max_used_patch_level = nil,
 
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the MissingSkillsListFrame
@@ -161,7 +161,7 @@ MTSLUI_FILTER_FRAME = {
     InitFilters = function (self)
         self.filter_values = {
             skill_name = "",
-            profession,
+            profession = nil,
             continent = 0,
             zone = 0,
         }

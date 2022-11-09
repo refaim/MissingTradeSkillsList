@@ -6,14 +6,14 @@
 
 MTSLUI_PROFESSION_LIST_FRAME = {
     -- Keeps the current created frame
-    ui_frame,
+    ui_frame = nil,
     -- height of an item to select in the list
     ITEM_HEIGHT = 36,
     -- width of the frame
     FRAME_WIDTH = 66,
     -- height of the frame
     FRAME_HEIGHT = 465,
-    selected_index,
+    selected_index = nil,
 
 ----------------------------------------------------------------------------------------------------------
     -- Intialises the MissingSkillsListFrame

@@ -5,7 +5,7 @@
 ----------------------------------------------------------------------
 
 MTSLUI_VERTICAL_SLIDER = {
-    ui_frame,
+    ui_frame = nil,
     -- Scroll 5 items at a time
     SLIDER_STEP = 5,
     -- width of the slider

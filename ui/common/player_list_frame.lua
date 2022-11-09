@@ -6,24 +6,24 @@
 
 MTSLUI_PLAYER_LIST_FRAME = {
     -- Keeps the current created frame
-    scroll_frame,
+    scroll_frame = nil,
     -- Maximum amount of items shown at once
     MAX_ITEMS_SHOWN_CURRENTLY = 19, -- default mode
     MAX_ITEMS_SHOWN_VERTICAL = 19,
     MAX_ITEMS_SHOWN_HORIZONTAL = 33,
-    MAX_ITEMS_SHOWN,
+    MAX_ITEMS_SHOWN = nil,
     ITEM_HEIGHT = 19,
     -- array holding the buttons of this frame
-    LIST_BUTTONS,
+    LIST_BUTTONS = nil,
     -- Offset in the list (based on slider)
     slider_offset = 1,
     -- index and id of the selected player
-    selected_list_item_index,
-    selected_list_item_id,
+    selected_list_item_index = nil,
+    selected_list_item_id = nil,
     -- index of the selected button
-    selected_button_index,
+    selected_button_index = nil,
     -- Flag to check if slider is active or not
-    slider_active,
+    slider_active = nil,
     -- width of the frame
     FRAME_WIDTH = 300,
     -- height of the frame

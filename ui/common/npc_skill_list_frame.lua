@@ -6,23 +6,23 @@
 
 MTSLUI_NPC_SKILL_LIST_FRAME = {
     -- Keeps the current created frame
-    scroll_frame,
+    scroll_frame = nil,
     -- Maximum amount of items shown at once
     MAX_ITEMS_SHOWN_CURRENTLY = 23, -- default mode
     MAX_ITEMS_SHOWN_VERTICAL = 23,
     MAX_ITEMS_SHOWN_HORIZONTAL = 7,
     ITEM_HEIGHT = 19,
     -- array holding the buttons of this frame
-    LIST_BUTTONS,
+    LIST_BUTTONS = nil,
     -- Offset in the list (based on slider)
     slider_offset = 1,
     -- index and id of the selected npc
-    selected_list_item_index,
-    selected_list_item_id,
+    selected_list_item_index = nil,
+    selected_list_item_id = nil,
     -- index of the selected button
-    selected_button_index,
+    selected_button_index = nil,
     -- Flag to check if slider is active or not
-    slider_active,
+    slider_active = nil,
     -- width of the frame
     FRAME_WIDTH_VERTICAL = 385,
     FRAME_WIDTH_HORIZONTAL = 450, -- same width as the npc filter frame
