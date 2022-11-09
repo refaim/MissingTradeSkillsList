@@ -122,7 +122,7 @@ MTSLUI_NPC_LIST_FRAME = {
                 if sl.trainers then
                     for _, npc_id in pairs(sl.trainers.sources) do
                         if npcs[npc_id] == nil then
-                            print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
+                            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
                         else
                             -- specific faction or Alliance/Horde/neutral/Hostile
                             local faction = npcs[npc_id]["reacts"]
@@ -148,7 +148,7 @@ MTSLUI_NPC_LIST_FRAME = {
                         if quest and quest.npcs then
                             for _, npc_id in pairs(quest.npcs) do
                                 if npcs[npc_id] == nil then
-                                    print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
+                                    MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
                                 else
                                     -- specific faction or Alliance/Horde/neutral/Hostile
                                     local faction = npcs[npc_id]["reacts"]
@@ -177,7 +177,7 @@ MTSLUI_NPC_LIST_FRAME = {
                                 -- Vendors
                                 for _, npc_id in pairs(item.vendors.sources) do
                                     if npcs[npc_id] == nil then
-                                        print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
+                                        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
                                     else
                                         -- specific faction or Alliance/Horde/neutral/Hostile
                                         local faction = npcs[npc_id]["reacts"]
@@ -197,7 +197,7 @@ MTSLUI_NPC_LIST_FRAME = {
                                 -- Vendors
                                 for _, npc_id in pairs(item.drops.sources) do
                                     if npcs[npc_id] == nil then
-                                        print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
+                                        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
                                     else
                                         -- specific faction or Alliance/Horde/neutral/Hostile
                                         local faction = npcs[npc_id]["reacts"]
@@ -221,7 +221,7 @@ MTSLUI_NPC_LIST_FRAME = {
                                     if quest and quest.npcs then
                                         for _, npc_id in pairs(quest.npcs) do
                                             if npcs[npc_id] == nil then
-                                                print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
+                                                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: NPC with id " .. npc_id .. " is missing. Please report this bug!")
                                             else
                                                 -- specific faction or Alliance/Horde/neutral/Hostile
                                                 local faction = npcs[npc_id]["reacts"]

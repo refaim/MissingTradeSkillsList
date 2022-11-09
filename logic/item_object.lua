@@ -20,7 +20,7 @@ MTSL_LOGIC_ITEM_OBJECT = {
             if object ~= nil then
                 table.insert(objects, object)
             else
-                print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find object with id " .. id .. ". Please report this bug!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find object with id " .. id .. ". Please report this bug!")
             end
         end
 
@@ -57,7 +57,7 @@ MTSL_LOGIC_ITEM_OBJECT = {
             if item ~= nil then
                 table.insert(items, item)
             else
-                print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find item with id " .. id .. " for " .. profession_name .. ". Please report this bug!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find item with id " .. id .. " for " .. profession_name .. ". Please report this bug!")
             end
         end
 

@@ -152,7 +152,7 @@ MTSLUI_SAVED_VARIABLES = {
     -- Reset the players saved variables
     ------------------------------------------------------------------------------------------------
     ResetPlayer = function(self)
-        print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All saved variables have been reset to default values!")
+        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All saved variables have been reset to default values!")
         MTSLUI_PLAYER = {}
         -- Follows the order as shown on options menu
         MTSLUI_PLAYER.WELCOME_MSG = 1
@@ -233,7 +233,7 @@ MTSLUI_SAVED_VARIABLES = {
         MTSLUI_PLAYER.FONT.SIZE.LABEL = self.DEFAULT_SIZE_LABEL
         MTSLUI_PLAYER.FONT.SIZE.TITLE = self.DEFAULT_SIZE_TITLE
 
-        print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Font was reset to default!")
+        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Font was reset to default!")
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -281,7 +281,7 @@ MTSLUI_SAVED_VARIABLES = {
             -- convert old to new also
             if MTSLUI_PLAYER.UI_SPLIT_MODE == nil or type(MTSLUI_PLAYER.UI_SPLIT_MODE) ~= "table" then
                 self:ResetSplitModes()
-                print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All UI split orientations were reset to " .. self.DEFAULT_UI_SPLIT_MODE .. "!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All UI split orientations were reset to " .. self.DEFAULT_UI_SPLIT_MODE .. "!")
             else
                 self:ValidateSplitModes()
             end
@@ -299,7 +299,7 @@ MTSLUI_SAVED_VARIABLES = {
             -- reset split mode if not valid
             if not self:IsValidSplitMode(MTSLUI_PLAYER.UI_SPLIT_MODE[k]) then
                 MTSLUI_PLAYER.UI_SPLIT_MODE[k] = self.DEFAULT_UI_SPLIT_MODE
-                print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: " .. k .. " UI split oritentation was reset " .. self.DEFAULT_UI_SPLIT_MODE .. "!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: " .. k .. " UI split oritentation was reset " .. self.DEFAULT_UI_SPLIT_MODE .. "!")
             end
         end
     end,
@@ -361,7 +361,7 @@ MTSLUI_SAVED_VARIABLES = {
             -- convert old to new also
             if MTSLUI_PLAYER.UI_SCALE == nil then
                 self:ResetUIScales()
-                print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All UI scales were reset to " ..  self.DEFAULT_UI_SCALE .. "!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All UI scales were reset to " ..  self.DEFAULT_UI_SCALE .. "!")
                 -- Scales are saved, so check if valid
             else
                 self:ValidateUIScales()
@@ -381,7 +381,7 @@ MTSLUI_SAVED_VARIABLES = {
             -- reset split mode if not valid
             if not self:IsValidUIScale(MTSLUI_PLAYER.UI_SCALE[k]) then
                 MTSLUI_PLAYER.UI_SCALE[k] = self.DEFAULT_UI_SCALE
-                print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: " .. k .. " UI scale was reset to " ..  self.DEFAULT_UI_SCALE .. "!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: " .. k .. " UI scale was reset to " ..  self.DEFAULT_UI_SCALE .. "!")
             end
         end
     end,
@@ -635,7 +635,7 @@ MTSLUI_SAVED_VARIABLES = {
         local patch_level = self:GetPatchLevelServer()
         if patch_level == 0 then
             MTSL_DATA.CURRENT_PATCH_LEVEL = MTSL_DATA.MIN_PATCH_LEVEL
-            print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Could not determine patch level from server! Falling back to phase " .. MTSL_DATA.CURRENT_PATCH_LEVEL .. "(" .. MTSL_LOGIC_WORLD:GetZoneNameById (MTSL_DATA.PHASE_IDS[current_patch_level]) .. ")")
+            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Could not determine patch level from server! Falling back to phase " .. MTSL_DATA.CURRENT_PATCH_LEVEL .. "(" .. MTSL_LOGIC_WORLD:GetZoneNameById (MTSL_DATA.PHASE_IDS[current_patch_level]) .. ")")
         else
             MTSL_DATA.CURRENT_PATCH_LEVEL = patch_level
         end

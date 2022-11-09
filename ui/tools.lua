@@ -247,9 +247,9 @@ MTSLUI_TOOLS = {
     -- Prints info about addon to chat
     ----------------------------------------------------------------------------------------
     PrintAboutMessage = function(self)
-        print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME)
-        print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_FONTS.TAB .. self:GetLocalisedLabel("author") .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_ADDON.AUTHOR)
-        print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_FONTS.TAB .. self:GetLocalisedLabel("version") .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_ADDON.VERSION)
+        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME)
+        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_FONTS.TAB .. self:GetLocalisedLabel("author") .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_ADDON.AUTHOR)
+        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_FONTS.TAB .. self:GetLocalisedLabel("version") .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_ADDON.VERSION)
     end,
 
     ----------------------------------------------------------------------------------------
@@ -258,17 +258,17 @@ MTSLUI_TOOLS = {
     PrintHelpMessage = function(self)
         self:PrintAboutMessage()
         local slashtext = "/mtsl"
-        print(slashtext  .. "                     Opens the character explorer frame")
-        print(slashtext .. " char")
-        print(slashtext .. " config         Opens the configuration/options menu")
-        print(slashtext .. " options")
-        print(slashtext .. " about          Print information about this addon")
-        print(slashtext .. " help            Print how to use this addon")
-        print(slashtext .. " acc              Opens the account explorer frame")
-        print(slashtext .. " account")
-        print(slashtext .. " db               Opens the database explorer window")
-        print(slashtext .. " database")
-        print(slashtext .. " npc             Opens the NPC explorer window")
+        MTSL_TOOLS:Print(slashtext  .. "                     Opens the character explorer frame")
+        MTSL_TOOLS:Print(slashtext .. " char")
+        MTSL_TOOLS:Print(slashtext .. " config         Opens the configuration/options menu")
+        MTSL_TOOLS:Print(slashtext .. " options")
+        MTSL_TOOLS:Print(slashtext .. " about          Print information about this addon")
+        MTSL_TOOLS:Print(slashtext .. " help            Print how to use this addon")
+        MTSL_TOOLS:Print(slashtext .. " acc              Opens the account explorer frame")
+        MTSL_TOOLS:Print(slashtext .. " account")
+        MTSL_TOOLS:Print(slashtext .. " db               Opens the database explorer window")
+        MTSL_TOOLS:Print(slashtext .. " database")
+        MTSL_TOOLS:Print(slashtext .. " npc             Opens the NPC explorer window")
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ MTSLUI_TOOLS = {
     SetAddonLocale = function(self)
         local locale = GetLocale()
         if MTSLUI_LOCALES[locale] == nil then
-            print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Your locale " .. locale .. " is not supported!")
+            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Your locale " .. locale .. " is not supported!")
             return false
         end
         MTSLUI_CURRENT_LANGUAGE = MTSLUI_LOCALES[locale]
@@ -299,7 +299,7 @@ MTSLUI_TOOLS = {
             if IsAddOnLoaded("TomTom") and SlashCmdList["TOMTOM_WAY"] ~= nil then
                 SlashCmdList["TOMTOM_WAY"](waypointinfo.zone .. " " .. waypointinfo.x .. " " .. waypointinfo.y .. " " .. waypointinfo.name .. " (" .. item_name .. ")")
             elseif not self.tomtom_warned then
-                print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: " .. self:GetLocalisedLabel("tomtom needed"))
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: " .. self:GetLocalisedLabel("tomtom needed"))
                 self.tomtom_warned = true
             end
         end

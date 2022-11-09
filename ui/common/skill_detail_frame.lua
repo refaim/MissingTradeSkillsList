@@ -690,7 +690,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ShowDetailsOfSkillTypeItem = function(self, item_id, profession_name, current_xp_level, is_alternative_source, is_primary_type)
         local item = MTSL_LOGIC_ITEM_OBJECT:GetItemForProfessionById(item_id, profession_name)
         if item  == nil then
-            print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Count not find item with id " .. item_id .. " for profession " .. profession_name .. ". Please report this bug!")
+            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Count not find item with id " .. item_id .. " for profession " .. profession_name .. ". Please report this bug!")
         else
             self:SetRequiredXPLevel(item.min_xp_level)
             self:SetRequiredReputationWithFaction(item.reputation)

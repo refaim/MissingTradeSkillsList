@@ -16,7 +16,7 @@ MTSLUI_NPC_EXPLORER_FRAME.FRAME_HEIGHT_HORIZONTAL_SPLIT = 470
 function MTSLUI_NPC_EXPLORER_FRAME:Show()
     -- only show if not options menu open
     if MTSLUI_OPTIONS_MENU_FRAME:IsShown() then
-        print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: " .. MTSLUI_TOOLS:GetLocalisedLabel("close options menu"))
+        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: " .. MTSLUI_TOOLS:GetLocalisedLabel("close options menu"))
     else
         -- hide other explorerframes
         MTSLUI_ACCOUNT_EXPLORER_FRAME:Hide()

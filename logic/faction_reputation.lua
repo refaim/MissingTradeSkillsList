@@ -16,7 +16,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     GetFactionNameById = function(self, faction_id)
         local faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], faction_id)
         if faction == nil then
-            print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: No faction found for id " .. faction_id .. "! Please report this bug!")
+            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: No faction found for id " .. faction_id .. "! Please report this bug!")
             return ""
         else
             return MTSLUI_TOOLS:GetLocalisedData(faction)

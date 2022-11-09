@@ -6,6 +6,10 @@ MTSL_AVAILABLE_PROFESSIONS = { "Alchemy", "Blacksmithing", "Cooking", "Enchantin
 MTSL_AVAILABLE_LANGUAGES = { "French", "English", "German", "Russian", "Spanish", "Portuguese", "Chinese", "Taiwanese" }
 
 MTSL_TOOLS = {
+    Print = function(self, text)
+        DEFAULT_CHAT_FRAME:AddMessage(string.format("|cffffff00%s", text or "nil"))
+    end,
+
     ---------------------------------------------------------------------------------------
     -- Conver a number to xx g xx s xx c
     --
@@ -48,7 +52,7 @@ MTSL_TOOLS = {
         for _, v in pairs(objects_to_check) do
             -- object not present
             if MTSL_DATA[v] == nil then
-                print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not load all the data needed for the addon! Missing " .. v .. ". Please reinstall the addon!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not load all the data needed for the addon! Missing " .. v .. ". Please reinstall the addon!")
                 return false
             end
         end

@@ -24,21 +24,21 @@ MTSL_LOGIC_SAVED_VARIABLES = {
         local success = true
         if realm ~= nil and name ~= nil then
             if MTSL_PLAYERS[realm] == nil then
-                print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Realm " .. realm .. " does not exist in saved data! Names are case sensitive")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Realm " .. realm .. " does not exist in saved data! Names are case sensitive")
                 success = false
             elseif MTSL_PLAYERS[realm][name] == nil then
-                print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Realm " .. realm .. " does not have saved data for " .. name .. "! Names are case sensitive")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Realm " .. realm .. " does not have saved data for " .. name .. "! Names are case sensitive")
                 success = false
             else
                 MTSL_PLAYERS[realm][name] = nil
-                print(MTSLUI_FONTS.COLORS.TEXT.SUCCESS .. "MTSL: Removed " .. name .. " on realm " .. realm .. " from the saved data! Logout to complete.")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.SUCCESS .. "MTSL: Removed " .. name .. " on realm " .. realm .. " from the saved data! Logout to complete.")
                 -- check if realm is emppty, if so remove it as well
                 if MTSL_LOGIC_PLAYER_NPC:CountPlayersOnRealm(realm) <= 0 then
                     MTSL_PLAYERS[realm] = nil
                 end
             end
         else
-            print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Realm and character name are needed to delete a character")
+            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Realm and character name are needed to delete a character")
             success = false
         end
         return success

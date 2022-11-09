@@ -20,7 +20,7 @@ MTSL_LOGIC_QUEST = {
                 if quest.npcs ~= nil then
                     local npcs = MTSL_LOGIC_PLAYER_NPC:GetNpcsByIds(quest.npcs)
                     if npcs == nil  then
-                        print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find NPCs for Quest with id " .. ids[i] .. ". Report this bug!")
+                        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find NPCs for Quest with id " .. ids[i] .. ". Report this bug!")
                     else
                         -- only 1 NPC possible
                         local npc = npcs[1]
@@ -36,7 +36,7 @@ MTSL_LOGIC_QUEST = {
                     return quest
                 end
             else
-                print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find quest with id " .. ids[i] .. ". Report this bug!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find quest with id " .. ids[i] .. ". Report this bug!")
             end
 
             i = i + 1
