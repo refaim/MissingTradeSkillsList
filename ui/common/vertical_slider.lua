@@ -29,7 +29,8 @@ MTSLUI_VERTICAL_SLIDER = {
         self.ui_frame.slider = MTSLUI_TOOLS:CreateBaseFrame("Slider", "", self.ui_frame, "UIPanelScrollBarTemplate", self.FRAME_WIDTH, height - 40, false)
         self.ui_frame.slider:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 0, -20)
         -- parent ui_frame handles the scrolling event
-        self.ui_frame.slider:SetScript("OnValueChanged", function(event_frame, value)
+        self.ui_frame.slider:SetScript("OnValueChanged", function()
+            local value = arg1
             if value ~= nil then
                 -- round the value to an integer
                 value = math.ceil(value-0.5)
@@ -38,14 +39,11 @@ MTSLUI_VERTICAL_SLIDER = {
         end)
         -- Enable scrolling with mousewheel
         self.ui_frame.slider:EnableMouseWheel(true)
-        self.ui_frame.slider:SetScript("OnMouseWheel", function(event_frame, delta)
-            if delta ~= nil then
-                -- scroll up on positive delta
-                if delta > 0 then
-                    self:ScrollUp()
-                else
-                    self:ScrollDown()
-                end
+        self.ui_frame.slider:SetScript("OnMouseWheel", function()
+            if arg1 > 0 then
+                self:ScrollUp()
+            elseif arg1 < 0 then
+                self:ScrollDown()
             end
         end)
     end,

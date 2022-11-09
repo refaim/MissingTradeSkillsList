@@ -227,15 +227,11 @@ MTSLUI_TOOLS = {
         -- Make the frame scrollable
         scroll_frame:EnableMouseWheel(true)
         -- add mousewheel event to scrollframe
-        scroll_frame:SetScript("OnMouseWheel", function(event_frame, delta)
-            -- Only scroll if delta is + or -
-            if delta ~= nil then
-                -- scroll up on positive delta
-                if delta > 0 then
-                    event_frame.slider:ScrollUp()
-                else
-                    event_frame.slider:ScrollDown()
-                end
+        scroll_frame:SetScript("OnMouseWheel", function()
+            if arg1 > 0 then
+                scroll_frame.slider:ScrollUp()
+            elseif arg1 < 0 then
+                scroll_frame.slider:ScrollDown()
             end
         end)
 
@@ -392,8 +388,8 @@ MTSLUI_TOOLS = {
     AddDragToFrame = function(self, frame_to_drag)
         frame_to_drag:SetMovable(true)
         frame_to_drag:RegisterForDrag("LeftButton")
-        frame_to_drag:SetScript("OnDragStart", function(frame) frame:StartMoving() end)
-        frame_to_drag:SetScript("OnDragStop", function(frame) frame:StopMovingOrSizing() end)
+        frame_to_drag:SetScript("OnDragStart", function() frame_to_drag:StartMoving() end)
+        frame_to_drag:SetScript("OnDragStop", function() frame_to_drag:StopMovingOrSizing() end)
     end,
 
     ------------------------------------------------------------------------------------------------

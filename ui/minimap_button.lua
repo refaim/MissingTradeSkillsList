@@ -27,9 +27,9 @@ MTSLUI_MINIMAP = {
         self:Hide()
     end,
 
-    OnMouseDown = function(self, button)
+    OnMouseDown = function(self)
         -- Only allow dragging with RMB
-        if button == "RightButton" then
+        if arg1 == "RightButton" then
             MTSLUI_MINIMAP.mouse_down = true
         end
     end,
@@ -44,9 +44,9 @@ MTSLUI_MINIMAP = {
         return self.mouse_down == true
     end,
 
-    OnMouseUp = function(self, button)
+    OnMouseUp = function(self)
         -- Only allow dragging with RMB
-        if button == "RightButton" or MTSLUI_MINIMAP:IsMouseDown() == true then
+        if arg1 == "RightButton" or MTSLUI_MINIMAP:IsMouseDown() == true then
             MTSLUI_MINIMAP.mouse_down = false
             MTSLUI_MINIMAP:DragButton()
         end
@@ -64,8 +64,8 @@ MTSLUI_MINIMAP = {
         self.ui_frame:SetScript("OnUpdate",  MTSLUI_MINIMAP.OnUpdate)
 
         -- Show the tooltip when mouse over
-        self.ui_frame:SetScript("OnEnter", function(frame)
-            GameTooltip:SetOwner(frame, "ANCHOR_BOTTOMRIGHT")
+        self.ui_frame:SetScript("OnEnter", function()
+            GameTooltip:SetOwner(self.ui_frame, "ANCHOR_BOTTOMRIGHT")
             GameTooltip:SetText(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME .. " (v" .. MTSLUI_ADDON.VERSION .. ")")
             GameTooltip:AddLine(" ", 1, 1, 1)
             GameTooltip:AddLine(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. "Left Click: Open MTSL options menu", 1, 1, 1)
@@ -80,14 +80,13 @@ MTSLUI_MINIMAP = {
         end)
 
         -- Hide the tooltip if no longer mouse over
-        self.ui_frame:SetScript("OnLeave", function(frame)
+        self.ui_frame:SetScript("OnLeave", function()
             GameTooltip:Hide()
         end)
 
         -- Control clicks
-        self.ui_frame:SetScript("OnClick", function(self, button)
-            -- only allow if leftbutton used
-            if button == "LeftButton" then
+        self.ui_frame:SetScript("OnClick", function()
+            if arg1 == "LeftButton" then
                 if IsControlKeyDown() and IsAltKeyDown() and not IsShiftKeyDown() then
                     MTSLUI_ACCOUNT_EXPLORER_FRAME:Toggle()
                 elseif IsControlKeyDown() and not (IsAltKeyDown() or IsShiftKeyDown()) then

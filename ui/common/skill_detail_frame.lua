@@ -120,11 +120,9 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         self.labels.type.tooltip_frame_point_x = text_label_right - 5
         self.labels.type.tooltip_frame_point_y = text_label_top + 5
         self.labels.type.tooltip_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", self.labels.type.tooltip_frame_point_x, self.labels.type.tooltip_frame_point_y)
-        self.labels.type.tooltip_frame:SetScript("OnMouseUp", function(self, button)
-            -- Left mouse button
-            if button == "LeftButton" then
+        self.labels.type.tooltip_frame:SetScript("OnMouseUp", function()
+            if arg1 == "LeftButton" then
                 event_class:LinkItemToChat(IsAltKeyDown(), IsControlKeyDown(), IsShiftKeyDown())
-            -- Right mouse button, so insert
             else
                 event_class:InsertItemToChat()
             end
@@ -172,11 +170,9 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         self.labels.alt_type.tooltip_frame_point_x = text_label_right - 5
         self.labels.alt_type.tooltip_frame_point_y = text_label_top + 5
         self.labels.alt_type.tooltip_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", self.labels.alt_type.tooltip_frame_point_x, self.labels.alt_type.tooltip_frame_point_y)
-        self.labels.alt_type.tooltip_frame:SetScript("OnMouseUp", function(self, button)
-            -- Left mouse button
-            if button == "LeftButton" then
+        self.labels.alt_type.tooltip_frame:SetScript("OnMouseUp", function()
+            if arg1 == "LeftButton" then
                 event_class:LinkAlternativeItemToChat(IsAltKeyDown(), IsControlKeyDown(), IsShiftKeyDown())
-                -- Right mouse button, so insert
             else
                 event_class:InsertAlternativeItemToChat()
             end
