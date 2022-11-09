@@ -548,7 +548,7 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.ui_frame:SetWidth(self.FRAME_WIDTH)
         self.ui_frame.search_box:SetWidth(self.WIDTH_TF)
         for _, v in pairs(self.drop_down_names) do
-            UIDropDownMenu_SetWidth(_G[self.filter_frame_name .. v], self.WIDTH_DD)
+            UIDropDownMenu_SetWidth(self.WIDTH_DD, _G[self.filter_frame_name .. v])
         end
     end,
     ----------------------------------------------------------------------------------------------------------
@@ -558,7 +558,7 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.ui_frame:SetWidth(self.FRAME_WIDTH)
         self.ui_frame.search_box:SetWidth(self.WIDTH_TF)
         for _, v in pairs(self.drop_down_names) do
-            UIDropDownMenu_SetWidth(_G[self.filter_frame_name .. v], self.WIDTH_DD)
+            UIDropDownMenu_SetWidth(self.WIDTH_DD, _G[self.filter_frame_name .. v])
         end
     end,
 

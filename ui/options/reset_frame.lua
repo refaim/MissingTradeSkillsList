@@ -29,14 +29,14 @@ MTSLOPTUI_RESET_FRAME = {
         self.ui_frame.realm_drop_down = CreateFrame("Frame", "MTSLOPTUI_RESET_FRAME_DD_REALM", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.realm_drop_down:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 70, -22)
         self.ui_frame.realm_drop_down.initialize = self.CreateDropDownRealms
-        UIDropDownMenu_SetWidth(self.ui_frame.realm_drop_down, 150)
+        UIDropDownMenu_SetWidth(150, self.ui_frame.realm_drop_down)
         UIDropDownMenu_SetText(self.current_realm, self.ui_frame.realm_drop_down)
 
         self.ui_frame.player_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("character"), 280, -30, "LABEL", "TOPLEFT")
         self.ui_frame.player_drop_down = CreateFrame("Frame", "MTSLOPTUI_RESET_FRAME_DD_PLAYER", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.player_drop_down:SetPoint("TOPLEFT", self.ui_frame.realm_drop_down, "TOPRIGHT", 65, 0)
         self.ui_frame.player_drop_down.initialize = self.CreateDropDownPlayersOnRealm
-        UIDropDownMenu_SetWidth(self.ui_frame.player_drop_down, 150)
+        UIDropDownMenu_SetWidth(150, self.ui_frame.player_drop_down)
         UIDropDownMenu_SetText(self.current_player, self.ui_frame.player_drop_down)
 
         -- calculate position

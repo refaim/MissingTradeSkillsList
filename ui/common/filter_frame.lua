@@ -639,7 +639,7 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame:SetWidth(self.FRAME_WIDTH_VERTICAL)
         self.ui_frame.search_box:SetWidth(self.VERTICAL_WIDTH_TF)
         for _, v in pairs(self.drop_down_names) do
-            UIDropDownMenu_SetWidth(_G[self.filter_frame_name .. v], self.VERTICAL_WIDTH_DD)
+            UIDropDownMenu_SetWidth(self.VERTICAL_WIDTH_DD, _G[self.filter_frame_name .. v])
         end
     end,
     ----------------------------------------------------------------------------------------------------------
@@ -649,7 +649,7 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame:SetWidth(self.FRAME_WIDTH_HORIZONTAL)
         self.ui_frame.search_box:SetWidth(self.HORIZONTAL_WIDTH_TF)
         for _, v in pairs(self.drop_down_names) do
-            UIDropDownMenu_SetWidth(_G[self.filter_frame_name .. v], self.HORIZONTAL_WIDTH_DD)
+            UIDropDownMenu_SetWidth(self.HORIZONTAL_WIDTH_DD, _G[self.filter_frame_name .. v])
         end
     end,
 

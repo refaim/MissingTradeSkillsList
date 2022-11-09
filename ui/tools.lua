@@ -320,7 +320,7 @@ MTSLUI_TOOLS = {
         local drop_down = CreateFrame("Frame", name, frame_owner, "UIDropDownMenuTemplate")
         drop_down:SetPoint("TOPLEFT", point_owner, point_anchor, margin_left, margin_top)
         drop_down.initialize = initialiser
-        UIDropDownMenu_SetWidth(drop_down, width_dd)
+        UIDropDownMenu_SetWidth(width_dd, drop_down)
         return drop_down
     end,
 
