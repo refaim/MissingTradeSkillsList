@@ -85,7 +85,7 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:CreateCompontentFrames()
             self.current_profession_name = me:GetCurrentProfession()
             self:RefreshUI(1)
         end
-    end,
+    end
 
     self.profession_list_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_PROFESSION_LIST_FRAME")
     -- position under the filter frame
