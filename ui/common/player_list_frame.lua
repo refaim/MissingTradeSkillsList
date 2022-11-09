@@ -14,7 +14,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     MAX_ITEMS_SHOWN,
     ITEM_HEIGHT = 19,
     -- array holding the buttons of this frame
-    LIST_BUITTONS,
+    LIST_BUTTONS,
     -- Offset in the list (based on slider)
     slider_offset = 1,
     -- index and id of the selected player
@@ -40,7 +40,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     Initialise = function(self, parent_frame)
         self.ui_frame = MTSLUI_TOOLS:CreateScrollFrame(self, parent_frame, self.FRAME_WIDTH, self.FRAME_HEIGHT_VERTICAL, true, self.ITEM_HEIGHT)
         -- Create the buttons
-        self.LIST_BUITTONS = {}
+        self.LIST_BUTTONS = {}
         local left = 6
         local top = -6
         -- Determine the number of max items ever shown
@@ -56,7 +56,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
             -- adjust top position for next button
             top = top - self.ITEM_HEIGHT
             -- add button to list
-            table.insert(self.LIST_BUITTONS, player_button)
+            table.insert(self.LIST_BUTTONS, player_button)
         end
 
         self.profession_name = ""
@@ -180,12 +180,12 @@ MTSLUI_PLAYER_LIST_FRAME = {
             end
             text_for_button = text_for_button .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. " (" .. current_player.XP_LEVEL .. ", "..  current_player.REALM .. ")"
             -- update & show the button
-            self.LIST_BUITTONS[i]:Refresh(text_for_button, self.slider_active)
-            self.LIST_BUITTONS[i]:Show()
+            self.LIST_BUTTONS[i]:Refresh(text_for_button, self.slider_active)
+            self.LIST_BUTTONS[i]:Show()
         end
         -- hide the remaining buttons not shown when using horizontal split
         for i=amount_to_show + 1,self.MAX_ITEMS_SHOWN do
-            self.LIST_BUITTONS[i]:Hide()
+            self.LIST_BUTTONS[i]:Hide()
         end
     end,
 
@@ -196,11 +196,11 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, id)
         -- Clicked on same button so deselect it
-        if self.LIST_BUITTONS[id]:IsSelected() == 1 then
+        if self.LIST_BUTTONS[id]:IsSelected() == 1 then
             self.selected_list_item_index = nil
             self.selected_list_item_id = nil
             self.selected_button_index = nil
-            self.LIST_BUITTONS[id]:Deselect()
+            self.LIST_BUTTONS[id]:Deselect()
             self.profession_list_frame:ShowNoProfessions()
         else
             -- Deselect the current button if visible
@@ -306,7 +306,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
-            self.LIST_BUITTONS[self.selected_button_index]:Select()
+            self.LIST_BUTTONS[self.selected_button_index]:Select()
         end
     end,
 
@@ -317,7 +317,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
-            self.LIST_BUITTONS[self.selected_button_index]:Deselect()
+            self.LIST_BUTTONS[self.selected_button_index]:Deselect()
         end
     end,
 

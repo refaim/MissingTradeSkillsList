@@ -14,7 +14,7 @@ MTSLUI_LIST_FRAME = {
     MAX_ITEMS_SHOWN,
     ITEM_HEIGHT = 19,
     -- array holding the buttons of this frame
-    LIST_BUITTONS,
+    LIST_BUTTONS,
     -- Offset in the list (based on slider)
     slider_offset = 1,
     -- index and id of the selected skill
@@ -43,7 +43,7 @@ MTSLUI_LIST_FRAME = {
     Initialise = function(self, parent_frame)
         self.ui_frame = MTSLUI_TOOLS:CreateScrollFrame(self, parent_frame, self.FRAME_WIDTH_VERTICAL, self.FRAME_HEIGHT_VERTICAL, true, self.ITEM_HEIGHT)
         -- Create the buttons
-        self.LIST_BUITTONS = {}
+        self.LIST_BUTTONS = {}
         local left = 6
         local top = -6
         -- Determine the number of max items ever shown
@@ -59,7 +59,7 @@ MTSLUI_LIST_FRAME = {
             -- adjust top position for next button
             top = top - self.ITEM_HEIGHT
             -- add button to list
-            table.insert(self.LIST_BUITTONS, skill_button)
+            table.insert(self.LIST_BUTTONS, skill_button)
         end
 
         self.profession_name = ""
@@ -138,9 +138,9 @@ MTSLUI_LIST_FRAME = {
     UpdateButtons = function (self)
         for i=1,self.MAX_ITEMS_SHOWN_CURRENTLY do
             if self.MAX_ITEMS_SHOWN_CURRENTLY == self.MAX_ITEMS_SHOWN_HORIZONTAL then
-                self.LIST_BUITTONS[i]:UpdateWidth(self.FRAME_WIDTH_HORIZONTAL - 12)
+                self.LIST_BUTTONS[i]:UpdateWidth(self.FRAME_WIDTH_HORIZONTAL - 12)
             else
-                self.LIST_BUITTONS[i]:UpdateWidth(self.FRAME_WIDTH_VERTICAL - 12)
+                self.LIST_BUTTONS[i]:UpdateWidth(self.FRAME_WIDTH_VERTICAL - 12)
             end
             if self.amount_shown_skills >= i then
                 -- 1 cause offset starts at 1 too,
@@ -158,19 +158,19 @@ MTSLUI_LIST_FRAME = {
                     text_for_button = text_for_button .. "[" .. skill_for_button.min_skill .. "] "
                     text_for_button = text_for_button .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedData(skill_for_button)
                     -- update & show the button
-                    self.LIST_BUITTONS[i]:Refresh(text_for_button, self.slider_active)
-                    self.LIST_BUITTONS[i]:Show()
+                    self.LIST_BUTTONS[i]:Refresh(text_for_button, self.slider_active)
+                    self.LIST_BUTTONS[i]:Show()
                     -- button is unavaible so hide it
                 else
-                    self.LIST_BUITTONS[i]:Hide()
+                    self.LIST_BUTTONS[i]:Hide()
                 end
             else
-                self.LIST_BUITTONS[i]:Hide()
+                self.LIST_BUTTONS[i]:Hide()
             end
         end
         -- hide the remaining buttons not shown when using horizontal split
         for i=self.MAX_ITEMS_SHOWN_CURRENTLY + 1,self.MAX_ITEMS_SHOWN do
-            self.LIST_BUITTONS[i]:Hide()
+            self.LIST_BUTTONS[i]:Hide()
         end
     end,
 
@@ -181,11 +181,11 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, id)
         -- Clicked on same button so deselect it
-        if self.LIST_BUITTONS[id]:IsSelected() == 1 then
+        if self.LIST_BUTTONS[id]:IsSelected() == 1 then
             self.selected_list_item_index = nil
             self.selected_list_item_id = nil
             self.selected_button_index = nil
-            self.LIST_BUITTONS[id]:Deselect()
+            self.LIST_BUTTONS[id]:Deselect()
             self.detail_item_frame:ShowNoSkillSelected()
         else
             -- Deselect the current button if visible
@@ -287,7 +287,7 @@ MTSLUI_LIST_FRAME = {
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
-            self.LIST_BUITTONS[self.selected_button_index]:Select()
+            self.LIST_BUTTONS[self.selected_button_index]:Select()
         end
     end,
 
@@ -298,7 +298,7 @@ MTSLUI_LIST_FRAME = {
         if self.selected_button_index ~= nil and
                 self.selected_button_index >= 1 and
                 self.selected_button_index <= self.MAX_ITEMS_SHOWN_CURRENTLY then
-            self.LIST_BUITTONS[self.selected_button_index]:Deselect()
+            self.LIST_BUTTONS[self.selected_button_index]:Deselect()
         end
     end,
 
