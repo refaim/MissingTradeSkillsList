@@ -1,7 +1,7 @@
 ------------------------------------------------------------------
--- Name: ConfigFrame										    --
--- Description: Set values of user options        				--
--- Parent Frame: OptionsMenuFrame              					--
+-- Name: ConfigFrame                                            --
+-- Description: Set values of user options                      --
+-- Parent Frame: OptionsMenuFrame                               --
 ------------------------------------------------------------------
 
 MTSLOPTUI_CONFIG_FRAME = {
@@ -47,7 +47,7 @@ MTSLOPTUI_CONFIG_FRAME = {
         self:InitialiseOptionsUISplitScale(margin_top)
         margin_top = margin_top - margin_between_rows
         self:InitialiseOptionsFonts(margin_top)
-        
+
         -- load the current savedvarialbes and show the values
         self:LoadSavedVariables()
         self:ResetUI()

@@ -1,7 +1,7 @@
 ------------------------------------------------------------------
--- Name: TitleFrame											    --
--- Description: The tile frame of the databasefame				--
--- Parent Frame: DatabaseFrame              					--
+-- Name: TitleFrame                                             --
+-- Description: The tile frame of the databasefame              --
+-- Parent Frame: DatabaseFrame                                  --
 ------------------------------------------------------------------
 
 MTSLUI_TITLE_FRAME = {

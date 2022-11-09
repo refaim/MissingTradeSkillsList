@@ -1,7 +1,7 @@
 -------------------------------------------------------
--- Name: SkillDetailFrame							 --
+-- Name: SkillDetailFrame                            --
 -- Description: Shows the detail of a selected skill --
--- Parent Frame: MissingTradeSkillsListFrame		 --
+-- Parent Frame: MissingTradeSkillsListFrame         --
 -------------------------------------------------------
 
 MTSLUI_SKILL_DETAIL_FRAME = {
@@ -57,7 +57,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the DetailsSelectedSkillFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function (self, parent_frame, frame_name)
         -- make local copy of this instance to hook the events too
@@ -376,7 +376,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     -- Show the details of a skill (based on its type)
     --
-    -- @skill		MTSL_DATA	The skill of which the information must be shown
+    -- @skill       MTSL_DATA   The skill of which the information must be shown
     ---------------------------------------------------------------------------
     ShowDetailsOfSkill = function(self, skill, profession_name, current_xp_level, current_skill_level)
         self:ShowNoSkillSelected()
@@ -424,7 +424,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ----------------------------------------------------------------------------
     -- Show the details of a phase level required
     --
-    -- @min_phase               Number	    The minimum phase level required to learn the skill
+    -- @min_phase               Number      The minimum phase level required to learn the skill
     ----------------------------------------------------------------------------
     SetRequiredPhase = function(self, min_phase)
         local phase = min_phase
@@ -441,7 +441,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ----------------------------------------------------------------------------
     -- Show the details of a minimum skill level required
     --
-    -- @min_skill	            Number	    The minimum skill level required to learn the skill
+    -- @min_skill               Number      The minimum skill level required to learn the skill
     -- @current_skill_level     Number      The current skill level of the player
     ----------------------------------------------------------------------------
     SetRequiredSkillLevel = function(self, min_skill, current_skill_level)
@@ -459,7 +459,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ----------------------------------------------------------------------------
     -- Show the details of a minimum XP level required
     --
-    -- @min_xp_level	    Number	    The minimum XP level required to learn the skill
+    -- @min_xp_level        Number      The minimum XP level required to learn the skill
     -- @current_xp_level    Number      The current XP level of the player
     ----------------------------------------------------------------------------
     SetRequiredXPLevel = function (self, min_xp_level, current_xp_level)
@@ -478,7 +478,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ----------------------------------------------------------------------------
     -- Show the details of a minimum reputation level required with a faction
     --
-    -- @reputation	object	Contains reputation.faction & reputation.level
+    -- @reputation  object  Contains reputation.faction & reputation.level
     ----------------------------------------------------------------------------
     SetRequiredReputationWithFaction = function(self, reputation, current_xp_level)
         -- Check if require reputation to acquire
@@ -505,7 +505,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- Show the details of a specialisation required for the skill
     --
     -- @profession_name         String      The name of the profession
-    -- @rspecialisation 	    Number      The number of the specialisation
+    -- @rspecialisation         Number      The number of the specialisation
     ----------------------------------------------------------------------------
     SetRequiredSpecialisation = function(self, profession_name, specialisation, current_xp_level)
         -- Check if require specialisation to acquire
@@ -567,7 +567,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------------------------------
     -- Show the details of a skill learned from trainer
     --
-    -- @trainers_info		MTSLDATA	Contains the price from trainer and list of souces with npc ids
+    -- @trainers_info       MTSLDATA    Contains the price from trainer and list of souces with npc ids
     ----------------------------------------------------------------------------------------------------
     ShowDetailsOfSkillTypeTrainer = function(self, trainers_info)
         -- No need to update the phase, all are available since 1
@@ -588,11 +588,11 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------------------------------------
     -- Show the details of a skill learned from quest
     --
-    -- @quest_id				Number	    The id of the quest to show
+    -- @quest_id                Number      The id of the quest to show
     -- @profession_name         String      The name of the profession
     -- @current_xp_level        Number      The current XP level of the player
-    -- @is_alternative_source	Number	    Indicates if quest is primary (=0) or secondary (=1) source for skill
-    -- @is_primary_type	        Number	    Indicates if quest is primary (=0) or secondary (=1) type for skill
+    -- @is_alternative_source   Number      Indicates if quest is primary (=0) or secondary (=1) source for skill
+    -- @is_primary_type         Number      Indicates if quest is primary (=0) or secondary (=1) type for skill
     ----------------------------------------------------------------------------------------------------------
     ShowDetailsOfSkillTypeQuest = function(self, quest_ids, profession_name, current_xp_level, is_alternative_source, is_primary_type)
         if is_alternative_source == 1 then
@@ -668,9 +668,9 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------------------------------
     -- Show the details of a skill learned from an object
     --
-    -- @oject_id		number  	The id of the source object
-    -- @is_alternative_source	Number	    Indicates if quest is primary (=0) or secondary (=1) source for skill
-    -- @is_primary_type	        Number	    Indicates if quest is primary (=0) or secondary (=1) type for skill
+    -- @oject_id        number      The id of the source object
+    -- @is_alternative_source   Number      Indicates if quest is primary (=0) or secondary (=1) source for skill
+    -- @is_primary_type         Number      Indicates if quest is primary (=0) or secondary (=1) type for skill
     ----------------------------------------------------------------------------------------------------
     ShowDetailsOfSkillTypeObject = function (self, oject_id, is_alternative_source, is_primary_type)
         local object = MTSL_LOGIC_ITEM_OBJECT:GetObjectById(oject_id)
@@ -682,11 +682,11 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------------------------------
     -- Show the details of a skill learned from a recipe
     --
-    -- @item_id		number	The id of the item to show
+    -- @item_id     number  The id of the item to show
     -- @profession_name         String      The name of the profession
     -- @current_xp_level        Number      The current XP level of the player
-    -- @is_alternative_source	Number	    Indicates if quest is primary (=0) or secondary (=1) source for skill
-    -- @is_primary_type	        Number	    Indicates if quest is primary (=0) or secondary (=1) type for skill
+    -- @is_alternative_source   Number      Indicates if quest is primary (=0) or secondary (=1) source for skill
+    -- @is_primary_type         Number      Indicates if quest is primary (=0) or secondary (=1) type for skill
     ----------------------------------------------------------------------------------------------------
     ShowDetailsOfSkillTypeItem = function(self, item_id, profession_name, current_xp_level, is_alternative_source, is_primary_type)
         local item = MTSL_LOGIC_ITEM_OBJECT:GetItemForProfessionById(item_id, profession_name)
@@ -816,8 +816,8 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- Show the source type of a skill
     --
     -- @text                    String      The text to show for the type
-    -- @is_alternative_source	Number	    Indicates if quest is primary (=0) or secondary (=1) source for skill
-    -- @is_primary_type	        Number	    Indicates if quest is primary (=0) or secondary (=1) type for skill
+    -- @is_alternative_source   Number      Indicates if quest is primary (=0) or secondary (=1) source for skill
+    -- @is_primary_type         Number      Indicates if quest is primary (=0) or secondary (=1) type for skill
     ----------------------------------------------------------------------------------------------------
     SetSourceType = function(self, text, is_alternative_source, is_primary_type)
         if is_alternative_source == 0 then
@@ -852,8 +852,8 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     -- Show the details of a list of npcs as sources
     --
-    -- @npcs			        Array		The list of npcs
-    -- @is_alternative_source	Number		Indicating if primary (=0) or secondary (=1) source
+    -- @npcs                    Array       The list of npcs
+    -- @is_alternative_source   Number      Indicating if primary (=0) or secondary (=1) source
     ---------------------------------------------------------------------------
     ShowDetailsOfNpcs = function(self, npcs, is_alternative_source)
         -- Count amount of trainers
@@ -953,9 +953,9 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     -- Show the labels of the world drop in the main list
     --
-    -- @min_level	            Number      The minimum level of the mobs
-    -- @max_level	            Number      The maximum level of the mobs
-    -- @is_alternative_source	Number		Indicating if primary (=0) or secondary (=1) source
+    -- @min_level               Number      The minimum level of the mobs
+    -- @max_level               Number      The maximum level of the mobs
+    -- @is_alternative_source   Number      Indicating if primary (=0) or secondary (=1) source
     ---------------------------------------------------------------------------
     ShowWorldDropSources = function(self, min_level, max_level, is_alternative_source)
         local label_sources = self.labels.sources
@@ -990,8 +990,8 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     -- Show the details of a list of items as sources
     --
-    -- @items			Array		The list of items
-    -- @is_alternative_source	Number		Indicating if primary (=0) or secondary (=1) source
+    -- @items           Array       The list of items
+    -- @is_alternative_source   Number      Indicating if primary (=0) or secondary (=1) source
     ---------------------------------------------------------------------------
     ShowDetailsOfItems = function(self, items, is_alternative_source)
         local labels_sources = self.labels.sources
@@ -1042,8 +1042,8 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     -- Show the labels of the visible objects in the main list
     --
-    -- @objects			Array		The list of objects
-    -- @is_alternative_source	Number		Indicating if primary (=0) or secondary (=1) source
+    -- @objects         Array       The list of objects
+    -- @is_alternative_source   Number      Indicating if primary (=0) or secondary (=1) source
     ---------------------------------------------------------------------------
     ShowDetailsOfObjects = function(self, objects, is_alternative_source)
         local labels_sources = self.labels.sources

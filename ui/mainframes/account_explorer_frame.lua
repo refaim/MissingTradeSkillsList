@@ -1,5 +1,5 @@
 ---------------------------------------------------------
--- Name: Database Explorer Frame	                   --
+-- Name: Database Explorer Frame                       --
 -- Description: The main frame to explore the database --
 ---------------------------------------------------------
 MTSLUI_ACCOUNT_EXPLORER_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
@@ -31,7 +31,7 @@ end
 ----------------------------------------------------------------------------------------------------------
 -- Intialises the MissingTradeSkillFrame
 --
--- @parent_frame		Frame		The parent frame
+-- @parent_frame        Frame       The parent frame
 ----------------------------------------------------------------------------------------------------------
 function MTSLUI_ACCOUNT_EXPLORER_FRAME:Initialise()
     local swap_frames = {

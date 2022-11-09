@@ -8,7 +8,7 @@ MTSL_LOGIC_WORLD = {
     --
     -- @name        String      The name of the zone
     --
-    -- returns 		Array		The continent
+    -- returns      Array       The continent
     ------------------------------------------------------------------------------------------------
     GetZoneByName = function(self, name)
         return MTSL_TOOLS:GetItemFromLocalisedArrayByKeyValue(MTSL_DATA["zones"], "name", name)
@@ -17,9 +17,9 @@ MTSL_LOGIC_WORLD = {
     ------------------------------------------------------------------------------------------------
     -- Returns the name (localised) of a zone by id
     --
-    -- @zone_id		Number		The id of the zone
+    -- @zone_id     Number      The id of the zone
     --
-    -- returns 		String		The localised name of the zone
+    -- returns      String      The localised name of the zone
     ------------------------------------------------------------------------------------------------
     GetZoneNameById = function(self, zone_id)
         local zone = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["zones"], "id", zone_id)
@@ -32,9 +32,9 @@ MTSL_LOGIC_WORLD = {
     ------------------------------------------------------------------------------------------------
     -- Returns the zone by id
     --
-    -- @zone_id		Number		The id of the zone
+    -- @zone_id     Number      The id of the zone
     --
-    -- returns 		Object		The zone
+    -- returns      Object      The zone
     ------------------------------------------------------------------------------------------------
     GetZoneId = function(self, id)
         return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["zones"], "id", id)
@@ -45,7 +45,7 @@ MTSL_LOGIC_WORLD = {
     --
     -- @continent_id      Number      The id of the contintent
     --
-    -- returns 		        Array		The zones
+    -- returns              Array       The zones
     ------------------------------------------------------------------------------------------------
     GetZonesInContinentById = function(self, continent_id)
         local zones_continent = MTSL_TOOLS:GetAllItemsFromArrayByKeyValue(MTSL_DATA["zones"], "cont_id", continent_id)
@@ -55,9 +55,9 @@ MTSL_LOGIC_WORLD = {
     ------------------------------------------------------------------------------------------------
     -- Check is zone is a "real" zone (so no BG, dung or raid)
     --
-    -- @zone_id		Number		The id of the zone
+    -- @zone_id     Number      The id of the zone
     --
-    -- returns 		Number		Flag indicating if real zone (= 1) or not (= 0)
+    -- returns      Number      Flag indicating if real zone (= 1) or not (= 0)
     ------------------------------------------------------------------------------------------------
     IsRealZone = function(self, zone_id)
         local zone = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["zones"], "id", zone_id)

@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------
--- Name: MissingTradeSkillFrame			                             --
+-- Name: MissingTradeSkillFrame                                      --
 -- Description: The main frame shown next to TradeSkill/Craft Window --
 -----------------------------------------------------------------------
 MTSLUI_MISSING_TRADESKILLS_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
@@ -30,7 +30,7 @@ end
 ----------------------------------------------------------------------------------------------------------
 -- Intialises the MissingTradeSkillFrame
 --
--- @parent_frame		Frame		The parent frame
+-- @parent_frame        Frame       The parent frame
 ----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:Initialise()
     self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "MTSLUI_MissingTradeSkillsFrame", MTSLUI_TOGGLE_BUTTON.ui_frame, nil, self.FRAME_WIDTH_VERTICAL_SPLIT, self.FRAME_HEIGHT_VERTICAL_SPLIT, true)

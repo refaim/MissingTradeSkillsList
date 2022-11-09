@@ -331,7 +331,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the splitmode of a frame
     --
-    -- return			String          The split orientation for the frame (The number for UI scale (will be > 0.5 and < 1.25)
+    -- return           String          The split orientation for the frame (The number for UI scale (will be > 0.5 and < 1.25)
     ------------------------------------------------------------------------------------------------
     GetSplitMode = function(self, name)
         -- return the splitmode if not nil
@@ -399,7 +399,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Scales the UI of the addon
     --
-    -- @scale			Number			The number for UI scale (must be => MIN_UI_SCALE and <= MAX_UI_SCALE)
+    -- @scale           Number          The number for UI scale (must be => MIN_UI_SCALE and <= MAX_UI_SCALE)
     ------------------------------------------------------------------------------------------------
     SetUIScales = function(self, scales)
         local keys_to_check =  { "MTSL", "ACCOUNT", "CHAR", "DATABASE", "NPC", "OPTIONSMENU" }
@@ -424,7 +424,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets he scale of the UI of the addon
     --
-    -- return			Number			The number for UI scale (will be >= MIN_UI_SCALE and <= MAX_UI_SCALE)
+    -- return           Number          The number for UI scale (will be >= MIN_UI_SCALE and <= MAX_UI_SCALE)
     ------------------------------------------------------------------------------------------------
     GetUIScale = function(self, name)
         -- return the scale if not nil
@@ -438,7 +438,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets he scale of the UI of the addon as text to show
     --
-    -- return			String			The number for UI scale as percentage text (100 % if not found)
+    -- return           String          The number for UI scale as percentage text (100 % if not found)
     ------------------------------------------------------------------------------------------------
     GetUIScaleAsText = function(self, name)
         -- return the scale if not nil
@@ -547,7 +547,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we show welcome message or not
     --
-    -- return			Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
     ------------------------------------------------------------------------------------------------
     GetShowWelcomeMessage = function(self)
         return MTSLUI_PLAYER.WELCOME_MSG
@@ -568,7 +568,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to show MTSL when opening a tradeskillframe/craftframe
     --
-    -- return			Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
     ------------------------------------------------------------------------------------------------
     GetAutoShowMTSL = function(self)
         return MTSLUI_PLAYER.AUTO_SHOW_MTSL
@@ -613,7 +613,7 @@ MTSLUI_SAVED_VARIABLES = {
         ------------------------------------------------------------------------------------------------
     -- Gets the location where MTSL button is hooked (left or right)
     --
-    -- return			String         The location
+    -- return           String         The location
     ------------------------------------------------------------------------------------------------
     GetMTSLLocationButton = function(self)
         return MTSLUI_PLAYER.MTSL_LOCATION.BUTTON
@@ -622,7 +622,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the location where MTSL frame is hooked (left or right) relative to the button
     --
-    -- return			String         The location
+    -- return           String         The location
     ------------------------------------------------------------------------------------------------
     GetMTSLLocationFrame = function(self)
         return MTSLUI_PLAYER.MTSL_LOCATION.FRAME
@@ -664,7 +664,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the number of content patch used to show data
     --
-    -- return			Number          The number of content patch
+    -- return           Number          The number of content patch
     ------------------------------------------------------------------------------------------------
     GetPatchLevelMTSL = function(self)
         if MTSLUI_PLAYER.CURRENT_PATCH_LEVEL == nil then
@@ -688,7 +688,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we enhance tooltip or not
     --
-    -- return			Number          Flag indicating to enhance tooltip or not (1 = yes, 0 = no)
+    -- return           Number          Flag indicating to enhance tooltip or not (1 = yes, 0 = no)
     ------------------------------------------------------------------------------------------------
     GetEnhancedTooltipActive = function(self)
         return MTSLUI_PLAYER.TOOLTIP.ACTIVE
@@ -709,7 +709,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the factions to show in the ehanced tooltip
     --
-    -- return			 String          Factions to show ("any" or "current player")
+    -- return            String          Factions to show ("any" or "current player")
     ------------------------------------------------------------------------------------------------
     GetEnhancedTooltipFaction = function(self)
         return MTSLUI_PLAYER.TOOLTIP.FACTIONS
@@ -730,7 +730,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we show or hide players tot know a recipe in a tooltip
     --
-    -- return			Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
     ------------------------------------------------------------------------------------------------
     GetEnhancedTooltipShowKnown = function(self)
         return MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN
@@ -759,7 +759,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we show minimapbutton or not
     --
-    -- return			Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
     ------------------------------------------------------------------------------------------------
     GetMinimapButtonActive = function(self)
         return MTSLUI_PLAYER.MINIMAP.ACTIVE
@@ -768,7 +768,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the angle of the button around minimap
     --
-    -- return			Number          The angle of the button (0 - 359 degrees)
+    -- return           Number          The angle of the button (0 - 359 degrees)
     ------------------------------------------------------------------------------------------------
     GetMinimapButtonAngle = function(self)
         if MTSLUI_PLAYER.MINIMAP.ANGLE == nil then
@@ -794,7 +794,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the shape of the minimap
     --
-    -- return			String          The shape of the minimap (C or R)
+    -- return           String          The shape of the minimap (C or R)
     ------------------------------------------------------------------------------------------------
     GetMinimapShape = function(self)
         if MTSLUI_PLAYER.MINIMAP.SHAPE == nil then
@@ -818,7 +818,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the radius of the button next to the minimap
     --
-    -- return			String          The shape of the minimap (C or R)
+    -- return           String          The shape of the minimap (C or R)
     ------------------------------------------------------------------------------------------------
     GetMinimapButtonRadius = function(self)
         if MTSLUI_PLAYER.MINIMAP.RADIUS == nil then
@@ -863,7 +863,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we enable linking of spells/recipes to chat or not
     --
-    -- return			Number          Flag indicating to enble linking to chat or not (1 = yes, 0 = no)
+    -- return           Number          Flag indicating to enble linking to chat or not (1 = yes, 0 = no)
     ------------------------------------------------------------------------------------------------
     GetChatLinkEnabled = function(self)
         return MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE
@@ -884,7 +884,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the channel to which we link the spell/item
     --
-    -- return			String          The name of the channel
+    -- return           String          The name of the channel
     ------------------------------------------------------------------------------------------------
     GetChatLinkChannel = function(self)
         if MTSLUI_PLAYER.LINK_TO_CHAT.CHANNEL == nil then
@@ -901,7 +901,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the name of the font used
     --
-    -- return			String          The name of the font
+    -- return           String          The name of the font
     ------------------------------------------------------------------------------------------------
     GetFontName = function(self)
         return MTSLUI_PLAYER.FONT.NAME
@@ -910,7 +910,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the size of the font used for text
     --
-    -- return			Number          The size of the font for normal text
+    -- return           Number          The size of the font for normal text
     ------------------------------------------------------------------------------------------------
     GetFontSizeText = function(self)
         return MTSLUI_PLAYER.FONT.SIZE.TEXT
@@ -919,7 +919,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the size of the font used for labels
     --
-    -- return			Number          The size of the font for labels
+    -- return           Number          The size of the font for labels
     ------------------------------------------------------------------------------------------------
     GetFontSizeLabel = function(self)
         return MTSLUI_PLAYER.FONT.SIZE.LABEL
@@ -928,7 +928,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the size of the font used for titles
     --
-    -- return			Number          The size of the font for titles
+    -- return           Number          The size of the font for titles
     ------------------------------------------------------------------------------------------------
     GetFontSizeTitle = function(self)
         return MTSLUI_PLAYER.FONT.SIZE.TITLE

@@ -1,5 +1,5 @@
 ---------------------------------------------------------------
--- Name: BaseFrame			                                 --
+-- Name: BaseFrame                                           --
 -- Description: Abstract implementation of a base frame      --
 --              Copy this frame in constructor of real frame --
 ---------------------------------------------------------------
@@ -51,7 +51,7 @@ MTSLUI_BASE_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Check if frame is shown/visible
     --
-    -- returns		boolean      Visibility of the frame
+    -- returns      boolean      Visibility of the frame
     ----------------------------------------------------------------------------------------------------------
     IsShown = function(self)
         if self.ui_frame == nil then

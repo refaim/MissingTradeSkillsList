@@ -1,7 +1,7 @@
 ----------------------------------------------------------
--- Name: SkillListFrame									--
+-- Name: SkillListFrame                                 --
 -- Description: Shows all the skills for one profession --
--- Parent Frame: DatabaseFrame, AccountFrame, MTSL		--
+-- Parent Frame: DatabaseFrame, AccountFrame, MTSL      --
 ----------------------------------------------------------
 
 MTSLUI_LIST_FRAME = {
@@ -38,7 +38,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the MissingSkillsListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame)
         self.ui_frame = MTSLUI_TOOLS:CreateScrollFrame(self, parent_frame, self.FRAME_WIDTH_VERTICAL, self.FRAME_HEIGHT_VERTICAL, true, self.ITEM_HEIGHT)
@@ -76,7 +76,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Sets the frame which will show the details of selected item
     --
-    -- @detail_item_frame		Object		The frame to show the details of the selected item
+    -- @detail_item_frame       Object      The frame to show the details of the selected item
     ----------------------------------------------------------------------------------------------------------
     SetDetailSelectedItemFrame = function(self, detail_item_frame)
         self.detail_item_frame = detail_item_frame
@@ -177,7 +177,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when skill button is pushed
     --
-    -- @id		Number		The id (= index) of button that is pushed
+    -- @id      Number      The id (= index) of button that is pushed
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, id)
         -- Clicked on same button so deselect it
@@ -222,7 +222,7 @@ MTSLUI_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when we scroll
     --
-    -- @offset	Number
+    -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
     HandleScrollEvent = function (self, offset)
         -- Only handle the event if slider is visible

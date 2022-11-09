@@ -7,11 +7,11 @@ MTSL_PLAYERS = {}
 
 -- Holds info about the current logged in player
 -- Contains following info once loaded from data
---		NAME,
---		FACTION,
---		REALM,
---		XP_LEVEL,
---		TRADESKILLS = {}
+--      NAME,
+--      FACTION,
+--      REALM,
+--      XP_LEVEL,
+--      TRADESKILLS = {}
 MTSL_CURRENT_PLAYER = {}
 
 MTSL_LOGIC_PLAYER_NPC = {
@@ -259,9 +259,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Returns the number of characters
     --
-    -- @realm	String 		The name of the realm
+    -- @realm   String      The name of the realm
     --
-    -- returns 	Number		The number of chars on that realm
+    -- returns  Number      The number of chars on that realm
     ------------------------------------------------------------------------------------------------
     CountPlayersOnRealm = function(self, realm)
         return MTSL_TOOLS:CountItemsInNamedArray(MTSL_PLAYERS[realm])
@@ -271,9 +271,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Returns the player on a realm
     --
     -- @name    String      The name of the player
-    -- @realm	String 		The name of the realm
+    -- @realm   String      The name of the realm
     --
-    -- returns 	Number		The number of chars on that realm
+    -- returns  Number      The number of chars on that realm
     ------------------------------------------------------------------------------------------------
     GetPlayerOnRealm = function (self, name, realm)
         if MTSL_PLAYERS[realm] ~= nil then
@@ -285,7 +285,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Returns the players on current realm except current player
     --
-    -- returns 	Array		The list of players
+    -- returns  Array       The list of players
     ------------------------------------------------------------------------------------------------
     GetOtherPlayersOnCurrentRealm = function(self)
         local players = {}
@@ -305,7 +305,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Returns the players on current realm with same faction except current player
     --
-    -- returns 	Array		The list of players
+    -- returns  Array       The list of players
     ------------------------------------------------------------------------------------------------
     GetOtherPlayersOnCurrentRealmSameFaction = function(self)
         local players = {}
@@ -325,7 +325,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Returns the players on current realm except current player that learned a profession
     --
-    -- returns 	Array		The list of players
+    -- returns  Array       The list of players
     ------------------------------------------------------------------------------------------------
     GetOtherPlayersOnCurrentRealmLearnedProfession = function(self, profession_name)
         local other_players = self:GetOtherPlayersOnCurrentRealm()
@@ -344,7 +344,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     ------------------------------------------------------------------------------------------------
     -- Returns the players on current realm and same faction except current player that learned a profession
     --
-    -- returns 	Array		The list of players
+    -- returns  Array       The list of players
     ------------------------------------------------------------------------------------------------
     GetOtherPlayersOnCurrentRealmSameFactionLearnedProfession = function(self, profession_name)
         local other_players = self:GetOtherPlayersOnCurrentRealmSameFaction()
@@ -364,9 +364,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Check if player exists in saved date
     --
     -- @name    String      The name of the player
-    -- @realm	String 		The name of the realm
+    -- @realm   String      The name of the realm
     --
-    -- returns 	Number		The number of chars on that realm
+    -- returns  Number      The number of chars on that realm
     ------------------------------------------------------------------------------------------------
     PlayerExists = function (self, name, realm)
         if MTSL_PLAYERS[realm] ~= nil and MTSL_PLAYERS[realm][name] ~= nil then
@@ -379,10 +379,10 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Returns the missing skills of a player for a profession
     --
     -- @player_name         String      The name of the player
-    -- @player_realm	    String 		The name of the realm
+    -- @player_realm        String      The name of the realm
     -- @profession_name     String      The name of the profession
     --
-    -- returns 	            Array		List of missing skills for the profession ({} if not found)
+    -- returns              Array       List of missing skills for the profession ({} if not found)
     ------------------------------------------------------------------------------------------------
     GetMissingSkillsForProfessionOfPlayer = function (self, player_name, player_realm, profession_name)
         local player = self:GetPlayerOnRealm(player_name, player_realm)
@@ -403,7 +403,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- @profession_name     String      The name of the profession
     --
-    -- returns 	            Array		List of missing skills for the profession ({} if not found)
+    -- returns              Array       List of missing skills for the profession ({} if not found)
     ------------------------------------------------------------------------------------------------
     GetMissingSkillsForProfessionCurrentPlayer = function (self, profession_name)
         return self:GetMissingSkillsForProfessionOfPlayer(MTSL_CURRENT_PLAYER.NAME, MTSL_CURRENT_PLAYER.REALM, profession_name)
@@ -414,7 +414,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- @profession_name     String      The name of the profession
     --
-    -- returns 	            Array		List of missing skills for the profession ({} if not found)
+    -- returns              Array       List of missing skills for the profession ({} if not found)
     ------------------------------------------------------------------------------------------------
     GetAmountMissingSkillsForProfessionCurrentPlayer = function (self, profession_name)
         local amount_missing = 0
@@ -426,9 +426,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Get All the skills learned by a player for one profession sorted by minimim skill
     --
-    -- @profession_name		String		The name of the profession
+    -- @profession_name     String      The name of the profession
     --
-    -- return				Array		All the skills for one profession sorted by name or minimim skill
+    -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
     GetLearnedSkillsForPlayerForProfession = function(self, player_name, realm_name, profession_name)
         local learned_skills = {}
@@ -451,10 +451,10 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Returns the amount of learned skills of a player for a profession
     --
     -- @player_name         String      The name of the player
-    -- @player_realm	    String 		The name of the realm
+    -- @player_realm        String      The name of the realm
     -- @profession_name     String      The name of the profession
     --
-    -- returns 	            Number		The amount of missing skills
+    -- returns              Number      The amount of missing skills
     ------------------------------------------------------------------------------------------------
     GetAmountOfLearnedSkillsForProfession = function (self, player_name, player_realm, profession_name)
         local player = self:GetPlayerOnRealm(player_name, player_realm)
@@ -469,11 +469,11 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Get a flag indicating if a skill is learned in a profession
     --
     -- @player_name         String      The name of the player
-    -- @player_realm	    String 		The name of the realm
+    -- @player_realm        String      The name of the realm
     -- @profession_name     String      The name of the profession
-    -- @skill_id            Number		The id of the skill
+    -- @skill_id            Number      The id of the skill
     --
-    -- return				Boolean     Flag indicating if learend or not
+    -- return               Boolean     Flag indicating if learend or not
     ------------------------------------------------------------------------------------------------
     HasLearnedSkillForProfession = function(self,  player_name, realm_name, profession_name, skill_id)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
@@ -497,10 +497,10 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Get a flag indicating if a player has learned a profession
     --
     -- @player_name         String      The name of the player
-    -- @player_realm	    String 		The name of the realm
+    -- @player_realm        String      The name of the realm
     -- @profession_name     String      The name of the profession
     --
-    -- return				Boolean     Flag indicating if learend or not
+    -- return               Boolean     Flag indicating if learend or not
     ------------------------------------------------------------------------------------------------
     HasLearnedProfession = function(self,  player_name, realm_name, profession_name)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
@@ -521,10 +521,10 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Gets the current skill level for a profession of a player
     --
     -- @player_name         String      The name of the player
-    -- @player_realm	    String 		The name of the realm
+    -- @player_realm        String      The name of the realm
     -- @profession_name     String      The name of the profession
     --
-    -- return				Number      The current skill level
+    -- return               Number      The current skill level
     ------------------------------------------------------------------------------------------------
     GetCurrentSkillLevelForProfession = function(self,  player_name, realm_name, profession_name)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
@@ -541,9 +541,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Returns the list of names for known professsions of a player
     --
     -- @player_name         String      The name of the player
-    -- @player_realm	    String 		The name of the realm
+    -- @player_realm        String      The name of the realm
     --
-    -- returns 	            Array		List of known professions ({} if none)
+    -- returns              Array       List of known professions ({} if none)
     ------------------------------------------------------------------------------------------------
     GetKnownProfessionsForPlayer = function(self, realm_name, player_name)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
@@ -749,9 +749,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of all npcs (based on their ids) available to the player's faction
     --
-    -- @ids					Array		The ids of NPCs to search
+    -- @ids                 Array       The ids of NPCs to search
     --
-    -- return				Array		List of found NPCs
+    -- return               Array       List of found NPCs
     ------------------------------------------------------------------------------------------------
     GetNpcsByIds = function(self, ids)
         local npcs = {}
@@ -776,9 +776,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of all npcs (based on their ids) ignoring the player's faction
     --
-    -- @ids					Array		The ids of NPCs to search
+    -- @ids                 Array       The ids of NPCs to search
     --
-    -- return				Array		List of found NPCs
+    -- return               Array       List of found NPCs
     ------------------------------------------------------------------------------------------------
     GetNpcsIgnoreFactionByIds = function(self, ids)
         local npcs = {}
@@ -801,9 +801,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Gets an NPC (based on it's id) for the current Tradeskill
     --
-    -- @id				Number		The id of the NPC to search
+    -- @id              Number      The id of the NPC to search
     --
-    -- return			Object		Found NPC (nil if not found)
+    -- return           Object      Found NPC (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetNpcById = function(self, id)
         return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["npcs"], "id", id)
@@ -812,9 +812,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of all drop mobs (based on their ids) for the current Tradeskill
     --
-    -- @ids					Array		The ids of mobs to search
+    -- @ids                 Array       The ids of mobs to search
     --
-    -- return				Array		List of found mobs
+    -- return               Array       List of found mobs
     ------------------------------------------------------------------------------------------------
     GetMobsByIds = function(self, ids)
         local mobs = {}
@@ -840,7 +840,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Get a list of realms where the player has at least 1 saved char on
     --
-    -- return				Array		The list of realm names
+    -- return               Array       The list of realm names
     ------------------------------------------------------------------------------------------------
     GetRealmsWithPlayers = function(self)
         local realm_names = {}
@@ -856,9 +856,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Get a list of realms where the player has at least 1 saved char on that knows the profession
     --
-    -- @profession_name 	String		The name of the profession needed by 1 char / realm
+    -- @profession_name     String      The name of the profession needed by 1 char / realm
     --
-    -- return				Array		The list of realm names
+    -- return               Array       The list of realm names
     ------------------------------------------------------------------------------------------------
     GetRealmsWithPlayersKnowingProfession = function(self, profession_name)
         local realm_names = {}
@@ -881,9 +881,9 @@ MTSL_LOGIC_PLAYER_NPC = {
     -----------------------------------------------------------------------------------------------
     -- Get the number of players knowing a profession
     --
-    -- @profession_name 	String		The name of the profession needed by 1 char / realm
+    -- @profession_name     String      The name of the profession needed by 1 char / realm
     --
-    -- return				Array		The list of realm names
+    -- return               Array       The list of realm names
     ------------------------------------------------------------------------------------------------
     GetAmountOfPlayersKnowingProfession = function(self, profession_name)
         local amount = 0

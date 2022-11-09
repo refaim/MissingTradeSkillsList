@@ -1,7 +1,7 @@
 ----------------------------------------------------------
--- Name: MinimapButton									--
+-- Name: MinimapButton                                  --
 -- Description: Controls a button around the minimap    --
--- Parent Frame: -          							--
+-- Parent Frame: -                                      --
 ----------------------------------------------------------
 
 MTSLUI_MINIMAP = {
@@ -131,7 +131,7 @@ MTSLUI_MINIMAP = {
     -- Draw the button based on current angle of the button
     DrawButton = function(self)
         local button_pos_x, button_pos_y
-        
+
         -- Calculate the position of the mini map button based on minimap shape and the angle
         if self.shape == "circle" then
             button_pos_x = cos(self.button_angle) * ((Minimap:GetWidth() + self.button_radius) / 2)

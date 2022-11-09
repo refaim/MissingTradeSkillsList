@@ -1,7 +1,7 @@
 ------------------------------------------------------------------
--- Name: SaveFrame											    --
--- Description: Save/Cancel user settings       				--
--- Parent Frame: OptionsMenuFrame              					--
+-- Name: SaveFrame                                              --
+-- Description: Save/Cancel user settings                       --
+-- Parent Frame: OptionsMenuFrame                               --
 ------------------------------------------------------------------
 
 MTSLOPTUI_SAVE_FRAME = {

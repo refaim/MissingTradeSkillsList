@@ -44,9 +44,9 @@ MTSL_LOGIC_PROFESSION = {
     -- @skill_name          String      The (partial) name of the skill
     -- @source_types        Array       The sourcetypes allowed for the skill
     -- @specialisation_ids  Array       The ids of the specialisation
-    -- @phases			    Array		The numbers of phases for during one the recipe has to be available
-    -- @zone_id				Number		The id of the zone in which we must be able to learn skill (0 = all)
-    -- @faction_ids			Array		The ids of the faction from which we must be able to learn skill (0 = all)
+    -- @phases              Array       The numbers of phases for during one the recipe has to be available
+    -- @zone_id             Number      The id of the zone in which we must be able to learn skill (0 = all)
+    -- @faction_ids         Array       The ids of the faction from which we must be able to learn skill (0 = all)
     --
     -- returns              Array       The skills passed the filter
     -----------------------------------------------------------------------------------------------
@@ -116,11 +116,11 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Get All the available (in the given phase) skills and levels in a zone for one profession sorted by minimim skill
     --
-    -- @profession_name		String		The name of the profession
-    -- @max_phase			Number		The maximum content phase for skill to be included (default = current)
-    -- @zone_id				Number		The id of the zone in which we must be able to learn skill (0 = all)
+    -- @profession_name     String      The name of the profession
+    -- @max_phase           Number      The maximum content phase for skill to be included (default = current)
+    -- @zone_id             Number      The id of the zone in which we must be able to learn skill (0 = all)
     --
-    -- return				Array		All the skills for one profession sorted by name or minimim skill
+    -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
     GetAllAvailableSkillsAndLevelsForProfessionInZone = function(self, profession_name, max_phase, zone_id)
         local profession_skills = {}
@@ -147,11 +147,11 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Get All the skills and levels for one profession sorted by minimim skill (regardless the zone, phase)
     --
-    -- @prof_name			String		The name of the profession
-    -- @max_phase			Number		The maximum content phase for skill to be included (default = current)
-    -- @zone_id				Number		The id of the zone in which we must be able to learn skill (0 = all)
+    -- @prof_name           String      The name of the profession
+    -- @max_phase           Number      The maximum content phase for skill to be included (default = current)
+    -- @zone_id             Number      The id of the zone in which we must be able to learn skill (0 = all)
     --
-    -- return				Array		All the skills for one profession sorted by name or minimim skill
+    -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
     GetAllSkillsAndLevelsForProfession = function(self, profession_name)
         -- MAX_PHASE to allow all skills to be considered
@@ -162,11 +162,11 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Get All the available (in the given phase) skills (EXCL the levels) for one profession sorted by minimim skill
     --
-    -- @prof_name			String		The name of the profession
-    -- @max_phase			Number		The maximum content phase for skill to be included (default = current)
+    -- @prof_name           String      The name of the profession
+    -- @max_phase           Number      The maximum content phase for skill to be included (default = current)
     -- @class_name          String      The name of the class of the player
     --
-    -- return				Array		All the skills for one profession sorted by name or minimim skill
+    -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
     GetAllAvailableSkillsForProfession = function(self, profession_name, max_phase, class_name)
         local profession_skills = {}
@@ -189,7 +189,7 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of skill ids for the current craft that are learned
     --
-    -- return				Array		Array containing all the ids
+    -- return               Array       Array containing all the ids
     ------------------------------------------------------------------------------------------------
     GetSkillIdsCurrentCraft = function(self)
         local learned_skill_ids = {}
@@ -212,7 +212,7 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of localised skill names for the current tradeskill that are learned
     --
-    -- return				Array		Array containing all the names
+    -- return               Array       Array containing all the names
     ------------------------------------------------------------------------------------------------
     GetSkillNamesCurrentTradeSkill = function(self)
         local learned_skill_names = {}
@@ -231,7 +231,7 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of skill ids for the current tradeskill that are learned
     --
-    -- return				Array		Array containing all the ids
+    -- return               Array       Array containing all the ids
     ------------------------------------------------------------------------------------------------
     GetSkillIdsCurrentTradeSkill = function(self)
         local learned_skill_ids = {}
@@ -254,11 +254,11 @@ MTSL_LOGIC_PROFESSION = {
     ------------------------------------------------------------------------------------------------
     -- Gets the status for a player for a skill of a Profession
     --
-    -- @player				Object		The player for who to check
-    -- @profession_name	    String		The name of the profession
-    -- @skill_id			Number		The id of the skill to search
+    -- @player              Object      The player for who to check
+    -- @profession_name     String      The name of the profession
+    -- @skill_id            Number      The id of the skill to search
     --
-    -- return				Number		Status of the skill
+    -- return               Number      Status of the skill
     ------------------------------------------------------------------------------------------------
     IsSkillKnownForPlayer = function(self, player, profession_name, skill_id)
         local trade_skill = player.TRADESKILLS[profession_name]
@@ -290,11 +290,11 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Get number of available skills for one profession up to max content phase
     --
-    -- @profession_name		String		The name of the profession
-    -- @max_phase			Number		The maximum content phase for skill to be included
+    -- @profession_name     String      The name of the profession
+    -- @max_phase           Number      The maximum content phase for skill to be included
     -- @specialisation_ids  Array       The ids of the specialisation to include in count
     --
-    -- return				Number		the number
+    -- return               Number      the number
     ------------------------------------------------------------------------------------------------
     GetTotalNumberOfAvailableSkillsForProfession = function(self, profession_name, max_phase, specialisation_ids)
         local amount = 0
@@ -318,9 +318,9 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Get list of specialisations for a profession
     --
-    -- @profession_name		String		The name of the profession
+    -- @profession_name     String      The name of the profession
     --
-    -- return				Array		List or {}
+    -- return               Array       List or {}
     ------------------------------------------------------------------------------------------------
     GetSpecialisationsForProfession = function(self, profession_name)
         return MTSL_DATA["specialisations"][profession_name] or {}
@@ -329,10 +329,10 @@ MTSL_LOGIC_PROFESSION = {
     -----------------------------------------------------------------------------------------------
     -- Get the name of specialisation for a profession
     --
-    -- @profession_name		    String		The name of the profession
-    -- @specialisation_id	    Number		The id of the specialisation
+    -- @profession_name         String      The name of the profession
+    -- @specialisation_id       Number      The id of the specialisation
     --
-    -- return				    String		Name or nil
+    -- return                   String      Name or nil
     ------------------------------------------------------------------------------------------------
     GetNameSpecialisation = function(self, profession_name, specialisation_id)
         local spec = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["specialisations"][profession_name], "id", specialisation_id)
@@ -348,7 +348,7 @@ MTSL_LOGIC_PROFESSION = {
     --
     -- @skill               Object      The skill for which we search the profession
     --
-    -- return				String      The name of the profession
+    -- return               String      The name of the profession
     ------------------------------------------------------------------------------------------------
     GetProfessionNameBySkill = function(self, skill)
         local profession_name = ""
@@ -390,7 +390,7 @@ MTSL_LOGIC_PROFESSION = {
     --
     -- @profession_name     String      The name of the profession
     --
-    -- return				Boolean     Flag for being frameless or not
+    -- return               Boolean     Flag for being frameless or not
     ------------------------------------------------------------------------------------------------
     IsFramelessProfession = function(self, profession_name)
         local frameless = false
@@ -409,7 +409,7 @@ MTSL_LOGIC_PROFESSION = {
     --
     -- @profession_name     String      The name of the profession
     --
-    -- return				Boolean     Flag for being secondary or not
+    -- return               Boolean     Flag for being secondary or not
     ------------------------------------------------------------------------------------------------
     IsSecondaryProfession = function(self, profession_name)
         local secondary = false
@@ -428,7 +428,7 @@ MTSL_LOGIC_PROFESSION = {
     --
     -- @profession_name     String      The name of the profession
     --
-    -- return				Array       The list of auto learned skills (id)
+    -- return               Array       The list of auto learned skills (id)
     ------------------------------------------------------------------------------------------------
     GetAutoLearnedSkillsForProfession = function(self, profession_name)
         local auto_learned = {}
@@ -450,7 +450,7 @@ MTSL_LOGIC_PROFESSION = {
     --
     -- @profession_name     String      The name of the profession
     --
-    -- return				Array       The list of auto learned skills (id)
+    -- return               Array       The list of auto learned skills (id)
     ------------------------------------------------------------------------------------------------
     GetAutoLearnedLevelForProfession = function(self, profession_name)
         local auto_learned_level = nil

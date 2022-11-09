@@ -1,7 +1,7 @@
 ------------------------------------------------------------------
--- Name: ProgressBar											--
--- Description: Contains all functionality for the progressbar	--
--- Parent Frame: MissingTradeSkillsListFrame					--
+-- Name: ProgressBar                                            --
+-- Description: Contains all functionality for the progressbar  --
+-- Parent Frame: MissingTradeSkillsListFrame                    --
 ------------------------------------------------------------------
 
 MTSLUI_PROGRESSBAR = {
@@ -39,9 +39,9 @@ MTSLUI_PROGRESSBAR = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the values shown on the progressbar
     --
-    -- @min_value		    number
-    -- @phase_max_value		number
-    -- @max_value		    number
+    -- @min_value           number
+    -- @phase_max_value     number
+    -- @max_value           number
     -- @current_value       number
     ----------------------------------------------------------------------------------------------------------
     UpdateStatusbar = function (self, min_value, phase_max_value, max_value, current_value)

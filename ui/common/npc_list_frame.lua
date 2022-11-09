@@ -1,7 +1,7 @@
 ---------------------------------------------------------------
--- Name: NpcListFrame								         --
+-- Name: NpcListFrame                                        --
 -- Description: Shows all npcs that meet the filter criteria --
--- Parent Frame: NpcExplorerFrame		                     --
+-- Parent Frame: NpcExplorerFrame                            --
 ---------------------------------------------------------------
 
 MTSLUI_NPC_LIST_FRAME = {
@@ -39,11 +39,11 @@ MTSLUI_NPC_LIST_FRAME = {
     },
     -- array holding the current filter values
     filter_values = {},
-    
+
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the NpcsListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame)
         self.ui_frame = MTSLUI_TOOLS:CreateScrollFrame(self, parent_frame, self.FRAME_WIDTH, self.FRAME_HEIGHT_VERTICAL, true, self.ITEM_HEIGHT)
@@ -257,7 +257,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Sets the frame which will show the skills obtainable from the selected npc
     --
-    -- @skill_list_frame		Object		The frame to show theskills obtainable from the selected item
+    -- @skill_list_frame        Object      The frame to show theskills obtainable from the selected item
     ----------------------------------------------------------------------------------------------------------
     SetSkillListFrame = function(self, skill_list_frame)
         self.skill_list_frame = skill_list_frame
@@ -427,7 +427,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when npc button is pushed
     --
-    -- @id		Number		The id (= index) of button that is pushed
+    -- @id      Number      The id (= index) of button that is pushed
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, id)
         self:DeselectCurrentNpcButton()
@@ -461,7 +461,7 @@ MTSLUI_NPC_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when we scroll
     --
-    -- @offset	Number
+    -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
     HandleScrollEvent = function (self, offset)
         -- Only handle the event if slider is visible
@@ -555,7 +555,7 @@ MTSLUI_NPC_LIST_FRAME = {
         self.filter_values = filters
         self:RefreshList()
     end,
-    
+
     ----------------------------------------------------------------------------------------------------------
     -- Refresh the contents of the list after changing zone
     ----------------------------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------
--- Name: ProfessionListFrame													--
+-- Name: ProfessionListFrame                                                    --
 -- Description: Shows available professions in the MTSL database                --
--- Parent Frame: DatabaseFrame              									--
+-- Parent Frame: DatabaseFrame                                                  --
 ----------------------------------------------------------------------------------
 
 MTSLUI_PROFESSION_LIST_FRAME = {
@@ -18,7 +18,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
 ----------------------------------------------------------------------------------------------------------
     -- Intialises the MissingSkillsListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame, frame_name)
         -- container frame (no scroll
@@ -216,7 +216,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when skill button is pushed
     --
-    -- @id		Number		The id (= index) of button that is pushed
+    -- @id      Number      The id (= index) of button that is pushed
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, index)
         -- only change if we selected a new profession

@@ -6,9 +6,9 @@ MTSL_LOGIC_QUEST = {
     -----------------------------------------------------------------------------------------------
     -- Gets a quest available to the player's faction (based on it's ids)
     --
-    -- @id				Number		The ids of the quests to search
+    -- @id              Number      The ids of the quests to search
     --
-    -- return			Object		Found quest (nil if not found)
+    -- return           Object      Found quest (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetQuestByIds = function(self, ids)
         local i = 1
@@ -48,9 +48,9 @@ MTSL_LOGIC_QUEST = {
     -----------------------------------------------------------------------------------------------
     -- Gets a quest based on its id
     --
-    -- @quest_id		Number		The id of the quest to search
+    -- @quest_id        Number      The id of the quest to search
     --
-    -- return			Object		Found quest
+    -- return           Object      Found quest
     ------------------------------------------------------------------------------------------------
     GetQuestById = function(self, id)
         return MTSL_TOOLS:GetItemFromSortedListById(MTSL_DATA["quests"], id)
@@ -59,9 +59,9 @@ MTSL_LOGIC_QUEST = {
     -----------------------------------------------------------------------------------------------
     -- Gets a quest based on its id
     --
-    -- @quest_id		Number		The id of the quest to search
+    -- @quest_id        Number      The id of the quest to search
     --
-    -- return			Object		Found quest
+    -- return           Object      Found quest
     ------------------------------------------------------------------------------------------------
     GetQuestsByIds = function(self, ids)
         local quests = {}

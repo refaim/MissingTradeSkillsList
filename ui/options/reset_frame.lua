@@ -1,7 +1,7 @@
 ------------------------------------------------------------------
--- Name: ResetFrame											    --
--- Description: Reset all data or a character      				--
--- Parent Frame: OptionsMenuFrame              					--
+-- Name: ResetFrame                                             --
+-- Description: Reset all data or a character                   --
+-- Parent Frame: OptionsMenuFrame                               --
 ------------------------------------------------------------------
 
 MTSLOPTUI_RESET_FRAME = {

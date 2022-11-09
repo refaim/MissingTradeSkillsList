@@ -9,9 +9,9 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     ------------------------------------------------------------------------------------------------
     -- Returns the name (localised) of a faction by id
     --
-    -- @faction_id		Number		The id of the faction
+    -- @faction_id      Number      The id of the faction
     --
-    -- returns 			String		The localised name of the faction
+    -- returns          String      The localised name of the faction
     ------------------------------------------------------------------------------------------------
     GetFactionNameById = function(self, faction_id)
         local faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], faction_id)
@@ -26,9 +26,9 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     ------------------------------------------------------------------------------------------------
     -- Returns the id of a faction by (English) name
     --
-    -- @faction_name	String	    The (English) name of the faction
+    -- @faction_name    String      The (English) name of the faction
     --
-    -- returns 			Number		The id of the faction (-1 if not found, 10000 for neutral)
+    -- returns          Number      The id of the faction (-1 if not found, 10000 for neutral)
     ------------------------------------------------------------------------------------------------
     GetFactionIdByName = function(self, faction_name)
         local faction_id = -1
@@ -46,9 +46,9 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     ----------------------------------------------------------------------------------------
     -- Gives the level of the standing (0-8) with a certain faction
     --
-    -- @faction_name	String		The name of the faction
+    -- @faction_name    String      The name of the faction
     --
-    -- return			number		The standing with the rep (0-8) for the faction
+    -- return           number      The standing with the rep (0-8) for the faction
     -----------------------------------------------------------------------------------------
     GetReputationLevelWithFaction = function (self, faction_name)
         for factionIndex = 1, GetNumFactions() do
@@ -66,9 +66,9 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     ----------------------------------------------------------------------------------------
     -- Gives the replevel based on the standing (0-8)
     --
-    -- @rep_id		number		The standing with the rep (0-8)
+    -- @rep_id      number      The standing with the rep (0-8)
     --
-    -- return		Array		The replevel
+    -- return       Array       The replevel
     -----------------------------------------------------------------------------------------
     GetReputationLevelById = function (self, rep_id)
         return MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["reputation_levels"], rep_id)
@@ -77,9 +77,9 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     ----------------------------------------------------------------------------------------
     -- Gives the level of the standing (0-8) based on the name of the level
     --
-    -- @rep_name	String		The name of the replevel
+    -- @rep_name    String      The name of the replevel
     --
-    -- return		number		The standing with the rep (0-8)
+    -- return       number      The standing with the rep (0-8)
     -----------------------------------------------------------------------------------------
     GetReputationLevelByLevelName = function (self, rep_name)
         local rep_level = 0

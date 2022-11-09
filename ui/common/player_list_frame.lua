@@ -1,7 +1,7 @@
 ------------------------------------------------------------------
--- Name: PlayerListFrame									    --
+-- Name: PlayerListFrame                                        --
 -- Description: Shows all players that meet the fitler criteria --
--- Parent Frame: DatabaseFrame							        --
+-- Parent Frame: DatabaseFrame                                  --
 ------------------------------------------------------------------
 
 MTSLUI_PLAYER_LIST_FRAME = {
@@ -35,7 +35,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the PlayersListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame)
         self.ui_frame = MTSLUI_TOOLS:CreateScrollFrame(self, parent_frame, self.FRAME_WIDTH, self.FRAME_HEIGHT_VERTICAL, true, self.ITEM_HEIGHT)
@@ -83,7 +83,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Sets the frame which will show the professions of the selected player
     --
-    -- @profession_list_frame		Object		The frame to show the details of the selected item
+    -- @profession_list_frame       Object      The frame to show the details of the selected item
     ----------------------------------------------------------------------------------------------------------
     SetProfessionListFrame = function(self, profession_list_frame)
         self.profession_list_frame = profession_list_frame
@@ -192,7 +192,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when player button is pushed
     --
-    -- @id		Number		The id (= index) of button that is pushed
+    -- @id      Number      The id (= index) of button that is pushed
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, id)
         -- Clicked on same button so deselect it
@@ -229,7 +229,7 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when we scroll
     --
-    -- @offset	Number
+    -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
     HandleScrollEvent = function (self, offset)
         -- Only handle the event if slider is visible

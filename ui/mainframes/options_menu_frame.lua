@@ -1,5 +1,5 @@
 --------------------------------------------------
--- Name: OptionsMenuFrame			            --
+-- Name: OptionsMenuFrame                       --
 -- Description: Shows user configurable options --
 --      Font                                    --
 --      Scale for each frame                    --
@@ -31,7 +31,7 @@ end
 ----------------------------------------------------------------------------------------------------------
 -- Intialises the MissingTradeSkillFrame
 --
--- @parent_frame		Frame		The parent frame
+-- @parent_frame        Frame       The parent frame
 ----------------------------------------------------------------------------------------------------------
 function MTSLUI_OPTIONS_MENU_FRAME:Initialise()
     self.ui_frame = MTSLUI_TOOLS:CreateMainFrame("MTSLUI_OPTIONS_MENU_FRAME", "MTSLUI_Options_Menu_Frame", self.FRAME_WIDTH, self.FRAME_HEIGHT)

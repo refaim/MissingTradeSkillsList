@@ -1,7 +1,7 @@
 ----------------------------------------------------------
--- Name: FilterFrame									--
+-- Name: FilterFrame                                    --
 -- Description: Shows all the filters for a list        --
--- Parent Frame: -          							--
+-- Parent Frame: -                                      --
 ----------------------------------------------------------
 
 MTSLUI_FILTER_FRAME = {
@@ -40,7 +40,7 @@ MTSLUI_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the MissingSkillsListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame, filter_frame_name)
         self.filter_frame_name = filter_frame_name

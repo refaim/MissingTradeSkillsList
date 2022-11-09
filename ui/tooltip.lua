@@ -3,7 +3,7 @@
 ----------------
 
 MTSL_RECIPE_PROFESSION_TYPES  = {
-    "Leatherworking",   -- _G.LE_ITEM_RECIPE_LEATHERWORKING	   = 1
+    "Leatherworking",   -- _G.LE_ITEM_RECIPE_LEATHERWORKING    = 1
     "Tailoring",        -- _G.LE_ITEM_RECIPE_TAILORING         = 2
     "Engineering",      -- _G.LE_ITEM_RECIPE_ENGINEERING       = 3
     "Blacksmithing",    -- _G.LE_ITEM_RECIPE_BLACKSMITHING     = 4

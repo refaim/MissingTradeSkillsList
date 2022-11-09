@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
--- Name: ListItem												    --
+-- Name: ListItem                                                   --
 -- Description: List item for scroll frame that is actually a button --
 ----------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ MTSLUI_LIST_ITEM = {
     ---------------------------------------------------------------------------------------
     -- Refresh the list item
     --
-    -- @text				String		Text to show on the list item
+    -- @text                String      Text to show on the list item
     -- @with_slider         Boolean     Flag indicating if parent list has slider active or not
     ----------------------------------------------------------------------------------------
     Refresh = function(self, text, with_slider)
@@ -87,7 +87,7 @@ MTSLUI_LIST_ITEM = {
     ---------------------------------------------------------------------------------------
     -- Checks if button is selected
     --
-    -- returns		Number		Flag that indicates if button is selected (1 = selected)
+    -- returns      Number      Flag that indicates if button is selected (1 = selected)
     ----------------------------------------------------------------------------------------
     IsSelected = function (self)
         return self.is_selected

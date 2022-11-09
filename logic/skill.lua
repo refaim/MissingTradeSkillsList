@@ -6,11 +6,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if a skill is available in this content phase
     --
-    -- @skill				Object			The skill
-    -- @profession_name		String			The name of the profession
-    -- @max_phase			Number			The number of content phase that is maximal allowed
+    -- @skill               Object          The skill
+    -- @profession_name     String          The name of the profession
+    -- @max_phase           Number          The number of content phase that is maximal allowed
     --
-    -- return				Boolean			Flag indicating availability
+    -- return               Boolean         Flag indicating availability
     -----------------------------------------------------------------------------------------
     IsSkillAvailableInPhase = function(self, skill, max_phase)
         return tonumber(skill.phase) <= tonumber(max_phase)
@@ -19,11 +19,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if a skill is available in a certain zone
     --
-    -- @skill				Object			The skill
-    -- @profession_name		String			The name of the profession
-    -- @zone_id				Number			The id of the zone (0 = all)
+    -- @skill               Object          The skill
+    -- @profession_name     String          The name of the profession
+    -- @zone_id             Number          The id of the zone (0 = all)
     --
-    -- return				Boolean			Flag indicating availability
+    -- return               Boolean         Flag indicating availability
     -----------------------------------------------------------------------------------------
     IsSkillAvailableInZone = function(self, skill, profession_name, zone_id)
         local available = true
@@ -55,10 +55,10 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if a at least one npc is located in a certain zone
     --
-    -- @npcs				Array			The list of NPCs
-    -- @zone_id		        Number			The id of the zone
+    -- @npcs                Array           The list of NPCs
+    -- @zone_id             Number          The id of the zone
     --
-    -- return				Boolean			Flag indicating if at least one is found
+    -- return               Boolean         Flag indicating if at least one is found
     -----------------------------------------------------------------------------------------
     HasAtleastOneNpcInZoneById = function(self, npcs, zone_id)
         -- Get the first npc found for the given zone
@@ -70,10 +70,10 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at least one of the quests is available in a certain zone
     --
-    -- @quest_ids			Array			Contains all different quest_ids (Alliance and horde can have different ones)
-    -- @zone_id				Number			The id of the zone (0 = all)
+    -- @quest_ids           Array           Contains all different quest_ids (Alliance and horde can have different ones)
+    -- @zone_id             Number          The id of the zone (0 = all)
     --
-    -- return				Boolean			Flag indicating obtainable
+    -- return               Boolean         Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     HasAtleastOneObtainableQuestInZone = function(self, quest_ids, tradeskill_name, zone_id)
         local quest = MTSL_LOGIC_QUEST:GetQuestByIds(quest_ids)
@@ -101,10 +101,10 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at least one of the objects is available in a certain zone
     --
-    -- @item_ids			Array			Contains the ids of the items to check
-    -- @zone_id				Number			The id of the zone (0 = all)
+    -- @item_ids            Array           Contains the ids of the items to check
+    -- @zone_id             Number          The id of the zone (0 = all)
     --
-    -- return				Boolean			Flag indicating obtainable
+    -- return               Boolean         Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     HasAtleastOneObtainableObjectInZone = function(self, object_ids, zone_id)
         local objects = MTSL_LOGIC_ITEM_OBJECT:GetObjectsByIds(object_ids)
@@ -115,11 +115,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at least one of the items is available in a certain zone
     --
-    -- @item_ids			Array			Contains the ids of the items to check
-    -- @profession_name		String			The name of the profession for which the item is valid
-    -- @zone_id				Number			The id of the zone (0 = all)
+    -- @item_ids            Array           Contains the ids of the items to check
+    -- @profession_name     String          The name of the profession for which the item is valid
+    -- @zone_id             Number          The id of the zone (0 = all)
     --
-    -- return				Boolean			Flag indicating obtainable
+    -- return               Boolean         Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     HasAtleastOneObtainableItemInZone = function(self, item_ids, profession_name, zone_id)
         local i = 1
@@ -172,10 +172,10 @@ MTSL_LOGIC_SKILL = {
     ------------------------------------------------------------------------------------------------
     -- Returns a skill for a certain profession based on the recipe id its learned from
     --
-    -- @item_id			Number		The id of the item (source of the skill)
-    -- @prof_name		String		Name of the profession
+    -- @item_id         Number      The id of the item (source of the skill)
+    -- @prof_name       String      Name of the profession
     --
-    -- returns	 		Array		The skills
+    -- returns          Array       The skills
     ------------------------------------------------------------------------------------------------
     GetSkillForProfessionByItemId = function(self, item_id, profession_name)
         local skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(MTSL_DATA["skills"][profession_name], "items", item_id)
@@ -189,10 +189,10 @@ MTSL_LOGIC_SKILL = {
     ------------------------------------------------------------------------------------------------
     -- Returns a skill for a certain profession by id
     --
-    -- @skill_id		Number		The id of the skill
-    -- @prof_name		String		Name of the profession
+    -- @skill_id        Number      The id of the skill
+    -- @prof_name       String      Name of the profession
     --
-    -- returns	 		Skill		The skill
+    -- returns          Skill       The skill
     ------------------------------------------------------------------------------------------------
     GetSkillForProfessionById = function(self, skill_id, profession_name)
         local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["skills"][profession_name], "id", skill_id)
@@ -206,10 +206,10 @@ MTSL_LOGIC_SKILL = {
     ------------------------------------------------------------------------------------------------
     -- Returns a list of source types for a skill for a certain profession by id
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
     --
-    -- returns	 		    Array		The sourcetypes
+    -- returns              Array       The sourcetypes
     ------------------------------------------------------------------------------------------------
     GetSourcesForSkillForProfessionById = function(self, skill_id, profession_name)
         local source_types = {}
@@ -265,10 +265,10 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Returns a list of classes who can exclusive obtain recipe
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
     --
-    -- return				Array		List of exclusive factions (empty if none)
+    -- return               Array       List of exclusive factions (empty if none)
     ----------------------------------------------------------------------------------------
     GetClassesOnlyForSkill = function(self, skill_id, profession_name)
         local classes = {}
@@ -351,11 +351,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at skill is avaiable through a source type
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
     -- @source_type         String      The type of source want
     --
-    -- return				Boolean		Flag indicating obtainable
+    -- return               Boolean     Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     IsAvailableForSourceType = function(self, skill_id, profession_name, source_type)
         local source_types = self:GetSourcesForSkillForProfessionById(skill_id, profession_name)
@@ -365,11 +365,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at skill is avaiable through at least one given source type
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
     -- @source_types        Array       The types of source wanted
     --
-    -- return				Boolean		Flag indicating obtainable
+    -- return               Boolean     Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     IsAvailableForSourceTypes = function(self, skill_id, profession_name, source_types)
         local skill_source_types = self:GetSourcesForSkillForProfessionById(skill_id, profession_name)
@@ -384,10 +384,10 @@ MTSL_LOGIC_SKILL = {
     ------------------------------------------------------------------------------------------------
     -- Returns a list of factions for a skill for a certain profession by id
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
     --
-    -- returns	 		    Array		The factions
+    -- returns              Array       The factions
     ------------------------------------------------------------------------------------------------
     GetFactionsForSkillForProfessionById = function(self, skill_id, profession_name)
         local faction_ids = { 59, 270, 529, 576, 609, 469, 67, MTSL_LOGIC_FACTION_REPUTATION.FACTION_ID_ALLIANCE_AND_HORDE, MTSL_LOGIC_FACTION_REPUTATION.FACTION_ID_NEUTRAL }
@@ -515,11 +515,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at skill is available through a faction
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
-    -- @faction_id			Number		The id of the faction from which we must be able to learn skill (0 = all)
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
+    -- @faction_id          Number      The id of the faction from which we must be able to learn skill (0 = all)
     --
-    -- return				Boolean		Flag indicating obtainable
+    -- return               Boolean     Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     IsAvailableForFaction = function(self, skill_id, profession_name, faction_id)
         local factions = self:GetFactionsForSkillForProfessionById(skill_id, profession_name)
@@ -529,11 +529,11 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     -- Checks if at skill is available through at least one given faction
     --
-    -- @skill_id		    Number		The id of the skill
-    -- @profession_name		String		Name of the profession
-    -- @faction_ids			Array		The ids of the faction from which we must be able to learn skill (0 = all)
+    -- @skill_id            Number      The id of the skill
+    -- @profession_name     String      Name of the profession
+    -- @faction_ids         Array       The ids of the faction from which we must be able to learn skill (0 = all)
     --
-    -- return				Boolean		Flag indicating obtainable
+    -- return               Boolean     Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     IsAvailableForFactions = function(self, skill_id, profession_name, faction_ids)
         local factions = self:GetFactionsForSkillForProfessionById(skill_id, profession_name)
@@ -550,9 +550,9 @@ MTSL_LOGIC_SKILL = {
     --
     -- @profession_name     String      The name of the profession
     -- @skill               Object      The skill to check
-    -- @npc_id		        Number		The id of the npc
+    -- @npc_id              Number      The id of the npc
     --
-    -- return				Boolean		Flag indicating obtainable
+    -- return               Boolean     Flag indicating obtainable
     -----------------------------------------------------------------------------------------
     IsObtainableFromNpcById = function(self, profession_name, skill, npc_id)
         local obtainable = false

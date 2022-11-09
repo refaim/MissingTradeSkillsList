@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------
--- Name: MissingTradeSkillFrame			                             --
+-- Name: MissingTradeSkillFrame                                      --
 -- Description: The main frame shown next to TradeSkill/Craft Window --
 -----------------------------------------------------------------------
 MTSLUI_CHARACTER_EXPLORER_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
@@ -36,7 +36,7 @@ end
 ----------------------------------------------------------------------------------------------------------
 -- Intialises the MissingTradeSkillFrame
 --
--- @parent_frame		Frame		The parent frame
+-- @parent_frame        Frame       The parent frame
 ----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:Initialise()
     local swap_frames = {

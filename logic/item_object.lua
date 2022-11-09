@@ -6,9 +6,9 @@ MTSL_LOGIC_ITEM_OBJECT = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of all objects (based on their ids)
     --
-    -- @ids					Array		The ids of objects to search
+    -- @ids                 Array       The ids of objects to search
     --
-    -- return				Array		List of found items
+    -- return               Array       List of found items
     ------------------------------------------------------------------------------------------------
     GetObjectsByIds = function(self, ids)
         local objects = {}
@@ -31,9 +31,9 @@ MTSL_LOGIC_ITEM_OBJECT = {
     -----------------------------------------------------------------------------------------------
     -- Gets an object (based on it's id)
     --
-    -- @id				Number		The id of the item to search
+    -- @id              Number      The id of the item to search
     --
-    -- return			Object		Found item (nil if not found)
+    -- return           Object      Found item (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetObjectById = function(self, id)
         return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["objects"], "id", id)
@@ -42,10 +42,10 @@ MTSL_LOGIC_ITEM_OBJECT = {
     -----------------------------------------------------------------------------------------------
     -- Gets a list of all items (based on their ids)
     --
-    -- @ids					Array		The ids of items to search
+    -- @ids                 Array       The ids of items to search
     -- @profession_name     String      The name of the profession
     --
-    -- return				Array		List of found items
+    -- return               Array       List of found items
     ------------------------------------------------------------------------------------------------
     GetItemsForProfessionByIds = function(self, ids, profession_name)
         local items = {}
@@ -68,10 +68,10 @@ MTSL_LOGIC_ITEM_OBJECT = {
     -----------------------------------------------------------------------------------------------
     -- Gets an item (based on it's id)
     --
-    -- @id				    Number		The id of the item to search
+    -- @id                  Number      The id of the item to search
     -- @profession_name     String      The name of the profession
     --
-    -- return			    Object		Found item (nil if not found)
+    -- return               Object      Found item (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetItemForProfessionById = function(self, id, profession_name)
         return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["items"][profession_name], "id", id)

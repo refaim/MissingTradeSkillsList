@@ -1,7 +1,7 @@
 --------------------------------------------------------------
--- Name: PlayerFilterFrame									--
+-- Name: PlayerFilterFrame                                  --
 -- Description: Shows all the filters for a list of players --
--- Parent Frame: -          							    --
+-- Parent Frame: -                                          --
 --------------------------------------------------------------
 
 MTSLUI_PLAYER_FILTER_FRAME = {
@@ -33,7 +33,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the MissingSkillsListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame, filter_frame_name)
         self:InitialiseData()

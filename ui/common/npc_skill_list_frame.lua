@@ -1,7 +1,7 @@
 ---------------------------------------------
--- Name: NpcSkillListFrame				   --
+-- Name: NpcSkillListFrame                 --
 -- Description: Shows all skill of one npc --
--- Parent Frame: NpcExplorerFrame		   --
+-- Parent Frame: NpcExplorerFrame          --
 ---------------------------------------------
 
 MTSLUI_NPC_SKILL_LIST_FRAME = {
@@ -49,7 +49,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the NpcsListFrame
     --
-    -- @parent_frame		Frame		The parent frame
+    -- @parent_frame        Frame       The parent frame
     ----------------------------------------------------------------------------------------------------------
     Initialise = function(self, parent_frame)
         self.ui_frame = MTSLUI_TOOLS:CreateScrollFrame(self, parent_frame, self.FRAME_WIDTH_VERTICAL, self.FRAME_HEIGHT_VERTICAL, true, self.ITEM_HEIGHT)
@@ -85,19 +85,19 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Sets the frame which will show the details of selected item
     --
-    -- @detail_item_frame		Object		The frame to show the details of the selected item
+    -- @detail_item_frame       Object      The frame to show the details of the selected item
     ----------------------------------------------------------------------------------------------------------
     SetDetailSelectedItemFrame = function(self, detail_item_frame)
         self.detail_item_frame = detail_item_frame
     end,
-    
+
     ----------------------------------------------------------------------------------------------------------
     -- Updates the skill list of the current npc
     ----------------------------------------------------------------------------------------------------------
     UpdateList = function (self, skills_of_npc)
         self.skills_of_npc = skills_of_npc
         self.amount_skills_of_npc = MTSL_TOOLS:CountItemsInArray(self.skills_of_npc)
-        
+
         if self.amount_skills_of_npc <= 0 then
             self.amount_skills_of_npc = 0
             self:NoSkillsToShow()
@@ -165,7 +165,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when npc button is pushed
     --
-    -- @id		Number		The id (= index) of button that is pushed
+    -- @id      Number      The id (= index) of button that is pushed
     ----------------------------------------------------------------------------------------------------------
     HandleSelectedListItem = function(self, id)
         self:DeselectCurrentSkillButton()
@@ -196,11 +196,11 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
             end
         end
     end,
-    
+
     ----------------------------------------------------------------------------------------------------------
     -- Handles the event when we scroll
     --
-    -- @offset	Number
+    -- @offset  Number
     ----------------------------------------------------------------------------------------------------------
     HandleScrollEvent = function (self, offset)
         -- Only handle the event if slider is visible
@@ -263,7 +263,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
         -- Scroll all way to top
         self:HandleScrollEvent(1)
     end,
-    
+
     ----------------------------------------------------------------------------------------------------------
     -- Selects the current selected npc skill buton
     ----------------------------------------------------------------------------------------------------------

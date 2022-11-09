@@ -28,12 +28,12 @@
   * Mooncloth Boots (Tailoring) now requires friendly with Timbermaw Hold
   * Drakk Stonehand now resides in The hinterlands
   * Ezekiel Graves was replaced with Gregory Charles as Poison trainer
-  
+
 ### v1.13.51 (Aug 17, 2020)
 
 * Fixed bugs
   * Unlearning a primary profession now removes it correctly from data
-  * Learning a profession did not save the skills automatically gained without opening the tradeskill/craftframe 
+  * Learning a profession did not save the skills automatically gained without opening the tradeskill/craftframe
 * Added code to count number of skills per profession and phase to have numbers matching the data
 * Added code to check/verify the saved data when loading a character
 * Added check when logging in to remove unlearned professions
@@ -51,7 +51,7 @@
 * Added/Changed the following click events on minimap button
   * Ctrl + Left click : opens Character explorer
   * Ctrl + Alt + Left Click: opens Account explorer
-  
+
 ### v1.13.49 (Aug 11, 2020)
 
 * Drop downs with checkboxes in filterframe now keep open when selecting a checkbox until you close the list or wait a few seconds
@@ -62,7 +62,7 @@
   * Ironvine Breastplate, Ironvine Gloves, Ironvine Belt (Blacksmithing)
   * Bramblewood Helm, Bramblewood Vest, Bramblewood Belt (Leatherworking)
   * Gaea's Embrace, Sylvan Crown, Sylvan Shoulders, Sylvan Vest (Tailoring)
-  
+
 ### v1.13.48 (Jul 30, 2020)
 
 * Fixed bugs
@@ -82,7 +82,7 @@
 * Changed way filters work, you can now select multiple values per filter (except for continent/zone)
 * Fixed following data
   * "Pearl-handled Dagger" (Blacksmithing) is now trained at 115
-  
+
 ### v1.13.46 (Jun 15, 2020)
 
 * Changed/optimized the way scanning missing skills works for Enchanting
@@ -93,7 +93,7 @@
   * Removed "Dawnbringer Shoulders" (Blacksmithing)
   * Enchanting skills (Russian locale) should now show properly when known
   * "Goblin Jumper Cables XL" (Engineering) now have the proper specialisation "Goblin Engineering"
-  
+
 ### v1.13.45 (Jun 14, 2020)
 
 * Fixed following learning skill level for data
@@ -108,15 +108,15 @@
   * Added trainers for "Elixir of Fortitude" (Alchemy)
   * Translation mistakes in Spanish enchanting formulas with stamina
 * Fixed bugs
-  * Tooltip from minimap button now correctly hides when the mouse is no longer moved over the button 
-* Profession list in Database explorer & account explorer is not sorted/shown based on name   
-* Added missing translations for quest objects  
+  * Tooltip from minimap button now correctly hides when the mouse is no longer moved over the button
+* Profession list in Database explorer & account explorer is not sorted/shown based on name
+* Added missing translations for quest objects
 * Added ability to move/drag the MTSL window seperate from TradeSkillFrame/CraftFrame. Resets position after reopening TradeSkillFrame/CraftFrame
 * Added support for Fishing, Herbalism & Skinning
   * Database explorer lets you see the ranks and how to train them
   * View trainers & vendors in NPC explorer frame
   * Added skill level for characters/alts to account frame
-  
+
 ### v1.13.44 (May 28, 2020)
 
 * Fixed following data
@@ -124,13 +124,13 @@
   * Set phase of "Big Bag of Enchantment (Tailoring)" to 5
   * Set phase of "Runed Stygian Leggings, Boots & Belt (Tailoring)", Gurubashi Mojo Madness ("Alchemy") to 4
   * Removed double entry for "Goblin Rocket Boots (Engineering)"
-  * Set skill of "Mithril Scale Pants (Blacksmith)" to 210 instead of 205 
+  * Set skill of "Mithril Scale Pants (Blacksmith)" to 210 instead of 205
   * French translation of "Feralas" corrected to "Féralas"
   * Shifting Cloak (Leatherworking) has now correct specialisation "Elemental"
   * Removed font "Arkai" to be choosen on non Chinese locales
 * Added option to select where MTSL window opens relative to button
-  * You can select if window opens left or right side of the MTSL button and so allowing to overlap with the craft window 
-  
+  * You can select if window opens left or right side of the MTSL button and so allowing to overlap with the craft window
+
 ### v1.13.43 (Apr 8, 2020)
 
 * Improved code to set a waypoint
@@ -146,7 +146,7 @@
   * Gnomish Alarm-o-bot now requires gnomish engineering
   * Magnus Frostwake is no longer in Winterspring but in Western Plaguelands
   * Changed phase of schematic for steam tonk controller to 6 (unclear wether it is/will be available)
-  
+
 ### v1.13.42 (Mar 30, 2020)
 
 * Fixed bug where not all skills obtained from object were shown when filtering on that source type
@@ -160,13 +160,13 @@
 * Fixed wrong Russian translations on skills & items
 * Fixed bug where waypoints could not be created from a secondary source
 * Fixed bug where recipes obtained from an object could not be linked to chat or have their tooltip shown
-* Fixed wrong zone numbers for Ashenvale, added zone numbers to "Current zone" label as well 
+* Fixed wrong zone numbers for Ashenvale, added zone numbers to "Current zone" label as well
 * Fixed bug with filter frame
   * Filters should now work correctly again
   * When opening another frame or changing profession, all filters are now reset to their default values
   * It might appear filtering is not working, but this is due to lag/caching of frames ingame, reopen the window a few times and it should work
-* Limited the options for font setting to valid fonts only for your locale so text will nog longer be displayed with ????  
-* Account explorer no longer shows characters who haven't learned any profession  
+* Limited the options for font setting to valid fonts only for your locale so text will nog longer be displayed with ????
+* Account explorer no longer shows characters who haven't learned any profession
 * Added coloring to show if player has the required reputation with faction or not (if one is needed)
 * Changed how to insert an item to chat from Shift + Left click to Right click
 * Changed the channels for linking items:
@@ -177,13 +177,13 @@
       * Ctrl Click = Guild
       * Shift click = Party
       * Alt click = Raid
-      
+
 ### v1.13.40 (Mar 23, 2020)
 
 * Fixed wrong Russian translations on skills & items
 * Added ability to insert a recipe in the current chat message
     * Shift + Click on the name of a recipe in the "Detailsframe" to insert it to current chat message
-    
+
 ### v1.13.39 (Mar 20, 2020)
 
 * Fixed a bug with the enhanced tooltip
@@ -242,7 +242,7 @@
     * Extra number between [] is not shown if current phase already has all total skills to be released
 * Added NPC explorer frame (/mtsl npc or alt + left click on minimap button)
     * Shows a list of all available NPCs that teaches a skill, drop/vendor recipe or start quest
-    * Ability to filter by: Name, Faction, Profession, Type/Source, trainer rank, Zone 
+    * Ability to filter by: Name, Faction, Profession, Type/Source, trainer rank, Zone
     * Icons showing standing of NPC (skull if hostile/mob, mix Alliance/horde icon for Neutral)
     * Icons showing the profession to which the skill belongs
 * Added options to config menu to allow scaling & setting of splitmode of NPC explorer frame
@@ -278,7 +278,7 @@
 * Fixed a bug where skills with multiple sources did not filter correctly when choosing a specific zone
 * Added an option to filter by faction (Alliance, Horde or any faction that uses reputation)
 * Removed labels in filter frame to save space => added text to the "Any" option for each filter
- 
+
 ### v1.13.31 (Jan 9, 2020)
 
 * Fixed bug that always opened MTSL window even if option was disabled

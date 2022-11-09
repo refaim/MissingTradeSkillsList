@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
--- Name: VerticalSlider												--
--- Description: Contains all functionality for the vertical slider	--
--- Parent Frame: -													--
+-- Name: VerticalSlider                                             --
+-- Description: Contains all functionality for the vertical slider  --
+-- Parent Frame: -                                                  --
 ----------------------------------------------------------------------
 
 MTSLUI_VERTICAL_SLIDER = {
@@ -15,10 +15,10 @@ MTSLUI_VERTICAL_SLIDER = {
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the VerticalSlider
     --
-    -- @parent_class		Class		The lua class that owns the slider_frame
-    -- @parent_frame		frame	    The parent frame
-    -- @slider_steps		Number		The mount of steps the vertical slider has
-    -- @height_step			Number		The height of 1 step in the slider
+    -- @parent_class        Class       The lua class that owns the slider_frame
+    -- @parent_frame        frame       The parent frame
+    -- @slider_steps        Number      The mount of steps the vertical slider has
+    -- @height_step         Number      The height of 1 step in the slider
     ----------------------------------------------------------------------------------------------------------
     Initialise = function (self, parent_class, parent_frame, height, height_step)
         self.STEP_HEIGHT = height_step
@@ -101,8 +101,8 @@ MTSLUI_VERTICAL_SLIDER = {
     -- Refresh the slider
     -- When opening other tradeskill ui_frame, amount of staps might have to be altered
     --
-    -- @max_steps				number		Total amount of steps the slider has
-    -- @amount_visibile_steps	number		The amount of visible steps/items in the slider
+    -- @max_steps               number      Total amount of steps the slider has
+    -- @amount_visibile_steps   number      The amount of visible steps/items in the slider
     ----------------------------------------------------------------------------------------
     Refresh = function(self, max_steps, amount_visibile_steps)
         -- Calculate the height (-4 for borders)

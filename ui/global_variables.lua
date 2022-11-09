@@ -41,7 +41,7 @@ MTSLUI_ICONS_PROFESSION = {
     -- Primary professions
     ["Alchemy"] = "136240",
     ["Blacksmithing"] = "136241",
-    ["Enchanting"] = "136244",		-- craft
+    ["Enchanting"] = "136244",      -- craft
     ["Engineering"] = "136243",
     ["Herbalism"] = "136065",
     ["Leatherworking"] = "133611",
