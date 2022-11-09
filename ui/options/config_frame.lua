@@ -515,12 +515,12 @@ MTSLOPTUI_CONFIG_FRAME = {
     ----------------------------------------------------------------------------------------------------------
     ChangeValue = function (self, value_name, value, text)
         self.config_values[value_name] = value
-        UIDropDownMenu_SetText(self.ui_frame[value_name .. "_drop_down"], text)
+        UIDropDownMenu_SetText(text, self.ui_frame[value_name .. "_drop_down"])
     end,
 
     ChangeWithSubValue = function (self, value_name, sub_value_name, value, text)
         self.config_values[value_name][sub_value_name] = value
-        UIDropDownMenu_SetText(self.ui_frame[value_name .. "_" .. sub_value_name .. "_drop_down"], text)
+        UIDropDownMenu_SetText(text, self.ui_frame[value_name .. "_" .. sub_value_name .. "_drop_down"])
     end,
 
     ----------------------------------------------------------------------------------------------------------
@@ -567,33 +567,33 @@ MTSLOPTUI_CONFIG_FRAME = {
         self:ShowValueInCheckBox(self.autoshow_check, self.config_values.auto_show)
         -- minimap
         self:ShowValueInCheckBox(self.minimap_button_check, self.config_values.minimap.active)
-        UIDropDownMenu_SetText(self.ui_frame.minimap_shape_drop_down, MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.minimap.shape))
-        UIDropDownMenu_SetText(self.ui_frame.minimap_radius_drop_down, self.config_values.minimap.radius .. " px")
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.minimap.shape), self.ui_frame.minimap_shape_drop_down)
+        UIDropDownMenu_SetText(self.config_values.minimap.radius .. " px", self.ui_frame.minimap_radius_drop_down)
 
         -- Enchanced Tooltip
         self:ShowValueInCheckBox(self.tooltip_check, self.config_values.tooltip.active)
-        UIDropDownMenu_SetText(self.ui_frame.tooltip_faction_drop_down, MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.faction))
-        UIDropDownMenu_SetText(self.ui_frame.tooltip_known_drop_down, MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.known))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.faction), self.ui_frame.tooltip_faction_drop_down)
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.known), self.ui_frame.tooltip_known_drop_down)
         -- Link to chat
         self:ShowValueInCheckBox(self.linktochat_check, self.config_values.chat.active)
-        UIDropDownMenu_SetText(self.ui_frame.chat_channel_drop_down, MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.chat.channel))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.chat.channel), self.ui_frame.chat_channel_drop_down)
 
-        UIDropDownMenu_SetText(self.ui_frame.location_mtsl_button_drop_down, MTSLUI_TOOLS:GetLocalisedLabel(string.lower(self.config_values.location_mtsl.button)))
-        UIDropDownMenu_SetText(self.ui_frame.location_mtsl_frame_drop_down, MTSLUI_TOOLS:GetLocalisedLabel(string.lower(self.config_values.location_mtsl.frame)))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(string.lower(self.config_values.location_mtsl.button)), self.ui_frame.location_mtsl_button_drop_down)
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(string.lower(self.config_values.location_mtsl.frame)), self.ui_frame.location_mtsl_frame_drop_down)
 
         -- Split modes
         for _, k in pairs(self.ui_split_keys) do
-            UIDropDownMenu_SetText(self.ui_frame["ui_split_" .. k .. "_drop_down"], self.config_values.ui_split[k])
+            UIDropDownMenu_SetText(self.config_values.ui_split[k], self.ui_frame["ui_split_" .. k .. "_drop_down"])
         end
         -- UI scales
         for _, k in pairs(self.ui_scale_keys) do
-            UIDropDownMenu_SetText(self.ui_frame["ui_scale_" .. k .. "_drop_down"], (100 * self.config_values.ui_scale[k]) .. " %")
+            UIDropDownMenu_SetText((100 * self.config_values.ui_scale[k]) .. " %", self.ui_frame["ui_scale_" .. k .. "_drop_down"])
         end
         -- Font
-        UIDropDownMenu_SetText(self.ui_frame.font_name_drop_down, MTSL_TOOLS:GetItemFromArrayByKeyValue(self.drop_down_lists.font.names, "id", self.config_values.font.name).name)
-        UIDropDownMenu_SetText(self.ui_frame.font_title_drop_down, self.config_values.font.title)
-        UIDropDownMenu_SetText(self.ui_frame.font_label_drop_down, self.config_values.font.label)
-        UIDropDownMenu_SetText(self.ui_frame.font_text_drop_down, self.config_values.font.text)
+        UIDropDownMenu_SetText(MTSL_TOOLS:GetItemFromArrayByKeyValue(self.drop_down_lists.font.names, "id", self.config_values.font.name).name, self.ui_frame.font_name_drop_down)
+        UIDropDownMenu_SetText(self.config_values.font.title, self.ui_frame.font_title_drop_down)
+        UIDropDownMenu_SetText(self.config_values.font.label, self.ui_frame.font_label_drop_down)
+        UIDropDownMenu_SetText(self.config_values.font.text, self.ui_frame.font_text_drop_down)
     end,
 
     -- Loads the current saved variables values

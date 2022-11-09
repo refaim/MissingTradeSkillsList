@@ -46,7 +46,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
         self.ui_frame.sort_drop_down.filter_frame_name = filter_frame_name
         self.ui_frame.sort_drop_down.initialize = self.CreateDropDownSorting
         UIDropDownMenu_SetWidth(self.ui_frame.sort_drop_down, self.WIDTH_DD)
-        UIDropDownMenu_SetText(self.ui_frame.sort_drop_down, self.sorts[self.current_sort]["name"])
+        UIDropDownMenu_SetText(self.sorts[self.current_sort]["name"], self.ui_frame.sort_drop_down)
         -- create a filter for realms
         self.ui_frame.realm_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("realm"), 5, -35, "LABEL", "TOPLEFT")
         self.ui_frame.realm_drop_down = CreateFrame("Frame", filter_frame_name .. "_DD_REALMS", self.ui_frame, "UIDropDownMenuTemplate")
@@ -55,9 +55,9 @@ MTSLUI_PLAYER_FILTER_FRAME = {
         self.ui_frame.realm_drop_down.initialize = self.CreateDropDownRealms
         UIDropDownMenu_SetWidth(self.ui_frame.realm_drop_down, self.WIDTH_DD)
         if self.current_realm > 0 then
-            UIDropDownMenu_SetText(self.ui_frame.realm_drop_down, MTSL_TOOLS:GetItemFromArrayByKeyValue(self.realms, "id", self.current_realms)["name"])
+            UIDropDownMenu_SetText(MTSL_TOOLS:GetItemFromArrayByKeyValue(self.realms, "id", self.current_realms)["name"], self.ui_frame.realm_drop_down)
         else
-            UIDropDownMenu_SetText(self.ui_frame.realm_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("any"))
+            UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("any"), self.ui_frame.realm_drop_down)
         end
         -- enable filtering by default
         self:EnableFiltering()
@@ -147,7 +147,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
 
     ChangeRealm = function(self, id, text)
         self.current_realm = id
-        UIDropDownMenu_SetText(self.ui_frame.realm_drop_down, text)
+        UIDropDownMenu_SetText(text, self.ui_frame.realm_drop_down)
         -- Apply filter if we may
         if self:IsFilteringEnabled() then
             self.list_frame:ChangeRealm(id)
@@ -173,7 +173,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
 
     ChangeSorting = function(self, value, text)
         self.current_sort = value
-        UIDropDownMenu_SetText(self.ui_frame.sort_drop_down, text)
+        UIDropDownMenu_SetText(text, self.ui_frame.sort_drop_down)
         -- Apply filter if we may
         if self:IsFilteringEnabled() then
             self.list_frame:ChangeSort(value)

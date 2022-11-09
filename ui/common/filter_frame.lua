@@ -106,7 +106,7 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame.source_drop_down:SetPoint("TOPLEFT", self.ui_frame.search_box, "BOTTOMLEFT", -15, -2)
         self.ui_frame.source_drop_down.filter_frame_name = self.filter_frame_name
         self.ui_frame.source_drop_down.initialize = self.CreateDropDownSources
-        UIDropDownMenu_SetText(self.ui_frame.source_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("source"))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("source"), self.ui_frame.source_drop_down)
         -- default select the "current" phase
         self.current_phase = MTSL_DATA.CURRENT_PATCH_LEVEL
         -- create a filter for content phase
@@ -115,7 +115,7 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame.phase_drop_down:SetPoint("TOPLEFT", self.ui_frame.source_drop_down, "TOPRIGHT", -31, 0)
         self.ui_frame.phase_drop_down.filter_frame_name = self.filter_frame_name
         self.ui_frame.phase_drop_down.initialize = self.CreateDropDownPhases
-        UIDropDownMenu_SetText(self.ui_frame.phase_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("phase"))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("phase"), self.ui_frame.phase_drop_down)
     end,
 
     ----------------------------------------------------------------------------------------------------------
@@ -128,14 +128,14 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame.faction_drop_down:SetPoint("TOPLEFT", self.ui_frame.source_drop_down, "BOTTOMLEFT", 0, 2)
         self.ui_frame.faction_drop_down.filter_frame_name = self.filter_frame_name
         self.ui_frame.faction_drop_down.initialize = self.CreateDropDownFactions
-        UIDropDownMenu_SetText(self.ui_frame.faction_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("faction"))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("faction"), self.ui_frame.faction_drop_down)
         -- Specialisations
         -- self.ui_frame.specs_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("specialisation"), 5, -64, "LABEL", "TOPLEFT")
         self.ui_frame.specialisation_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_SPECS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.specialisation_drop_down:SetPoint("TOPLEFT", self.ui_frame.faction_drop_down, "TOPRIGHT", -31, 0)
         self.ui_frame.specialisation_drop_down.filter_frame_name = self.filter_frame_name
         self.ui_frame.specialisation_drop_down.initialize = self.CreateDropDownSpecialisations
-        UIDropDownMenu_SetText(self.ui_frame.specialisation_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("specialisation"))
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("specialisation"), self.ui_frame.specialisation_drop_down)
     end,
 
     ----------------------------------------------------------------------------------------------------------
@@ -192,8 +192,8 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame.search_box:SetText("")
         self.ui_frame.search_box:ClearFocus()
         -- reset contintent & zone
-        UIDropDownMenu_SetText(self.ui_frame.continent_drop_down, MTSLUI_TOOLS:GetLocalisedLabel("any zone"))
-        UIDropDownMenu_SetText(self.ui_frame.zone_drop_down, "")
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("any zone"), self.ui_frame.continent_drop_down)
+        UIDropDownMenu_SetText("", self.ui_frame.zone_drop_down)
         -- set the current filters to the listframe
         if self.list_frame then self.list_frame:ChangeFilters(self.filter_values) end
     end,
@@ -568,7 +568,7 @@ MTSLUI_FILTER_FRAME = {
     end,
 
     ChangeContinent = function(self, id, text)
-        UIDropDownMenu_SetText(self.ui_frame.continent_drop_down, text)
+        UIDropDownMenu_SetText(text, self.ui_frame.continent_drop_down)
         -- do not set continent id if id < 0 or we choose "Any"
         if id <= 0 then
             self.filter_values["continent"] = nil
@@ -576,7 +576,7 @@ MTSLUI_FILTER_FRAME = {
             self.filter_values["zone"] = math.abs(id)
             self.current_available_zones = {}
             MTSLUI_TOOLS:FillDropDown(self.current_available_zones, self.ChangeZoneHandler, self.filter_frame_name)
-            UIDropDownMenu_SetText(self.ui_frame.zone_drop_down, "")
+            UIDropDownMenu_SetText("", self.ui_frame.zone_drop_down)
         else
             -- Update the drop down with available zones for this continent
             self.current_available_zones = self.zones_in_continent[id]
@@ -588,10 +588,10 @@ MTSLUI_FILTER_FRAME = {
             self.filter_values["continent"] = id
             local key, zone = next(self.current_available_zones)
             if zone then
-                UIDropDownMenu_SetText(self.ui_frame.zone_drop_down, zone.name)
+                UIDropDownMenu_SetText(zone.name, self.ui_frame.zone_drop_down)
                 self.filter_values["zone"] = zone.id
             else
-                UIDropDownMenu_SetText(self.ui_frame.zone_drop_down, "")
+                UIDropDownMenu_SetText("", self.ui_frame.zone_drop_down)
             end
         end
 
@@ -627,7 +627,7 @@ MTSLUI_FILTER_FRAME = {
     ChangeFilter = function(self, name_filter, value_filter, dropdown_filter, dropdown_text)
         if value_filter and value_filter ~= self.filter_values[name_filter] then
             self.filter_values[name_filter] = value_filter
-            UIDropDownMenu_SetText(dropdown_filter, dropdown_text)
+            UIDropDownMenu_SetText(dropdown_text, dropdown_filter)
             self:UpdateFilters()
         end
     end,
