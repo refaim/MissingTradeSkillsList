@@ -2,6 +2,8 @@
 -- Name: MTSLUI_Tools                                      --
 -- Description: contains all shared functions regarding UI --
 -------------------------------------------------------------
+local _G = _G or getfenv(0)
+
 MTSLUI_TOOLS = {
     -- flag to warn ppl to install tomtom before it can add waypoints
     tomtom_warned = false,

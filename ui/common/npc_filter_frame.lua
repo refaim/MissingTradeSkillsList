@@ -3,6 +3,7 @@
 -- Description: Shows all the filters for a list of npcs --
 -- Parent Frame: NpcExplorerFrame                        --
 -----------------------------------------------------------
+local _G = _G or getfenv(0)
 
 MTSLUI_NPC_FILTER_FRAME = {
     -- Keeps the current created frame

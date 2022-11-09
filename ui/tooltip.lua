@@ -1,6 +1,7 @@
 ----------------
 -- Enhance default tooltip to show characters on same realm/faction and the status for learning the recipe/skill
 ----------------
+local _G = _G or getfenv(0)
 
 MTSL_RECIPE_PROFESSION_TYPES  = {
     "Leatherworking",   -- _G.LE_ITEM_RECIPE_LEATHERWORKING    = 1

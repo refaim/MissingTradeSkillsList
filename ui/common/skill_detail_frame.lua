@@ -78,7 +78,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         self.labels.name.tooltip_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", self.ui_frame, nil, 300, text_gap + 5, false)
         self.labels.name.tooltip_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", text_label_right - 5, -2)
         self.labels.name.tooltip_frame:SetScript("OnEnter", function() event_class:ToolTipShowSkillName() end)
-        self.labels.name.tooltip_frame:SetScript("OnLeave", function() _G.GameTooltip:Hide() end)
+        self.labels.name.tooltip_frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
         text_label_top = text_label_top - text_gap
         -- Labels to show "Phase: <phase>"
         self.labels.phase.title = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("phase"), text_label_left, text_label_top, "LABEL", "TOPLEFT")
@@ -130,7 +130,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             end
         end)
         self.labels.type.tooltip_frame:SetScript("OnEnter", function() event_class:ToolTipShowSourceName() end)
-        self.labels.type.tooltip_frame:SetScript("OnLeave", function() _G.GameTooltip:Hide() end)
+        self.labels.type.tooltip_frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
         text_label_top = text_label_top - text_gap
         self.labels.source.title = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("obtained from"), text_label_left, text_label_top, "LABEL", "TOPLEFT")
         self.labels.source.value = MTSLUI_TOOLS:CreateLabel(self.ui_frame, "-", text_label_right, text_label_top, "TEXT", "TOPLEFT")
@@ -182,7 +182,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             end
         end)
         self.labels.alt_type.tooltip_frame:SetScript("OnEnter", function() event_class:ToolTipShowAltSourceName() end)
-        self.labels.alt_type.tooltip_frame:SetScript("OnLeave", function() _G.GameTooltip:Hide() end)
+        self.labels.alt_type.tooltip_frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
         text_label_top = text_label_top - text_gap
         self.labels.alt_source.title = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("obtained from"), text_label_left, text_label_top, "LABEL", "TOPLEFT")
         self.labels.alt_source.value = MTSLUI_TOOLS:CreateLabel(self.ui_frame, "-", text_label_right, text_label_top, "TEXT", "TOPLEFT")
@@ -303,7 +303,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- Show the tooltip for the skill/item on top of the detail skill frame
     ToolTipShow = function(self, parent_frame, text)
         if text ~= nil then
-            local GameTooltip = _G.GameTooltip
             GameTooltip:SetOwner(parent_frame, "ANCHOR_CURSOR")
             GameTooltip:ClearLines()
             GameTooltip:SetHyperlink(text)

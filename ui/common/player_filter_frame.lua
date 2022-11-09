@@ -3,6 +3,7 @@
 -- Description: Shows all the filters for a list of players --
 -- Parent Frame: -                                          --
 --------------------------------------------------------------
+local _G = _G or getfenv(0)
 
 MTSLUI_PLAYER_FILTER_FRAME = {
     -- Keeps the current created frame
