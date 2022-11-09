@@ -30,7 +30,7 @@ MTSLUI_LOCALES_LABELS = {
         ["Portuguese"] = "Exibir mensagem carregada pelo complemento",
     },
     ["addon not loaded"] = {
-        ["English"] = "Addon dit not load correctly!",
+        ["English"] = "Addon did not load correctly!",
         ["French"] = "L'addon ne s'est pas chargé correctement !",
         ["German"] = "Addon wurde nicht korrekt geladen!",
         ["Russian"] = "Аддон не смог загрузиться корректно!",
