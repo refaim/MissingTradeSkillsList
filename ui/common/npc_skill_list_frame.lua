@@ -154,7 +154,8 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
             self.LIST_BUTTONS[i].text:SetPoint("LEFT", 22, 1)
             self.LIST_BUTTONS[i]:Show()
             -- Change width of button based on active slider
-            self.LIST_BUTTONS[i]:SetSize(self.FRAME_WIDTH - 12 - 18 * slider_active, self.ITEM_HEIGHT)
+            self.LIST_BUTTONS[i]:SetWidth(self.FRAME_WIDTH - 12 - 18 * slider_active)
+            self.LIST_BUTTONS[i]:SetHeight(self.ITEM_HEIGHT)
         end
         -- hide the remaining buttons not shown when using horizontal split
         for i=amount_to_show + 1,self.MAX_ITEMS_SHOWN do
@@ -330,7 +331,8 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
 
     -- Refresh the UI based on the splitter (only to be called from Resize methode in this class)
     RefreshUI = function(self)
-        self.ui_frame:SetSize(self.FRAME_WIDTH, self.FRAME_HEIGHT)
+        self.ui_frame:SetWidth(self.FRAME_WIDTH)
+        self.ui_frame:SetHeight(self.FRAME_HEIGHT)
 
         -- refrehs/update ui only if window is shown
         if self.ui_frame:IsVisible() then

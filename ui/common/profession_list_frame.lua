@@ -83,7 +83,8 @@ MTSLUI_PROFESSION_LIST_FRAME = {
         local event_class = self
         -- Create the button:
         local button = CreateFrame("Button", name, event_class.ui_frame, "")
-        button:SetSize(21, 21)
+        button:SetWidth(21)
+        button:SetHeight(21)
         -- Add the icon:
         local icon = button:CreateTexture(nil, "ARTWORK")
         icon:SetAllPoints(true)

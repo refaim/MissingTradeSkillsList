@@ -165,7 +165,8 @@ MTSLUI_TOOLS = {
 
         local b = CreateFrame("Button", name, event_class.ui_frame)
         -- assume no scrollbar
-        b:SetSize(btn_width, btn_height)
+        b:SetWidth(btn_width)
+        b:SetHeight(btn_height)
         -- Custom textures for the button
         b:SetPushedTexture(TEXTURES_BUTTON.SELECTED)
         b:SetHighlightTexture(TEXTURES_BUTTON.HIGHLIGHTED)
