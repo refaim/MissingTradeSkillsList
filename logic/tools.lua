@@ -154,7 +154,7 @@ MTSL_TOOLS = {
     CountItemsInArray = function(self, list)
         local amount = 0
         if list ~= nil and list ~= {} then
-            amount = #list
+            amount = getn(list)
         end
         return amount
     end,
