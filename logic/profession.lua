@@ -199,7 +199,7 @@ MTSL_LOGIC_PROFESSION = {
             -- Skip the headers, only check real skills
             if skill_type ~= "header" then
                 local itemLink = GetCraftItemLink(i)
-                local itemID = itemLink:match("enchant:(%d+)")
+                local itemID = string.gfind(itemLink, "enchant:(%d+)")()
                 table.insert(learned_skill_ids, itemID)
             end
         end
@@ -241,7 +241,7 @@ MTSL_LOGIC_PROFESSION = {
             -- Skip the headers, only check real skills
             if skill_type ~= "header" then
                 local itemLink = GetTradeSkillItemLink(i)
-                local itemID = itemLink:match("item:(%d+)")
+                local itemID = string.gfind(itemLink, "item:(%d+)")()
                 table.insert(learned_skill_ids, itemID)
             end
         end
