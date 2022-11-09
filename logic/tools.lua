@@ -334,7 +334,7 @@ MTSL_TOOLS = {
     --
     -- return           boolean     Flag indicating if number is foundFound skill (nil if not  in list)
     ------------------------------------------------------------------------------------------------
-    ListContainsKeyIngoreCasingAndSpaces = function(self, list, key)
+    ListContainsKeyIgnoreCasingAndSpaces = function(self, list, key)
         if list == nil or list == {} then
             return false
         end

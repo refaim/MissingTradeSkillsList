@@ -175,7 +175,7 @@ MTSL_LOGIC_PROFESSION = {
             -- add all the skills, dont add a skill if obtainable for ohter classes
             for _, v in pairs(MTSL_DATA["skills"][profession_name]) do
                 if MTSL_LOGIC_SKILL:IsSkillAvailableInPhase(v, max_phase) == true and
-                        (v.classes == nil or (v.classes ~= nil and MTSL_TOOLS:ListContainsKeyIngoreCasingAndSpaces(v.classes, class_name) == true)) then
+                        (v.classes == nil or (v.classes ~= nil and MTSL_TOOLS:ListContainsKeyIgnoreCasingAndSpaces(v.classes, class_name) == true)) then
                     table.insert(profession_skills, v)
                 end
             end
