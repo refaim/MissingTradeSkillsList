@@ -118,7 +118,7 @@ MTSLUI_TOOLS = {
     -- returns      Object      The created label
     ----------------------------------------------------------------------------------------
     CreateCheckbox = function(self, owner, name, margin_left, margin_top)
-        local checkbox = CreateFrame("CheckButton", name, owner, "ChatConfigCheckButtonTemplate");
+        local checkbox = CreateFrame("CheckButton", name, owner, "UICheckButtonTemplate");
         checkbox:SetPoint("TOPLEFT", owner, "TOPLEFT", margin_left, margin_top)
         -- ignore the event for ticking checkbox
         checkbox:SetScript("OnClick", function() end)
