@@ -1,6 +1,6 @@
 # This is Vanilla 1.12 and Turtle 1.16 port of Classic 1.13 addon
 
-### [Download Vanilla addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/master.zip)
+### [Download Vanilla WoW addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/master.zip)
 ### [Download Turtle WoW addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/turtle.zip)
 ### [See original Classic WoW version](https://github.com/Thumbkin/MissingTradeSkillsList_Classic)
 
