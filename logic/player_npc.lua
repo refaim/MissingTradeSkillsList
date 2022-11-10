@@ -703,24 +703,6 @@ MTSL_LOGIC_PLAYER_NPC = {
     end,
 
     ----------------------------------------------------------------------------------------
-    -- Check if we unlearned a profession (No need for cooking or First Aid, can't unlearn those)
-    ----------------------------------------------------------------------------------------
-    CheckProfessions = function(self)
-        local unlearned = false
-        if MTSL_CURRENT_PLAYER ~= nil and MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil then
-            for _, v in pairs(MTSL_CURRENT_PLAYER.TRADESKILLS) do
-                -- Cant unlearn secondary profs, so skip those
-                if v.NAME and MTSL_LOGIC_PROFESSION:IsSecondaryProfession(v.NAME) == false and not IsSpellKnown(v.SPELLID_HIGHEST_KNOWN_RANK) then
-                    -- delete the saved data
-                    v = nil
-                    unlearned = true
-                end
-            end
-        end
-        return unlearned
-    end,
-
-    ----------------------------------------------------------------------------------------
     -- Check if we unlearned a specialisation
     ----------------------------------------------------------------------------------------
     CheckSpecialisations = function(self)
