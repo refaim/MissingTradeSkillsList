@@ -1,17 +1,15 @@
-# This is WIP Vanilla port of Classic addon
+# This is Vanilla 1.12 and Turtle 1.16 port of Classic 1.13 addon
 
 ### [Download Vanilla addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/master.zip)
 ### [Download Turtle WoW addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/turtle.zip)
+### [See original Classic WoW version](https://github.com/Thumbkin/MissingTradeSkillsList_Classic)
 
 # MissingTradeSkillsList
-Addon for World Of Warcraft Classic v1.12
 Shows the missing recipes/skills for a tradeskill and where to get them
-Addon only works **all** languages now! (MTSL Options menu still only shown in English only)
-
-Please **donate** (paypal to thumbkin83@gmail.com) if you want to support this addon!
 
 ### Author
-Thumbkin (Retail: EU-Burning Steppes, Classic: EU-Pyrewood Village)
+- Original version: Thumbkin (Retail: EU-Burning Steppes, Classic: EU-Pyrewood Village)
+- Vanilla port: Refaim
 
 ### Screenshots
 MTSL - Vertical split (Change using options menu)
@@ -30,7 +28,6 @@ Minimap button & Enhanced tooltip
 ![alt text](http://www.thumbkin.be/mtsl/images/classic/mtsl_minimap_tooltips.png "Missing TradeSkills List - Minimap Button & Enhanced tooltip")
 
 ### Key Features
-
 * Data patch phase is automatic set based on server version
 * List of all available skills & recipes with correct data for Alchemy, Blacksmithing, Cooking, Enchanting, Engineering, First Aid, Fishing, Herbalism, Leatherworking, Mining, Poisons, Skinning & Tailoring
 * View missing skills for a profession (open tradeskill frame and use MTSL button, except Fishing, Herbalism & Skinning)
@@ -49,19 +46,7 @@ Minimap button & Enhanced tooltip
 * Ability to drag each MTSL frame around
 
 ### Latest version (v1.13.54)
-
 * Updated skill, item & specialisation translations for all languages except for Korean, simplified Chinese and traditional Chinese to match live data
 * Updated wrong prices from vendor to match live data
-
-### Support
-
-Found a bug? Want to report wrong data?
-Make an issue here: https://github.com/Thumbkin/MissingTradeSkillsList_Classic/issues
-Make sure to include the following details when making an issue:
-* Locale you play the game in (a.k.a. the language you play the game in)
-* Brief description of the problem
-* The error message (if its a bugreport)
-* The saved content of MissingTradeSkillsList.lua in \_classic\_era\_/WTF/Account/\<your account name\>/SavedVariables/
-* Add screenshot(s) to describe the problem or from the errror (optional)
 
 Full version history is available in VERSION_HISTORY.md inside zip addon
