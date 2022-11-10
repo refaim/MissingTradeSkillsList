@@ -209,6 +209,36 @@ MTSL_LOGIC_PROFESSION = {
         return learned_skill_ids
     end,
 
+    GetKnownSkillIdToNameTableForCurrentCraft = function(self)
+        local result = {}
+        for i = 1, GetNumCrafts() do
+            local skill_name, _, skill_type = GetCraftInfo(i)
+            if skill_type ~= "header" then
+                result[self.ExtractSkillIdFromItemLink(GetCraftItemLink(i), "enchant")] = skill_name
+            end
+        end
+        return result
+    end,
+
+    GetKnownSkillNameKeyToIdTableForCurrentTradeSkill = function(self)
+        local result = {}
+        for i = 1, GetNumTradeSkills() do
+            local skill_name, skill_type = GetTradeSkillInfo(i)
+            if skill_type ~= "header" then
+                result[self.GetSkillNameKey(skill_name)] = self.ExtractSkillIdFromItemLink(GetTradeSkillItemLink(i), "item")
+            end
+        end
+        return result
+    end,
+
+    GetSkillNameKey = function(self, skill_name)
+        return MTSL_TOOLS:StripSpacesAndLower(skill_name)
+    end,
+
+    ExtractSkillIdFromItemLink = function(self, link, prefix)
+        return tonumber(string.gfind(link, prefix .. ":(%d+)")())
+    end,
+
     -----------------------------------------------------------------------------------------------
     -- Gets a list of localised skill names for the current tradeskill that are learned
     --
