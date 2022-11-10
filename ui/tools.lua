@@ -97,9 +97,9 @@ MTSLUI_TOOLS = {
                 swap_button:SetText(v.button_text)
                 -- Set Position to top right of last button
                 swap_button:SetPoint("TOPRIGHT", last_swap_button, "TOPLEFT", 0, 0)
-                swap_button:SetScript("OnClick", function()
-                    _G[v.frame_name]:Show()
-                end)
+                swap_button:SetScript("OnClick", MTSL_TOOLS:BindArguments(function(frame_name)
+                    _G[frame_name]:Show()
+                end, v.frame_name))
                 last_swap_button = swap_button
             end
         end
