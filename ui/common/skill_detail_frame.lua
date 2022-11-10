@@ -279,9 +279,10 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     end,
 
     InsertIntoChat = function(self, item_name)
-        if ChatFrame1EditBox and ChatFrame1EditBox:IsVisible() then
+        local edit_box = DEFAULT_CHAT_FRAME.editBox
+        if edit_box and edit_box:IsVisible() then
             local link = self:GetItemLink(item_name)
-            if link then ChatFrame1EditBox:Insert(link) end
+            if link then edit_box:Insert(link) end
         end
     end,
 
