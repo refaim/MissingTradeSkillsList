@@ -143,10 +143,10 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI(force)
             local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, MTSL_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
             local amount_missing = MTSL_LOGIC_PLAYER_NPC:GetAmountMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
             self.progressbar:UpdateStatusbar(0, skills_phase_max_amount, skills_max_amount, amount_missing)
-            self:NoSkillSelected()
 
-            -- if we miss skills, auto select first one (only do if we dont have one selected)
-            if not self.skill_list_frame:HasSkillSelected() or not self.skill_list_frame:StillMissingSkill() then
+            self:NoSkillSelected()
+            -- if we miss skills, auto select first one
+            if amount_missing > 0 then
                 self.skill_list_frame:HandleSelectedListItem(1)
             end
         end
@@ -187,6 +187,5 @@ end
 -- When no skill is selected
 ----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:NoSkillSelected()
-    self.skill_list_frame:DeselectCurrentSkillButton()
-    self.skill_detail_frame:ShowNoSkillSelected()
+    self.skill_list_frame:NoSkillsToShow()
 end

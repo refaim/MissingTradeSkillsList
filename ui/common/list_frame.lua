@@ -310,16 +310,6 @@ MTSLUI_LIST_FRAME = {
     end,
 
     ----------------------------------------------------------------------------------------------------------
-    -- Checks if current player is still missing the selected skill
-    ----------------------------------------------------------------------------------------------------------
-    StillMissingSkill = function(self)
-        if self.selected_list_item_id ~= nil then
-            return not IsSpellKnown(self.selected_list_item_id)
-        end
-        return true
-    end,
-
-    ----------------------------------------------------------------------------------------------------------
     -- Sort skills
     ----------------------------------------------------------------------------------------------------------
     SortSkills = function(self)
