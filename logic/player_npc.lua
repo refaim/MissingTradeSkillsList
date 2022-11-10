@@ -829,7 +829,7 @@ MTSL_LOGIC_PLAYER_NPC = {
                     table.insert(mobs, mob)
                 end
             else
-                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find mob with id " .. id .. " for " .. MTSL_CURRENT_PROFESSION.NAME .. ". Please report this bug!")
+                MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: Could not find mob with id " .. id .. ". Please report this bug!")
             end
         end
 
