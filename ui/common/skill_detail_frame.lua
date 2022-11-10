@@ -224,13 +224,12 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- Determine the number of label clicked in an area
     AddTomTomWayPoint = function(self, labels, text_gap, max_label_number)
         -- Calculate the clicked Y coordinate based on the used scale
-        local x, y = GetCursorPosition()
+        local _, y = GetCursorPosition()
         local s = labels.ui_frame:GetEffectiveScale()
-        x, y = x/s, y/s;
         local top = labels.ui_frame:GetTop()
         -- calculate how many labels we passed from top coordinate
         local label_number = 0
-        while top > y and label_number < max_label_number do
+        while top > y / s and label_number < max_label_number do
             top = top - text_gap
             label_number = label_number + 1
         end

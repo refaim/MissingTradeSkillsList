@@ -29,7 +29,6 @@ MTSLUI_PROFESSION_LIST_FRAME = {
         self.PROF_BGS = {}
         -- Create the buttons
         self.PROF_BUTTONS = {}
-        local left = 9
         local top = -2
         local i = 1
         while self.shown_professions[i] ~= nil do
@@ -146,7 +145,6 @@ MTSLUI_PROFESSION_LIST_FRAME = {
 
         local first_button_shown = 0
         if self.shown_professions ~= {} and self.shown_professions ~= nil then
-            local left = 9
             local top = -2
             local i = 1
             while self.PROF_BUTTONS[i] ~= nil do
@@ -229,7 +227,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
             self.selected_index = index
             self.PROF_BGS[self.selected_index]:Show()
 
-            local prof_skills = {}
+            local prof_skills
             -- Get all available skills for the profession if no player is selected
             if self.current_player == nil then
                 prof_skills = MTSL_LOGIC_PROFESSION:GetAllSkillsAndLevelsForProfession(self.shown_professions[index])

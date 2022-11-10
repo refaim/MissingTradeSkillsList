@@ -46,7 +46,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         -- try and load the player
         local current_player = MTSL_PLAYERS[realm][name]
 
-        local return_code = "none"
+        local return_code
 
         -- Player was saved before, so load it
         if current_player then

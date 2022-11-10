@@ -34,7 +34,7 @@ GameTooltip:HookScript("OnTooltipSetItem", function(self)
             local _, itemId, _  = strsplit(":", link)
             local prof_name = MTSL_RECIPE_PROFESSION_TYPES[subItemTypeId]
             -- add a line for each character on the same realm (but not current player itself) that knows the profession
-            local other_players = {}
+            local other_players
             if MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipFaction() == "any" then
                 other_players = MTSL_LOGIC_PLAYER_NPC:GetOtherPlayersOnCurrentRealmLearnedProfession(prof_name)
             else

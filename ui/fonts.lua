@@ -138,7 +138,7 @@ MTSLUI_FONTS = {
     -- returns          Array   The list of fonts
     --------------------------------------------------------------------------
     GetAvailableFonts = function(self)
-        local available_fonts = {}
+        local available_fonts
         if MTSLUI_CURRENT_LANGUAGE == "Russian" then
             available_fonts = {
                 {
