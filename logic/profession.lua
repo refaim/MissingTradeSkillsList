@@ -315,6 +315,11 @@ MTSL_LOGIC_PROFESSION = {
         return amount
     end,
 
+    IsSpecialisationKnown = function(self, specialisation_id)
+        -- TODO implement
+        return false
+    end,
+
     -----------------------------------------------------------------------------------------------
     -- Get list of specialisations for a profession
     --

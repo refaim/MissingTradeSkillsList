@@ -604,7 +604,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local unlearned_specs = {}
 
         for _, s in pairs(specialisations) do
-            if IsSpellKnown(s.id) then
+            if MTSL_LOGIC_PROFESSION:IsSpecialisationKnown(s.id) then
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].SPELLIDS_SPECIALISATION, s.id)
                 amount_specs_learned = amount_specs_learned + 1
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].LEARNED_SKILLS, s.id)
@@ -731,7 +731,7 @@ MTSL_LOGIC_PLAYER_NPC = {
                 if v.SPELLIDS_SPECIALISATION ~= nil and v.SPELLIDS_SPECIALISATION ~= {} then
                     local new_spellids_specialisation = {}
                     for _, s in pairs(v.SPELLIDS_SPECIALISATION) do
-                        if IsSpellKnown(s) then
+                        if MTSL_LOGIC_PROFESSION:IsSpecialisationKnown(s) then
                             -- Keep the specialisation
                             table.insert(new_spellids_specialisation, s)
                         -- We no longer know the specialisation

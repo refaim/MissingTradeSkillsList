@@ -511,7 +511,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             if current_xp_level == nil or current_xp_level <= 0 then
                 self.labels.requires_spec.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.ALL .. name_spec)
                 -- check if player knows the specialisation by using its spellid
-            elseif IsSpellKnown(specialisation) then
+            elseif MTSL_LOGIC_PROFESSION:IsSpecialisationKnown(specialisation) then
                 self.labels.requires_spec.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.YES .. name_spec)
             else
                 self.labels.requires_spec.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.NO .. name_spec)
