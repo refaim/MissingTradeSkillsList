@@ -29,22 +29,6 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
     -- height of the frame
     FRAME_HEIGHT_VERTICAL = 448, -- for 25 items, so 19 / item + margin
     FRAME_HEIGHT_HORIZONTAL = 145, -- for 7 items, so 19 / item + margin
-    -- textures representing the icon of the profession
-    TEXTURES_PROFESSION = {
-        ["Alchemy"] = "trade_alchemy",
-        ["Blacksmithing"] = "trade_blacksmithing",
-        ["Enchanting"] = "trade_engraving",
-        ["Engineering"] = "trade_engineering",
-        ["Herbalism"] = "spell_nature_naturetouchgrow",
-        ["Leatherworking"] = "inv_misc_armorkit_17",
-        ["Mining"] = "trade_mining",
-        ["Skinning"] = "inv_misc_pelt_wolf_01",
-        ["Tailoring"] = "trade_tailoring",
-        ["Cooking"] = "inv_misc_food_15",
-        ["First Aid"] = "spell_holy_sealofsacrifice",
-        ["Fishing"] = "trade_fishing",
-        ["Poisons"] =  "trade_brewpoison",
-    },
 
     ----------------------------------------------------------------------------------------------------------
     -- Intialises the NpcsListFrame
@@ -141,11 +125,7 @@ MTSLUI_NPC_SKILL_LIST_FRAME = {
             local current_skill = self.skills_of_npc[i + self.slider_offset - 1]
             -- Get the profession name of the skill
             local profession_name = MTSL_LOGIC_PROFESSION:GetProfessionNameBySkill(current_skill)
-            if self.TEXTURES_PROFESSION[profession_name] ~= nil then
-                self.LIST_BUTTONS[i].texture:SetTexture("Interface\\Icons\\" .. self.TEXTURES_PROFESSION[profession_name])
-            else
-                self.LIST_BUTTONS[i].texture:SetTexture("")
-            end
+            self.LIST_BUTTONS[i].texture:SetTexture(MTSLUI_PROFESSION_TEXTURES[profession_name])
             -- create the text to be shown
             local text_for_button =  MTSLUI_FONTS.COLORS.TEXT.NORMAL .. "[" .. current_skill.min_skill .. "] " .. MTSLUI_TOOLS:GetLocalisedData(current_skill)
             -- update & show the button

@@ -87,7 +87,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
         -- Add the icon:
         local icon = button:CreateTexture(nil, "ARTWORK")
         icon:SetAllPoints(true)
-        icon:SetTexture(MTSLUI_ICONS_PROFESSION[self.shown_professions[i]])
+        icon:SetTexture(MTSLUI_PROFESSION_TEXTURES[self.shown_professions[i]])
         button.icon = icon
 
         button:SetScript("OnClick", function()
@@ -151,7 +151,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
                 self.PROF_BGS[i]:Hide()
                 if self.shown_professions[i] ~= nil then
                     self.PROF_BGS[i]:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 0, top + 5)
-                    self.PROF_BUTTONS[i].icon:SetTexture(MTSLUI_ICONS_PROFESSION[self.shown_professions[i]])
+                    self.PROF_BUTTONS[i].icon:SetTexture(MTSLUI_PROFESSION_TEXTURES[self.shown_professions[i]])
                     self.PROF_BUTTONS[i]:SetPoint("CENTER", self.PROF_BGS[i], "CENTER", 0, 6)
                     -- update date text best on player or overall
                     if self.current_player ~= nil then

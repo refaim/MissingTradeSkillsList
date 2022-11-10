@@ -36,24 +36,20 @@ MTSLUI_ADDON = {
     }
 }
 
--- holds the icons of the professions
-MTSLUI_ICONS_PROFESSION = {
-    -- Primary professions
-    ["Alchemy"] = "136240",
-    ["Blacksmithing"] = "136241",
-    ["Enchanting"] = "136244",      -- craft
-    ["Engineering"] = "136243",
-    ["Herbalism"] = "136065",
-    ["Leatherworking"] = "133611",
-    ["Mining"] = "136248",
-    ["Skinning"] = "134366",
-    ["Tailoring"] = "136249",
-    -- Secondary professions
-    ["Cooking"] = "133971",
-    ["First Aid"] = "135966",
-    ["Fishing"] = "136245",
-    -- Rogue only
-    ["Poisons"] =  "136242",
+MTSLUI_PROFESSION_TEXTURES = {
+    ["Alchemy"] = "Interface\\Icons\\trade_alchemy",
+    ["Blacksmithing"] = "Interface\\Icons\\trade_blacksmithing",
+    ["Cooking"] = "Interface\\Icons\\inv_misc_food_15",
+    ["Enchanting"] = "Interface\\Icons\\trade_engraving",
+    ["Engineering"] = "Interface\\Icons\\trade_engineering",
+    ["First Aid"] = "Interface\\Icons\\spell_holy_sealofsacrifice",
+    ["Fishing"] = "Interface\\Icons\\trade_fishing",
+    ["Herbalism"] = "Interface\\Icons\\spell_nature_naturetouchgrow",
+    ["Leatherworking"] = "Interface\\Icons\\inv_misc_armorkit_17",
+    ["Mining"] = "Interface\\Icons\\trade_mining",
+    ["Poisons"] =  "Interface\\Icons\\trade_brewpoison",
+    ["Skinning"] = "Interface\\Icons\\inv_misc_pelt_wolf_01",
+    ["Tailoring"] = "Interface\\Icons\\trade_tailoring",
 }
 
 MTSLUI_ADDON_PATH = "Interface\\AddOns\\MissingTradeSkillsList"
