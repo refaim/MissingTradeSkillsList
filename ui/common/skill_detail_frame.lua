@@ -249,7 +249,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     end,
 
     LinkToChat = function(self, item_name, is_alt_down, is_ctrl_down, is_shift_down)
-        if MTSLUI_SAVED_VARIABLES:GetChatLinkEnabled()  == 1 then
+        if MTSLUI_SAVED_VARIABLES:GetChatLinkEnabled() then
             local link = self:GetItemLink(item_name)
             if link then
                 local channel = MTSLUI_SAVED_VARIABLES:GetChatLinkChannel()

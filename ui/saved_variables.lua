@@ -9,7 +9,7 @@ MTSLUI_PLAYER = {
     WELCOME_MSG = nil,
     AUTO_SHOW_MTSL = nil,
     -- first load after new version
-    NEW_VERSION = 1,
+    NEW_VERSION = true,
     MINIMAP = {
         ACTIVE = nil,
         ANGLE = nil,
@@ -74,7 +74,7 @@ MTSLUI_SAVED_VARIABLES = {
     -- available chat channels
     CHAT_CHANNELS = { "AUTO", "SAY", "GUILD", "PARTY", "RAID" },
     DEFAULT_TOOTLITP_FACTION = "current character",
-    DEFAULT_TOOTLITP_SHOW_KNOWN = "show",
+    DEFAULT_TOOTLITP_SHOW_KNOWN = true,
 
     -- Try and load the values from saved files
     Initialise = function(self)
@@ -140,10 +140,10 @@ MTSLUI_SAVED_VARIABLES = {
             end
 
             -- Only run once when new version of addon is installed
-            if MTSLUI_PLAYER.NEW_VERSION == 1 then
+            if MTSLUI_PLAYER.NEW_VERSION then
                 -- Overwrite current patch version to max
                 self:SetPatchLevelMTSL(MTSL_DATA.MAX_PATCH_LEVEL)
-                MTSLUI_PLAYER.NEW_VERSION = 0
+                MTSLUI_PLAYER.NEW_VERSION = false
             end
         end
     end,
@@ -155,8 +155,8 @@ MTSLUI_SAVED_VARIABLES = {
         MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: All saved variables have been reset to default values!")
         MTSLUI_PLAYER = {}
         -- Follows the order as shown on options menu
-        MTSLUI_PLAYER.WELCOME_MSG = 1
-        MTSLUI_PLAYER.AUTO_SHOW_MTSL = 1
+        MTSLUI_PLAYER.WELCOME_MSG = true
+        MTSLUI_PLAYER.AUTO_SHOW_MTSL = true
         self:ResetMinimap()
         MTSLUI_PLAYER.PATCH_LEVEL_MTSL = MTSL_DATA.MAX_PATCH_LEVEL
         self:ResetEnhancedTooltip()
@@ -241,7 +241,7 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     ResetMinimap = function(self)
         MTSLUI_PLAYER.MINIMAP = {}
-        MTSLUI_PLAYER.MINIMAP.ACTIVE = 1
+        MTSLUI_PLAYER.MINIMAP.ACTIVE = true
         MTSLUI_PLAYER.MINIMAP.ANGLE = self.DEFAULT_MINIMAP_ANGLE
         MTSLUI_PLAYER.MINIMAP.RADIUS = self.DEFAULT_MINIMAP_RADIUS
         MTSLUI_PLAYER.MINIMAP.SHAPE = self.DEFAULT_MINIMAP_SHAPE
@@ -255,14 +255,14 @@ MTSLUI_SAVED_VARIABLES = {
     ResetEnhancedTooltip = function(self)
         MTSLUI_PLAYER.TOOLTIP = {}
         MTSLUI_PLAYER.TOOLTIP.FACTIONS = self.DEFAULT_TOOTLITP_FACTION
-        MTSLUI_PLAYER.TOOLTIP.ACTIVE = 1
+        MTSLUI_PLAYER.TOOLTIP.ACTIVE = true
         MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN = self.DEFAULT_TOOTLITP_SHOW_KNOWN
     end,
 
     ResetLinkToChat = function(self)
         MTSLUI_PLAYER.LINK_TO_CHAT = {}
         MTSLUI_PLAYER.LINK_TO_CHAT.CHANNEL = self.DEFAULT_CHAT_CHANNEL
-        MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE = 1
+        MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE = true
     end,
 
     ResetMTSLLocation = function(self)
@@ -535,40 +535,34 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Sets the flag to say if we show welcome message or not
     --
-    -- @show_welcome        Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- @show Boolean
     ------------------------------------------------------------------------------------------------
-    SetShowWelcomeMessage = function(self, show_welcome)
-        MTSLUI_PLAYER.WELCOME_MSG = 1
-        if show_welcome == 0 or show_welcome == false then
-            MTSLUI_PLAYER.WELCOME_MSG = 0
-        end
+    SetShowWelcomeMessage = function(self, show)
+        MTSLUI_PLAYER.WELCOME_MSG = self:ConvertBooleanLikeValueToBoolean(show)
     end,
 
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we show welcome message or not
     --
-    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return Boolean
     ------------------------------------------------------------------------------------------------
     GetShowWelcomeMessage = function(self)
-        return MTSLUI_PLAYER.WELCOME_MSG
+        return self:ConvertBooleanLikeValueToBoolean(MTSLUI_PLAYER.WELCOME_MSG)
     end,
 
     ------------------------------------------------------------------------------------------------
     -- Sets the flag to show MTSL when opening a tradeskillframe/craftframe
     --
-    -- @auto_show_mtsl        Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- @show Boolean
     ------------------------------------------------------------------------------------------------
-    SetAutoShowMTSL = function(self, auto_show_mtsl)
-        MTSLUI_PLAYER.AUTO_SHOW_MTSL = 1
-        if auto_show_mtsl == nil or auto_show_mtsl == 0 or auto_show_mtsl == false then
-            MTSLUI_PLAYER.AUTO_SHOW_MTSL = 0
-        end
+    SetAutoShowMTSL = function(self, show)
+        MTSLUI_PLAYER.AUTO_SHOW_MTSL = self:ConvertBooleanLikeValueToBoolean(show)
     end,
 
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to show MTSL when opening a tradeskillframe/craftframe
     --
-    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return Boolean
     ------------------------------------------------------------------------------------------------
     GetAutoShowMTSL = function(self)
         return MTSLUI_PLAYER.AUTO_SHOW_MTSL
@@ -676,22 +670,19 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Sets the flag to say if we enhance tooltip or not
     --
-    -- @enhance_tooltip        Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- @active Boolean
     ------------------------------------------------------------------------------------------------
-    SetEnhancedTooltipActive = function(self, enhance_tooltip)
-        MTSLUI_PLAYER.TOOLTIP.ACTIVE = 1
-        if enhance_tooltip == 0 or enhance_tooltip == false then
-            MTSLUI_PLAYER.TOOLTIP.ACTIVE = 0
-        end
+    SetEnhancedTooltipActive = function(self, active)
+        MTSLUI_PLAYER.TOOLTIP.ACTIVE = self:ConvertBooleanLikeValueToBoolean(active)
     end,
 
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we enhance tooltip or not
     --
-    -- return           Number          Flag indicating to enhance tooltip or not (1 = yes, 0 = no)
+    -- return Boolean
     ------------------------------------------------------------------------------------------------
     GetEnhancedTooltipActive = function(self)
-        return MTSLUI_PLAYER.TOOLTIP.ACTIVE
+        return self:ConvertBooleanLikeValueToBoolean(MTSLUI_PLAYER.TOOLTIP.ACTIVE)
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -718,22 +709,28 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Sets the flag to say if we show or hide players tot know a recipe in a tooltip
     --
-    -- @show_known       Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- @show Boolean
     ------------------------------------------------------------------------------------------------
-    SetEnhancedTooltipShowKnown = function(self, show_known)
-        MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN = self.DEFAULT_TOOTLITP_SHOW_KNOWN
-        if show_known == "hide" then
-            MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN = show_known
-        end
+    SetEnhancedTooltipShowKnown = function(self, show)
+        MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN = self:ConvertShowKnownValueToBoolean(show)
     end,
 
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we show or hide players tot know a recipe in a tooltip
     --
-    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return Boolean
     ------------------------------------------------------------------------------------------------
     GetEnhancedTooltipShowKnown = function(self)
-        return MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN
+        return self:ConvertShowKnownValueToBoolean(MTSLUI_PLAYER.TOOLTIP.SHOW_KNOWN)
+    end,
+
+    ConvertShowKnownValueToBoolean = function(self, value)
+        if value == "show" then
+            value = true
+        elseif value == "hide" then
+            value = false
+        end
+        return self:ConvertBooleanLikeValueToBoolean(value)
     end,
 
     ValidateEnhancedTooltip = function(self)
@@ -745,13 +742,14 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Sets the flag to say if we show minimapbutton or not
     --
-    -- @show_minimap        Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- @active Boolean
     ------------------------------------------------------------------------------------------------
-    SetMinimapButtonActive = function(self, show_minimap)
-        MTSLUI_PLAYER.MINIMAP.ACTIVE = 1
-        MTSLUI_MINIMAP:Show()
-        if show_minimap == 0 or show_minimap == false then
-            MTSLUI_PLAYER.MINIMAP.ACTIVE = 0
+    SetMinimapButtonActive = function(self, active)
+        local value = self:ConvertBooleanLikeValueToBoolean(active)
+        MTSLUI_PLAYER.MINIMAP.ACTIVE = value
+        if value then
+            MTSLUI_MINIMAP:Show()
+        else
             MTSLUI_MINIMAP:Hide()
         end
     end,
@@ -759,10 +757,10 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we show minimapbutton or not
     --
-    -- return           Number          Flag indicating to show or not (1 = yes, 0 = no)
+    -- return Boolean
     ------------------------------------------------------------------------------------------------
     GetMinimapButtonActive = function(self)
-        return MTSLUI_PLAYER.MINIMAP.ACTIVE
+        return self:ConvertBooleanLikeValueToBoolean(MTSLUI_PLAYER.MINIMAP.ACTIVE)
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -851,22 +849,19 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     -- Sets the flag to say if we enable linking of spells/recipes to chat or not
     --
-    -- @link_to_chat        Number          Flag indicating to enble linking to chat or not (1 = yes, 0 = no)
+    -- @enabled Boolean
     ------------------------------------------------------------------------------------------------
-    SetChatLinkEnabled = function(self, link_to_chat)
-        MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE = 1
-        if link_to_chat == 0 or link_to_chat == false then
-            MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE = 0
-        end
+    SetChatLinkEnabled = function(self, enabled)
+        MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE = self:ConvertBooleanLikeValueToBoolean(enabled)
     end,
 
     ------------------------------------------------------------------------------------------------
     -- Gets the flag to say if we enable linking of spells/recipes to chat or not
     --
-    -- return           Number          Flag indicating to enble linking to chat or not (1 = yes, 0 = no)
+    -- return Boolean
     ------------------------------------------------------------------------------------------------
     GetChatLinkEnabled = function(self)
-        return MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE
+        return self:ConvertBooleanLikeValueToBoolean(MTSLUI_PLAYER.LINK_TO_CHAT.ACTIVE)
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -933,4 +928,8 @@ MTSLUI_SAVED_VARIABLES = {
     GetFontSizeTitle = function(self)
         return MTSLUI_PLAYER.FONT.SIZE.TITLE
     end,
+
+    ConvertBooleanLikeValueToBoolean = function(self, value)
+        return value == true or value == 1
+    end
 }

@@ -21,7 +21,7 @@ if false then
 -- Enrich the tooltip with alts info
 GameTooltip:HookScript("OnTooltipSetItem", function(self)
     -- Only update the tooltip when needed
-    if MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipActive() == 1 and MTSL_TOOLTIP_SHOWN <= 0 then
+    if MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipActive() and MTSL_TOOLTIP_SHOWN <= 0 then
          -- Mark the tooltip as shown
         MTSL_TOOLTIP_SHOWN = 1
         -- Find out if this is the first or second call of OnTooltipSetItem().
@@ -62,7 +62,7 @@ GameTooltip:HookScript("OnTooltipSetItem", function(self)
                             end
                         end
                         -- dont add to tooltip if we hide known players
-                        if (MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipShowKnown() == "show" and status_color == MTSLUI_FONTS.COLORS.AVAILABLE.YES) or
+                        if (MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipShowKnown() and status_color == MTSLUI_FONTS.COLORS.AVAILABLE.YES) or
                                 status_color ~= MTSLUI_FONTS.COLORS.AVAILABLE.YES then
                             local faction_color = MTSLUI_FONTS.COLORS.FACTION[string.upper(v.FACTION)]
                             GameTooltip:AddLine(MTSLUI_FONTS.TAB .. status_color  .. "[" .. v["TRADESKILLS"][prof_name]["SKILL_LEVEL"] .. "] " .. faction_color .. v["NAME"])

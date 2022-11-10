@@ -554,28 +554,22 @@ MTSLOPTUI_CONFIG_FRAME = {
         end
     end,
 
-    ShowValueInCheckBox = function(self, checkbox, value)
-        if value == 1 then checkbox:SetChecked(true)
-            -- using false or 0 does not work, has to be nil
-        else checkbox:SetChecked(nil) end
-    end,
-
     -- Show all the current values in the UI
     ResetUI = function(self)
-        self:ShowValueInCheckBox(self.welcome_check, self.config_values.welcome)
+        self.welcome_check:SetChecked(self.config_values.welcome)
 
-        self:ShowValueInCheckBox(self.autoshow_check, self.config_values.auto_show)
+        self.autoshow_check:SetChecked(self.config_values.auto_show)
         -- minimap
-        self:ShowValueInCheckBox(self.minimap_button_check, self.config_values.minimap.active)
+        self.minimap_button_check:SetChecked(self.config_values.minimap.active)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.minimap.shape), self.ui_frame.minimap_shape_drop_down)
         UIDropDownMenu_SetText(self.config_values.minimap.radius .. " px", self.ui_frame.minimap_radius_drop_down)
 
         -- Enchanced Tooltip
-        self:ShowValueInCheckBox(self.tooltip_check, self.config_values.tooltip.active)
+        self.tooltip_check:SetChecked(self.config_values.tooltip.active)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.faction), self.ui_frame.tooltip_faction_drop_down)
-        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.known), self.ui_frame.tooltip_known_drop_down)
+        UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.tooltip.known and "show" or "hide"), self.ui_frame.tooltip_known_drop_down)
         -- Link to chat
-        self:ShowValueInCheckBox(self.linktochat_check, self.config_values.chat.active)
+        self.linktochat_check:SetChecked(self.config_values.chat.active)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(self.config_values.chat.channel), self.ui_frame.chat_channel_drop_down)
 
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel(string.lower(self.config_values.location_mtsl.button)), self.ui_frame.location_mtsl_button_drop_down)

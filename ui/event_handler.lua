@@ -44,7 +44,7 @@ MTSLUI_EVENT_HANDLER = {
                     MTSLUI_SAVED_VARIABLES:LoadSavedSplitModes()
 
                     -- print loaded message if possible
-                    if MTSLUI_SAVED_VARIABLES:GetShowWelcomeMessage() == 1 then
+                    if MTSLUI_SAVED_VARIABLES:GetShowWelcomeMessage() then
                         MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. " (by " .. MTSLUI_ADDON.AUTHOR .. ")" .. MTSLUI_FONTS.COLORS.TEXT.TITLE .. " v" .. MTSLUI_ADDON.VERSION .. " loaded!")
                         MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .."MTSL: Using data for phase " .. MTSL_DATA.CURRENT_PATCH_LEVEL .. " (" .. MTSL_LOGIC_WORLD:GetZoneNameById(MTSL_DATA.PHASE_IDS[MTSL_DATA.CURRENT_PATCH_LEVEL]) .. ")")
                         if error_loading_player == "existing" then
@@ -362,7 +362,7 @@ MTSLUI_EVENT_HANDLER = {
         MTSLUI_MISSING_TRADESKILLS_FRAME:SetCurrentProfessionDetails(profession_name, current_skill_level, MTSL_CURRENT_PLAYER.XP_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].SPELLIDS_SPECIALISATION)
         MTSLUI_MISSING_TRADESKILLS_FRAME:NoSkillSelected()
         -- Show the frame if option is selected "auto"
-        if MTSLUI_SAVED_VARIABLES:GetAutoShowMTSL() == 1 then
+        if MTSLUI_SAVED_VARIABLES:GetAutoShowMTSL() then
             MTSLUI_MISSING_TRADESKILLS_FRAME:Show()
             MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI(1)
         end
