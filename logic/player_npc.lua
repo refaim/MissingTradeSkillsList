@@ -883,7 +883,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     end,
 
     GetCurrentPlayerIsInParty = function(self)
-        return GetNumGroupMembers() > 1
+        return GetNumPartyMembers() > 1
     end,
 
     GetCurrentPlayerIsInRaid = function(self)
