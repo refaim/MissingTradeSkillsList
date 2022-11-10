@@ -97,7 +97,7 @@ MTSLUI_TOOLS = {
                 swap_button:SetText(v.button_text)
                 -- Set Position to top right of last button
                 swap_button:SetPoint("TOPRIGHT", last_swap_button, "TOPLEFT", 0, 0)
-                swap_button:SetScript("OnClick", MTSL_TOOLS:BindArguments(function(frame_name)
+                swap_button:SetScript("OnClick", MTSL_TOOLS:BindArgument(function(frame_name)
                     _G[frame_name]:Show()
                 end, v.frame_name))
                 last_swap_button = swap_button
@@ -338,7 +338,7 @@ MTSLUI_TOOLS = {
             -- Dont allow it to be checked/ticked
             info.notCheckable = true
             -- top level has no submenu
-            info.func = MTSL_TOOLS:BindArguments(function(value)
+            info.func = MTSL_TOOLS:BindArgument(function(value)
                 if change_frame_name and _G[change_frame_name] then
                     change_handler(_G[change_frame_name], value.id, value.name)
                 else
@@ -368,7 +368,7 @@ MTSLUI_TOOLS = {
             info.text = v.name
             info.checked = v.checked
             -- top level has no submenu
-            info.func = MTSL_TOOLS:BindArguments(function(value)
+            info.func = MTSL_TOOLS:BindArgument(function(value)
                 if change_frame_name and _G[change_frame_name] then
                     change_handler(_G[change_frame_name], value.id, value.name)
                 else

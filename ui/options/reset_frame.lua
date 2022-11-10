@@ -28,14 +28,14 @@ MTSLOPTUI_RESET_FRAME = {
         -- add drop down list for realm & characters
         self.ui_frame.realm_drop_down = CreateFrame("Frame", "MTSLOPTUI_RESET_FRAME_DD_REALM", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.realm_drop_down:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 70, -22)
-        self.ui_frame.realm_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownRealms, self)
+        self.ui_frame.realm_drop_down.initialize = MTSL_TOOLS:BindArgument(self.CreateDropDownRealms, self)
         UIDropDownMenu_SetWidth(150, self.ui_frame.realm_drop_down)
         UIDropDownMenu_SetText(self.current_realm, self.ui_frame.realm_drop_down)
 
         self.ui_frame.player_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("character"), 280, -30, "LABEL", "TOPLEFT")
         self.ui_frame.player_drop_down = CreateFrame("Frame", "MTSLOPTUI_RESET_FRAME_DD_PLAYER", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.player_drop_down:SetPoint("TOPLEFT", self.ui_frame.realm_drop_down, "TOPRIGHT", 65, 0)
-        self.ui_frame.player_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownPlayersOnRealm, self)
+        self.ui_frame.player_drop_down.initialize = MTSL_TOOLS:BindArgument(self.CreateDropDownPlayersOnRealm, self)
         UIDropDownMenu_SetWidth(150, self.ui_frame.player_drop_down)
         UIDropDownMenu_SetText(self.current_player, self.ui_frame.player_drop_down)
 

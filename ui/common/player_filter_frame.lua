@@ -40,12 +40,13 @@ MTSLUI_PLAYER_FILTER_FRAME = {
         self:InitialiseData()
         -- create the container frame
         self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "", parent_frame, nil, self.FRAME_WIDTH, self.FRAME_HEIGHT, false)
+        self.filter_frame_name = filter_frame_name
         -- create a filter for sorting
         self.ui_frame.sort_by_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("sort"), 5, -5, "LABEL", "TOPLEFT")
         self.ui_frame.sort_drop_down = CreateFrame("Frame", filter_frame_name .. "_DD_SORTS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.sort_drop_down:SetPoint("TOPRIGHT", self.ui_frame, "TOPRIGHT", 10, 3)
         self.ui_frame.sort_drop_down.filter_frame_name = filter_frame_name
-        self.ui_frame.sort_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownSorting, self)
+        self.ui_frame.sort_drop_down.initialize = MTSL_TOOLS:BindArgument(self.CreateDropDownSorting, self)
         UIDropDownMenu_SetWidth(self.WIDTH_DD, self.ui_frame.sort_drop_down)
         UIDropDownMenu_SetText(self.sorts[self.current_sort]["name"], self.ui_frame.sort_drop_down)
         -- create a filter for realms
@@ -53,7 +54,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
         self.ui_frame.realm_drop_down = CreateFrame("Frame", filter_frame_name .. "_DD_REALMS", self.ui_frame, "UIDropDownMenuTemplate")
         self.ui_frame.realm_drop_down:SetPoint("TOPLEFT", self.ui_frame.sort_drop_down, "BOTTOMLEFT", 0, 2)
         self.ui_frame.realm_drop_down.filter_frame_name = filter_frame_name
-        self.ui_frame.realm_drop_down.initialize = MTSL_TOOLS:BindArguments(self.CreateDropDownRealms, self)
+        self.ui_frame.realm_drop_down.initialize = MTSL_TOOLS:BindArgument(self.CreateDropDownRealms, self, self.ui_frame.realm_drop_down.filter_frame_name)
         UIDropDownMenu_SetWidth(self.WIDTH_DD, self.ui_frame.realm_drop_down)
         if self.current_realm > 0 then
             UIDropDownMenu_SetText(MTSL_TOOLS:GetItemFromArrayByKeyValue(self.realms, "id", self.current_realms)["name"], self.ui_frame.realm_drop_down)
@@ -130,7 +131,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     -- Intialises drop down for zones
     ----------------------------------------------------------------------------------------------------------
     CreateDropDownRealms = function(self)
-        MTSLUI_TOOLS:FillDropDown(_G[self.filter_frame_name].realms, _G[self.filter_frame_name].ChangeRealmHandler, self.filter_frame_name)
+        MTSLUI_TOOLS:FillDropDown(self.realms, self.ChangeRealmHandler, self.filter_frame_name)
     end,
 
     ----------------------------------------------------------------------------------------------------------
@@ -156,7 +157,7 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     -- Intialises drop down for sorting
     ----------------------------------------------------------------------------------------------------------
     CreateDropDownSorting = function(self)
-        MTSLUI_TOOLS:FillDropDown( _G[self.filter_frame_name].sorts, _G[self.filter_frame_name].ChangeSortHandler, self.filter_frame_name)
+        MTSLUI_TOOLS:FillDropDown(self.sorts, self.ChangeSortHandler, self.filter_frame_name)
     end,
 
     --------------------------------------------------------------------------------------
