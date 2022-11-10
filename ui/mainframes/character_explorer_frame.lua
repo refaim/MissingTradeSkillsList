@@ -184,7 +184,7 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
             if self.current_profession_name ~= nil then
                 -- Get the list of skills which are found by the filters
                 local list_skills = MTSL_LOGIC_PLAYER_NPC:GetMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
-                local current_skill_level = MTSL_LOGIC_PLAYER_NPC:GetCurrentSkillLevelForProfession(self.current_profession_name)
+                local current_skill_level = MTSL_LOGIC_PLAYER_NPC:GetCurrentSkillLevelForProfession(MTSL_CURRENT_PLAYER.NAME, MTSL_CURRENT_PLAYER.REALM, self.current_profession_name)
                 local xp_level = MTSL_CURRENT_PLAYER.XP_LEVEL
                 self.skill_list_filter_frame:ChangeProfession(self.current_profession_name)
                 self.skill_list_frame:UpdatePlayerLevels(xp_level, current_skill_level)
