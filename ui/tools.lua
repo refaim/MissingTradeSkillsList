@@ -182,7 +182,7 @@ MTSLUI_TOOLS = {
         t:SetPoint("LEFT", 3, 0)
         b.texture = t
 
-        b:SetScript("OnClick", function(btn)
+        b:SetScript("OnClick", function()
             event_class:HandleSelectedListItem(nr_in_list)
         end)
 
