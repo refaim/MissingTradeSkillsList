@@ -878,28 +878,6 @@ MTSL_LOGIC_PLAYER_NPC = {
         return MTSL_TOOLS:SortArray(realm_names)
     end,
 
-    -----------------------------------------------------------------------------------------------
-    -- Get the number of players knowing a profession
-    --
-    -- @profession_name     String      The name of the profession needed by 1 char / realm
-    --
-    -- return               Array       The list of realm names
-    ------------------------------------------------------------------------------------------------
-    GetAmountOfPlayersKnowingProfession = function(self, profession_name)
-        local amount = 0
-
-        for _, r in pairs(MTSL_PLAYERS) do
-            -- loop all chars on realm until we find one with the profession
-            for _, p in pairs(r) do
-                if p.TRADESKILLS[profession_name] ~= nil then
-                    amount = amount + 1
-                end
-            end
-        end
-
-        return amount
-    end,
-
     GetCurrentPlayerIsInGuild = function(self)
         return MTSL_CURRENT_PLAYER.GUILD  ~= ""
     end,

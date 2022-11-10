@@ -108,13 +108,10 @@ MTSLUI_PLAYER_FILTER_FRAME = {
         }
 
         local used_realms
-        local amount_players = 0
-
         if self.current_profession == "" or self.current_profession == nil then
             used_realms = MTSL_LOGIC_PLAYER_NPC:GetRealmsWithPlayers()
         else
             used_realms = MTSL_LOGIC_PLAYER_NPC:GetRealmsWithPlayersKnowingProfession(self.current_profession)
-            amount_players = MTSL_LOGIC_PLAYER_NPC:GetAmountOfPlayersKnowingProfession(self.current_profession)
         end
 
         local i = 1
