@@ -66,7 +66,7 @@ MTSL_LOGIC_QUEST = {
     GetQuestsByIds = function(self, ids)
         local quests = {}
         for _, i in pairs(ids) do
-            table.insert(quests,  MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["quests"], i))
+            table.insert(quests, MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["quests"], i))
         end
         return quests
     end,

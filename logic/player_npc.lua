@@ -475,7 +475,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- return               Boolean     Flag indicating if learend or not
     ------------------------------------------------------------------------------------------------
-    HasLearnedSkillForProfession = function(self,  player_name, realm_name, profession_name, skill_id)
+    HasLearnedSkillForProfession = function(self, player_name, realm_name, profession_name, skill_id)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
 
         -- Check if player exits
@@ -502,7 +502,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- return               Boolean     Flag indicating if learend or not
     ------------------------------------------------------------------------------------------------
-    HasLearnedProfession = function(self,  player_name, realm_name, profession_name)
+    HasLearnedProfession = function(self, player_name, realm_name, profession_name)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
 
         -- Check if player exits
@@ -526,7 +526,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     --
     -- return               Number      The current skill level
     ------------------------------------------------------------------------------------------------
-    GetCurrentSkillLevelForProfession = function(self,  player_name, realm_name, profession_name)
+    GetCurrentSkillLevelForProfession = function(self, player_name, realm_name, profession_name)
         local player = self:GetPlayerOnRealm(player_name, realm_name)
 
         -- Check if player exits

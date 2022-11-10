@@ -30,7 +30,7 @@ MTSLUI_PROGRESSBAR = {
         self.ui_frame.progressbar.ui_frame.texture:SetPoint("TOPLEFT", self.ui_frame.progressbar.ui_frame, "TOPLEFT", 4, -3)
         self.ui_frame.progressbar.ui_frame.texture:SetStatusBarTexture("Interface/PaperDollInfoFrame/UI-Character-Skills-Bar")
 
-        self.ui_frame.progressbar.ui_frame.counter = MTSLUI_TOOLS:CreateBaseFrame("Frame",  name .. "_PB_Counter",  self.ui_frame.progressbar.ui_frame, nil, pb_width, self.HEIGHT_PROGRESS_BAR, true)
+        self.ui_frame.progressbar.ui_frame.counter = MTSLUI_TOOLS:CreateBaseFrame("Frame", name .. "_PB_Counter", self.ui_frame.progressbar.ui_frame, nil, pb_width, self.HEIGHT_PROGRESS_BAR, true)
         self.ui_frame.progressbar.ui_frame.counter:SetPoint("TOPLEFT", self.ui_frame.progressbar.ui_frame, "TOPLEFT", 0, 0)
         -- Status text
         self.ui_frame.progressbar.ui_frame.counter.text = MTSLUI_TOOLS:CreateLabel(self.ui_frame.progressbar.ui_frame.counter, "", 0, 0, "LABEL", "CENTER")

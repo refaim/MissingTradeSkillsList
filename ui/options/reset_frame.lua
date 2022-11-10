@@ -70,7 +70,7 @@ MTSLOPTUI_RESET_FRAME = {
         end)
         -- Reset all
         self.ui_frame.reset_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_FONTS.COLORS.TEXT.ERROR .. MTSLUI_TOOLS:GetLocalisedLabel("permanent"), 25, -75, "TITLE", "TOPLEFT")
-        self.reset_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_ResetAll_Button", self.ui_frame, "UIPanelButtonTemplate",  self.BUTTON_WIDTH + 50, self.BUTTON_HEIGHT)
+        self.reset_btn = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLOPTUI_ResetAll_Button", self.ui_frame, "UIPanelButtonTemplate", self.BUTTON_WIDTH + 50, self.BUTTON_HEIGHT)
         self.reset_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left - 50, -65)
         self.reset_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("delete all"))
         self.reset_btn:SetScript("OnClick", function()

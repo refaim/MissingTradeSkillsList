@@ -61,7 +61,7 @@ MTSLUI_MINIMAP = {
         self.ui_frame:SetScript("OnDragStop", MTSLUI_MINIMAP.OnMouseUp)
         self.ui_frame:SetScript("OnMouseDown", MTSLUI_MINIMAP.OnMouseDown)
         self.ui_frame:SetScript("OnMouseUp", MTSLUI_MINIMAP.OnMouseUp)
-        self.ui_frame:SetScript("OnUpdate",  MTSLUI_MINIMAP.OnUpdate)
+        self.ui_frame:SetScript("OnUpdate", MTSLUI_MINIMAP.OnUpdate)
 
         -- Show the tooltip when mouse over
         self.ui_frame:SetScript("OnEnter", function()
