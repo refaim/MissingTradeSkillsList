@@ -237,7 +237,7 @@ MTSL_LOGIC_PROFESSION = {
         local learned_skill_ids = {}
         -- Loop all known skills
         for i=1,GetNumTradeSkills() do
-            local _ ,skill_type = GetTradeSkillInfo(i)
+            local _, skill_type = GetTradeSkillInfo(i)
             -- Skip the headers, only check real skills
             if skill_type ~= "header" then
                 local itemLink = GetTradeSkillItemLink(i)

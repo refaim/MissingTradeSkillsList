@@ -26,5 +26,5 @@ MTSL_DATA = {
     MAX_PATCH_LEVEL = 6,
     CURRENT_PATCH_LEVEL = 5,
     -- Phases by id: MC, DiM, BWL, ZG, AQ, Naxx
-    PHASE_IDS = { 2717, 2557, 2677 ,1977, 3428, 3456 }
+    PHASE_IDS = { 2717, 2557, 2677, 1977, 3428, 3456 }
 }
