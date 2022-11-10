@@ -44,7 +44,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 90,
-        ["min_xp_level"] = 19,
+        ["min_xp_level"] = 18,
         ["name"] = {
             ["Chinese"] = "干烤狼肉串",
             ["English"] = "Seasoned Wolf Kabobs",
@@ -164,7 +164,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 385,
-        ["min_xp_level"] = 12,
+        ["min_xp_level"] = 10,
         ["name"] = {
             ["Chinese"] = "捕猎鳄鱼",
             ["English"] = "Crocolisk Hunting",
@@ -184,7 +184,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 418,
-        ["min_xp_level"] = 9,
+        ["min_xp_level"] = 7,
         ["name"] = {
             ["Chinese"] = "塞尔萨玛血肠",
             ["English"] = "Thelsamar Blood Sausages",
@@ -204,7 +204,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 429,
-        ["min_xp_level"] = 11,
+        ["min_xp_level"] = 10,
         ["name"] = {
             ["Chinese"] = "荒野之心",
             ["English"] = "Wild Hearts",
@@ -424,7 +424,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 1559,
-        ["min_xp_level"] = 35,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "闪光弹的制法",
             ["English"] = "Flash Bomb Recipe",
@@ -464,7 +464,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 1618,
-        ["min_xp_level"] = 10,
+        ["min_xp_level"] = 1,
         ["name"] = {
             ["Chinese"] = "赤脊山的补给",
             ["English"] = "Gearing Redridge",
@@ -504,7 +504,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2203,
-        ["min_xp_level"] = 42,
+        ["min_xp_level"] = 40,
         ["name"] = {
             ["Chinese"] = "荒芜之地的材料 II",
             ["English"] = "Badlands Reagent Run II",
@@ -604,7 +604,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2501,
-        ["min_xp_level"] = 39,
+        ["min_xp_level"] = 40,
         ["name"] = {
             ["Chinese"] = "荒芜之地的材料 II",
             ["English"] = "Badlands Reagent Run II",
@@ -884,7 +884,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2848,
-        ["min_xp_level"] = 40,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮护肩",
             ["English"] = "Wild Leather Shoulders",
@@ -904,7 +904,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2849,
-        ["min_xp_level"] = 43,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮外衣",
             ["English"] = "Wild Leather Vest",
@@ -924,7 +924,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2850,
-        ["min_xp_level"] = 40,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮头盔",
             ["English"] = "Wild Leather Helmet",
@@ -944,7 +944,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2851,
-        ["min_xp_level"] = 41,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮战靴",
             ["English"] = "Wild Leather Boots",
@@ -964,7 +964,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2852,
-        ["min_xp_level"] = 41,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮护腿",
             ["English"] = "Wild Leather Leggings",
@@ -984,7 +984,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2853,
-        ["min_xp_level"] = 45,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮护甲大师",
             ["English"] = "Master of the Wild Leather",
@@ -1004,7 +1004,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2855,
-        ["min_xp_level"] = 41,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮护肩",
             ["English"] = "Wild Leather Shoulders",
@@ -1024,7 +1024,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2856,
-        ["min_xp_level"] = 39,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮外衣",
             ["English"] = "Wild Leather Vest",
@@ -1044,7 +1044,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2857,
-        ["min_xp_level"] = 44,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮头盔",
             ["English"] = "Wild Leather Helmet",
@@ -1064,7 +1064,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2858,
-        ["min_xp_level"] = 41,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮战靴",
             ["English"] = "Wild Leather Boots",
@@ -1084,7 +1084,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2859,
-        ["min_xp_level"] = 41,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮护腿",
             ["English"] = "Wild Leather Leggings",
@@ -1104,7 +1104,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 2860,
-        ["min_xp_level"] = 45,
+        ["min_xp_level"] = 30,
         ["name"] = {
             ["Chinese"] = "蛮皮护甲大师",
             ["English"] = "Master of the Wild Leather",
@@ -1253,7 +1253,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 4161,
-        ["min_xp_level"] = 5,
+        ["min_xp_level"] = 1,
         ["name"] = {
             ["Chinese"] = "卡多雷的菜谱",
             ["English"] = "Recipe of the Kaldorei",
@@ -1498,7 +1498,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 5518,
-        ["min_xp_level"] = 57,
+        ["min_xp_level"] = 56,
         ["name"] = {
             ["Chinese"] = "戈多克食人魔装",
             ["English"] = "The Gordok Ogre Suit",
@@ -1922,7 +1922,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 8313,
-        ["min_xp_level"] = 55,
+        ["min_xp_level"] = 54,
         ["name"] = {
             ["Chinese"] = "分享知识",
             ["English"] = "Sharing the Knowledge",
@@ -1942,7 +1942,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 8323,
-        ["min_xp_level"] = 40,
+        ["min_xp_level"] = 54,
         ["name"] = {
             ["Chinese"] = "真正的信徒",
             ["English"] = "True Believers",
@@ -2000,7 +2000,7 @@ MTSL_DATA["quests"] = {
     },
     {
         ["id"] = 8798,
-        ["min_xp_level"] = 52,
+        ["min_xp_level"] = 55,
         ["name"] = {
             ["Chinese"] = "你自己的机械雪人",
             ["English"] = "A Yeti of Your Own",
