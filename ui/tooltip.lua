@@ -17,6 +17,7 @@ MTSL_RECIPE_PROFESSION_TYPES  = {
 -- variable to avoid adding the info more than once to the tooltip
 local MTSL_TOOLTIP_SHOWN = 0
 
+if false then
 -- Enrich the tooltip with alts info
 GameTooltip:HookScript("OnTooltipSetItem", function(self)
     -- Only update the tooltip when needed
@@ -77,3 +78,4 @@ end)
 GameTooltip:HookScript("OnTooltipCleared", function(self)
     MTSL_TOOLTIP_SHOWN = 0
 end)
+end
