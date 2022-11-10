@@ -12,7 +12,7 @@ SLASH_MTSL2 = "/MTSL"
 ------------------------------------------------------------------------------------------------
 -- Handles the event when slashcommand is typed in chat
 ------------------------------------------------------------------------------------------------
-function SlashCmdList.MTSL (msg, editbox)
+function SlashCmdList.MTSL(msg, editbox)
     -- Only execute if addon is fully loaded
     if MTSLUI_EVENT_HANDLER:IsAddonLoaded() then
         MTSLUI_EVENT_HANDLER:SLASH_COMMAND(msg)

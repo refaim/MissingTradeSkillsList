@@ -171,7 +171,7 @@ end
 -- @force                   Number      Flag indication if we have to force a refresh (1 == yes)
 -- @profession_name         String      The name of the profession
 ----------------------------------------------------------------------------------------------------------
-function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI (force)
+function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
     -- only refresh if this window is visible
     if self:IsShown() or force == 1 then
         -- reset the filters when refresh of ui is forced

@@ -124,7 +124,7 @@ end
 ----------------------------------------------------------------------------------------------------------
 -- Refresh the ui of the MTSLUI_MISSING_TRADESKILLS_FRAME
 ----------------------------------------------------------------------------------------------------------
-function MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI (force)
+function MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI(force)
     -- only refresh if this window is visible
     if self:IsShown() or force == 1 then
         -- reset the filters when refresh of ui is forced
