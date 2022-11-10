@@ -1,6 +1,7 @@
 # This is WIP Vanilla port of Classic addon
 
 ### [Download Vanilla addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/master.zip)
+### [Download Turtle WoW addon version](https://github.com/refaim/MissingTradeSkillsList-vanilla/archive/refs/heads/turtle.zip)
 
 # MissingTradeSkillsList
 Addon for World Of Warcraft Classic v1.12
