@@ -495,28 +495,6 @@ MTSLUI_FILTER_FRAME = {
         end
     end,
 
-    -- (un)checks 1 checkbox in category and gives other ones opposite status
-    InvertCheckboxValues = function(self, value_name, value)
-        local dropdownitem = MTSL_TOOLS:GetItemFromArrayByKeyValue(self.drop_down_lists[value_name], "id", value)
-        local inverse_value = nil
-        if dropdownitem then
-            if dropdownitem.checked == true then
-                dropdownitem.checked = nil
-                inverse_value = true
-            else
-                dropdownitem.checked = true
-            end
-        end
-        -- swap the others ones
-        for _, k in pairs(self.drop_down_lists[value_name]) do
-            if k.id ~= values then
-                k.checked = inverse_value
-            end
-        end
-        self:RebuildFilterValuesForValue(value_name)
-    end,
-
-
     RebuildFilterValuesForValue = function(self, value_name)
         -- Rebuild the list with filter values
         self.filter_values[value_name] = {}
