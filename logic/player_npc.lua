@@ -868,7 +868,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         for k, r in pairs(MTSL_PLAYERS) do
             -- loop all chars on realm until we find one with the profession
             for _, p in pairs(r) do
-                if k ~= last_added_realm and MTSL_TOOLS:NamedListContainsKey(p.TRADESKILLS, profession_name) then
+                if k ~= last_added_realm and p.TRADESKILLS[profession_name] ~= nil then
                     table.insert(realm_names, k)
                     last_added_realm = k
                 end
@@ -891,7 +891,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         for _, r in pairs(MTSL_PLAYERS) do
             -- loop all chars on realm until we find one with the profession
             for _, p in pairs(r) do
-                if MTSL_TOOLS:NamedListContainsKey(p.TRADESKILLS, profession_name) then
+                if p.TRADESKILLS[profession_name] ~= nil then
                     amount = amount + 1
                 end
             end

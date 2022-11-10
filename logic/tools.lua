@@ -353,27 +353,6 @@ MTSL_TOOLS = {
     end,
 
     ------------------------------------------------------------------------------------------------
-    -- Searches an named array to see if it contains a key for given value
-    --
-    -- @list            Array       The list to search
-    -- @key             String      The key to search
-    --
-    -- return           boolean     Flag indicating if number is foundFound skill (nil if not  in list)
-    ------------------------------------------------------------------------------------------------
-    NamedListContainsKey = function(self, list, key)
-        if list == nil or list == {} then
-            return false
-        end
-        for k, _ in pairs(list) do
-            if k == key then
-                return true
-            end
-        end
-        -- not found
-        return false
-    end,
-
-    ------------------------------------------------------------------------------------------------
     -- Trims all the spaces in a string and turn it to lowercase
     --
     -- @text            String      The text to convert
