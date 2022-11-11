@@ -17905,7 +17905,7 @@ MTSL_DATA["npcs"] = {
             ["Spanish"] = "Lord Kazzak",
             ["Taiwanese"] = "卡紮克",
         },
-        ["phase"] = 1,
+        ["phase"] = 2,
         ["reacts"] = "Hostile",
         ["xp_level"] = {
             ["is_elite"] = 0,
