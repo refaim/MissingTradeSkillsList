@@ -201,7 +201,9 @@ MTSLUI_PLAYER_LIST_FRAME = {
             self.selected_list_item_id = nil
             self.selected_button_index = nil
             self.LIST_BUTTONS[id]:Deselect()
-            self.profession_list_frame:ShowNoProfessions()
+            if self.profession_list_frame ~= nil then
+                self.profession_list_frame:ShowNoProfessions()
+            end
         else
             -- Deselect the current button if visible
             self:DeselectCurrentPlayerButton()
