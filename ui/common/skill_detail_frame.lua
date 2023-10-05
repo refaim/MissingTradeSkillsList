@@ -267,6 +267,8 @@ MTSLUI_SKILL_DETAIL_FRAME = {
                 if channel == "RAID" and MTSL_LOGIC_PLAYER_NPC:GetCurrentPlayerIsInRaid() == false then channel = "SAY" end
                 SendChatMessage(link, channel)
             end
+        else
+            self:InsertIntoChat(item_name)
         end
     end,
 
@@ -279,21 +281,14 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     end,
 
     InsertIntoChat = function(self, item_name)
-        local edit_box = DEFAULT_CHAT_FRAME.editBox
-        if edit_box and edit_box:IsVisible() then
-            local link = self:GetItemLink(item_name)
-            if link then edit_box:Insert(link) end
-        end
+        ChatFrameEditBox:Show()
+        ChatFrameEditBox:Insert(self:GetItemLink(item_name))
     end,
 
-    GetItemLink = function(self, item_name)
-        local _, link = GetItemInfo(item_name)
-        local attempts = 0
-        while link == nil and attempts < 5 do
-            link = self:GetItemLink(item_name)
-            attempts = attempts + 1
-        end
-        return link
+    GetItemLink = function(self, item_string)
+        local item_name, _, item_quality, _, _, _, _, _, _ = GetItemInfo(item_string)
+        local _, _, _, hex = GetItemQualityColor(item_quality)
+        return hex .. "|H" .. item_string .. "|h[" .. item_name .. "]|h|r"
     end,
 
     -- Show the tooltip for the skill/item on top of the detail skill frame

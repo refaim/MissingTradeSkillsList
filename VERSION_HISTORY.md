@@ -1,5 +1,9 @@
 ## Version History
 
+### v1.15 (Oct 6, 2021)
+
+* Fix linking recipes to chat
+
 ### v1.14 (Oct 6, 2021)
 
 * Port to Vanilla WoW 
