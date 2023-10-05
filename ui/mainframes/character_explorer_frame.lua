@@ -190,8 +190,8 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
                 self.skill_list_frame:UpdatePlayerLevels(xp_level, current_skill_level)
                 self.skill_list_frame:ChangeProfession(self.current_profession_name, list_skills)
                 -- Update the progressbar on bottom
-                local skills_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, MTSL_DATA.MAX_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
-                local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, MTSL_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
+                local skills_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, TRADE_SKILLS_DATA.MAX_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
+                local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
                 local amount_missing = MTSL_LOGIC_PLAYER_NPC:GetAmountMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
                 self.progressbar:UpdateStatusbar(0, skills_phase_max_amount, skills_max_amount, amount_missing)
 

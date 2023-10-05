@@ -36,7 +36,7 @@ MTSL_LOGIC_ITEM_OBJECT = {
     -- return           Object      Found item (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetObjectById = function(self, id)
-        return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["objects"], "id", id)
+        return MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["objects"], "id", id)
     end,
 
     -----------------------------------------------------------------------------------------------
@@ -74,6 +74,6 @@ MTSL_LOGIC_ITEM_OBJECT = {
     -- return               Object      Found item (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetItemForProfessionById = function(self, id, profession_name)
-        return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["items"][profession_name], "id", id)
+        return MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["items"][profession_name], "id", id)
     end,
 }

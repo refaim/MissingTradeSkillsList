@@ -11,7 +11,7 @@ MTSL_LOGIC_WORLD = {
     -- returns      Array       The continent
     ------------------------------------------------------------------------------------------------
     GetZoneByName = function(self, name)
-        return MTSL_TOOLS:GetItemFromLocalisedArrayByKeyValue(MTSL_DATA["zones"], "name", name)
+        return MTSL_TOOLS:GetItemFromLocalisedArrayByKeyValue(TRADE_SKILLS_DATA["zones"], "name", name)
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ MTSL_LOGIC_WORLD = {
     -- returns      String      The localised name of the zone
     ------------------------------------------------------------------------------------------------
     GetZoneNameById = function(self, zone_id)
-        local zone = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["zones"], "id", zone_id)
+        local zone = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["zones"], "id", zone_id)
         if zone then
             return MTSLUI_TOOLS:GetLocalisedData(zone)
         end
@@ -37,7 +37,7 @@ MTSL_LOGIC_WORLD = {
     -- returns      Object      The zone
     ------------------------------------------------------------------------------------------------
     GetZoneId = function(self, id)
-        return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["zones"], "id", id)
+        return MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["zones"], "id", id)
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ MTSL_LOGIC_WORLD = {
     -- returns              Array       The zones
     ------------------------------------------------------------------------------------------------
     GetZonesInContinentById = function(self, continent_id)
-        local zones_continent = MTSL_TOOLS:GetAllItemsFromArrayByKeyValue(MTSL_DATA["zones"], "cont_id", continent_id)
+        local zones_continent = MTSL_TOOLS:GetAllItemsFromArrayByKeyValue(TRADE_SKILLS_DATA["zones"], "cont_id", continent_id)
         return MTSL_TOOLS:SortArrayByLocalisedProperty(zones_continent, "name")
     end,
 
@@ -60,7 +60,7 @@ MTSL_LOGIC_WORLD = {
     -- returns      Number      Flag indicating if real zone (= 1) or not (= 0)
     ------------------------------------------------------------------------------------------------
     IsRealZone = function(self, zone_id)
-        local zone = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["zones"], "id", zone_id)
+        local zone = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["zones"], "id", zone_id)
         local real_zone = 0
         if zone and zone.cont_id < 3 then
             real_zone = 1

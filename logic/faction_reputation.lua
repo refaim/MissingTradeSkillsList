@@ -14,7 +14,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     -- returns          String      The localised name of the faction
     ------------------------------------------------------------------------------------------------
     GetFactionNameById = function(self, faction_id)
-        local faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], faction_id)
+        local faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], faction_id)
         if faction == nil then
             MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.ERROR .. "MTSL: No faction found for id " .. faction_id .. "! Please report this bug!")
             return ""
@@ -35,7 +35,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
         if faction_name == "Neutral" then
             faction_id = self.FACTION_ID_NEUTRAL
         elseif faction_name ~= "Hostile" then
-            local faction = MTSL_TOOLS:GetItemFromArrayByKeyValueIgnoringLocalisation(MTSL_DATA["factions"], "name", faction_name)
+            local faction = MTSL_TOOLS:GetItemFromArrayByKeyValueIgnoringLocalisation(TRADE_SKILLS_DATA["factions"], "name", faction_name)
             if faction ~= nil then
                 faction_id = faction.id
             end
@@ -70,7 +70,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     -- return       Array       The replevel
     -----------------------------------------------------------------------------------------
     GetReputationLevelById = function(self, rep_id)
-        return MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["reputation_levels"], rep_id)
+        return MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["reputation_levels"], rep_id)
     end,
 
     ----------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     -----------------------------------------------------------------------------------------
     GetReputationLevelByLevelName = function(self, rep_name)
         local rep_level = 0
-        for _, v in pairs(MTSL_DATA["reputation_levels"]) do
+        for _, v in pairs(TRADE_SKILLS_DATA["reputation_levels"]) do
             if v["name"][MTSLUI_CURRENT_LANGUAGE] == rep_name then
                 rep_level = v.id
             end
@@ -95,7 +95,7 @@ MTSL_LOGIC_FACTION_REPUTATION = {
     GetEnglishReputationLevelNameFromLocalisedName = function(self, rep_level)
         local rep_level_eng = nil
 
-        for k, v in pairs(MTSL_DATA["reputation_levels"]) do
+        for k, v in pairs(TRADE_SKILLS_DATA["reputation_levels"]) do
             if v["name"][MTSLUI_CURRENT_LANGUAGE] == rep_level then
                 rep_level_eng = k
             end

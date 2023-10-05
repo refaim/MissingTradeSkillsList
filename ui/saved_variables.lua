@@ -142,7 +142,7 @@ MTSLUI_SAVED_VARIABLES = {
             -- Only run once when new version of addon is installed
             if MTSLUI_PLAYER.NEW_VERSION then
                 -- Overwrite current patch version to max
-                self:SetPatchLevelMTSL(MTSL_DATA.MAX_PATCH_LEVEL)
+                self:SetPatchLevelMTSL(TRADE_SKILLS_DATA.MAX_PATCH_LEVEL)
                 MTSLUI_PLAYER.NEW_VERSION = false
             end
         end
@@ -158,7 +158,7 @@ MTSLUI_SAVED_VARIABLES = {
         MTSLUI_PLAYER.WELCOME_MSG = true
         MTSLUI_PLAYER.AUTO_SHOW_MTSL = true
         self:ResetMinimap()
-        MTSLUI_PLAYER.PATCH_LEVEL_MTSL = MTSL_DATA.MAX_PATCH_LEVEL
+        MTSLUI_PLAYER.PATCH_LEVEL_MTSL = TRADE_SKILLS_DATA.MAX_PATCH_LEVEL
         self:ResetEnhancedTooltip()
         self:ResetMTSLLocation()
         self:ResetSplitModes()
@@ -628,10 +628,10 @@ MTSLUI_SAVED_VARIABLES = {
     SetPatchLevelMTSL = function(self)
         local patch_level = self:GetPatchLevelServer()
         if patch_level == 0 then
-            MTSL_DATA.CURRENT_PATCH_LEVEL = MTSL_DATA.MIN_PATCH_LEVEL
-            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Could not determine patch level from server! Falling back to phase " .. MTSL_DATA.CURRENT_PATCH_LEVEL .. " (" .. MTSL_LOGIC_WORLD:GetZoneNameById(MTSL_DATA.PHASE_IDS[MTSL_DATA.CURRENT_PATCH_LEVEL]) .. ")")
+            TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL = TRADE_SKILLS_DATA.MIN_PATCH_LEVEL
+            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Could not determine patch level from server! Falling back to phase " .. TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL .. " (" .. MTSL_LOGIC_WORLD:GetZoneNameById(TRADE_SKILLS_DATA.PHASE_IDS[TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL]) .. ")")
         else
-            MTSL_DATA.CURRENT_PATCH_LEVEL = patch_level
+            TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL = patch_level
         end
     end,
 
@@ -639,6 +639,11 @@ MTSLUI_SAVED_VARIABLES = {
     -- Sets the number of content patch used on the server
     ------------------------------------------------------------------------------------------------
     GetPatchLevelServer = function(self)
+        if true then
+            -- TODO need to support Vanilla Private Servers patch level detection (how?)
+            return TRADE_SKILLS_DATA.MAX_PATCH_LEVEL
+        end
+
         -- Determine the current patch level of the server
         local _, _, _, tocversion = GetBuildInfo()
         if tocversion then

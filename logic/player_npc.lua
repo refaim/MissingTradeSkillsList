@@ -197,7 +197,7 @@ MTSL_LOGIC_PLAYER_NPC = {
             MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["LEARNED_SKILLS"] = auto_learned
         end
 
-        local missing_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
+        local missing_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
 
         if missing_skills ~= {} then
             MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_MISSING"] = MTSL_TOOLS:CountItemsInArray(missing_skills)
@@ -630,7 +630,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local known_skill_names = MTSL_LOGIC_PROFESSION:GetSkillNamesCurrentTradeSkill()
 
         -- get the list of available skills in the current phase for the profession,
-        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
+        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
 
         for _, skill in pairs(available_skills) do
             --We learned the skill
@@ -652,7 +652,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local known_skill_ids = MTSL_LOGIC_PROFESSION:GetSkillIdsCurrentCraft()
 
         -- get the list of available skills in the current phase for the profession,
-        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
+        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
         -- sorted by id
         available_skills = MTSL_TOOLS:SortArrayByProperty(available_skills, "id")
 
@@ -788,7 +788,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- return           Object      Found NPC (nil if not found)
     ------------------------------------------------------------------------------------------------
     GetNpcById = function(self, id)
-        return MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["npcs"], "id", id)
+        return MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["npcs"], "id", id)
     end,
 
     -----------------------------------------------------------------------------------------------

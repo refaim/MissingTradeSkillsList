@@ -405,7 +405,7 @@ MTSLUI_TOOLS = {
     ------------------------------------------------------------------------------------------------
     GetLocalisedLabelSpecialAction = function(self, label)
         if MTSLUI_CURRENT_LANGUAGE == nil then MTSLUI_CURRENT_LANGUAGE = "English" end
-        return MTSL_DATA["special_actions"][label]["name"][MTSLUI_CURRENT_LANGUAGE]
+        return TRADE_SKILLS_DATA["special_actions"][label]["name"][MTSLUI_CURRENT_LANGUAGE]
     end,
 
     ------------------------------------------------------------------------------------------------

@@ -2,41 +2,17 @@
 ## Title: Missing TradeSkills List
 ## Author: Thumbkin
 ## Notes: Shows missing skills & recipes for a profession and where to get them.
+## Version: 1.14
+## Dependencies: TradeSkillsData
 ## SavedVariables: MTSL_PLAYERS, MTSLUI_PLAYER
-## Version: 1.13.7
 
 #
 # Load all global variables, saved variables & locale
 #
-
-data\global_variables.lua
-
 logic\saved_variables.lua
-
 ui\global_variables.lua
 ui\locales.lua
 ui\saved_variables.lua
-
-#
-# Load the data
-#
-
-# Shared data
-data\continents.lua
-data\factions.lua
-data\holidays.lua
-data\items.lua
-data\levels.lua
-data\npcs.lua
-data\objects.lua
-data\profession_ranks.lua
-data\professions.lua
-data\quests.lua
-data\reputation_levels.lua
-data\skills.lua
-data\special_actions.lua
-data\specialisations.lua
-data\zones.lua
 
 #
 # Load the logic
@@ -97,4 +73,3 @@ ui\tooltip.lua
 
 # Initialise the frames & start the addon
 MissingTradeSkillsList.lua
-

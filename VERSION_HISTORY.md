@@ -1,5 +1,11 @@
 ## Version History
 
+### v1.14 (Oct 6, 2021)
+
+* Port to Vanilla WoW 
+* Use TradeSkillsData addon instead of built-in database
+* Extract Turtle-specific data into TradeSkillsData-turtle addon
+
 ### v1.13.54 (May 31, 2021)
 
 * Updated skill, item & specialisation translations for all languages except for Korean, simplified Chinese and traditional Chinese to match live data

@@ -109,7 +109,7 @@ MTSLUI_FILTER_FRAME = {
         self.ui_frame.source_drop_down.initialize = MTSL_TOOLS:BindArgument(self.CreateDropDownSources, self)
         UIDropDownMenu_SetText(MTSLUI_TOOLS:GetLocalisedLabel("source"), self.ui_frame.source_drop_down)
         -- default select the "current" phase
-        self.current_phase = MTSL_DATA.CURRENT_PATCH_LEVEL
+        self.current_phase = TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL
         -- create a filter for content phase
         -- self.ui_frame.phase_text = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("phase"), 215, -34, "LABEL", "TOPLEFT")
         self.ui_frame.phase_drop_down = CreateFrame("Frame", self.filter_frame_name .. "_DD_PHASES", self.ui_frame, "UIDropDownMenuTemplate")
@@ -201,7 +201,7 @@ MTSLUI_FILTER_FRAME = {
 
     -- Limit the filter for phase to current only
     UseOnlyCurrentPhase = function(self)
-        self:BuildPhases(MTSL_DATA.CURRENT_PATCH_LEVEL)
+        self:BuildPhases(TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL)
     end,
 
     -- Auto uncheck the recipes only learnable by other faction
@@ -268,7 +268,7 @@ MTSLUI_FILTER_FRAME = {
     -- Build the fixed arrays with all continents & zones available
     ----------------------------------------------------------------------------------------------------------
     InitialiseData = function(self)
-        self:BuildPhases(MTSL_DATA.MAX_PATCH_LEVEL)
+        self:BuildPhases(TRADE_SKILLS_DATA.MAX_PATCH_LEVEL)
         self:BuildSources()
         self:BuildSpecialisations()
         self:BuildFactions()
@@ -300,12 +300,12 @@ MTSLUI_FILTER_FRAME = {
 
         self.drop_down_lists.phase = {}
 
-        local patch_level = MTSL_DATA.MIN_PATCH_LEVEL
+        local patch_level = TRADE_SKILLS_DATA.MIN_PATCH_LEVEL
         while patch_level <= self.max_used_patch_level do
             local new_phase = {
                 ["id"] = patch_level,
                 ["checked"] = true,
-                ["name"] = MTSL_LOGIC_WORLD:GetZoneNameById (MTSL_DATA.PHASE_IDS[patch_level]).. " (" .. patch_level .. ")",
+                ["name"] = MTSL_LOGIC_WORLD:GetZoneNameById (TRADE_SKILLS_DATA.PHASE_IDS[patch_level]).. " (" .. patch_level .. ")",
             }
             patch_level = patch_level + 1
             table.insert(self.drop_down_lists.phase, new_phase)
@@ -436,7 +436,7 @@ MTSLUI_FILTER_FRAME = {
             table.insert(self.continents, zone_filter)
         end
         -- add each type of "continent
-        for _, v in pairs(MTSL_DATA["continents"]) do
+        for _, v in pairs(TRADE_SKILLS_DATA["continents"]) do
             local new_continent = {
                 ["name"] = MTSLUI_TOOLS:GetLocalisedData(v),
                 ["id"] = v.id,
@@ -450,7 +450,7 @@ MTSLUI_FILTER_FRAME = {
         self.zones_in_continent = {}
 
         -- add each zone of current "continent unless its "Any" or "Current location"
-        for _, c in pairs(MTSL_DATA["continents"]) do
+        for _, c in pairs(TRADE_SKILLS_DATA["continents"]) do
             self.zones_in_continent[c.id] = {}
             for _, z in pairs(MTSL_LOGIC_WORLD:GetZonesInContinentById(c.id)) do
                 local new_zone = {

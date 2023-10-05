@@ -178,10 +178,10 @@ MTSL_LOGIC_SKILL = {
     -- returns          Array       The skills
     ------------------------------------------------------------------------------------------------
     GetSkillForProfessionByItemId = function(self, item_id, profession_name)
-        local skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(MTSL_DATA["skills"][profession_name], "items", item_id)
+        local skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(TRADE_SKILLS_DATA["skills"][profession_name], "items", item_id)
         -- try a level if nil
         if skill == nil then
-            skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(MTSL_DATA["levels"][profession_name], "items", item_id)
+            skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(TRADE_SKILLS_DATA["levels"][profession_name], "items", item_id)
         end
         return skill
     end,
@@ -195,10 +195,10 @@ MTSL_LOGIC_SKILL = {
     -- returns          Skill       The skill
     ------------------------------------------------------------------------------------------------
     GetSkillForProfessionById = function(self, skill_id, profession_name)
-        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["skills"][profession_name], "id", skill_id)
+        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["skills"][profession_name], "id", skill_id)
         -- try a level if nil
         if skill == nil then
-            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["levels"][profession_name], "id", skill_id)
+            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["levels"][profession_name], "id", skill_id)
         end
         return skill
     end,
@@ -213,10 +213,10 @@ MTSL_LOGIC_SKILL = {
     ------------------------------------------------------------------------------------------------
     GetSourcesForSkillForProfessionById = function(self, skill_id, profession_name)
         local source_types = {}
-        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["skills"][profession_name], "id", skill_id)
+        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["skills"][profession_name], "id", skill_id)
         -- try a level if nil
         if skill == nil then
-            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["levels"][profession_name], "id", skill_id)
+            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["levels"][profession_name], "id", skill_id)
         end
         if skill then
             if skill.quests then
@@ -272,10 +272,10 @@ MTSL_LOGIC_SKILL = {
     ----------------------------------------------------------------------------------------
     GetClassesOnlyForSkill = function(self, skill_id, profession_name)
         local classes = {}
-        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["skills"][profession_name], "id", skill_id)
+        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["skills"][profession_name], "id", skill_id)
         -- try a level if nil
         if skill == nil then
-            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["levels"][profession_name], "id", skill_id)
+            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["levels"][profession_name], "id", skill_id)
         end
         if skill then
             self:AddClassesToList(skill, classes)
@@ -289,7 +289,7 @@ MTSL_LOGIC_SKILL = {
                     if item.quests then
                         -- loop all quests
                         for _, v in pairs(item.quests) do
-                            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["quests"], v)
+                            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["quests"], v)
                             if quest then
                                 self:AddClassesToList(quest, classes)
                             end
@@ -308,7 +308,7 @@ MTSL_LOGIC_SKILL = {
                     if item.quests then
                         -- loop all quests
                         for _, v in pairs(item.quests) do
-                            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["quests"], v)
+                            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["quests"], v)
                             if quest then
                                 self:AddClassesToList(quest, classes)
                             end
@@ -399,10 +399,10 @@ MTSL_LOGIC_SKILL = {
             factions[fid] = 0
         end
 
-        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["skills"][profession_name], "id", skill_id)
+        local skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["skills"][profession_name], "id", skill_id)
         -- try a level if nil
         if skill == nil then
-            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["levels"][profession_name], "id", skill_id)
+            skill = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["levels"][profession_name], "id", skill_id)
         end
         -- if we find the skill of the profession, search for factions
         if skill then
@@ -438,7 +438,7 @@ MTSL_LOGIC_SKILL = {
                     if item.quests then
                         -- loop all quests
                         for _, v in pairs(item.quests) do
-                            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["quests"], v)
+                            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["quests"], v)
                             if quest then
                                 self:AddFactionForDataToArray(factions, quest)
                                 -- loop all the NPC/questgivers
@@ -461,7 +461,7 @@ MTSL_LOGIC_SKILL = {
             if skill.quests then
                 -- loop all quests
                 for _, v in pairs(skill.quests) do
-                    local quest = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["quests"], v)
+                    local quest = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["quests"], v)
                     if quest then
                         self:AddFactionForDataToArray(factions, quest)
                         -- loop all the NPC/questgivers

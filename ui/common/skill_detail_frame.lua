@@ -372,7 +372,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     -- Show the details of a skill (based on its type)
     --
-    -- @skill       MTSL_DATA   The skill of which the information must be shown
+    -- @skill       TRADE_SKILLS_DATA   The skill of which the information must be shown
     ---------------------------------------------------------------------------
     ShowDetailsOfSkill = function(self, skill, profession_name, current_xp_level, current_skill_level)
         self:ShowNoSkillSelected()
@@ -425,12 +425,12 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     SetRequiredPhase = function(self, min_phase)
         local phase = min_phase
         if min_phase == nil or min_phase <= 0  then
-            phase = tonumber(MTSL_DATA.MIN_PATCH_LEVEL)
+            phase = tonumber(TRADE_SKILLS_DATA.MIN_PATCH_LEVEL)
         end
-        if phase <= tonumber(MTSL_DATA.CURRENT_PATCH_LEVEL) then
-            self.labels.phase.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.YES .. MTSL_LOGIC_WORLD:GetZoneNameById (MTSL_DATA.PHASE_IDS[phase]).. " (" .. phase .. ")")
+        if phase <= tonumber(TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL) then
+            self.labels.phase.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.YES .. MTSL_LOGIC_WORLD:GetZoneNameById (TRADE_SKILLS_DATA.PHASE_IDS[phase]).. " (" .. phase .. ")")
         else
-            self.labels.phase.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.NO .. MTSL_LOGIC_WORLD:GetZoneNameById (MTSL_DATA.PHASE_IDS[phase]).. " (" .. phase .. ")")
+            self.labels.phase.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.NO .. MTSL_LOGIC_WORLD:GetZoneNameById (TRADE_SKILLS_DATA.PHASE_IDS[phase]).. " (" .. phase .. ")")
         end
     end,
 
@@ -527,7 +527,7 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- @holiday         Number      The id of the holiday
     ----------------------------------------------------------------------------
     SetRequiresHoliday = function(self, holiday_id)
-        local holiday = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["holidays"], "id", holiday_id)
+        local holiday = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["holidays"], "id", holiday_id)
         -- if holiday is required
         if holiday ~= nil then
             self.labels.holiday.value:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedData(holiday))

@@ -33,7 +33,7 @@ MTSL_LOGIC_PROFESSION = {
     -- returns              Array       The array with levels
     -----------------------------------------------------------------------------------------------
     GetRanksForProfession = function(self, profession_name)
-        return MTSL_TOOLS:SortArrayByProperty(MTSL_DATA["levels"][profession_name], "rank")
+        return MTSL_TOOLS:SortArrayByProperty(TRADE_SKILLS_DATA["levels"][profession_name], "rank")
     end,
 
     -----------------------------------------------------------------------------------------------
@@ -128,8 +128,8 @@ MTSL_LOGIC_PROFESSION = {
         local arrays_to_loop = { "skills", "levels", "specialisations" }
 
         for _, a in pairs(arrays_to_loop) do
-            if MTSL_DATA[a][profession_name] then
-                for _, v in pairs(MTSL_DATA[a][profession_name]) do
+            if TRADE_SKILLS_DATA[a][profession_name] then
+                for _, v in pairs(TRADE_SKILLS_DATA[a][profession_name]) do
                     if MTSL_LOGIC_SKILL:IsSkillAvailableInPhase(v, max_phase) and
                             MTSL_LOGIC_SKILL:IsSkillAvailableInZone(v, profession_name, zone_id) then
                         table.insert(profession_skills, v)
@@ -156,7 +156,7 @@ MTSL_LOGIC_PROFESSION = {
     GetAllSkillsAndLevelsForProfession = function(self, profession_name)
         -- MAX_PHASE to allow all skills to be considered
         -- pass 0 as zone_id for all zones
-        return self:GetAllAvailableSkillsAndLevelsForProfessionInZone(profession_name, MTSL_DATA.MAX_PATCH_LEVEL, 0)
+        return self:GetAllAvailableSkillsAndLevelsForProfessionInZone(profession_name, TRADE_SKILLS_DATA.MAX_PATCH_LEVEL, 0)
     end,
 
     -----------------------------------------------------------------------------------------------
@@ -171,9 +171,9 @@ MTSL_LOGIC_PROFESSION = {
     GetAllAvailableSkillsForProfession = function(self, profession_name, max_phase, class_name)
         local profession_skills = {}
 
-        if MTSL_DATA["skills"][profession_name] ~= nil then
+        if TRADE_SKILLS_DATA["skills"][profession_name] ~= nil then
             -- add all the skills, dont add a skill if obtainable for ohter classes
-            for _, v in pairs(MTSL_DATA["skills"][profession_name]) do
+            for _, v in pairs(TRADE_SKILLS_DATA["skills"][profession_name]) do
                 if MTSL_LOGIC_SKILL:IsSkillAvailableInPhase(v, max_phase) == true and
                         (v.classes == nil or (v.classes ~= nil and MTSL_TOOLS:ListContainsKeyIgnoreCasingAndSpaces(v.classes, class_name) == true)) then
                     table.insert(profession_skills, v)
@@ -272,10 +272,10 @@ MTSL_LOGIC_PROFESSION = {
                 known_status = 3
             else
                 -- try to find the skill
-                local skill = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["skills"][profession_name], skill_id)
+                local skill = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["skills"][profession_name], skill_id)
                 -- its a level
                 if skill == nil then
-                    skill = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["levels"][profession_name], skill_id)
+                    skill = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["levels"][profession_name], skill_id)
                 end
                 if trade_skill.SKILL_LEVEL < skill.min_skill then
                     known_status = 1
@@ -300,14 +300,14 @@ MTSL_LOGIC_PROFESSION = {
         local amount = 0
         -- No specilisation learned, so return the max number
         if MTSL_TOOLS:CountItemsInArray(specialisation_ids) <= 0 then
-            for _, s in pairs(MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]) do
+            for _, s in pairs(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]) do
                 amount = amount + tonumber(s)
             end
         else
-            amount = tonumber(MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_0"])
+            amount = tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_0"])
             for _, s in pairs(specialisation_ids) do
-                if MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_" .. s] ~= nil then
-                    amount = amount + tonumber(MTSL_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_" .. s])
+                if TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_" .. s] ~= nil then
+                    amount = amount + tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_" .. s])
                 end
             end
         end
@@ -328,7 +328,7 @@ MTSL_LOGIC_PROFESSION = {
     -- return               Array       List or {}
     ------------------------------------------------------------------------------------------------
     GetSpecialisationsForProfession = function(self, profession_name)
-        return MTSL_DATA["specialisations"][profession_name] or {}
+        return TRADE_SKILLS_DATA["specialisations"][profession_name] or {}
     end,
 
     -----------------------------------------------------------------------------------------------
@@ -340,7 +340,7 @@ MTSL_LOGIC_PROFESSION = {
     -- return                   String      Name or nil
     ------------------------------------------------------------------------------------------------
     GetNameSpecialisation = function(self, profession_name, specialisation_id)
-        local spec = MTSL_TOOLS:GetItemFromArrayByKeyValue(MTSL_DATA["specialisations"][profession_name], "id", specialisation_id)
+        local spec = MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["specialisations"][profession_name], "id", specialisation_id)
         if spec ~= nil then
             return MTSLUI_TOOLS:GetLocalisedData(spec)
         end
@@ -358,7 +358,7 @@ MTSL_LOGIC_PROFESSION = {
     GetProfessionNameBySkill = function(self, skill)
         local profession_name = ""
         -- loop each profession until we find it
-        for k, _ in pairs(MTSL_DATA["professions"]) do
+        for k, _ in pairs(TRADE_SKILLS_DATA["professions"]) do
             -- loop each skill for this profession and compare to skill we seek
             local skills = self:GetAllSkillsAndLevelsForProfession(k)
             local s = 1
@@ -377,7 +377,7 @@ MTSL_LOGIC_PROFESSION = {
     GetEnglishProfessionNameFromLocalisedName = function(self, profession_name)
         local prof_name_eng = nil
 
-        for k, v in pairs(MTSL_DATA["professions"]) do
+        for k, v in pairs(TRADE_SKILLS_DATA["professions"]) do
             if v["name"][MTSLUI_CURRENT_LANGUAGE] == profession_name then
                 prof_name_eng = k
             end
@@ -387,7 +387,7 @@ MTSL_LOGIC_PROFESSION = {
     end,
 
     GetLocalisedProfessionNameFromEnglishName = function(self, profession_name)
-        return MTSL_DATA["professions"][profession_name]["name"][MTSLUI_CURRENT_LANGUAGE]
+        return TRADE_SKILLS_DATA["professions"][profession_name]["name"][MTSLUI_CURRENT_LANGUAGE]
     end,
 
     -----------------------------------------------------------------------------------------------
@@ -439,8 +439,8 @@ MTSL_LOGIC_PROFESSION = {
         local auto_learned = {}
 
         -- Make sure the profession has skills (herb/skin/fish do not)
-        if MTSL_DATA["skills"][profession_name] ~= nil then
-            for _, v in pairs(MTSL_DATA["skills"][profession_name]) do
+        if TRADE_SKILLS_DATA["skills"][profession_name] ~= nil then
+            for _, v in pairs(TRADE_SKILLS_DATA["skills"][profession_name]) do
                if v.special_action and v.special_action == "auto learned" then
                    table.insert(auto_learned, v.id)
                end
@@ -460,7 +460,7 @@ MTSL_LOGIC_PROFESSION = {
     GetAutoLearnedLevelForProfession = function(self, profession_name)
         local auto_learned_level = nil
 
-        for _, v in pairs(MTSL_DATA["levels"][profession_name]) do
+        for _, v in pairs(TRADE_SKILLS_DATA["levels"][profession_name]) do
             if v.rank == 1 then
                 auto_learned_level = v.id
             end

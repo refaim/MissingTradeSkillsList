@@ -70,7 +70,7 @@ MTSLUI_NPC_LIST_FRAME = {
         end
 
         -- make copy of all NPCs so we can "enrich" the data first, to optimize filtering after
-        self.available_npcs = MTSL_TOOLS:CopyObject(MTSL_DATA["npcs"])
+        self.available_npcs = MTSL_TOOLS:CopyObject(TRADE_SKILLS_DATA["npcs"])
         self.available_npc_skills = {}
         -- link all skills to en
         self:EnhanceNpcData()
@@ -114,7 +114,7 @@ MTSLUI_NPC_LIST_FRAME = {
         end
         -- No need to merge name or zone, already linked to NPC
         -- Loop each profession
-        for p, _ in pairs(MTSL_DATA["professions"]) do
+        for p, _ in pairs(TRADE_SKILLS_DATA["professions"]) do
             -- loop each skill & level
             local skills_levels = MTSL_LOGIC_PROFESSION:GetAllSkillsAndLevelsForProfession(p)
             for _, sl in pairs(skills_levels) do
@@ -127,7 +127,7 @@ MTSLUI_NPC_LIST_FRAME = {
                             -- specific faction or Alliance/Horde/neutral/Hostile
                             local faction = npcs[npc_id]["reacts"]
                             if sl.reputation ~= nil then
-                                faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
+                                faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
                             end
                             -- specific rank or any
                             local rank = sl.rank or 0
@@ -153,11 +153,11 @@ MTSLUI_NPC_LIST_FRAME = {
                                     -- specific faction or Alliance/Horde/neutral/Hostile
                                     local faction = npcs[npc_id]["reacts"]
                                     if sl.reputation ~= nil then
-                                        faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
+                                        faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
                                     end
                                     -- quest specific if needed
                                     if quest.reputation ~= nil then
-                                        faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], quest.reputation.faction_id)["name"]["English"]
+                                        faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], quest.reputation.faction_id)["name"]["English"]
                                     end
                                     self:AddSkillToNpc(npc_id, npcs[npc_id], faction, p, "questgiver", 0, sl)
                                 end
@@ -182,11 +182,11 @@ MTSLUI_NPC_LIST_FRAME = {
                                         -- specific faction or Alliance/Horde/neutral/Hostile
                                         local faction = npcs[npc_id]["reacts"]
                                         if sl.reputation then
-                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
+                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
                                         end
                                         -- item specific if needed
                                         if item.reputation then
-                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], item.reputation.faction_id)["name"]["English"]
+                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], item.reputation.faction_id)["name"]["English"]
                                         end
                                         self:AddSkillToNpc(npc_id, npcs[npc_id], faction, p, "vendor", 0, sl)
                                     end
@@ -202,11 +202,11 @@ MTSLUI_NPC_LIST_FRAME = {
                                         -- specific faction or Alliance/Horde/neutral/Hostile
                                         local faction = npcs[npc_id]["reacts"]
                                         if sl.reputation then
-                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
+                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
                                         end
                                         -- item specific if needed
                                         if item.reputation then
-                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], item.reputation.faction_id)["name"]["English"]
+                                            faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], item.reputation.faction_id)["name"]["English"]
                                         end
                                         self:AddSkillToNpc(npc_id, npcs[npc_id], faction, p, "mob", 0, sl)
                                     end
@@ -226,15 +226,15 @@ MTSLUI_NPC_LIST_FRAME = {
                                                 -- specific faction or Alliance/Horde/neutral/Hostile
                                                 local faction = npcs[npc_id]["reacts"]
                                                 if sl.reputation then
-                                                    faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
+                                                    faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], sl.reputation.faction_id)["name"]["English"]
                                                 end
                                                 -- item specific if needed
                                                 if item.reputation then
-                                                    faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], item.reputation.faction_id)["name"]["English"]
+                                                    faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], item.reputation.faction_id)["name"]["English"]
                                                 end
                                                 -- quest specific if needed
                                                 if quest.reputation then
-                                                    faction = MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], quest.reputation.faction_id)["name"]["English"]
+                                                    faction = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], quest.reputation.faction_id)["name"]["English"]
                                                 end
                                                 self:AddSkillToNpc(npc_id, npcs[npc_id], faction, p, "questgiver", 0, sl)
                                             end

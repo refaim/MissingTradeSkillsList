@@ -241,7 +241,7 @@ MTSLUI_NPC_FILTER_FRAME = {
             },
         }
         -- add all ranks
-        for _, v in pairs(MTSL_DATA["profession_ranks"]) do
+        for _, v in pairs(TRADE_SKILLS_DATA["profession_ranks"]) do
             local new_rank = {
                 ["name"] = MTSLUI_TOOLS:GetLocalisedData(v),
                 ["id"] = v.id
@@ -300,7 +300,7 @@ MTSLUI_NPC_FILTER_FRAME = {
         for _, v in pairs(reputation_ids) do
             local new_faction = {
                 ["name"] = MTSL_LOGIC_FACTION_REPUTATION:GetFactionNameById(v),
-                ["id"] =  MTSL_TOOLS:GetItemFromUnsortedListById(MTSL_DATA["factions"], v)["name"]["English"],
+                ["id"] =  MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["factions"], v)["name"]["English"],
             }
            table.insert(rep_factions, new_faction)
         end
@@ -322,7 +322,7 @@ MTSLUI_NPC_FILTER_FRAME = {
         -- seperate list first to have em sorted
         local profs = {}
         -- add each profession
-        for k, v in pairs(MTSL_DATA["professions"]) do
+        for k, v in pairs(TRADE_SKILLS_DATA["professions"]) do
            local new_profession = {
                 ["name"] = v["name"][MTSLUI_CURRENT_LANGUAGE],
                 ["id"] = k,
@@ -361,7 +361,7 @@ MTSLUI_NPC_FILTER_FRAME = {
             table.insert(self.continents, zone_filter)
         end
         -- add each type of "continent
-        for _, v in pairs(MTSL_DATA["continents"]) do
+        for _, v in pairs(TRADE_SKILLS_DATA["continents"]) do
             local new_continent = {
                 ["name"] = MTSLUI_TOOLS:GetLocalisedData(v),
                 ["id"] = v.id,
@@ -375,7 +375,7 @@ MTSLUI_NPC_FILTER_FRAME = {
         self.zones_in_continent = {}
 
         -- add each zone of current "continent unless its "Any" or "Current location"
-        for _, c in pairs(MTSL_DATA["continents"]) do
+        for _, c in pairs(TRADE_SKILLS_DATA["continents"]) do
             self.zones_in_continent[c.id] = {}
             for _, z in pairs(MTSL_LOGIC_WORLD:GetZonesInContinentById(c.id)) do
                 local new_zone = {

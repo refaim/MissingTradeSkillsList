@@ -46,7 +46,7 @@ MTSLUI_EVENT_HANDLER = {
                     -- print loaded message if possible
                     if MTSLUI_SAVED_VARIABLES:GetShowWelcomeMessage() then
                         MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. " (by " .. MTSLUI_ADDON.AUTHOR .. ")" .. MTSLUI_FONTS.COLORS.TEXT.TITLE .. " v" .. MTSLUI_ADDON.VERSION .. " loaded!")
-                        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .."MTSL: Using data for phase " .. MTSL_DATA.CURRENT_PATCH_LEVEL .. " (" .. MTSL_LOGIC_WORLD:GetZoneNameById(MTSL_DATA.PHASE_IDS[MTSL_DATA.CURRENT_PATCH_LEVEL]) .. ")")
+                        MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .."MTSL: Using data for phase " .. TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL .. " (" .. MTSL_LOGIC_WORLD:GetZoneNameById(TRADE_SKILLS_DATA.PHASE_IDS[TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL]) .. ")")
                         if error_loading_player == "existing" then
                             MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.SUCCESS .. "MTSL: " .. MTSL_CURRENT_PLAYER.NAME .. " (" .. MTSL_CURRENT_PLAYER.XP_LEVEL .. ", " .. MTSL_CURRENT_PLAYER.FACTION .. ") on " .. MTSL_CURRENT_PLAYER.REALM .. " loaded")
                         end
