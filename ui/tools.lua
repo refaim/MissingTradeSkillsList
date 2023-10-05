@@ -395,6 +395,7 @@ MTSLUI_TOOLS = {
     ------------------------------------------------------------------------------------------------
     -- Returns the text for a label in the current locale/language
     ------------------------------------------------------------------------------------------------
+    ---@return string
     GetLocalisedLabel = function(self, label)
         if MTSLUI_CURRENT_LANGUAGE == nil then MTSLUI_CURRENT_LANGUAGE = "English" end
         return MTSLUI_LOCALES_LABELS[label][MTSLUI_CURRENT_LANGUAGE]

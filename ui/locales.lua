@@ -1123,7 +1123,7 @@ MTSLUI_LOCALES_LABELS = {
     },
     ["status other characters"] = {
         ["German"] = "Status anderer Charaktere:",
-        ["English"] = "Status other characters:",
+        ["English"] = "Status of other characters:",
         ["Spanish"] = "Estado de otros personajes:",
         ["Mexican"] = "Estado de otros personajes:",
         ["French"] = "Statut des autres personnages :",

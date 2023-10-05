@@ -3,6 +3,7 @@
 ### v1.15 (Oct 6, 2021)
 
 * Fix linking recipes to chat
+* Port Classic tooltip hook to Vanilla
 
 ### v1.14 (Oct 6, 2021)
 
