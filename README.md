@@ -23,6 +23,12 @@ Shows the missing recipes/skills for a tradeskill and where to get them
 * Link items to a channel (Say, Guild, Party, Raid or "Auto") or add item to current chat message
 * Ability to drag each MTSL frame around
 
+### Acknowledgements
+- [Altoholic](https://www.curseforge.com/wow/addons/altoholic) by [Thaoky](https://legacy.curseforge.com/members/thaokyaltoholic/projects)
+- [Altoholic_Vanilla](https://github.com/Dyaxler/Altoholic_Vanilla) by [Dyaxler](https://github.com/Dyaxler)
+- [MissingTradeSkillsList_Classic](https://github.com/Thumbkin/MissingTradeSkillsList_Classic) by [Thumbkin](https://github.com/Thumbkin)
+- [ShaguTweaks](https://github.com/shagu/ShaguTweaks) by [Shagu](https://github.com/shagu)
+
 ## Screenshots
 
 ### MTSL - Vertical split (Change using options menu)
