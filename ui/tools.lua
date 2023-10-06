@@ -362,7 +362,7 @@ MTSLUI_TOOLS = {
     ------------------------------------------------------------------------------------------------
     FillDropDownCheckable = function(self, values, change_handler, change_frame_name)
         local info = {}
-        -- add all values
+        UIDropDownMenu_Initialize()
         for _, v in pairs(values) do
             -- already localised in array so no need to index
             info.text = v.name
