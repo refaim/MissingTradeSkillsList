@@ -1,11 +1,15 @@
 ## Version History
 
-### v1.15 (Oct 6, 2021)
+### v1.16 (Oct 6, 2023)
+
+* Enhance merchant item tooltip
+
+### v1.15 (Oct 6, 2023)
 
 * Fix linking recipes to chat
 * Port Classic tooltip hook to Vanilla
 
-### v1.14 (Oct 6, 2021)
+### v1.14 (Oct 6, 2023)
 
 * Port to Vanilla WoW 
 * Use TradeSkillsData addon instead of built-in database

@@ -3,78 +3,94 @@
 ----------------
 local _G = _G or getfenv(0)
 
+---@param profession string
+---@return any[]
+local function getPlayers(profession)
+    if MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipFaction() == "any" then
+        return MTSL_LOGIC_PLAYER_NPC:GetOtherPlayersOnCurrentRealmLearnedProfession(profession)
+    end
+
+    return MTSL_LOGIC_PLAYER_NPC:GetOtherPlayersOnCurrentRealmSameFactionLearnedProfession(profession)
+end
+
 ---@param tooltip GameTooltip
 ---@param link string
----@param text string
----@return boolean|nil
-local function enhanceTooltip(tooltip, link, text)
-    local _, _, string_item_id = strfind(link, 'item:(%d+)')
-    if string_item_id == nil then
-        return false
+local function tryToEnhanceTooltip(tooltip, link)
+    local unsafe_recipe = MTSL_LOGIC_TOOLTIP:GetRecipeFromLink(link)
+    if unsafe_recipe == nil then
+        return
     end
+    local recipe = --[[---@type Recipe]] unsafe_recipe
 
-    ---@type number
-    local item_id = --[[---@type number]] tonumber(--[[---@type string]] string_item_id)
-    if item_id == nil then
-        return false
+    ---@type RecipeStatus[]
+    local statuses = {}
+    for _, player in ipairs(getPlayers(recipe.profession)) do
+        local status = MTSL_LOGIC_TOOLTIP:GetPlayerRecipeStatus(player, recipe)
+        local known_status_should_be_displayed = status.is_known or MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipShowKnown()
+        if known_status_should_be_displayed and status.player.skill_level ~= nil then
+            tinsert(statuses, status)
+        end
     end
-
-    local _, _, _, _, item_type, item_sub_type, _, _, _ = GetItemInfo(item_id)
-    if item_type ~= "Recipe" then
-        return false
-    end
-
-    local profession = item_sub_type
-
-    local other_players
-    if MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipFaction() == "any" then
-        other_players = MTSL_LOGIC_PLAYER_NPC:GetOtherPlayersOnCurrentRealmLearnedProfession(profession)
-    else
-        other_players = MTSL_LOGIC_PLAYER_NPC:GetOtherPlayersOnCurrentRealmSameFactionLearnedProfession(profession)
-    end
-    if MTSL_TOOLS:CountItemsInArray(other_players) == 0 then
-        return false
-    end
-
-    local skill = MTSL_LOGIC_SKILL:GetSkillForProfessionByItemId(item_id, profession)
-    if skill == nil then
-        return false
+    if getn(statuses) == 0 then
+        return
     end
 
     tooltip:AddLine(" ")
-    for _, player in pairs(other_players) do
-        local player_profession = player["TRADESKILLS"][profession]
 
-        local status = "known"
-        local status_color = MTSLUI_FONTS.COLORS.AVAILABLE.YES
-        local description = "Already known by"
-        if MTSL_TOOLS:ListContainsNumber(player_profession["MISSING_SKILLS"], tonumber(skill.id)) == true then
-            if tonumber(player_profession["SKILL_LEVEL"]) >= tonumber(skill.min_skill) then
-                status = "learnable"
-                status_color = MTSLUI_FONTS.COLORS.AVAILABLE.LEARNABLE
-                description = "Could be learned by"
-            else
-                status = "no"
-                status_color = MTSLUI_FONTS.COLORS.AVAILABLE.NO
-                description = "Will be learnable by"
-            end
+    for _, status in ipairs(statuses) do
+        local message
+        local main_color
+
+        if status.is_known then
+            message = "Already known by"
+            main_color = MTSLUI_FONTS.COLORS.AVAILABLE.YES
+        elseif status.player.skill_level >= recipe.required_skill_level then
+            message = "Learnable by"
+            main_color = MTSLUI_FONTS.COLORS.AVAILABLE.LEARNABLE
+        else
+            message = "Will be learnable by"
+            main_color = MTSLUI_FONTS.COLORS.AVAILABLE.NO
         end
 
-        if status ~= "known" or MTSLUI_SAVED_VARIABLES:GetEnhancedTooltipShowKnown() then
-            local faction_color = MTSLUI_FONTS.COLORS.FACTION[string.upper(player.FACTION)]
-            tooltip:AddLine(status_color .. description .. " " .. faction_color .. player["NAME"] .. status_color .. " " .. "(" .. player_profession["SKILL_LEVEL"] .. ") ")
-        end
+        local faction_color = MTSLUI_FONTS.COLORS.FACTION[string.upper(status.player.faction)]
+
+        local line = main_color .. message .. " "
+            .. faction_color .. status.player.name .. " "
+            .. main_color .. "(" .. status.player.skill_level .. ")"
+
+        tooltip:AddLine(line)
     end
-    tooltip:Show()
 
-    return true
+    tooltip:Show()
 end
 
-local MTSL_HookSetItemRef = SetItemRef
+local HookSetItemRef = SetItemRef
 ---@param link string
 ---@param text string
 ---@param button MouseButton
 SetItemRef = function(link, text, button)
-    MTSL_HookSetItemRef(link, text, button)
-    enhanceTooltip(ItemRefTooltip, link, text)
+    HookSetItemRef(link, text, button)
+    if not IsAltKeyDown() and not IsControlKeyDown() and not IsShiftKeyDown() then
+        tryToEnhanceTooltip(ItemRefTooltip, link)
+    end
 end
+
+local tooltipItemLink
+
+local HookSetMerchantItem = GameTooltip.SetMerchantItem
+function GameTooltip.SetMerchantItem(self, merchantIndex)
+    tooltipItemLink = GetMerchantItemLink(merchantIndex)
+    return HookSetMerchantItem(self, merchantIndex)
+end
+
+local tooltip = CreateFrame("Frame", nil, GameTooltip)
+
+tooltip:SetScript("OnHide", function()
+    tooltipItemLink = nil
+end)
+
+tooltip:SetScript("OnShow", function()
+    if tooltipItemLink ~= nil then
+        tryToEnhanceTooltip(GameTooltip, tooltipItemLink)
+    end
+end)

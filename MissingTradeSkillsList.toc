@@ -2,7 +2,7 @@
 ## Title: Missing TradeSkills List
 ## Author: Thumbkin
 ## Notes: Shows missing skills & recipes for a profession and where to get them.
-## Version: 1.15
+## Version: 1.16
 ## Dependencies: TradeSkillsData
 ## SavedVariables: MTSL_PLAYERS, MTSLUI_PLAYER
 
@@ -24,6 +24,7 @@ logic\player_npc.lua
 logic\profession.lua
 logic\quest.lua
 logic\skill.lua
+logic\tooltip.lua
 logic\world.lua
 
 #

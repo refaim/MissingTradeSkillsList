@@ -16,15 +16,12 @@ MTSL_LOGIC_SKILL = {
         return tonumber(skill.phase) <= tonumber(max_phase)
     end,
 
-    ----------------------------------------------------------------------------------------
-    -- Checks if a skill is available in a certain zone
-    --
-    -- @skill               Object          The skill
-    -- @profession_name     String          The name of the profession
-    -- @zone_id             Number          The id of the zone (0 = all)
-    --
-    -- return               Boolean         Flag indicating availability
-    -----------------------------------------------------------------------------------------
+    ---
+    --- Checks if a skill is available in a certain zone
+    ---@param skill Skill
+    ---@param profession_name ProfessionId
+    ---@param zone_id number @ 0 = all zones
+    ---@return boolean
     IsSkillAvailableInZone = function(self, skill, profession_name, zone_id)
         local available = true
         -- check fot at least one source in the zone (skip zone if id = 0 => all are good)
@@ -169,13 +166,12 @@ MTSL_LOGIC_SKILL = {
         return is_obtainable
     end,
 
-    GetSkillForProfessionByItemId =
-        ---
-        --- Returns a skill for a certain profession based on the recipe id its learned from
-        ---@param item_id number
-        ---@param profession_name string
-        ---@return Skill|nil
-        function(self, item_id, profession_name)
+    ---
+    --- Returns a skill for a certain profession based on the recipe id its learned from
+    ---@param item_id number
+    ---@param profession_name ProfessionId
+    ---@return Skill|nil
+    GetSkillForProfessionByItemId = function(self, item_id, profession_name)
             local skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(TRADE_SKILLS_DATA["skills"][profession_name], "items", item_id)
             if skill == nil then
                 skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(TRADE_SKILLS_DATA["levels"][profession_name], "items", item_id)
