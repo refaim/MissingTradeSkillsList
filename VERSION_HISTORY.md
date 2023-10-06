@@ -2,7 +2,7 @@
 
 ### v1.16 (Oct 7, 2023)
 
-* Enhance merchant item tooltip
+* Add recipe known status to many types of ingame tooltips
 * Fix "Too many buttons" dropdown menu error
 
 ### v1.15 (Oct 6, 2023)

@@ -64,6 +64,19 @@ local function tryToEnhanceTooltip(tooltip, link)
     tooltip:Show()
 end
 
+local tooltipItemLink
+local tooltipFrame = CreateFrame("Frame", nil, GameTooltip)
+
+tooltipFrame:SetScript("OnHide", function()
+    tooltipItemLink = nil
+end)
+
+tooltipFrame:SetScript("OnShow", function()
+    if tooltipItemLink ~= nil then
+        tryToEnhanceTooltip(GameTooltip, tooltipItemLink)
+    end
+end)
+
 local HookSetItemRef = SetItemRef
 ---@param link string
 ---@param text string
@@ -75,22 +88,78 @@ SetItemRef = function(link, text, button)
     end
 end
 
-local tooltipItemLink
-
-local HookSetMerchantItem = GameTooltip.SetMerchantItem
-function GameTooltip.SetMerchantItem(self, merchantIndex)
-    tooltipItemLink = GetMerchantItemLink(merchantIndex)
-    return HookSetMerchantItem(self, merchantIndex)
+local HookSetBagItem = GameTooltip.SetBagItem
+function GameTooltip.SetBagItem(self, container, slot)
+    tooltipItemLink = GetContainerItemLink(container, slot)
+    return HookSetBagItem(self, container, slot)
 end
 
-local tooltip = CreateFrame("Frame", nil, GameTooltip)
+local HookSetCraftItem = GameTooltip.SetCraftItem
+function GameTooltip.SetCraftItem(self, skill, slot)
+    tooltipItemLink = GetCraftReagentItemLink(skill, slot)
+    return HookSetCraftItem(self, skill, slot)
+end
 
-tooltip:SetScript("OnHide", function()
-    tooltipItemLink = nil
-end)
+local HookSetCraftSpell = GameTooltip.SetCraftSpell
+function GameTooltip.SetCraftSpell(self, slot)
+    tooltipItemLink = GetCraftItemLink(slot)
+    return HookSetCraftSpell(self, slot)
+end
 
-tooltip:SetScript("OnShow", function()
-    if tooltipItemLink ~= nil then
-        tryToEnhanceTooltip(GameTooltip, tooltipItemLink)
+local HookSetInventoryItem = GameTooltip.SetInventoryItem
+function GameTooltip.SetInventoryItem(self, unit, slot)
+    tooltipItemLink = GetInventoryItemLink(unit, slot)
+    return HookSetInventoryItem(self, unit, slot)
+end
+
+local HookSetLootItem = GameTooltip.SetLootItem
+function GameTooltip.SetLootItem(self, slot)
+    tooltipItemLink = GetLootSlotLink(slot)
+    HookSetLootItem(self, slot)
+end
+
+local HookSetLootRollItem = GameTooltip.SetLootRollItem
+function GameTooltip.SetLootRollItem(self, id)
+    tooltipItemLink = GetLootRollItemLink(id)
+    return HookSetLootRollItem(self, id)
+end
+
+local HookSetMerchantItem = GameTooltip.SetMerchantItem
+function GameTooltip.SetMerchantItem(self, item_index)
+    tooltipItemLink = GetMerchantItemLink(item_index)
+    return HookSetMerchantItem(self, item_index)
+end
+
+local HookSetQuestItem = GameTooltip.SetQuestItem
+function GameTooltip.SetQuestItem(self, item_type, index)
+    tooltipItemLink = GetQuestItemLink(item_type, index)
+    return HookSetQuestItem(self, item_type, index)
+end
+
+local HookSetQuestLogItem = GameTooltip.SetQuestLogItem
+function GameTooltip.SetQuestLogItem(self, item_type, index)
+    tooltipItemLink = GetQuestLogItemLink(item_type, index)
+    return HookSetQuestLogItem(self, item_type, index)
+end
+
+local HookSetTradePlayerItem = GameTooltip.SetTradePlayerItem
+function GameTooltip.SetTradePlayerItem(self, index)
+    tooltipItemLink = GetTradePlayerItemLink(index)
+    return HookSetTradePlayerItem(self, index)
+end
+
+local HookSetTradeSkillItem = GameTooltip.SetTradeSkillItem
+function GameTooltip.SetTradeSkillItem(self, skillIndex, reagentIndex)
+    if reagentIndex then
+        tooltipItemLink = GetTradeSkillReagentItemLink(skillIndex, reagentIndex)
+    else
+        tooltipItemLink = GetTradeSkillItemLink(skillIndex)
     end
-end)
+    return HookSetTradeSkillItem(self, skillIndex, reagentIndex)
+end
+
+local HookSetTradeTargetItem = GameTooltip.SetTradeTargetItem
+function GameTooltip.SetTradeTargetItem(self, index)
+    tooltipItemLink = GetTradeTargetItemLink(index)
+    return HookSetTradeTargetItem(self, index)
+end
