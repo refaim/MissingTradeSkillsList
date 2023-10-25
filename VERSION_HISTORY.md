@@ -1,5 +1,9 @@
 ## Version History
 
+### v1.16.1 (Oct 25, 2023)
+
+* Fix TradeSkillsData-turtle support
+
 ### v1.16 (Oct 7, 2023)
 
 * Add recipe known status to many types of ingame tooltips
