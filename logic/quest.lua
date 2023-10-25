@@ -14,7 +14,7 @@ MTSL_LOGIC_QUEST = {
         local i = 1
 
         while ids[i] ~= nil do
-            local quest = MTSL_TOOLS:GetItemFromSortedListById(TRADE_SKILLS_DATA["quests"], ids[i])
+            local quest = MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["quests"], ids[i])
             -- Check if q started from NPC
             if quest ~= nil then
                 if quest.npcs ~= nil then
@@ -53,7 +53,7 @@ MTSL_LOGIC_QUEST = {
     -- return           Object      Found quest
     ------------------------------------------------------------------------------------------------
     GetQuestById = function(self, id)
-        return MTSL_TOOLS:GetItemFromSortedListById(TRADE_SKILLS_DATA["quests"], id)
+        return MTSL_TOOLS:GetItemFromUnsortedListById(TRADE_SKILLS_DATA["quests"], id)
     end,
 
     -----------------------------------------------------------------------------------------------

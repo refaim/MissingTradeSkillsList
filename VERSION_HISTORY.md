@@ -1,5 +1,9 @@
 ## Version History
 
+### v1.16.2 (Oct 25, 2023)
+
+* Fix quests lookup
+
 ### v1.16.1 (Oct 25, 2023)
 
 * Fix TradeSkillsData-turtle support

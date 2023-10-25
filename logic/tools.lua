@@ -131,28 +131,6 @@ MTSL_TOOLS = {
     end,
 
     ----------------------------------------------------------------------------------------------------------
-    -- Searches for an item by id in a sorted list
-    --
-    -- @list        Array       The lsit in which to search
-    -- @id          Number      The id to search for
-    --
-    -- returns      Object      The item with the corresponding id or nil if not found
-    ----------------------------------------------------------------------------------------------------------
-    GetItemFromSortedListById = function(self, list, id)
-        local i = 1
-        -- lists are sorted on id (low to high) so stop when id in array >= id we search
-        while list[i] ~= nil and list[i].id < id do
-            i = i + 1
-        end
-        -- item found in list so return it
-        if list[i] ~= nil and list[i].id == id then
-            return list[i]
-        end
-        -- item not found in the list
-        return nil
-    end,
-
-    ----------------------------------------------------------------------------------------------------------
     -- Counts the number of elements in the list using number as indexes
     --
     -- @list        Array       The list to count items from

@@ -6,7 +6,7 @@
 MTSLUI_ADDON = {
     AUTHOR = "Thumbkin & Refaim",
     NAME = "Missing TradeSkills List",
-    VERSION = "1.16.1",
+    VERSION = "1.16.2",
     SERVER_VERSION_PHASES = {
         -- max build number from server for phase 1,
         {
