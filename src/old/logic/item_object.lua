@@ -76,20 +76,4 @@ MTSL_LOGIC_ITEM_OBJECT = {
     GetItemForProfessionById = function(self, id, profession_name)
         return MTSL_TOOLS:GetItemFromArrayByKeyValue(TRADE_SKILLS_DATA["items"][profession_name], "id", id)
     end,
-
-    ---@param link string
-    ---@return number|nil
-    GetItemIdFromLink = function(self, link)
-        local _, _, string_id = strfind(link, 'item:(%d+)')
-        if string_id == nil then
-            return nil
-        end
-
-        local numeric_id = tonumber(--[[---@type string]] string_id)
-        if numeric_id == nil then
-            return nil
-        end
-
-        return numeric_id
-    end
 }

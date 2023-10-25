@@ -13,14 +13,16 @@ MTSLUI_MINIMAP = {
     HALF_BUTTON_DIAMETER = 12,
 
     Initialise = function(self)
+        local texture = MTSLUI_ADDON_PATH .. "\\resources\\minimap.blp"
+
         self.ui_frame = CreateFrame("Button", nil, Minimap)
         self.ui_frame:SetFrameLevel(10)
         self.ui_frame:SetToplevel(true)
         self.ui_frame:SetWidth(self.BUTTON_DIAMETER)
         self.ui_frame:SetHeight(self.BUTTON_DIAMETER)
-        self.ui_frame:SetNormalTexture(MTSLUI_ADDON_PATH .. "\\Images\\minimap.blp")
-        self.ui_frame:SetPushedTexture(MTSLUI_ADDON_PATH .. "\\Images\\minimap.blp")
-        self.ui_frame:SetHighlightTexture(MTSLUI_ADDON_PATH .. "\\Images\\minimap.blp")
+        self.ui_frame:SetNormalTexture(texture)
+        self.ui_frame:SetPushedTexture(texture)
+        self.ui_frame:SetHighlightTexture(texture)
 
         self.mouse_down = false
         self:HookEvents()

@@ -7,71 +7,74 @@
 ## OptionalDeps: TradeSkillsData-turtle
 ## SavedVariables: MTSL_PLAYERS, MTSLUI_PLAYER
 
-#
-# Load all global variables, saved variables & locale
-#
-logic\saved_variables.lua
-ui\global_variables.lua
-ui\locales.lua
-ui\saved_variables.lua
+src\new\Shared\Global\StandardLibrary\STL.lua
+src\new\Shared\Global\StandardLibrary\OOP.lua
 
-#
-# Load the logic
-#
-logic\tools.lua
-logic\faction_reputation.lua
-logic\item_object.lua
-logic\player_npc.lua
-logic\profession.lua
-logic\quest.lua
-logic\skill.lua
-logic\tooltip.lua
-logic\world.lua
+src\new\Shared\Application\Query\Query.lua
+src\new\Shared\Application\Query\QueryResponse.lua
+src\new\Shared\Application\Query\QueryBus.lua
 
-#
-# Load the UI
-#
+src\new\PlayerRecipes\Domain\ValueObject\Faction.lua
+src\new\PlayerRecipes\Domain\ValueObject\ItemId.lua
+src\new\PlayerRecipes\Domain\ValueObject\Level.lua
+src\new\PlayerRecipes\Domain\ValueObject\PlayerClass.lua
+src\new\PlayerRecipes\Domain\ValueObject\PlayerId.lua
+src\new\PlayerRecipes\Domain\ValueObject\SpellId.lua
+src\new\PlayerRecipes\Domain\ValueObject\TradeSkillId.lua
+src\new\PlayerRecipes\Domain\Entity\Player.lua
+src\new\PlayerRecipes\Domain\Entity\TradeSkill.lua
 
-# Shared functions
-ui\fonts.lua
-ui\tools.lua
-ui\event_handler.lua
+src\new\PlayerRecipes\Infrastructure\Repository\PlayerRepository.lua
+src\new\PlayerRecipes\Domain\Repository\PlayerRepository.lua
 
-# Shared Frames
-ui\common\base_frame.lua
-ui\common\list_item.lua
-ui\common\list_frame.lua
-ui\common\filter_frame.lua
-ui\common\npc_filter_frame.lua
-ui\common\npc_list_frame.lua
-ui\common\npc_skill_list_frame.lua
-ui\common\player_list_frame.lua
-ui\common\player_filter_frame.lua
-ui\common\profession_list_frame.lua
-ui\common\progressbar.lua
-ui\common\skill_detail_frame.lua
-ui\common\title_frame.lua
-ui\common\vertical_slider.lua
+src\new\Shared\Global\ServiceLocator.lua
 
-# Components for OptionsFrame
-ui\options\config_frame.lua
-ui\options\save_frame.lua
-ui\options\reset_frame.lua
+src\new\PlayerRecipes\Presentation\TooltipHook.lua
 
-# MainFrames
-ui\mainframes\account_explorer_frame.lua
-ui\mainframes\database_explorer_frame.lua
-ui\mainframes\npc_explorer_frame.lua
-ui\mainframes\options_menu_frame.lua
-ui\mainframes\character_explorer_frame.lua
-ui\mainframes\toggle_button.lua
-ui\mainframes\missing_tradeskills_frame.lua
+src\new\Shared\Global\UnitTest.lua
+src\new\Shared\Global\StandardLibrary\STL.test.lua
+src\new\Shared\Global\StandardLibrary\OOP.test.lua
 
-# MinimapButton
-ui\minimap_button.lua
+src\old\ui\global_variables.lua
+src\old\ui\locales.lua
+src\old\ui\saved_variables.lua
+src\old\logic\tools.lua
+src\old\logic\faction_reputation.lua
+src\old\logic\item_object.lua
+src\old\logic\player_npc.lua
+src\old\logic\profession.lua
+src\old\logic\quest.lua
+src\old\logic\skill.lua
+src\old\logic\tooltip.lua
+src\old\logic\world.lua
+src\old\ui\fonts.lua
+src\old\ui\tools.lua
+src\old\ui\event_handler.lua
+src\old\ui\common\base_frame.lua
+src\old\ui\common\list_item.lua
+src\old\ui\common\list_frame.lua
+src\old\ui\common\filter_frame.lua
+src\old\ui\common\npc_filter_frame.lua
+src\old\ui\common\npc_list_frame.lua
+src\old\ui\common\npc_skill_list_frame.lua
+src\old\ui\common\player_list_frame.lua
+src\old\ui\common\player_filter_frame.lua
+src\old\ui\common\profession_list_frame.lua
+src\old\ui\common\progressbar.lua
+src\old\ui\common\skill_detail_frame.lua
+src\old\ui\common\title_frame.lua
+src\old\ui\common\vertical_slider.lua
+src\old\ui\options\config_frame.lua
+src\old\ui\options\save_frame.lua
+src\old\ui\options\reset_frame.lua
+src\old\ui\mainframes\account_explorer_frame.lua
+src\old\ui\mainframes\database_explorer_frame.lua
+src\old\ui\mainframes\npc_explorer_frame.lua
+src\old\ui\mainframes\options_menu_frame.lua
+src\old\ui\mainframes\character_explorer_frame.lua
+src\old\ui\mainframes\toggle_button.lua
+src\old\ui\mainframes\missing_tradeskills_frame.lua
+src\old\ui\minimap_button.lua
+src\old\ui\tooltip.lua
 
-# Tooltip
-ui\tooltip.lua
-
-# Initialise the frames & start the addon
 MissingTradeSkillsList.lua

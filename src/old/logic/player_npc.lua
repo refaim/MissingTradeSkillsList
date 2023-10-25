@@ -2,18 +2,6 @@
 -- Contains all functions for a player --
 -----------------------------------------
 
--- Shared/saved variable
-MTSL_PLAYERS = {}
-
--- Holds info about the current logged in player
--- Contains following info once loaded from data
---      NAME,
---      FACTION,
---      REALM,
---      XP_LEVEL,
---      TRADESKILLS = {}
-MTSL_CURRENT_PLAYER = {}
-
 MTSL_LOGIC_PLAYER_NPC = {
     ---------------------------------------------------------------------------------------
     -- Loads the saved data of the logged in player or creates a new save
@@ -33,11 +21,6 @@ MTSL_LOGIC_PLAYER_NPC = {
         if xp_level == nil then return "xp_level" end
         if player_class == nil then return "player_class" end
 
-        -- First time we save a character, so create a new array
-        if not MTSL_PLAYERS then
-            MTSL_PLAYERS = {}
-        end
-
         -- Check if realm exits
         if not MTSL_PLAYERS[realm] then
             MTSL_PLAYERS[realm] = {}
@@ -53,9 +36,9 @@ MTSL_LOGIC_PLAYER_NPC = {
             current_player = MTSL_PLAYERS[realm][name]
 
             -- Update class, faction & xp_level, just in case
-            MTSL_CURRENT_PLAYER.CLASS = string.lower(player_class)
-            MTSL_CURRENT_PLAYER.XP_LEVEL = xp_level
-            MTSL_CURRENT_PLAYER.FACTION = faction
+            current_player.CLASS = string.lower(player_class)
+            current_player.XP_LEVEL = xp_level
+            current_player.FACTION = faction
 
             return_code = "existing"
             -- new player so create it and add it
@@ -77,7 +60,6 @@ MTSL_LOGIC_PLAYER_NPC = {
             return_code = "new"
         end
 
-        -- set the loaded or created player as current one
         MTSL_CURRENT_PLAYER = current_player
 
         self:CheckSavedProfessions()
@@ -184,14 +166,9 @@ MTSL_LOGIC_PLAYER_NPC = {
             ["MISSING_SKILLS"] = {},
             ["LEARNED_SKILLS"] = {},
         }
-        -- Add the auto learned level
-        local learned_rank = MTSL_LOGIC_PROFESSION:GetAutoLearnedLevelForProfession(profession_name)
-        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["HIGHEST_KNOWN_RANK"] = 1
-        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["SPELLID_HIGHEST_KNOWN_RANK"] = learned_rank
 
         -- add auto learned skills
         local auto_learned = MTSL_LOGIC_PROFESSION:GetAutoLearnedSkillsForProfession(profession_name)
-
         if auto_learned ~= {} then
             MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_LEARNED"] = MTSL_TOOLS:CountItemsInArray(auto_learned)
             MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["LEARNED_SKILLS"] = auto_learned
@@ -280,84 +257,6 @@ MTSL_LOGIC_PLAYER_NPC = {
             return MTSL_PLAYERS[realm][name]
         end
         return nil
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Returns the players on current realm except current player
-    --
-    -- returns  Array       The list of players
-    ------------------------------------------------------------------------------------------------
-    GetOtherPlayersOnCurrentRealm = function(self)
-        local players = {}
-        if MTSL_CURRENT_PLAYER ~= nil then
-            -- loop all players on the current realm
-            for k, v in pairs(MTSL_PLAYERS[MTSL_CURRENT_PLAYER.REALM]) do
-                -- skip if name is same as current player
-                if k ~= MTSL_CURRENT_PLAYER.NAME then
-                    table.insert(players, v)
-                end
-            end
-        end
-
-        return MTSL_TOOLS:SortArrayByProperty(players, "NAME")
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Returns the players on current realm with same faction except current player
-    --
-    -- returns  Array       The list of players
-    ------------------------------------------------------------------------------------------------
-    GetOtherPlayersOnCurrentRealmSameFaction = function(self)
-        local players = {}
-        if MTSL_CURRENT_PLAYER then
-            -- loop all players on the current realm
-            for k, v in pairs(MTSL_PLAYERS[MTSL_CURRENT_PLAYER.REALM]) do
-                -- skip if name is same as current player
-                if k ~= MTSL_CURRENT_PLAYER.NAME and v.FACTION == MTSL_CURRENT_PLAYER.FACTION then
-                    table.insert(players, v)
-                end
-            end
-        end
-
-        return MTSL_TOOLS:SortArrayByProperty(players, "NAME")
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Returns the players on current realm except current player that learned a profession
-    --
-    -- returns  Array       The list of players
-    ------------------------------------------------------------------------------------------------
-    GetOtherPlayersOnCurrentRealmLearnedProfession = function(self, profession_name)
-        local other_players = self:GetOtherPlayersOnCurrentRealm()
-        local players = {}
-        -- loop all players on the current realm
-        for _, v in pairs(other_players) do
-           -- skip if he doesnt know the profession
-            if v.TRADESKILLS ~= nil and v.TRADESKILLS[profession_name] ~= nil and v.TRADESKILLS[profession_name] ~= 0 then
-                table.insert(players, v)
-            end
-        end
-
-        return MTSL_TOOLS:SortArrayByProperty(players, "NAME")
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Returns the players on current realm and same faction except current player that learned a profession
-    --
-    -- returns  Array       The list of players
-    ------------------------------------------------------------------------------------------------
-    GetOtherPlayersOnCurrentRealmSameFactionLearnedProfession = function(self, profession_name)
-        local other_players = self:GetOtherPlayersOnCurrentRealmSameFaction()
-        local players = {}
-        -- loop all players on the current realm
-        for _, v in pairs(other_players) do
-            -- skip if he doesnt know the profession
-            if v.TRADESKILLS ~= nil and v.TRADESKILLS[profession_name] ~= nil and v.TRADESKILLS[profession_name] ~= 0 then
-                table.insert(players, v)
-            end
-        end
-
-        return MTSL_TOOLS:SortArrayByProperty(players, "NAME")
     end,
 
     ------------------------------------------------------------------------------------------------
@@ -574,10 +473,8 @@ MTSL_LOGIC_PLAYER_NPC = {
             ["NAME"] = profession_name,
             ["AMOUNT_MISSING"] = 0,
             ["SKILL_LEVEL"] = current_skill_level,
-            ["SPELLID_HIGHEST_KNOWN_RANK"] = 0,
             -- Array because you can learn 2 specialisations as Blacksmith
             ["SPELLIDS_SPECIALISATION"] = {},
-            ["HIGHEST_KNOWN_RANK"] = 0,
             ["AMOUNT_LEARNED"] = 0,
             ["MISSING_SKILLS"] = {},
             ["LEARNED_SKILLS"] = {},
@@ -682,7 +579,6 @@ MTSL_LOGIC_PLAYER_NPC = {
     UpdateMissingLevelsForProfessionCurrentPlayer = function(self, profession_name, max_level)
         -- Get the current trained max based on max_level for the player for the profession
         local learned_rank = MTSL_LOGIC_PROFESSION:GetRankForProfessionByMaxLevel(profession_name, max_level)
-        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["HIGHEST_KNOWN_RANK"] = learned_rank
         -- add all the missing levels to the array of skills as well and increase counter
         local rank_ids = MTSL_LOGIC_PROFESSION:GetRanksForProfession(profession_name)
 
@@ -692,9 +588,6 @@ MTSL_LOGIC_PLAYER_NPC = {
             if v.rank <= learned_rank then
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].LEARNED_SKILLS, v.id)
                 MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_LEARNED = MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_LEARNED + 1
-                if v.rank == learned_rank then
-                    MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].SPELLID_HIGHEST_KNOWN_RANK = v.id
-                end
             else
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].MISSING_SKILLS, v.id)
                 MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_MISSING = MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_MISSING + 1

@@ -166,19 +166,6 @@ MTSL_LOGIC_SKILL = {
         return is_obtainable
     end,
 
-    ---
-    --- Returns a skill for a certain profession based on the recipe id its learned from
-    ---@param item_id number
-    ---@param profession_name ProfessionId
-    ---@return Skill|nil
-    GetSkillForProfessionByItemId = function(self, item_id, profession_name)
-            local skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(TRADE_SKILLS_DATA["skills"][profession_name], "items", item_id)
-            if skill == nil then
-                skill = MTSL_TOOLS:GetItemFromArrayByKeyArrayValue(TRADE_SKILLS_DATA["levels"][profession_name], "items", item_id)
-            end
-            return skill
-        end,
-
     ------------------------------------------------------------------------------------------------
     -- Returns a skill for a certain profession by id
     --

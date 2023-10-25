@@ -4,6 +4,8 @@
 -- Parent Frame: OptionsMenuFrame                               --
 ------------------------------------------------------------------
 
+local player_repository = mtsl_get_service(MTSL_Domain_PlayerRepository)
+
 MTSLOPTUI_RESET_FRAME = {
     FRAME_HEIGHT = 90,
     BUTTON_WIDTH = 200,
@@ -49,7 +51,8 @@ MTSLOPTUI_RESET_FRAME = {
             -- only remove if realm & player chosen
             if MTSLOPTUI_RESET_FRAME.current_realm ~= nil and MTSLOPTUI_RESET_FRAME.current_player ~= nil then
                 -- If delete was succesfull, refresh the list
-                if MTSL_LOGIC_SAVED_VARIABLES:RemoveCharacter(MTSLOPTUI_RESET_FRAME.current_player, MTSLOPTUI_RESET_FRAME.current_realm) then
+                local player_id = MTSL_Domain_VO_PlayerId.Construct(MTSLOPTUI_RESET_FRAME.current_realm, MTSLOPTUI_RESET_FRAME.current_player)
+                if player_repository:Remove(player_id) then
                     -- If no other chars on realm, update realm dropdown first
                     if MTSL_LOGIC_PLAYER_NPC:CountPlayersOnRealm(MTSLOPTUI_RESET_FRAME.current_realm) <= 0 then
                         MTSLOPTUI_RESET_FRAME.current_realm = nil
@@ -74,7 +77,7 @@ MTSLOPTUI_RESET_FRAME = {
         self.reset_btn:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", left - 50, -65)
         self.reset_btn:SetText(MTSLUI_TOOLS:GetLocalisedLabel("delete all"))
         self.reset_btn:SetScript("OnClick", function()
-            MTSL_LOGIC_SAVED_VARIABLES:RemoveAllCharacters()
+            MTSL_Domain_PlayerRepository:RemoveAll()
         end)
     end,
 
