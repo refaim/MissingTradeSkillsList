@@ -184,11 +184,6 @@ MTSL_LOGIC_PLAYER_NPC = {
             ["MISSING_SKILLS"] = {},
             ["LEARNED_SKILLS"] = {},
         }
-        -- Add the auto learned level
-        local learned_rank = MTSL_LOGIC_PROFESSION:GetAutoLearnedLevelForProfession(profession_name)
-        -- TODO delete HIGHEST_KNOWN_RANK and SPELLID_HIGHEST_KNOWN_RANK (fields are not used)
-        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["HIGHEST_KNOWN_RANK"] = 1
-        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["SPELLID_HIGHEST_KNOWN_RANK"] = learned_rank
 
         -- add auto learned skills
         local auto_learned = MTSL_LOGIC_PROFESSION:GetAutoLearnedSkillsForProfession(profession_name)
@@ -575,10 +570,8 @@ MTSL_LOGIC_PLAYER_NPC = {
             ["NAME"] = profession_name,
             ["AMOUNT_MISSING"] = 0,
             ["SKILL_LEVEL"] = current_skill_level,
-            ["SPELLID_HIGHEST_KNOWN_RANK"] = 0,
             -- Array because you can learn 2 specialisations as Blacksmith
             ["SPELLIDS_SPECIALISATION"] = {},
-            ["HIGHEST_KNOWN_RANK"] = 0,
             ["AMOUNT_LEARNED"] = 0,
             ["MISSING_SKILLS"] = {},
             ["LEARNED_SKILLS"] = {},
@@ -681,7 +674,6 @@ MTSL_LOGIC_PLAYER_NPC = {
     UpdateMissingLevelsForProfessionCurrentPlayer = function(self, profession_name, max_level)
         -- Get the current trained max based on max_level for the player for the profession
         local learned_rank = MTSL_LOGIC_PROFESSION:GetRankForProfessionByMaxLevel(profession_name, max_level)
-        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["HIGHEST_KNOWN_RANK"] = learned_rank
         -- add all the missing levels to the array of skills as well and increase counter
         local rank_ids = MTSL_LOGIC_PROFESSION:GetRanksForProfession(profession_name)
 
@@ -691,9 +683,6 @@ MTSL_LOGIC_PLAYER_NPC = {
             if v.rank <= learned_rank then
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].LEARNED_SKILLS, v.id)
                 MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_LEARNED = MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_LEARNED + 1
-                if v.rank == learned_rank then
-                    MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].SPELLID_HIGHEST_KNOWN_RANK = v.id
-                end
             else
                 table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].MISSING_SKILLS, v.id)
                 MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_MISSING = MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name].AMOUNT_MISSING + 1
