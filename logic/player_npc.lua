@@ -132,7 +132,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     -- Checks if the saved data of profession is correct, if not remove the profession
     ------------------------------------------------------------------------------------------------
     CheckSavedProfessions = function(self)
-        if MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil and MTSL_CURRENT_PLAYER.TRADESKILLS ~= {} then
+        if MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil then
             for k, v in pairs(MTSL_CURRENT_PLAYER.TRADESKILLS) do
                if type(v) ~= "table" or v.NAME == nil or v.SKILL_LEVEL == nil or v.AMOUNT_MISSING == nil or v.AMOUNT_LEARNED == nil or
                        v.SPELLIDS_SPECIALISATION == nil or v.MISSING_SKILLS == nil or v.LEARNED_SKILLS == nil then
@@ -185,21 +185,13 @@ MTSL_LOGIC_PLAYER_NPC = {
             ["LEARNED_SKILLS"] = {},
         }
 
-        -- add auto learned skills
-        local auto_learned = MTSL_LOGIC_PROFESSION:GetAutoLearnedSkillsForProfession(profession_name)
-
-        if auto_learned ~= {} then
-            MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_LEARNED"] = MTSL_TOOLS:CountItemsInArray(auto_learned)
-            MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["LEARNED_SKILLS"] = auto_learned
-        end
+        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_LEARNED"] = MTSL_TOOLS:CountItemsInArray(auto_learned)
+        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["LEARNED_SKILLS"] = auto_learned
 
         local missing_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_CURRENT_PLAYER.CLASS)
-
-        if missing_skills ~= {} then
-            MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_MISSING"] = MTSL_TOOLS:CountItemsInArray(missing_skills)
-            for _, v in pairs(missing_skills) do
-                table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["MISSING_SKILLS"], v.id)
-            end
+        MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_MISSING"] = MTSL_TOOLS:CountItemsInArray(missing_skills)
+        for _, v in pairs(missing_skills) do
+            table.insert(MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["MISSING_SKILLS"], v.id)
         end
     end,
 
@@ -211,7 +203,7 @@ MTSL_LOGIC_PLAYER_NPC = {
 
         local profession_names = {}
         -- copy each name from current data so we can check if we still know it
-        if MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil and MTSL_CURRENT_PLAYER.TRADESKILLS ~= {} then
+        if MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil then
             for _, v in pairs(MTSL_CURRENT_PLAYER.TRADESKILLS) do
                 -- only add if primary profession
                 if not MTSL_LOGIC_PROFESSION:IsSecondaryProfession(v.NAME) then
@@ -224,7 +216,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         local have_unlearned_profession = false
 
         -- only check if we actualy added professions to list to check
-        if profession_names ~= {} then
+        if not MTSL_TOOLS:TableEmpty(profession_names) then
             -- loop all the skill lines
             while GetSkillLineInfo(i) ~= nil do
                 local skilldata = {GetSkillLineInfo(i) }
@@ -698,7 +690,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         if MTSL_CURRENT_PLAYER ~= nil and MTSL_CURRENT_PLAYER.TRADESKILLS ~= nil then
             for _, v in pairs(MTSL_CURRENT_PLAYER.TRADESKILLS) do
                 -- Check all specialisations if we have learned some
-                if v.SPELLIDS_SPECIALISATION ~= nil and v.SPELLIDS_SPECIALISATION ~= {} then
+                if v.SPELLIDS_SPECIALISATION ~= nil then
                     local new_spellids_specialisation = {}
                     for _, s in pairs(v.SPELLIDS_SPECIALISATION) do
                         if MTSL_LOGIC_PROFESSION:IsSpecialisationKnown(s) then

@@ -166,7 +166,7 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:SetCurrentProfessionDetails(profession
     local list_skills = MTSL_LOGIC_PLAYER_NPC:GetMissingSkillsForProfessionCurrentPlayer(profession_name)
     self.skill_list_frame:ChangeProfession(profession_name, list_skills)
     -- update the filter dropdown for specialisations
-    if specialisation_ids == nil or specialisation_ids == {} or MTSL_TOOLS:CountItemsInArray(specialisation_ids) <= 0 then
+    if specialisation_ids == nil or MTSL_TOOLS:TableEmpty(specialisation_ids) then
         self.skill_list_filter_frame:UseAllSpecialisations()
     else
         self.skill_list_filter_frame:UseOnlyLearnedSpecialisations(specialisation_ids)

@@ -110,21 +110,21 @@ MTSLUI_SAVED_VARIABLES = {
             MTSLUI_FONTS:Initialise()
 
             -- only reset the minimap
-            if MTSLUI_PLAYER.MINIMAP == nil or MTSLUI_PLAYER.MINIMAP == {} then
+            if MTSLUI_PLAYER.MINIMAP == nil or MTSL_TOOLS:TableEmpty(MTSLUI_PLAYER.MINIMAP) then
                 self:ResetMinimap()
             else
                 self:ValidateMinimap()
             end
 
             -- only reset the tooltip
-            if MTSLUI_PLAYER.TOOLTIP == nil or MTSLUI_PLAYER.TOOLTIP == {} then
+            if MTSLUI_PLAYER.TOOLTIP == nil or MTSL_TOOLS:TableEmpty(MTSLUI_PLAYER.TOOLTIP) then
                 self:ResetEnhancedTooltip()
             else
                 self:ValidateEnhancedTooltip()
             end
 
             -- only reset the link to chat
-            if MTSLUI_PLAYER.LINK_TO_CHAT == nil or MTSLUI_PLAYER.LINK_TO_CHAT == {} then
+            if MTSLUI_PLAYER.LINK_TO_CHAT == nil or MTSL_TOOLS:TableEmpty(MTSLUI_PLAYER.LINK_TO_CHAT) then
                 self:ResetLinkToChat()
             else
                 self:ValidateLinkToChat()

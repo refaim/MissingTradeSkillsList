@@ -135,7 +135,7 @@ MTSL_TOOLS = {
     ----------------------------------------------------------------------------------------------------------
     CountItemsInArray = function(self, list)
         local amount = 0
-        if list ~= nil and list ~= {} then
+        if list ~= nil then
             amount = getn(list)
         end
         return amount
@@ -273,7 +273,7 @@ MTSL_TOOLS = {
     -- return           boolean     Flag indicating if number is foundFound skill (nil if not  in list)
     ------------------------------------------------------------------------------------------------
     ListContainsNumber = function(self, list, number)
-        if list == nil or list == {} then
+        if list == nil then
             return false
         end
         local i = 1
@@ -300,7 +300,7 @@ MTSL_TOOLS = {
     -- return           boolean     Flag indicating if number is foundFound skill (nil if not  in list)
     ------------------------------------------------------------------------------------------------
     ListContainsKey = function(self, list, key)
-        if list == nil or list == {} then
+        if list == nil then
             return false
         end
         for _, k in pairs(list) do
@@ -321,7 +321,7 @@ MTSL_TOOLS = {
     -- return           boolean     Flag indicating if number is foundFound skill (nil if not  in list)
     ------------------------------------------------------------------------------------------------
     ListContainsKeyIgnoreCasingAndSpaces = function(self, list, key)
-        if list == nil or list == {} then
+        if list == nil then
             return false
         end
         for _, k in pairs(list) do
@@ -354,7 +354,7 @@ MTSL_TOOLS = {
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
     SortArray = function(self, array)
-        if array ~= nil and array ~= {} then
+        if array ~= nil then
             table.sort(array, function(a, b) return a < b end)
         end
         return array
@@ -368,7 +368,7 @@ MTSL_TOOLS = {
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
     SortArrayNumeric = function(self, array)
-        if array ~= nil and array ~= {} then
+        if array ~= nil then
             table.sort(array, function(a, b) return tonumber(a) < tonumber(b) end)
         end
         return array
@@ -383,7 +383,7 @@ MTSL_TOOLS = {
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
     SortArrayByProperty = function(self, array, property)
-        if array ~= nil and array ~= {} then
+        if array ~= nil then
             table.sort(array, function(a, b) return a[property] < b[property] end)
         end
         return array
@@ -398,7 +398,7 @@ MTSL_TOOLS = {
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
     SortArrayByPropertyReversed = function(self, array, property)
-        if array ~= nil and array ~= {} then
+        if array ~= nil then
             table.sort(array, function(a, b) return a[property] > b[property] end)
         end
         return array
@@ -414,7 +414,7 @@ MTSL_TOOLS = {
     -- return           Array       Sorted array
     ------------------------------------------------------------------------------------------------
     SortArrayByLocalisedProperty = function(self, array, property)
-        if array ~= nil and array ~= {} then
+        if array ~= nil then
             table.sort(array, function(a, b) return a[property][MTSLUI_CURRENT_LANGUAGE] < b[property][MTSLUI_CURRENT_LANGUAGE] end)
         end
         return array

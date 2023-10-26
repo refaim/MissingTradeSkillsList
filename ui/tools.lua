@@ -84,7 +84,7 @@ MTSLUI_TOOLS = {
             _G[name_parent_class]:Hide()
         end)
 
-        if swap_frames ~= nil and swap_frames ~= {} then
+        if swap_frames ~= nil then
             local last_swap_button = main_frame.close_button
 
             -- Sort the buttons by button_text reversed order

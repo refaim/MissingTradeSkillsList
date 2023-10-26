@@ -139,7 +139,7 @@ MTSLUI_PROFESSION_LIST_FRAME = {
         self.shown_professions = english_prof_names
 
         local first_button_shown = 0
-        if self.shown_professions ~= {} and self.shown_professions ~= nil then
+        if self.shown_professions ~= nil and not MTSL_TOOLS:TableEmpty(self.shown_professions) then
             local top = -2
             local i = 1
             while self.PROF_BUTTONS[i] ~= nil do
