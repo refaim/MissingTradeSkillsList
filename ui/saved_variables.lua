@@ -9,14 +9,12 @@ MTSLUI_PLAYER = {
     WELCOME_MSG = nil,
     AUTO_SHOW_MTSL = nil,
     -- first load after new version
-    NEW_VERSION = true,
     MINIMAP = {
         ACTIVE = nil,
         ANGLE = nil,
         RADIUS = nil,
         SHAPE = nil,
     },
-    PATCH_LEVEL_MTSL = nil,
     TOOLTIP = {
         ACTIVE = nil,
         FACTIONS = nil,
@@ -101,7 +99,6 @@ MTSLUI_SAVED_VARIABLES = {
 
             self:SetShowWelcomeMessage(MTSLUI_PLAYER.WELCOME_MSG)
             self:SetAutoShowMTSL(MTSLUI_PLAYER.AUTO_SHOW_MTSL)
-            self:SetPatchLevelMTSL(MTSLUI_PLAYER.PATCH_LEVEL_MTSL)
 
             if MTSLUI_PLAYER.FONT == nil or type(MTSLUI_PLAYER.FONT) ~= "table" or
                     MTSLUI_PLAYER.FONT.SIZE == nil or type(MTSLUI_PLAYER.FONT.SIZE) ~= "table" then
@@ -138,13 +135,6 @@ MTSLUI_SAVED_VARIABLES = {
             else
                 self:ValidateMTSLLocation()
             end
-
-            -- Only run once when new version of addon is installed
-            if MTSLUI_PLAYER.NEW_VERSION then
-                -- Overwrite current patch version to max
-                self:SetPatchLevelMTSL(TRADE_SKILLS_DATA.MAX_PATCH_LEVEL)
-                MTSLUI_PLAYER.NEW_VERSION = false
-            end
         end
     end,
 
@@ -158,7 +148,6 @@ MTSLUI_SAVED_VARIABLES = {
         MTSLUI_PLAYER.WELCOME_MSG = true
         MTSLUI_PLAYER.AUTO_SHOW_MTSL = true
         self:ResetMinimap()
-        MTSLUI_PLAYER.PATCH_LEVEL_MTSL = TRADE_SKILLS_DATA.MAX_PATCH_LEVEL
         self:ResetEnhancedTooltip()
         self:ResetMTSLLocation()
         self:ResetSplitModes()
@@ -620,56 +609,6 @@ MTSLUI_SAVED_VARIABLES = {
     ------------------------------------------------------------------------------------------------
     GetMTSLLocationFrame = function(self)
         return MTSLUI_PLAYER.MTSL_LOCATION.FRAME
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Sets the number of content patch used to show data based on tocversion of server
-    ------------------------------------------------------------------------------------------------
-    SetPatchLevelMTSL = function(self)
-        local patch_level = self:GetPatchLevelServer()
-        if patch_level == 0 then
-            TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL = TRADE_SKILLS_DATA.MIN_PATCH_LEVEL
-            MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.WARNING .. "MTSL: Could not determine patch level from server! Falling back to phase " .. TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL .. " (" .. MTSL_LOGIC_WORLD:GetZoneNameById(TRADE_SKILLS_DATA.PHASE_IDS[TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL]) .. ")")
-        else
-            TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL = patch_level
-        end
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Sets the number of content patch used on the server
-    ------------------------------------------------------------------------------------------------
-    GetPatchLevelServer = function(self)
-        if true then
-            -- TODO need to support Vanilla Private Servers patch level detection (how?)
-            return TRADE_SKILLS_DATA.MAX_PATCH_LEVEL
-        end
-
-        -- Determine the current patch level of the server
-        local _, _, _, tocversion = GetBuildInfo()
-        if tocversion then
-            -- make sure we loop the phases in order
-            table.sort(MTSLUI_ADDON.SERVER_VERSION_PHASES, function(a, b) return a.id < b.id end)
-            -- loop each phase until we find a matching version
-            for _, v in pairs(MTSLUI_ADDON.SERVER_VERSION_PHASES) do
-                if v.max_tocversion >= tocversion then
-                    return v.id
-                end
-            end
-        end
-        -- return 0 when not found or could be determined
-        return 0
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Gets the number of content patch used to show data
-    --
-    -- return           Number          The number of content patch
-    ------------------------------------------------------------------------------------------------
-    GetPatchLevelMTSL = function(self)
-        if MTSLUI_PLAYER.CURRENT_PATCH_LEVEL == nil then
-            self:SetPatchLevelMTSL()
-        end
-        return MTSLUI_PLAYER.CURRENT_PATCH_LEVEL
     end,
 
     ------------------------------------------------------------------------------------------------

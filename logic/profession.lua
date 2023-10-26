@@ -2,6 +2,34 @@
 -- Contains all functions for a profession --
 ---------------------------------------------
 
+---@shape SkillCounter
+---@field trade_skill string
+---@field specialisation_id number|nil
+---@field amount number
+
+---@type table<string, SkillCounter>
+local skills_counters_by_key = {}
+
+---@param trade_skill string
+---@param specialisation_id number|nil
+---@return string
+local function make_skill_counter_key(trade_skill, specialisation_id)
+    return trade_skill .. ";" .. tostring(specialisation_id or -1)
+end
+
+---@param trade_skill string
+---@param specialisation_id number|nil
+---@return SkillCounter
+local function get_or_create_counter(trade_skill, specialisation_id)
+    local counter_key = make_skill_counter_key(trade_skill, specialisation_id)
+    local counter = skills_counters_by_key[counter_key]
+    if counter == nil then
+        counter = { trade_skill = trade_skill, specialisation_id = specialisation_id, amount = 0 }
+        skills_counters_by_key[counter_key] = counter
+    end
+    return counter
+end
+
 MTSL_LOGIC_PROFESSION = {
     RACIAL_BONUS = 15,
 
@@ -44,13 +72,12 @@ MTSL_LOGIC_PROFESSION = {
     -- @skill_name          String      The (partial) name of the skill
     -- @source_types        Array       The sourcetypes allowed for the skill
     -- @specialisation_ids  Array       The ids of the specialisation
-    -- @phases              Array       The numbers of phases for during one the recipe has to be available
     -- @zone_id             Number      The id of the zone in which we must be able to learn skill (0 = all)
     -- @faction_ids         Array       The ids of the faction from which we must be able to learn skill (0 = all)
     --
     -- returns              Array       The skills passed the filter
     -----------------------------------------------------------------------------------------------
-    FilterListOfSkills = function(self, list_skills, profession_name, skill_name, source_types, specialisation_ids, phases, zone_id, faction_ids)
+    FilterListOfSkills = function(self, list_skills, profession_name, skill_name, source_types, specialisation_ids, zone_id, faction_ids)
         local filtered_list = {}
 
         -- alter the skill_name now if needed
@@ -88,10 +115,6 @@ MTSL_LOGIC_PROFESSION = {
                 if skill_passed_filter == true and MTSL_TOOLS:ListContainsNumber(specialisation_ids, spec_id) == false then
                     skill_passed_filter = false
                 end
-                -- Check availability in phase
-                if skill_passed_filter == true and MTSL_TOOLS:ListContainsNumber(phases, v.phase) == false then
-                    skill_passed_filter = false
-                end
                 -- Check availability in zone
                 if skill_passed_filter == true and MTSL_LOGIC_SKILL:IsSkillAvailableInZone(v, profession_name, zone_id) == false then
                     skill_passed_filter = false
@@ -114,15 +137,14 @@ MTSL_LOGIC_PROFESSION = {
     end,
 
     -----------------------------------------------------------------------------------------------
-    -- Get All the available (in the given phase) skills and levels in a zone for one profession sorted by minimim skill
+    -- Get All the available skills and levels in a zone for one profession sorted by minimim skill
     --
     -- @profession_name     String      The name of the profession
-    -- @max_phase           Number      The maximum content phase for skill to be included (default = current)
     -- @zone_id             Number      The id of the zone in which we must be able to learn skill (0 = all)
     --
     -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
-    GetAllAvailableSkillsAndLevelsForProfessionInZone = function(self, profession_name, max_phase, zone_id)
+    GetAllAvailableSkillsAndLevelsForProfessionInZone = function(self, profession_name, zone_id)
         local profession_skills = {}
 
         local arrays_to_loop = { "skills", "levels", "specialisations" }
@@ -130,8 +152,7 @@ MTSL_LOGIC_PROFESSION = {
         for _, a in pairs(arrays_to_loop) do
             if TRADE_SKILLS_DATA[a][profession_name] then
                 for _, v in pairs(TRADE_SKILLS_DATA[a][profession_name]) do
-                    if MTSL_LOGIC_SKILL:IsSkillAvailableInPhase(v, max_phase) and
-                            MTSL_LOGIC_SKILL:IsSkillAvailableInZone(v, profession_name, zone_id) then
+                    if MTSL_LOGIC_SKILL:IsSkillAvailableInZone(v, profession_name, zone_id) then
                         table.insert(profession_skills, v)
                     end
                 end
@@ -145,37 +166,32 @@ MTSL_LOGIC_PROFESSION = {
     end,
 
     -----------------------------------------------------------------------------------------------
-    -- Get All the skills and levels for one profession sorted by minimim skill (regardless the zone, phase)
+    -- Get All the skills and levels for one profession sorted by minimim skill (regardless the zone)
     --
     -- @prof_name           String      The name of the profession
-    -- @max_phase           Number      The maximum content phase for skill to be included (default = current)
-    -- @zone_id             Number      The id of the zone in which we must be able to learn skill (0 = all)
     --
     -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
     GetAllSkillsAndLevelsForProfession = function(self, profession_name)
-        -- MAX_PHASE to allow all skills to be considered
         -- pass 0 as zone_id for all zones
-        return self:GetAllAvailableSkillsAndLevelsForProfessionInZone(profession_name, TRADE_SKILLS_DATA.MAX_PATCH_LEVEL, 0)
+        return self:GetAllAvailableSkillsAndLevelsForProfessionInZone(profession_name, 0)
     end,
 
     -----------------------------------------------------------------------------------------------
-    -- Get All the available (in the given phase) skills (EXCL the levels) for one profession sorted by minimim skill
+    -- Get All the available skills (EXCL the levels) for one profession sorted by minimim skill
     --
     -- @prof_name           String      The name of the profession
-    -- @max_phase           Number      The maximum content phase for skill to be included (default = current)
     -- @class_name          String      The name of the class of the player
     --
     -- return               Array       All the skills for one profession sorted by name or minimim skill
     ------------------------------------------------------------------------------------------------
-    GetAllAvailableSkillsForProfession = function(self, profession_name, max_phase, class_name)
+    GetAllAvailableSkillsForProfession = function(self, profession_name, class_name)
         local profession_skills = {}
 
         if TRADE_SKILLS_DATA["skills"][profession_name] ~= nil then
             -- add all the skills, dont add a skill if obtainable for ohter classes
             for _, v in pairs(TRADE_SKILLS_DATA["skills"][profession_name]) do
-                if MTSL_LOGIC_SKILL:IsSkillAvailableInPhase(v, max_phase) == true and
-                        (v.classes == nil or (v.classes ~= nil and MTSL_TOOLS:ListContainsKeyIgnoreCasingAndSpaces(v.classes, class_name) == true)) then
+                if v.classes == nil or (v.classes ~= nil and MTSL_TOOLS:ListContainsKeyIgnoreCasingAndSpaces(v.classes, class_name) == true) then
                     table.insert(profession_skills, v)
                 end
             end
@@ -287,32 +303,45 @@ MTSL_LOGIC_PROFESSION = {
         return known_status
     end,
 
-    -----------------------------------------------------------------------------------------------
-    -- Get number of available skills for one profession up to max content phase
-    --
-    -- @profession_name     String      The name of the profession
-    -- @max_phase           Number      The maximum content phase for skill to be included
-    -- @specialisation_ids  Array       The ids of the specialisation to include in count
-    --
-    -- return               Number      the number
-    ------------------------------------------------------------------------------------------------
-    GetTotalNumberOfAvailableSkillsForProfession = function(self, profession_name, max_phase, specialisation_ids)
-        local amount = 0
-        -- No specilisation learned, so return the max number
-        if MTSL_TOOLS:CountItemsInArray(specialisation_ids) <= 0 then
-            for _, s in pairs(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]) do
-                amount = amount + tonumber(s)
-            end
-        else
-            amount = tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_0"])
-            for _, s in pairs(specialisation_ids) do
-                if TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_" .. s] ~= nil then
-                    amount = amount + tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. max_phase][profession_name]["spec_" .. s])
+    ---@param profession string
+    ---@param specialisation_ids number[]
+    ---@return number
+    GetTotalNumberOfAvailableSkillsForProfession = function(self, profession, specialisation_ids)
+        if specialisation_ids == nil then
+            specialisation_ids = {}
+        end
+
+        if MTSL_TOOLS:TableEmpty(skills_counters_by_key) then
+            -- TODO: there are class-only recipes (Thistle Tea, Poisons)
+            for trade_skill, skills in pairs(TRADE_SKILLS_DATA["skills"]) do
+                for _, skill in ipairs(skills) do
+                    local counter = get_or_create_counter(trade_skill, skill.specialisation)
+                    counter.amount = counter.amount + 1
                 end
+            end
+
+            for trade_skill, levels in pairs(TRADE_SKILLS_DATA["levels"]) do
+                local counter = get_or_create_counter(trade_skill, nil)
+                counter.amount = counter.amount + getn(levels)
             end
         end
 
-        return amount
+        local total_amount = 0
+
+        local unspec_skill_counter = skills_counters_by_key[make_skill_counter_key(profession, nil)]
+        if unspec_skill_counter ~= nil then
+            total_amount = total_amount + unspec_skill_counter.amount
+        end
+
+        for _, counter in pairs(skills_counters_by_key) do
+            local match_by_trade_skill = counter.trade_skill == profession
+            local match_by_spec = MTSL_TOOLS:TableEmpty(specialisation_ids) or MTSL_TOOLS:ListContainsNumber(specialisation_ids, counter.specialisation_id)
+            if match_by_trade_skill and match_by_spec then
+                total_amount = total_amount + counter.amount
+            end
+        end
+
+        return total_amount
     end,
 
     IsSpecialisationKnown = function(self, specialisation_id)

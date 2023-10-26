@@ -39,20 +39,14 @@ MTSLUI_PROGRESSBAR = {
     ----------------------------------------------------------------------------------------------------------
     -- Updates the values shown on the progressbar
     --
-    -- @min_value           number
-    -- @phase_max_value     number
-    -- @max_value           number
     -- @current_value       number
+    -- @max_value           number
     ----------------------------------------------------------------------------------------------------------
-    UpdateStatusbar = function(self, min_value, phase_max_value, max_value, current_value)
-        self.ui_frame.progressbar.ui_frame.texture:SetMinMaxValues(min_value, phase_max_value)
+    UpdateStatusbar = function(self, current_value, max_value)
+        self.ui_frame.progressbar.ui_frame.texture:SetMinMaxValues(0, max_value)
         self.ui_frame.progressbar.ui_frame.texture:SetValue(current_value)
         self.ui_frame.progressbar.ui_frame.texture:SetStatusBarColor(0.0, 1.0, 0.0, 0.95)
-        if phase_max_value == max_value then
-            self.ui_frame.progressbar.ui_frame.counter.text:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. current_value .. "/" .. phase_max_value)
-        else
-            self.ui_frame.progressbar.ui_frame.counter.text:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. current_value .. "/" .. phase_max_value .. "   [" ..  max_value .. "]")
-        end
+        self.ui_frame.progressbar.ui_frame.counter.text:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. current_value .. "/" .. max_value)
     end,
 
     ----------------------------------------------------------------------------------------------------------

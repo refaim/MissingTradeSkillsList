@@ -108,7 +108,7 @@ MTSLUI_LIST_FRAME = {
 
         self.shown_skills = MTSL_LOGIC_PROFESSION:FilterListOfSkills(self.profession_skills, self.profession_name,
                 self.filter_values["skill_name"], self.filter_values["source"], self.filter_values["specialisation"],
-                self.filter_values["phase"], self.filter_values["zone"], self.filter_values["faction"])
+                self.filter_values["zone"], self.filter_values["faction"])
 
         self.amount_shown_skills = MTSL_TOOLS:CountItemsInArray(self.shown_skills)
 
@@ -304,7 +304,7 @@ MTSLUI_LIST_FRAME = {
 
     ----------------------------------------------------------------------------------------------------------
     -- To see if we have a skill selected or not
-    ------------------------------------------------------------     ----------------------------------------------
+    ----------------------------------------------------------------------------------------------------------
     HasSkillSelected = function(self)
         return self.selected_list_item_id ~= nil
     end,

@@ -92,8 +92,6 @@ function MTSLUI_ACCOUNT_EXPLORER_FRAME:CreateCompontentFrames()
     self.skill_detail_frame = MTSL_TOOLS:CopyObject(MTSLUI_SKILL_DETAIL_FRAME)
     self.skill_detail_frame:Initialise(self.skill_list_frame.ui_frame, "MTSLACCUI_SKILL_DETAIL_FRAME")
     self.skill_detail_frame.ui_frame:SetPoint("BOTTOMLEFT", self.skill_list_frame.ui_frame, "BOTTOMRIGHT", 0, 0)
-    -- limit to tcurrent phase only (no point in know skills to filter for all)
-    self.skill_list_filter_frame:UseOnlyCurrentPhase()
 end
 
 function MTSLUI_ACCOUNT_EXPLORER_FRAME:LinkFrames()

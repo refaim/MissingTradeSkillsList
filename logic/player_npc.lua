@@ -186,6 +186,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         }
         -- Add the auto learned level
         local learned_rank = MTSL_LOGIC_PROFESSION:GetAutoLearnedLevelForProfession(profession_name)
+        -- TODO delete HIGHEST_KNOWN_RANK and SPELLID_HIGHEST_KNOWN_RANK (fields are not used)
         MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["HIGHEST_KNOWN_RANK"] = 1
         MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["SPELLID_HIGHEST_KNOWN_RANK"] = learned_rank
 
@@ -197,7 +198,7 @@ MTSL_LOGIC_PLAYER_NPC = {
             MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["LEARNED_SKILLS"] = auto_learned
         end
 
-        local missing_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
+        local missing_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_CURRENT_PLAYER.CLASS)
 
         if missing_skills ~= {} then
             MTSL_CURRENT_PLAYER.TRADESKILLS[profession_name]["AMOUNT_MISSING"] = MTSL_TOOLS:CountItemsInArray(missing_skills)
@@ -629,8 +630,7 @@ MTSL_LOGIC_PLAYER_NPC = {
         -- get the list of learned skills
         local known_skill_names = MTSL_LOGIC_PROFESSION:GetSkillNamesCurrentTradeSkill()
 
-        -- get the list of available skills in the current phase for the profession,
-        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
+        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_CURRENT_PLAYER.CLASS)
 
         for _, skill in pairs(available_skills) do
             --We learned the skill
@@ -651,8 +651,7 @@ MTSL_LOGIC_PLAYER_NPC = {
     UpdateMissingSkillsForCraftCurrentPlayer = function(self, profession_name)
         local known_skill_ids = MTSL_LOGIC_PROFESSION:GetSkillIdsCurrentCraft()
 
-        -- get the list of available skills in the current phase for the profession,
-        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.CLASS)
+        local available_skills = MTSL_LOGIC_PROFESSION:GetAllAvailableSkillsForProfession(profession_name, MTSL_CURRENT_PLAYER.CLASS)
         -- sorted by id
         available_skills = MTSL_TOOLS:SortArrayByProperty(available_skills, "id")
 

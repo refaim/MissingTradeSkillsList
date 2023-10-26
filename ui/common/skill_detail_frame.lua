@@ -9,7 +9,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- array holding all labels shown on this panel, for easy acces later
     labels = {
         name = {},
-        phase = {},
         min_skill = {},
         requires_xp = {},
         requires_rep = {},
@@ -79,10 +78,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         self.labels.name.tooltip_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", text_label_right - 5, -2)
         self.labels.name.tooltip_frame:SetScript("OnEnter", function() event_class:ToolTipShowSkillName() end)
         self.labels.name.tooltip_frame:SetScript("OnLeave", function() GameTooltip:Hide() end)
-        text_label_top = text_label_top - text_gap
-        -- Labels to show "Phase: <phase>"
-        self.labels.phase.title = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("phase"), text_label_left, text_label_top, "LABEL", "TOPLEFT")
-        self.labels.phase.value = MTSLUI_TOOLS:CreateLabel(self.ui_frame, "-", text_label_right, text_label_top, "TEXT", "TOPLEFT")
         text_label_top = text_label_top - text_gap
         -- Labels to show "Required skill: <min skill>"
         self.labels.min_skill.title = MTSLUI_TOOLS:CreateLabel(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("needs skill level"), text_label_left, text_label_top, "LABEL", "TOPLEFT")
@@ -302,7 +297,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     end,
 
     ToolTipShowSkillName = function(self)
-        -- TODO: Show tooltip for item from GetTradeSkillItemLink()
         -- self:ToolTipShow(self.labels.name.tooltip_frame, self.tooltip_skill_name)
     end,
 
@@ -333,7 +327,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     ---------------------------------------------------------------------------
     ShowNoSkillSelected = function(self)
         self.labels.name.value:SetText("-")
-        self.labels.phase.value:SetText("-")
         self.labels.min_skill.value:SetText("-")
         self.labels.requires_xp.value:SetText("-")
         self.labels.requires_rep.value:SetText("-")
@@ -374,7 +367,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
         if skill ~= nil then
             -- Generic label setting for every type
             self.labels.name.value:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedData(skill))
-            self:SetRequiredPhase(skill.phase)
             self:SetRequiredSkillLevel(skill.min_skill, current_skill_level)
             -- Set minimum xp level
             self:SetRequiredXPLevel(skill.min_xp_level, current_xp_level)
@@ -409,23 +401,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
             self.ui_frame:Show()
             -- Update the text for the tooltips
             self.tooltip_skill_name = "spell:"..skill.id
-        end
-    end,
-
-    ----------------------------------------------------------------------------
-    -- Show the details of a phase level required
-    --
-    -- @min_phase               Number      The minimum phase level required to learn the skill
-    ----------------------------------------------------------------------------
-    SetRequiredPhase = function(self, min_phase)
-        local phase = min_phase
-        if min_phase == nil or min_phase <= 0  then
-            phase = tonumber(TRADE_SKILLS_DATA.MIN_PATCH_LEVEL)
-        end
-        if phase <= tonumber(TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL) then
-            self.labels.phase.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.YES .. MTSL_LOGIC_WORLD:GetZoneNameById (TRADE_SKILLS_DATA.PHASE_IDS[phase]).. " (" .. phase .. ")")
-        else
-            self.labels.phase.value:SetText(MTSLUI_FONTS.COLORS.AVAILABLE.NO .. MTSL_LOGIC_WORLD:GetZoneNameById (TRADE_SKILLS_DATA.PHASE_IDS[phase]).. " (" .. phase .. ")")
         end
     end,
 
@@ -561,7 +536,6 @@ MTSLUI_SKILL_DETAIL_FRAME = {
     -- @trainers_info       MTSLDATA    Contains the price from trainer and list of souces with npc ids
     ----------------------------------------------------------------------------------------------------
     ShowDetailsOfSkillTypeTrainer = function(self, trainers_info)
-        -- No need to update the phase, all are available since 1
         self.labels.price.value:SetText(MTSL_TOOLS:GetNumberAsMoneyString(trainers_info.price))
         self.labels.type.value:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedLabel("trainer"))
         self.labels.source.value:SetText(MTSLUI_FONTS.COLORS.TEXT.NORMAL .. MTSLUI_TOOLS:GetLocalisedLabel("trainer"))

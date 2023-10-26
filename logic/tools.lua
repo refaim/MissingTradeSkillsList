@@ -60,10 +60,6 @@ MTSL_TOOLS = {
                 return false
             end
         end
-
-        -- Count the data
-        self:CountSkillsPerProfessionAndPhase()
-
         return true
     end,
 
@@ -287,6 +283,14 @@ MTSL_TOOLS = {
         return list[i] ~= nil
     end,
 
+    ---@return boolean
+    TableEmpty = function(self, t)
+        for _, _ in pairs(t) do
+            return false
+        end
+        return true
+    end,
+
     ------------------------------------------------------------------------------------------------
     -- Searches an array to see if it contains a key for given value
     --
@@ -414,89 +418,5 @@ MTSL_TOOLS = {
             table.sort(array, function(a, b) return a[property][MTSLUI_CURRENT_LANGUAGE] < b[property][MTSLUI_CURRENT_LANGUAGE] end)
         end
         return array
-    end,
-
-    ------------------------------------------------------------------------------------------------
-    -- Counts the number of skills each profession has in each phase and for each specialisation
-    ------------------------------------------------------------------------------------------------
-    CountSkillsPerProfessionAndPhase = function(self)
-        TRADE_SKILLS_DATA["AMOUNT_SKILLS"] = {}
-
-        local current_phase = TRADE_SKILLS_DATA.MIN_PATCH_LEVEL
-        -- Create the array to hold the counters
-        while current_phase <= TRADE_SKILLS_DATA.MAX_PATCH_LEVEL do
-            TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase] = {}
-            for prof_name, _ in pairs(TRADE_SKILLS_DATA["professions"]) do
-                TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name] = {}
-                -- each profession has a number of ranks that can be learned from trainer
-                TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_0"] = TRADE_SKILLS_DATA["AMOUNT_RANKS"][prof_name]
-                -- add counter for each specialisation if profession has em
-                if TRADE_SKILLS_DATA["specialisations"][prof_name] then
-                    for _, specialisation in pairs(TRADE_SKILLS_DATA["specialisations"][prof_name]) do
-                        TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation.id] = 0
-                    end
-                end
-            end
-            current_phase = current_phase + 1
-        end
-
-        local horde_id = MTSL_LOGIC_FACTION_REPUTATION:GetFactionIdByName("Horde")
-        local alliance_id = MTSL_LOGIC_FACTION_REPUTATION:GetFactionIdByName("Alliance")
-        local neutral_id = MTSL_LOGIC_FACTION_REPUTATION:GetFactionIdByName("Neutral")
-
-        -- Start counting the skills for each profession
-        for prof_name, prof_skills in pairs(TRADE_SKILLS_DATA["skills"]) do
-            for _, skill in pairs(prof_skills) do
-                local specialisation_id = 0
-                if skill.specialisation then specialisation_id = tonumber(skill.specialisation) end
-                local current_phase = 1
-                if skill.phase then current_phase = skill.phase end
-                -- Check if class only
-                local classes = MTSL_LOGIC_SKILL:GetClassesOnlyForSkill(skill.id, prof_name)
-                local class_only = false
-                if self:CountItemsInArray(classes) > 0 then class_only = true end
-                -- Check if faction only
-                local available_horde = MTSL_LOGIC_SKILL:IsAvailableForFaction(skill.id, prof_name, horde_id)
-                local available_alliance = MTSL_LOGIC_SKILL:IsAvailableForFaction(skill.id, prof_name, alliance_id)
-                local available_neutral = MTSL_LOGIC_SKILL:IsAvailableForFaction(skill.id, prof_name, neutral_id)
-
-                -- add one to each phase from current one
-                while current_phase <= TRADE_SKILLS_DATA.MAX_PATCH_LEVEL do
-                    -- if not available for either factions add 1 to other side
-                    if not available_horde and not available_neutral then
-                        if TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_alliance"] == nil then
-                            TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_alliance"] = 1
-                        else
-                            TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_alliance"] = tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_alliance"]) + 1
-                        end
-                    end
-                    if not available_alliance and not available_neutral then
-                        if TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_horde"] == nil then
-                            TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_horde"] = 1
-                        else
-                            TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_horde"] = tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_horde"]) + 1
-                        end
-                    end
-                    if class_only then
-                        for _, c in pairs(classes) do
-                            if TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_" .. c] == nil then
-                                TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_" .. c] = 1
-                            else
-                                TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_" .. c] = tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id .. "_" .. c]) + 1
-                            end
-                        end
-                    end
-                    -- If not counted yet do it now
-                    if (not class_only) and ((available_horde and available_alliance) or available_neutral) then
-                        TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id] = tonumber(TRADE_SKILLS_DATA["AMOUNT_SKILLS"]["phase_" .. current_phase][prof_name]["spec_" .. specialisation_id]) + 1
-                    end
-                    -- Move to next phase
-                    current_phase = current_phase + 1
-                end
-            end
-
-            -- Save results to test
-            MTSLUI_PLAYER["TEST_ADDON_DATA"] = TRADE_SKILLS_DATA["AMOUNT_SKILLS"]
-        end
     end,
 }

@@ -14,9 +14,8 @@ MTSLUI_PLAYER_FILTER_FRAME = {
     FRAME_HEIGHT = 49,
     -- keep track of current sort mehod (1 = name (default), 2 = level)
     current_sort = 1,
-    -- keeps track of current phase used for filtering
+    -- keeps track of current realm used for filtering
     current_realm = nil,
-    phases= {},
     sorts = {},
     -- all contintents
     continents = {},

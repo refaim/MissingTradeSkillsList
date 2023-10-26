@@ -3,19 +3,6 @@
 --------------------------------------------------------
 
 MTSL_LOGIC_SKILL = {
-    ----------------------------------------------------------------------------------------
-    -- Checks if a skill is available in this content phase
-    --
-    -- @skill               Object          The skill
-    -- @profession_name     String          The name of the profession
-    -- @max_phase           Number          The number of content phase that is maximal allowed
-    --
-    -- return               Boolean         Flag indicating availability
-    -----------------------------------------------------------------------------------------
-    IsSkillAvailableInPhase = function(self, skill, max_phase)
-        return tonumber(skill.phase) <= tonumber(max_phase)
-    end,
-
     ---
     --- Checks if a skill is available in a certain zone
     ---@param skill Skill

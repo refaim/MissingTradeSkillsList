@@ -6,34 +6,7 @@
 MTSLUI_ADDON = {
     AUTHOR = "Thumbkin & Refaim",
     NAME = "Missing TradeSkills List",
-    VERSION = "1.16.2",
-    SERVER_VERSION_PHASES = {
-        -- max build number from server for phase 1,
-        {
-            ["id"] = 1,
-            ["max_tocversion"] = 11301,
-        },
-        {
-            ["id"] = 2,
-            ["max_tocversion"] = 11302,
-        },
-        {
-            ["id"] = 3,
-            ["max_tocversion"] = 11303,
-        },
-        {
-            ["id"] = 4,
-            ["max_tocversion"] = 11304,
-        },
-        {
-            ["id"] = 5,
-            ["max_tocversion"] = 11305,
-        },
-        {
-            ["id"] = 6,
-            ["max_tocversion"] = 999999,
-        }
-    }
+    VERSION = "1.17",
 }
 
 MTSLUI_PROFESSION_TEXTURES = {

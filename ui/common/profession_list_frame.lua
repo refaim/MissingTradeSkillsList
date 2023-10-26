@@ -48,14 +48,9 @@ MTSLUI_PROFESSION_LIST_FRAME = {
             top = top - self.ITEM_HEIGHT
             -- add button to list
             table.insert(self.PROF_BUTTONS, skill_button)
-            -- Show label with amount of skills for this profession for current phase and [total in the end]
-            local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.shown_professions[i], TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL)
-            local skills_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.shown_professions[i], TRADE_SKILLS_DATA.MAX_PATCH_LEVEL)
-            local title_text = skills_phase_max_amount
-            if skills_phase_max_amount ~= skills_max_amount then
-                title_text = title_text .. " [" .. skills_max_amount .. "]"
-            end
-            skill_button.text = MTSLUI_TOOLS:CreateLabel(skill_button, title_text, 0, -12, "LABEL", "BOTTOM")
+
+            local skills_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.shown_professions[i], {})
+            skill_button.text = MTSLUI_TOOLS:CreateLabel(skill_button, tostring(skills_amount), 0, -12, "LABEL", "BOTTOM")
 
             i = i + 1
         end
@@ -158,13 +153,8 @@ MTSLUI_PROFESSION_LIST_FRAME = {
                         self.PROF_BUTTONS[i].text:SetText(MTSL_LOGIC_PLAYER_NPC:GetAmountOfLearnedSkillsForProfession(self.current_player.NAME, self.current_player.REALM, self.shown_professions[i]))
                         -- show all overall
                     else
-                        local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.shown_professions[i], TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL)
-                        local skills_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.shown_professions[i], TRADE_SKILLS_DATA.MAX_PATCH_LEVEL)
-                        local title_text = skills_phase_max_amount
-                        if skills_phase_max_amount ~= skills_max_amount then
-                            title_text = title_text .. " [" .. skills_max_amount .. "]"
-                        end
-                        self.PROF_BUTTONS[i].text:SetText(title_text)
+                        local skills_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.shown_professions[i], {})
+                        self.PROF_BUTTONS[i].text:SetText(tostring(skills_amount))
                     end
                     self.PROF_BUTTONS[i]:Show()
                     top = top - self.ITEM_HEIGHT

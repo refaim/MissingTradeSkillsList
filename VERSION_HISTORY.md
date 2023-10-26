@@ -1,5 +1,9 @@
 ## Version History
 
+### v1.17 (Oct 26, 2023)
+
+* Remove Classic WoW content phases support
+
 ### v1.16.2 (Oct 25, 2023)
 
 * Fix quests lookup

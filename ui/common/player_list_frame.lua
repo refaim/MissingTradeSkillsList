@@ -345,19 +345,17 @@ MTSLUI_PLAYER_LIST_FRAME = {
     ChangeSort = function(self, new_sort)
         -- Only change if new one
         if self.current_sort ~= new_sort then
-            -- extend with zone & phase
             self.current_sort = new_sort
             self:RefreshList()
         end
     end,
 
     ----------------------------------------------------------------------------------------------------------
-    -- Change the phase of contents shown in the list
+    -- Change the realm of contents shown in the list
     ----------------------------------------------------------------------------------------------------------
     ChangeRealm = function(self, new_realm)
         -- Only change if new one
         if self.current_realm ~= new_realm then
-            -- extend with zone & phase
             self.current_realm = new_realm
             self:RefreshList()
         end

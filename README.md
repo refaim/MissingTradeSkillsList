@@ -15,7 +15,7 @@ Shows the missing recipes/skills for a tradeskill and where to get them
 * Explorer frames to browse the addon data
   * View all missing skills for the current logged in character per learned profession (/mtsl or /mtsl char)
   * View skills learned on your alts (/mtsl acc)
-  * All in-game skills per phase (/mtsl db)
+  * All in-game skills (/mtsl db)
   * All in-game NPCs (that give u access to a skill) to see what they offer (/mtsl npc)
 * Options menu to configure addon settings (/mtsl config or /mtsl options)
 * Minimap button to quickly access the explorer frames or options menu

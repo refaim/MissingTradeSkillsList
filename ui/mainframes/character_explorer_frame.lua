@@ -120,8 +120,6 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:LinkFrames()
     self.profession_list_frame:SetListFrame(self.skill_list_frame)
     self.skill_list_filter_frame:SetListFrame(self.skill_list_frame)
     self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
-    -- limit to current phase only
-    self.skill_list_filter_frame:UseOnlyCurrentPhase()
 end
 
 ----------------------------------------------------------------------------------------------------------
@@ -178,7 +176,7 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
         if force == 1 then self:ResetFilters() end
         -- if we dont know any profession, dont show it
         if MTSL_CURRENT_PLAYER.TRADESKILLS == nil or MTSL_CURRENT_PLAYER.TRADESKILLS == {} or self.current_profession_name == "Any" then
-            self.progressbar:UpdateStatusbar(0, 0, 0, 0)
+            self.progressbar:UpdateStatusbar(0, 0)
             self:NoProfessionSelected()
         else
             if self.current_profession_name ~= nil then
@@ -189,13 +187,13 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
                 self.skill_list_filter_frame:ChangeProfession(self.current_profession_name)
                 self.skill_list_frame:UpdatePlayerLevels(xp_level, current_skill_level)
                 self.skill_list_frame:ChangeProfession(self.current_profession_name, list_skills)
-                -- Update the progressbar on bottom
-                local skills_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, TRADE_SKILLS_DATA.MAX_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
-                local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
-                local amount_missing = MTSL_LOGIC_PLAYER_NPC:GetAmountMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
-                self.progressbar:UpdateStatusbar(0, skills_phase_max_amount, skills_max_amount, amount_missing)
 
-                if amount_missing <= 0 then
+                -- Update the progressbar on bottom
+                local skills_amount_total = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
+                local skills_amount_missing = MTSL_LOGIC_PLAYER_NPC:GetAmountMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
+                self.progressbar:UpdateStatusbar(skills_amount_missing, skills_amount_total)
+
+                if skills_amount_missing <= 0 then
                     self:NoSkillSelected()
                 end
 
@@ -208,7 +206,7 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
                 end
 
                 -- if we miss skills, auto select first one (only do if we dont have one selected)
-                if not self.skill_list_frame:HasSkillSelected() and amount_missing > 0 then
+                if not self.skill_list_frame:HasSkillSelected() and skills_amount_missing > 0 then
                     self.skill_list_frame:HandleSelectedListItem(1)
                 end
                 -- Force select first profession

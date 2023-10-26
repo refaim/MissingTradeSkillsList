@@ -85,8 +85,6 @@ end
 function MTSLUI_MISSING_TRADESKILLS_FRAME:LinkFrames()
     self.skill_list_filter_frame:SetListFrame(self.skill_list_frame)
     self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
-    -- limit to current phase only
-    self.skill_list_filter_frame:UseOnlyCurrentPhase()
 end
 
 ----------------------------------------------------------------------------------------------------------
@@ -138,15 +136,15 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI(force)
             local list_skills = MTSL_LOGIC_PLAYER_NPC:GetMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
             -- Refresh the UI frame showing the list of skill
             self.skill_list_frame:UpdateList(list_skills)
+
             -- Update the progressbar on bottom
-            local skills_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, TRADE_SKILLS_DATA.MAX_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
-            local skills_phase_max_amount = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, TRADE_SKILLS_DATA.CURRENT_PATCH_LEVEL, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
-            local amount_missing = MTSL_LOGIC_PLAYER_NPC:GetAmountMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
-            self.progressbar:UpdateStatusbar(0, skills_phase_max_amount, skills_max_amount, amount_missing)
+            local skills_amount_total = MTSL_LOGIC_PROFESSION:GetTotalNumberOfAvailableSkillsForProfession(self.current_profession_name, MTSL_CURRENT_PLAYER.TRADESKILLS[self.current_profession_name].SPELLIDS_SPECIALISATION)
+            local skills_amount_missing = MTSL_LOGIC_PLAYER_NPC:GetAmountMissingSkillsForProfessionCurrentPlayer(self.current_profession_name)
+            self.progressbar:UpdateStatusbar(skills_amount_missing, skills_amount_total)
 
             self:NoSkillSelected()
             -- if we miss skills, auto select first one
-            if amount_missing > 0 then
+            if skills_amount_missing > 0 then
                 self.skill_list_frame:HandleSelectedListItem(1)
             end
         end
