@@ -9,14 +9,9 @@
 ---@class MTSLUI_OPTIONS_MENU_FRAME: MTSLUI_BASE_FRAME
 MTSLUI_OPTIONS_MENU_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
 
--- Add or overwrite baseframe
-    -- Addon frame
 MTSLUI_OPTIONS_MENU_FRAME.FRAME_WIDTH = 1100
 MTSLUI_OPTIONS_MENU_FRAME.FRAME_HEIGHT = 680
 
-    ---------------------------------------------------------------------------------------
-    -- Shows the frame
-    ----------------------------------------------------------------------------------------
 function MTSLUI_OPTIONS_MENU_FRAME:Show()
     -- Make sure any other open windows are closed
     MTSLUI_MISSING_TRADESKILLS_FRAME:Hide()
@@ -30,19 +25,12 @@ function MTSLUI_OPTIONS_MENU_FRAME:Show()
     MTSLOPTUI_RESET_FRAME:SelectCurrentPlayer()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Intialises the MissingTradeSkillFrame
---
--- @parent_frame        Frame       The parent frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_OPTIONS_MENU_FRAME:Initialise()
     self.ui_frame = MTSLUI_TOOLS:CreateMainFrame("MTSLUI_OPTIONS_MENU_FRAME", "MTSLUI_Options_Menu_Frame", self.FRAME_WIDTH, self.FRAME_HEIGHT)
-    -- Create the frames inside this frame
     self:CreateCompontentFrames()
 end
 
 function MTSLUI_OPTIONS_MENU_FRAME:CreateCompontentFrames()
-    -- initialise the content frames
     self.title_frame = MTSL_TOOLS:CopyObject(MTSLUI_TITLE_FRAME)
     self.title_frame:Initialise(self.ui_frame, MTSLUI_TOOLS:GetLocalisedLabel("options"), self.FRAME_WIDTH, self.FRAME_WIDTH)
     MTSLOPTUI_CONFIG_FRAME:Initialise(self.title_frame.ui_frame)

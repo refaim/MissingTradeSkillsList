@@ -16,9 +16,6 @@ MTSLUI_CHARACTER_EXPLORER_FRAME.FRAME_HEIGHT_HORIZONTAL_SPLIT = 768
 MTSLUI_CHARACTER_EXPLORER_FRAME.previous_amount_missing = ""
 MTSLUI_CHARACTER_EXPLORER_FRAME.previous_profession_name = ""
 
-----------------------------------------------------------------------------------------------------------
--- Shows the frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:Show()
     -- only show if not options menu open
     if MTSLUI_OPTIONS_MENU_FRAME:IsShown() then
@@ -35,11 +32,6 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:Show()
     end
 end
 
-----------------------------------------------------------------------------------------------------------
--- Intialises the MissingTradeSkillFrame
---
--- @parent_frame        Frame       The parent frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:Initialise()
     local swap_frames = {
         {
@@ -64,9 +56,6 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:Initialise()
     self.profession_list_frame:UpdateButtonsToShowAmountMissingSkills()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Create and place the componentframes for the parent frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:CreateCompontentFrames()
     -- initialise the components of the frame
     self.title_frame = MTSL_TOOLS:CopyObject(MTSLUI_TITLE_FRAME)
@@ -114,9 +103,6 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:CreateCompontentFrames()
     self.progressbar.ui_frame:SetPoint("TOPRIGHT", self.skill_detail_frame.ui_frame, "BOTTOMRIGHT", 0, 3)
 end
 
-----------------------------------------------------------------------------------------------------------
--- link the frames to correct event frames
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:LinkFrames()
     self.profession_list_frame:SetFilterFrame(self.skill_list_filter_frame)
     self.profession_list_frame:SetListFrame(self.skill_list_frame)
@@ -124,9 +110,6 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:LinkFrames()
     self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
 end
 
-----------------------------------------------------------------------------------------------------------
--- Swap to Vertical Mode (Default mode, means list left & details right)
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:SwapToVerticalMode()
     -- resize the frames
     self.ui_frame:SetWidth(self.FRAME_WIDTH_VERTICAL_SPLIT)
@@ -140,9 +123,6 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:SwapToVerticalMode()
     self.progressbar:ResizeToVerticalMode()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Swap to Horizontal Mode (means list on top & details below)
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:SwapToHorizontalMode()
     -- resize the frames where needed
     self.ui_frame:SetWidth(self.FRAME_WIDTH_HORIZONTAL_SPLIT)
@@ -156,21 +136,12 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:SwapToHorizontalMode()
     self.progressbar:ResizeToHorizontalMode()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Update the list of professions shown for the character
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:UpdateProfessions()
     self.profession_list_frame:ChangePlayer(MTSL_CURRENT_PLAYER.NAME, MTSL_CURRENT_PLAYER.REALM)
     self.profession_list_frame:UpdateButtonsToShowAmountMissingSkills()
     self:RefreshUI(1)
 end
 
-----------------------------------------------------------------------------------------------------------
--- Refresh the ui of the MTSLUI_CHARACTER_EXPLORER_FRAME
---
--- @force                   Number      Flag indication if we have to force a refresh (1 == yes)
--- @profession_name         String      The name of the profession
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
     -- only refresh if this window is visible
     if self:IsShown() or force == 1 then
@@ -220,18 +191,12 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
     end
 end
 
-----------------------------------------------------------------------------------------------------------
--- When no profession is selected
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:NoProfessionSelected()
     self.profession_list_frame:ShowNoProfessions()
     self.skill_list_frame:DeselectCurrentSkillButton()
     self.skill_detail_frame:ShowNoSkillSelected()
 end
 
-----------------------------------------------------------------------------------------------------------
--- When no skill is selected
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_CHARACTER_EXPLORER_FRAME:NoSkillSelected()
     self.skill_list_frame:DeselectCurrentSkillButton()
     self.skill_detail_frame:ShowNoSkillSelected()

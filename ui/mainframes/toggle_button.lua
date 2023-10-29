@@ -9,9 +9,6 @@ MTSLUI_TOGGLE_BUTTON = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
 MTSLUI_TOGGLE_BUTTON.FRAME_WITDH = 60
 MTSLUI_TOGGLE_BUTTON.FRAME_HEIGHT = 20
 
----------------------------------------------------------------------------------------
--- Initialises the togglebutton
----------------------------------------------------------------------------------------
 function MTSLUI_TOGGLE_BUTTON:Initialise()
     self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Button", "MTSLUI_ToggleButton", nil, "UIPanelButtonTemplate", self.FRAME_WITDH, self.FRAME_HEIGHT)
     self.ui_frame:SetText("MTSL")
@@ -22,44 +19,27 @@ function MTSLUI_TOGGLE_BUTTON:Initialise()
     self:Hide()
 end
 
----------------------------------------------------------------------------------------
--- Swaps to Craft Mode
----------------------------------------------------------------------------------------
 function MTSLUI_TOGGLE_BUTTON:SwapToCraftMode()
     if CraftFrame then
         self:ReanchorToNewParent(CraftFrame)
     end
 end
 
----------------------------------------------------------------------------------------
--- Swaps to TradeSkill Mode
----------------------------------------------------------------------------------------
 function MTSLUI_TOGGLE_BUTTON:SwapToTradeSkillMode()
     if TradeSkillFrame then
         self:ReanchorToNewParent(TradeSkillFrame)
     end
 end
 
----------------------------------------------------------------------------------------
--- Reanchor the toggle button based on the position
----------------------------------------------------------------------------------------
 function MTSLUI_TOGGLE_BUTTON:ReanchorButton()
     self:ReanchorToNewParent(self.ui_frame:GetParent())
 end
 
-----------------------------------------------------------------------------------------------------------
--- Shows the frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_TOGGLE_BUTTON:Show()
     self:ReanchorToNewParent(self.ui_frame:GetParent())
     self.ui_frame:Show()
 end
 
----------------------------------------------------------------------------------------
--- Reanchors the toggle button to the craft or tradeskill window
---
--- @parent_frame        Object          The parentframe to hook MTSL button to
----------------------------------------------------------------------------------------
 function MTSLUI_TOGGLE_BUTTON:ReanchorToNewParent(parent_frame)
     -- gaps to default BLizzard UI (default right hook)
     local gap_left = -33

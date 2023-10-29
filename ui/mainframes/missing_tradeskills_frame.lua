@@ -16,9 +16,6 @@ MTSLUI_MISSING_TRADESKILLS_FRAME.FRAME_HEIGHT_HORIZONTAL_SPLIT = 770
 MTSLUI_MISSING_TRADESKILLS_FRAME.previous_amount_missing = ""
 MTSLUI_MISSING_TRADESKILLS_FRAME.previous_profession_name = ""
 
-----------------------------------------------------------------------------------------------------------
--- Hides the frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:Hide()
     self.ui_frame:Hide()
     -- reset the filters
@@ -29,11 +26,6 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:Hide()
     self.previous_profession_name = ""
 end
 
-----------------------------------------------------------------------------------------------------------
--- Intialises the MissingTradeSkillFrame
---
--- @parent_frame        Frame       The parent frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:Initialise()
     self.ui_frame = MTSLUI_TOOLS:CreateBaseFrame("Frame", "MTSLUI_MissingTradeSkillsFrame", MTSLUI_TOGGLE_BUTTON.ui_frame, nil, self.FRAME_WIDTH_VERTICAL_SPLIT, self.FRAME_HEIGHT_VERTICAL_SPLIT, true)
     self.ui_frame:SetFrameLevel(10)
@@ -52,9 +44,6 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:Initialise()
     MTSLUI_TOOLS:AddDragToFrame(self.ui_frame)
 end
 
-----------------------------------------------------------------------------------------------------------
--- Create and place the componentframes for the parent frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:CreateCompontentFrames()
     -- initialise the components of the frame
     self.title_frame = MTSL_TOOLS:CopyObject(MTSLUI_TITLE_FRAME)
@@ -81,17 +70,11 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:CreateCompontentFrames()
     self.progressbar.ui_frame:SetPoint("BOTTOMLEFT", self.ui_frame, "BOTTOMLEFT", 4, 2)
 end
 
-----------------------------------------------------------------------------------------------------------
--- link the frames to correct event frames
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:LinkFrames()
     self.skill_list_filter_frame:SetListFrame(self.skill_list_frame)
     self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
 end
 
-----------------------------------------------------------------------------------------------------------
--- Swap to Vertical Mode (Default mode, means list left & details right)
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:SwapToVerticalMode()
     -- resize the frames
     self.ui_frame:SetWidth(self.FRAME_WIDTH_VERTICAL_SPLIT)
@@ -105,9 +88,6 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:SwapToVerticalMode()
     self.progressbar:ResizeToVerticalMode()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Swap to Horizontal Mode (means list on top & details below)
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:SwapToHorizontalMode()
     -- resize the frames where needed
     self.ui_frame:SetWidth(self.FRAME_WIDTH_HORIZONTAL_SPLIT)
@@ -121,9 +101,6 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:SwapToHorizontalMode()
     self.progressbar:ResizeToHorizontalMode()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Refresh the ui of the MTSLUI_MISSING_TRADESKILLS_FRAME
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI(force)
     -- only refresh if this window is visible
     if self:IsShown() or force == 1 then
@@ -153,14 +130,6 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:RefreshUI(force)
     end
 end
 
-----------------------------------------------------------------------------------------------------------
--- Set the profession name currently opened next to MTSL
---
--- @profession_name         String      The name of the profession
--- @current_skill_level     Number      The number of the current skill level of the player
--- @xp_level                Number      The number of the current skill level of the player
--- @specialisation_ids      Array       The ids of the specialisations learned by the player
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:SetCurrentProfessionDetails(profession_name, current_skill_level, xp_level, specialisation_ids)
     self.current_profession_name = profession_name
     self.skill_list_filter_frame:ChangeProfession(profession_name)
@@ -174,18 +143,10 @@ function MTSLUI_MISSING_TRADESKILLS_FRAME:SetCurrentProfessionDetails(profession
         self.skill_list_filter_frame:UseOnlyLearnedSpecialisations(specialisation_ids)
     end
 end
-----------------------------------------------------------------------------------------------------------
--- Get the profession name currently opened next to MTSL
---
--- returns          String          The name of the profession
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:GetCurrentProfessionName()
     return self.current_profession_name
 end
 
-----------------------------------------------------------------------------------------------------------
--- When no skill is selected
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_MISSING_TRADESKILLS_FRAME:NoSkillSelected()
     self.skill_list_frame:NoSkillsToShow()
 end

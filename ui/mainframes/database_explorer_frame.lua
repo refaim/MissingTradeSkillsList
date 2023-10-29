@@ -12,9 +12,6 @@ MTSLUI_DATABASE_EXPLORER_FRAME.FRAME_HEIGHT_VERTICAL_SPLIT = 479
 MTSLUI_DATABASE_EXPLORER_FRAME.FRAME_WIDTH_HORIZONTAL_SPLIT = 889
 MTSLUI_DATABASE_EXPLORER_FRAME.FRAME_HEIGHT_HORIZONTAL_SPLIT = 744
 
-    ---------------------------------------------------------------------------------------
-    -- Shows the frame
-    ----------------------------------------------------------------------------------------
 function MTSLUI_DATABASE_EXPLORER_FRAME:Show()
     -- only show if not options menu open
     if MTSLUI_OPTIONS_MENU_FRAME:IsShown() then
@@ -30,11 +27,6 @@ function MTSLUI_DATABASE_EXPLORER_FRAME:Show()
     end
 end
 
-----------------------------------------------------------------------------------------------------------
--- Intialises the MissingTradeSkillFrame
---
--- @parent_frame        Frame       The parent frame
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_DATABASE_EXPLORER_FRAME:Initialise()
     local swap_frames = {
         {
@@ -110,9 +102,6 @@ function MTSLUI_DATABASE_EXPLORER_FRAME:LinkFrames()
     self.player_filter_frame:SetListFrame(self.player_list_frame)
 end
 
-----------------------------------------------------------------------------------------------------------
--- Refresh the ui of the addon
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_DATABASE_EXPLORER_FRAME:RefreshUI()
     -- Reset the filters
     self.skill_list_filter_frame:ResetFilters()
@@ -122,9 +111,6 @@ function MTSLUI_DATABASE_EXPLORER_FRAME:RefreshUI()
     self.player_filter_frame:ChangeCurrentProfession(self.profession_list_frame:GetCurrentProfession())
 end
 
-----------------------------------------------------------------------------------------------------------
--- Swap to Vertical Mode (Default mode, means list left & details right)
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_DATABASE_EXPLORER_FRAME:SwapToVerticalMode()
     -- resize the frames
     self.ui_frame:SetWidth(self.FRAME_WIDTH_VERTICAL_SPLIT)
@@ -142,9 +128,6 @@ function MTSLUI_DATABASE_EXPLORER_FRAME:SwapToVerticalMode()
     self.player_list_frame:ResizeToVerticalMode()
 end
 
-----------------------------------------------------------------------------------------------------------
--- Swap to Horizontal Mode (means list on top & details below)
-----------------------------------------------------------------------------------------------------------
 function MTSLUI_DATABASE_EXPLORER_FRAME:SwapToHorizontalMode()
     -- resize the frames where needed
     self.ui_frame:SetWidth(self.FRAME_WIDTH_HORIZONTAL_SPLIT)
