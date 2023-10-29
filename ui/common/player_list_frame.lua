@@ -4,6 +4,7 @@
 -- Parent Frame: DatabaseFrame                                  --
 ------------------------------------------------------------------
 
+---@class MTSLUI_PLAYER_LIST_FRAME
 MTSLUI_PLAYER_LIST_FRAME = {
     -- Keeps the current created frame
     scroll_frame = nil,

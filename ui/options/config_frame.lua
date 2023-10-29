@@ -4,6 +4,7 @@
 -- Parent Frame: OptionsMenuFrame                               --
 ------------------------------------------------------------------
 
+---@class MTSLOPTUI_CONFIG_FRAME
 MTSLOPTUI_CONFIG_FRAME = {
     FRAME_HEIGHT = 495,
     MARGIN_LEFT = 25,

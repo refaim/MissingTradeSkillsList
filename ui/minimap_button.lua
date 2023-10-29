@@ -4,6 +4,7 @@
 -- Parent Frame: -                                      --
 ----------------------------------------------------------
 
+---@class MTSLUI_MINIMAP
 MTSLUI_MINIMAP = {
     ui_frame = nil,
     button_angle = nil,

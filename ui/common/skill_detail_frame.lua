@@ -4,6 +4,7 @@
 -- Parent Frame: MissingTradeSkillsListFrame         --
 -------------------------------------------------------
 
+---@class MTSLUI_SKILL_DETAIL_FRAME
 MTSLUI_SKILL_DETAIL_FRAME = {
     ui_frame = nil,
     -- array holding all labels shown on this panel, for easy acces later

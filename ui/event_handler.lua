@@ -3,6 +3,7 @@
 -- Description: handles all the UI events needed for the addon  --
 ------------------------------------------------------------------
 
+---@class MTSLUI_EVENT_HANDLER
 MTSLUI_EVENT_HANDLER = {
     -- flags keeping track if window is open or not
     ui_trade_open = 0,

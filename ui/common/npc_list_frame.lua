@@ -4,6 +4,7 @@
 -- Parent Frame: NpcExplorerFrame                            --
 ---------------------------------------------------------------
 
+---@class MTSLUI_NPC_LIST_FRAME
 MTSLUI_NPC_LIST_FRAME = {
     -- Keeps the current created frame
     scroll_frame = nil,

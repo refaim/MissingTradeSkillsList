@@ -2,6 +2,8 @@
 -- Name: ToggleButton                                           --
 -- Description: Contains all functionality for the togglebutton --
 ------------------------------------------------------------------
+
+---@class MTSLUI_TOGGLE_BUTTON: MTSLUI_BASE_FRAME
 MTSLUI_TOGGLE_BUTTON = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
 
 MTSLUI_TOGGLE_BUTTON.FRAME_WITDH = 60

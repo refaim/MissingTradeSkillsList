@@ -4,6 +4,7 @@
 -- Parent Frame: DatabaseFrame, AccountFrame, MTSL      --
 ----------------------------------------------------------
 
+---@class MTSLUI_LIST_FRAME
 MTSLUI_LIST_FRAME = {
     -- Keeps the current created frame
     scroll_frame = nil,

@@ -4,6 +4,7 @@
 -- Parent Frame: MissingTradeSkillsListFrame                    --
 ------------------------------------------------------------------
 
+---@class MTSLUI_PROGRESSBAR
 MTSLUI_PROGRESSBAR = {
     ui_frame = {},
     FRAME_WIDTH_VERTICAL = 900,

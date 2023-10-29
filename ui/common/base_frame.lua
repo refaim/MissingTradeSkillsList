@@ -3,6 +3,8 @@
 -- Description: Abstract implementation of a base frame      --
 --              Copy this frame in constructor of real frame --
 ---------------------------------------------------------------
+
+---@class MTSLUI_BASE_FRAME
 MTSLUI_BASE_FRAME = {
     ui_frame = nil,
 

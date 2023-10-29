@@ -4,6 +4,7 @@
 -- Parent Frame: DatabaseFrame                                                  --
 ----------------------------------------------------------------------------------
 
+---@class MTSLUI_PROFESSION_LIST_FRAME
 MTSLUI_PROFESSION_LIST_FRAME = {
     -- Keeps the current created frame
     ui_frame = nil,

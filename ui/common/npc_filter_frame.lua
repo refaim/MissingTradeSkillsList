@@ -5,6 +5,7 @@
 -----------------------------------------------------------
 local _G = _G or getfenv(0)
 
+---@class MTSLUI_NPC_FILTER_FRAME
 MTSLUI_NPC_FILTER_FRAME = {
     -- Keeps the current created frame
     ui_frame = nil,

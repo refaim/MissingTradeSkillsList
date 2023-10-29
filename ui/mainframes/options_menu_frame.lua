@@ -5,6 +5,8 @@
 --      Scale for each frame                    --
 --      Layout MTSL frame                       --
 --------------------------------------------------
+
+---@class MTSLUI_OPTIONS_MENU_FRAME: MTSLUI_BASE_FRAME
 MTSLUI_OPTIONS_MENU_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
 
 -- Add or overwrite baseframe

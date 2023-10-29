@@ -4,6 +4,7 @@
 -- Parent Frame: OptionsMenuFrame                               --
 ------------------------------------------------------------------
 
+---@class MTSLOPTUI_RESET_FRAME
 MTSLOPTUI_RESET_FRAME = {
     FRAME_HEIGHT = 90,
     BUTTON_WIDTH = 200,

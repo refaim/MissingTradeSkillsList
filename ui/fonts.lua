@@ -3,6 +3,7 @@
 -- Description: Contains everything about custom fonts  --
 ----------------------------------------------------------
 
+---@class MTSLUI_FONTS
 MTSLUI_FONTS = {
     -- Fontsize of text
     SIZE = {

@@ -3,6 +3,7 @@
 -- Description: List item for scroll frame that is actually a button --
 ----------------------------------------------------------------------
 
+---@class MTSLUI_LIST_ITEM
 MTSLUI_LIST_ITEM = {
     -- The "slider"
     ui_frame = nil,

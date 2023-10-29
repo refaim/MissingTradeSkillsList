@@ -2,6 +2,8 @@
 -- Name: Database Explorer Frame                       --
 -- Description: The main frame to explore the database --
 ---------------------------------------------------------
+
+---@class MTSLUI_DATABASE_EXPLORER_FRAME: MTSLUI_BASE_FRAME
 MTSLUI_DATABASE_EXPLORER_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
 
 MTSLUI_DATABASE_EXPLORER_FRAME.FRAME_WIDTH_VERTICAL_SPLIT = 1274

@@ -4,6 +4,8 @@
 -----------------------------------------
 -- All info saved for 1 account/player --
 -----------------------------------------
+
+---@class MTSLUI_PLAYER
 MTSLUI_PLAYER = {
     -- order as shown in options menu
     WELCOME_MSG = nil,
@@ -50,6 +52,7 @@ MTSLUI_PLAYER = {
     }
 }
 
+---@class MTSLUI_SAVED_VARIABLES
 MTSLUI_SAVED_VARIABLES = {
     MIN_UI_SCALE = "0.5",
     MAX_UI_SCALE = "1.25",

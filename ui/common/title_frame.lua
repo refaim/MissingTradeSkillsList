@@ -4,6 +4,7 @@
 -- Parent Frame: DatabaseFrame                                  --
 ------------------------------------------------------------------
 
+---@class MTSLUI_TITLE_FRAME
 MTSLUI_TITLE_FRAME = {
     FRAME_WIDTH_VERTICAL = 1165,
     FRAME_WIDTH_HORIZONTAL = 810,

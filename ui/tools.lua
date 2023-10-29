@@ -4,6 +4,7 @@
 -------------------------------------------------------------
 local _G = _G or getfenv(0)
 
+---@class MTSLUI_TOOLS
 MTSLUI_TOOLS = {
     -- flag to warn ppl to install tomtom before it can add waypoints
     tomtom_warned = false,

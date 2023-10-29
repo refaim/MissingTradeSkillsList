@@ -2,6 +2,8 @@
 -- Name: MissingTradeSkillFrame                                      --
 -- Description: The main frame shown next to TradeSkill/Craft Window --
 -----------------------------------------------------------------------
+
+---@class MTSLUI_CHARACTER_EXPLORER_FRAME: MTSLUI_BASE_FRAME
 MTSLUI_CHARACTER_EXPLORER_FRAME = MTSL_TOOLS:CopyObject(MTSLUI_BASE_FRAME)
 
 -- Custom properties

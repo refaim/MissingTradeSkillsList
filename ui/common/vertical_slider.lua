@@ -4,6 +4,7 @@
 -- Parent Frame: -                                                  --
 ----------------------------------------------------------------------
 
+---@class MTSLUI_VERTICAL_SLIDER
 MTSLUI_VERTICAL_SLIDER = {
     ui_frame = nil,
     -- Scroll 5 items at a time
