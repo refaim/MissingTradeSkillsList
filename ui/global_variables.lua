@@ -9,6 +9,7 @@ MTSLUI_ADDON = {
     VERSION = "1.17",
 }
 
+---@type table<ProfessionId, string>
 MTSLUI_PROFESSION_TEXTURES = {
     ["Alchemy"] = "Interface\\Icons\\trade_alchemy",
     ["Blacksmithing"] = "Interface\\Icons\\trade_blacksmithing",

@@ -63,13 +63,9 @@ MTSL_TOOLS = {
         return true
     end,
 
-    ----------------------------------------------------------------------------------------------------------
-    -- Creates a deep copy of an object
-    --
-    -- @orig        Object      The original object to copy
-    --
-    -- returns      Object      A copy of the original object
-    ----------------------------------------------------------------------------------------------------------
+    ---@generic T
+    ---@param orig T
+    ---@return T
     CopyObject = function(self, orig)
         local orig_type = type(orig)
         local copy

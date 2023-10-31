@@ -34,7 +34,7 @@ function MTSLUI_BASE_FRAME:ResetFilters()
     if self.skill_list_frame and self.skill_list_frame.ResetFilters then self.skill_list_frame:ResetFilters() end
 end
 
-function MTSLUI_BASE_FRAME:RefreshUI() end
+function MTSLUI_BASE_FRAME:RefreshUI(force) end
 
 function MTSLUI_BASE_FRAME:IsShown()
     if self.ui_frame == nil then

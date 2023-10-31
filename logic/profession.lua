@@ -415,10 +415,6 @@ MTSL_LOGIC_PROFESSION = {
         return prof_name_eng
     end,
 
-    GetLocalisedProfessionNameFromEnglishName = function(self, profession_name)
-        return TRADE_SKILLS_DATA["professions"][profession_name]["name"][MTSLUI_CURRENT_LANGUAGE]
-    end,
-
     -----------------------------------------------------------------------------------------------
     -- Checks if a profession has a real tradeskill/craftframe or not
     --

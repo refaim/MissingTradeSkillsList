@@ -49,65 +49,31 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:Initialise()
     }
     self.ui_frame = MTSLUI_TOOLS:CreateMainFrame("MTSLUI_CHARACTER_EXPLORER_FRAME", "MTSLUI_CharacterExplorerFrame", self.FRAME_WIDTH_VERTICAL_SPLIT, self.FRAME_HEIGHT_VERTICAL_SPLIT, swap_frames)
 
-    self:CreateCompontentFrames()
-    self:LinkFrames()
-
-    self.profession_list_frame:ChangePlayer(MTSL_CURRENT_PLAYER.NAME, MTSL_CURRENT_PLAYER.REALM)
-    self.profession_list_frame:UpdateButtonsToShowAmountMissingSkills()
-end
-
-function MTSLUI_CHARACTER_EXPLORER_FRAME:CreateCompontentFrames()
-    -- initialise the components of the frame
     self.title_frame = MTSL_TOOLS:CopyObject(MTSLUI_TITLE_FRAME)
-    self.title_frame:Initialise(self.ui_frame, "Character Explorer", self.FRAME_WIDTH_VERTICAL_SPLIT - 5, self.FRAME_WIDTH_HORIZONTAL_SPLIT - 5)
-    -- Copy & init the profession list frame
-    self.profession_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_PROFESSION_LIST_FRAME)
-
-    -- Override the current HandleSelect of profession list frame
-    self.profession_list_frame.HandleSelectedListItem = function(me, index)
-        if me.selected_index ~= index then
-            -- Deselect the old BG_Frame by hiding it
-            if me.selected_index ~= nil then
-                me.PROF_BGS[me.selected_index]:Hide()
-            end
-            me.selected_index = index
-            me.PROF_BGS[me.selected_index]:Show()
-
-            self.current_profession_name = me:GetCurrentProfession()
-            self:RefreshUI(1)
-        end
-    end
-
-    self.profession_list_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_PROFESSION_LIST_FRAME")
-    -- position under the filter frame
-    self.profession_list_frame.ui_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 4, -32)
-    -- Copy & init the filter frame
+    self.profession_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_ProfessionList)
     self.skill_list_filter_frame = MTSL_TOOLS:CopyObject(MTSLUI_FILTER_FRAME)
-    self.skill_list_filter_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_FILTER_FRAME")
-    -- position left of profession_list_Frame
-    self.skill_list_filter_frame.ui_frame:SetPoint("TOPLEFT", self.profession_list_frame.ui_frame, "TOPRIGHT", 0, 0)
-    -- Copy & init the list frame
     self.skill_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_LIST_FRAME)
-    self.skill_list_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_LIST_FRAME")
-    -- position under the filter frame
-    self.skill_list_frame.ui_frame:SetPoint("TOPLEFT", self.skill_list_filter_frame.ui_frame, "BOTTOMLEFT", 0, -10)
-    -- Copy & init the detail frame
     self.skill_detail_frame = MTSL_TOOLS:CopyObject(MTSLUI_SKILL_DETAIL_FRAME)
-    self.skill_detail_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_DETAIL_FRAME")
-    -- position left of the list frame
-    self.skill_detail_frame.ui_frame:SetPoint("BOTTOMLEFT", self.skill_list_frame.ui_frame, "BOTTOMRIGHT", 0, 0)
-    -- Copy & init the pgoress bar
     self.progressbar = MTSL_TOOLS:CopyObject(MTSLUI_PROGRESSBAR)
-    self.progressbar:Initialise(self.ui_frame, "MTSLUI_MTSLF_PROGRESS_BAR", MTSLUI_TOOLS:GetLocalisedLabel("missing skills"))
-    -- Bottom of the frame
-    self.progressbar.ui_frame:SetPoint("TOPRIGHT", self.skill_detail_frame.ui_frame, "BOTTOMRIGHT", 0, 3)
-end
 
-function MTSLUI_CHARACTER_EXPLORER_FRAME:LinkFrames()
-    self.profession_list_frame:SetFilterFrame(self.skill_list_filter_frame)
-    self.profession_list_frame:SetListFrame(self.skill_list_frame)
+    self.title_frame:Initialise(self.ui_frame, "Character Explorer", self.FRAME_WIDTH_VERTICAL_SPLIT - 5, self.FRAME_WIDTH_HORIZONTAL_SPLIT - 5)
+    self.profession_list_frame:Initialise(self.ui_frame, self.skill_list_filter_frame, self.skill_list_frame)
+    self.skill_list_filter_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_FILTER_FRAME")
+    self.skill_list_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_LIST_FRAME")
+    self.skill_detail_frame:Initialise(self.ui_frame, "MTSLUI_CHAR_EXPLORER_DETAIL_FRAME")
+    self.progressbar:Initialise(self.ui_frame, "MTSLUI_MTSLF_PROGRESS_BAR", MTSLUI_TOOLS:GetLocalisedLabel("missing skills"))
+
+    self.profession_list_frame.ui_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 4, -32)
+    self.skill_list_filter_frame.ui_frame:SetPoint("TOPLEFT", self.profession_list_frame.ui_frame, "TOPRIGHT", 0, 0)
+    self.skill_list_frame.ui_frame:SetPoint("TOPLEFT", self.skill_list_filter_frame.ui_frame, "BOTTOMLEFT", 0, -10)
+    self.skill_detail_frame.ui_frame:SetPoint("BOTTOMLEFT", self.skill_list_frame.ui_frame, "BOTTOMRIGHT", 0, 0)
+    self.progressbar.ui_frame:SetPoint("TOPRIGHT", self.skill_detail_frame.ui_frame, "BOTTOMRIGHT", 0, 3)
+
     self.skill_list_filter_frame:SetListFrame(self.skill_list_frame)
     self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
+
+    self.profession_list_frame:SetPlayer(MTSL_CURRENT_PLAYER)
+    self.profession_list_frame:UpdateButtonsToShowAmountMissingSkills()
 end
 
 function MTSLUI_CHARACTER_EXPLORER_FRAME:SwapToVerticalMode()
@@ -137,7 +103,7 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:SwapToHorizontalMode()
 end
 
 function MTSLUI_CHARACTER_EXPLORER_FRAME:UpdateProfessions()
-    self.profession_list_frame:ChangePlayer(MTSL_CURRENT_PLAYER.NAME, MTSL_CURRENT_PLAYER.REALM)
+    self.profession_list_frame:SetPlayer(MTSL_CURRENT_PLAYER)
     self.profession_list_frame:UpdateButtonsToShowAmountMissingSkills()
     self:RefreshUI(1)
 end
@@ -182,8 +148,8 @@ function MTSLUI_CHARACTER_EXPLORER_FRAME:RefreshUI(force)
                 if not self.skill_list_frame:HasSkillSelected() and skills_amount_missing > 0 then
                     self.skill_list_frame:HandleSelectedListItem(1)
                 end
-                -- Force select first profession
             else
+                -- Force select first profession
                 self.profession_list_frame:HandleSelectedListItem(1)
             end
             self.profession_list_frame:UpdateButtonsToShowAmountMissingSkills()

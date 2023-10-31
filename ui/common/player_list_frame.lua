@@ -78,6 +78,7 @@ function MTSLUI_PLAYER_LIST_FRAME:Initialise(parent_frame)
 end
 
 function MTSLUI_PLAYER_LIST_FRAME:SetProfessionListFrame(profession_list_frame)
+    ---@type MTSLUI_ProfessionList
     self.profession_list_frame = profession_list_frame
 end
 
@@ -199,7 +200,7 @@ function MTSLUI_PLAYER_LIST_FRAME:HandleSelectedListItem(id)
             if selected_player ~= nil and self.profession_list_frame ~= nil then
                 self.selected_list_item_id = id
                 -- cant select item so deselect details
-                self.profession_list_frame:ChangePlayer(selected_player.NAME, selected_player.REALM)
+                self.profession_list_frame:SetPlayer(selected_player)
             elseif self.profession_list_frame ~= nil then
                 self.profession_list_frame:ShowNoProfessions()
            end

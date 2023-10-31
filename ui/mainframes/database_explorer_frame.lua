@@ -44,62 +44,41 @@ function MTSLUI_DATABASE_EXPLORER_FRAME:Initialise()
     }
     self.ui_frame = MTSLUI_TOOLS:CreateMainFrame("MTSLUI_DATABASE_EXPLORER_FRAME", "MTSLUI_DatabaseFrame", self.FRAME_WIDTH_VERTICAL_SPLIT, self.FRAME_HEIGHT_VERTICAL_SPLIT, swap_frames)
 
-    -- Create the frames inside this frame
-    self:CreateCompontentFrames()
-    self:LinkFrames()
+    self.title_frame = MTSL_TOOLS:CopyObject(MTSLUI_TITLE_FRAME)
+    self.profession_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_ProfessionList)
+    self.skill_list_filter_frame = MTSL_TOOLS:CopyObject(MTSLUI_FILTER_FRAME)
+    self.skill_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_LIST_FRAME)
+    self.skill_detail_frame = MTSL_TOOLS:CopyObject(MTSLUI_SKILL_DETAIL_FRAME)
+    self.player_filter_frame = MTSL_TOOLS:CopyObject(MTSLUI_PLAYER_FILTER_FRAME)
+    self.player_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_PLAYER_LIST_FRAME)
+
+    self.title_frame:Initialise(self.ui_frame, "Database Explorer", self.FRAME_WIDTH_VERTICAL_SPLIT - 5, self.FRAME_WIDTH_HORIZONTAL_SPLIT - 5)
+    self.profession_list_frame:Initialise(self.title_frame.ui_frame, self.skill_list_filter_frame, self.skill_list_frame)
+    self.skill_list_filter_frame:Initialise(self.profession_list_frame.ui_frame, "MTSLDBUI_SKILL_LIST_FILTER_FRAME")
+    self.skill_list_frame:Initialise(self.skill_list_filter_frame.ui_frame, "MTSLDBUI_SKILL_LIST_FRAME")
+    self.skill_detail_frame:Initialise(self.skill_list_frame.ui_frame, "MTSLDBUI_SKILL_DETAIL_FRAME")
+    self.player_filter_frame:Initialise(self.skill_detail_frame.ui_frame, "MTSLDBUI_PLAYER_FILTER_FRAME")
+    self.player_list_frame:Initialise(self.player_filter_frame.ui_frame, "MTSLDBUI_PLAYER_LIST_FRAME")
+
+    self.title_frame.ui_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 0, 0)
+    self.profession_list_frame.ui_frame:SetPoint("TOPLEFT", self.title_frame.ui_frame, "TOPLEFT", 4, -6)
+    self.skill_list_filter_frame.ui_frame:SetPoint("TOPLEFT", self.profession_list_frame.ui_frame, "TOPRIGHT", 0, -41)
+    self.skill_list_frame.ui_frame:SetPoint("TOPLEFT", self.skill_list_filter_frame.ui_frame, "BOTTOMLEFT", 0, -4)
+    self.skill_detail_frame.ui_frame:SetPoint("BOTTOMLEFT", self.skill_list_frame.ui_frame, "BOTTOMRIGHT", 0, 0)
+    self.player_filter_frame.ui_frame:SetPoint("TOPLEFT", self.skill_detail_frame.ui_frame, "TOPRIGHT", 0, -5)
+    self.player_list_frame.ui_frame:SetPoint("TOPLEFT", self.player_filter_frame.ui_frame, "BOTTOMLEFT", 0, -8)
+
+    self.skill_list_filter_frame:SetListFrame(self.skill_list_frame)
+    -- reset the filters so the default values are passed to the slill_list_frame
+    self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
+    self.skill_list_frame:SetPlayerListFrame(self.player_list_frame)
+    self.player_filter_frame:SetListFrame(self.player_list_frame)
 
     self.player_list_frame:EnableShowSkillLevelNeeded()
 
     -- select the first profession
     self.profession_list_frame:ChangeNoPlayer()
     self.profession_list_frame:HandleSelectedListItem(1)
-end
-
-function MTSLUI_DATABASE_EXPLORER_FRAME:CreateCompontentFrames()
-    -- Copy & init the title frame
-    self.title_frame = MTSL_TOOLS:CopyObject(MTSLUI_TITLE_FRAME)
-    self.title_frame:Initialise(self.ui_frame, "Database Explorer", self.FRAME_WIDTH_VERTICAL_SPLIT - 5, self.FRAME_WIDTH_HORIZONTAL_SPLIT - 5)
-    -- position in left top corner of main frame
-    self.title_frame.ui_frame:SetPoint("TOPLEFT", self.ui_frame, "TOPLEFT", 0, 0)
-    -- Copy & init the profession list frame
-    self.profession_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_PROFESSION_LIST_FRAME)
-    self.profession_list_frame:Initialise(self.title_frame.ui_frame, "MTSLDBUI_PROFESSION_LIST_FRAME")
-    -- position left under titleframe
-    self.profession_list_frame.ui_frame:SetPoint("TOPLEFT", self.title_frame.ui_frame, "TOPLEFT", 4, -6)
-    -- Copy & init the filter frame
-    self.skill_list_filter_frame = MTSL_TOOLS:CopyObject(MTSLUI_FILTER_FRAME)
-    self.skill_list_filter_frame:Initialise(self.profession_list_frame.ui_frame, "MTSLDBUI_SKILL_LIST_FILTER_FRAME")
-    -- position under TitleFrame and right of ProfessionListFrame
-    self.skill_list_filter_frame.ui_frame:SetPoint("TOPLEFT", self.profession_list_frame.ui_frame, "TOPRIGHT", 0, -41)
-    -- Copy & init the list frame
-    self.skill_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_LIST_FRAME)
-    self.skill_list_frame:Initialise(self.skill_list_filter_frame.ui_frame, "MTSLDBUI_SKILL_LIST_FRAME")
-    -- position under the filter frame
-    self.skill_list_frame.ui_frame:SetPoint("TOPLEFT", self.skill_list_filter_frame.ui_frame, "BOTTOMLEFT", 0, -4)
-    -- Copy & init the skill detail frame
-    self.skill_detail_frame = MTSL_TOOLS:CopyObject(MTSLUI_SKILL_DETAIL_FRAME)
-    self.skill_detail_frame:Initialise(self.skill_list_frame.ui_frame, "MTSLDBUI_SKILL_DETAIL_FRAME")
-    self.skill_detail_frame.ui_frame:SetPoint("BOTTOMLEFT", self.skill_list_frame.ui_frame, "BOTTOMRIGHT", 0, 0)
-    -- Copy & init the player filter frames
-    self.player_filter_frame = MTSL_TOOLS:CopyObject(MTSLUI_PLAYER_FILTER_FRAME)
-    self.player_filter_frame:Initialise(self.skill_detail_frame.ui_frame, "MTSLDBUI_PLAYER_FILTER_FRAME")
-    -- position next of the detail frame (in vertical mode)
-    self.player_filter_frame.ui_frame:SetPoint("TOPLEFT", self.skill_detail_frame.ui_frame, "TOPRIGHT", 0, -5)
-    -- Copy & init the player list frames
-    self.player_list_frame = MTSL_TOOLS:CopyObject(MTSLUI_PLAYER_LIST_FRAME)
-    self.player_list_frame:Initialise(self.player_filter_frame.ui_frame, "MTSLDBUI_PLAYER_LIST_FRAME")
-    -- position under the filter frame
-    self.player_list_frame.ui_frame:SetPoint("TOPLEFT", self.player_filter_frame.ui_frame, "BOTTOMLEFT", 0, -8)
-end
-
-function MTSLUI_DATABASE_EXPLORER_FRAME:LinkFrames()
-    self.profession_list_frame:SetFilterFrame(self.skill_list_filter_frame)
-    self.profession_list_frame:SetListFrame(self.skill_list_frame)
-    self.skill_list_filter_frame:SetListFrame(self.skill_list_frame)
-    -- reset the filters so the default values are passed to the slill_list_frame
-    self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)
-    self.skill_list_frame:SetPlayerListFrame(self.player_list_frame)
-    self.player_filter_frame:SetListFrame(self.player_list_frame)
 end
 
 function MTSLUI_DATABASE_EXPLORER_FRAME:RefreshUI()

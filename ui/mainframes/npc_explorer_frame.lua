@@ -85,7 +85,6 @@ function MTSLUI_NPC_EXPLORER_FRAME:CreateCompontentFrames()
 end
 
 function MTSLUI_NPC_EXPLORER_FRAME:LinkFrames()
-    --self.npc_list_frame:SetFilterFrame(self.npc_list_filter_frame)
     self.npc_list_filter_frame:SetListFrame(self.npc_list_frame)
     self.npc_list_frame:SetSkillListFrame(self.skill_list_frame)
     self.skill_list_frame:SetDetailSelectedItemFrame(self.skill_detail_frame)

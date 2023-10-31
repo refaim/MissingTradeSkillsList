@@ -23,6 +23,7 @@ MTSLUI_TOOLS = {
 --
 -- returns          Frame       Returns the created frame
 ----------------------------------------------------------------------------------------
+---@return Frame
 function MTSLUI_TOOLS:CreateBaseFrame(type, name, parent, template, width, height, has_backdrop)
     local generic_frame = CreateFrame(type, name, parent, template)
     generic_frame:SetWidth(width)
@@ -42,7 +43,7 @@ function MTSLUI_TOOLS:CreateBaseFrame(type, name, parent, template, width, heigh
         generic_frame:SetBackdropColor(0,0,0,1)
     end
     -- make sure mouse is captured on our window (NO clicking through)
-    generic_frame:EnableMouse(1)
+    generic_frame:EnableMouse(true)
     -- Disable zooming in/out
     generic_frame:EnableMouseWheel(true)
     generic_frame:Show()
@@ -138,6 +139,7 @@ end
 --
 -- returns      Object      The created label
 ----------------------------------------------------------------------------------------
+---@return FontString
 function MTSLUI_TOOLS:CreateLabel(owner, text, left, top, font_size, position)
     local new_label = owner:CreateFontString()
     new_label:SetFont(MTSLUI_FONTS.FONTS[font_size]:GetFont())
