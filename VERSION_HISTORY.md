@@ -1,6 +1,6 @@
 ## Version History
 
-### v1.17.1 (Oct 27, 2023)
+### v1.17.1 (Nov 1, 2023)
 
 * Fix broken dropdown controls in config window
 
