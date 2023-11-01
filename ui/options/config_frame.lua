@@ -403,109 +403,109 @@ end
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change events for minimap values
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeMinimapShapeHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeMinimapShapeHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("minimap", "shape", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeMinimapRadiusHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeMinimapRadiusHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("minimap", "radius", value, text)
 end
 
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change events for the tooltip
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeTooltipFactionHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeTooltipFactionHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("tooltip", "faction", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeTooltipShowKnownHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeTooltipShowKnownHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("tooltip", "known", value, text)
 end
 
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change event after changing the chat channel to link item/spell to
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeChatChannelHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeChatChannelHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("chat", "channel", value, text)
 end
 
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change event after changing the location of button or frame
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeLocationMTSLbuttonHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeLocationMTSLbuttonHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("location_mtsl", "button", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeLocationMTSLframeHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeLocationMTSLframeHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("location_mtsl", "frame", value, text)
 end
 
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change events after changing the orientation for a frame
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeOrientationMTSLHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeOrientationMTSLHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_split", "MTSL", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeOrientationAccountHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeOrientationAccountHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_split", "ACCOUNT", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeOrientationCharacterHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeOrientationCharacterHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_split", "CHAR", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeOrientationDatabaseHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeOrientationDatabaseHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_split", "DATABASE", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeOrientationNpcHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeOrientationNpcHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_split", "NPC", value, text)
 end
 
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change event afters changing the scale for aframe
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeScaleMTSLHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeScaleMTSLHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_scale", "MTSL", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeScaleAccountHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeScaleAccountHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_scale", "ACCOUNT", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeScaleCharacterHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeScaleCharacterHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_scale", "CHAR", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeScaleDatabaseHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeScaleDatabaseHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_scale", "DATABASE", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeScaleNpcHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeScaleNpcHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_scale", "NPC", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeScaleOptionsMenuHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeScaleOptionsMenuHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("ui_scale", "OPTIONSMENU", value, text)
 end
 
 ----------------------------------------------------------------------------------------------------------
 -- Handles DropDown Change event after changing the font
 ----------------------------------------------------------------------------------------------------------
-function MTSLOPTUI_CONFIG_FRAME:ChangeFontTypeHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeFontTypeHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("font", "name", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeFontSizeTitleHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeFontSizeTitleHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("font", "title", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeFontSizeLabelHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeFontSizeLabelHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("font", "label", value, text)
 end
 
-function MTSLOPTUI_CONFIG_FRAME:ChangeFontSizeTextHandler(value, text)
+function MTSLOPTUI_CONFIG_FRAME.ChangeFontSizeTextHandler(value, text)
     MTSLOPTUI_CONFIG_FRAME:ChangeWithSubValue("font", "text", value, text)
 end
 
