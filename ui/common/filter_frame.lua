@@ -130,21 +130,24 @@ function MTSLUI_FILTER_FRAME:InitialiseFourthRow()
 end
 
 function MTSLUI_FILTER_FRAME:InitFilters()
-    self.filter_values = {
+    local filter_values = {
         skill_name = "",
         profession = nil,
         continent = 0,
         zone = 0,
     }
-    -- add all values from the drop down drop_down_lists + set em checked
-    local ddls = { "faction", "source", "specialisation" }
-    for _, v in pairs(ddls) do
-        self.filter_values[v] = {}
-        for _, k in pairs(self.drop_down_lists[v]) do
-            table.insert(self.filter_values[v], k.id)
-            k.checked = true
+
+    for _, dropdown_list_name in ipairs({"faction", "source", "specialisation"}) do
+        local dropdown = self.drop_down_lists[dropdown_list_name]
+        local value = {}
+        for _, entry in ipairs(dropdown) do
+            tinsert(value, entry.id)
+            entry.checked = true
         end
+        filter_values[dropdown_list_name] = value
     end
+
+    self.filter_values = filter_values
 end
 
 function MTSLUI_FILTER_FRAME:ResetFilters()

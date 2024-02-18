@@ -1,5 +1,10 @@
 ## Version History
 
+### v1.17.2 (Feb 18, 2024)
+
+* Display skills for all specialisations in the database window by default
+* Fix some skill search issues
+
 ### v1.17.1 (Nov 1, 2023)
 
 * Fix broken dropdown controls in config window

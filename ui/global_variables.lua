@@ -6,7 +6,7 @@
 MTSLUI_ADDON = {
     AUTHOR = "Thumbkin & Refaim",
     NAME = "Missing TradeSkills List",
-    VERSION = "1.17.1",
+    VERSION = "1.17.2",
 }
 
 MTSLUI_PROFESSION_TEXTURES = {

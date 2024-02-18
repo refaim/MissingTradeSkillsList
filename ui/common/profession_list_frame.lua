@@ -193,16 +193,20 @@ function MTSLUI_PROFESSION_LIST_FRAME:HandleSelectedListItem(index)
         self.selected_index = index
         self.PROF_BGS[self.selected_index]:Show()
 
-        local prof_skills
-        -- Get all available skills for the profession if no player is selected
-        if self.current_player == nil then
-            prof_skills = MTSL_LOGIC_PROFESSION:GetAllSkillsAndLevelsForProfession(self.shown_professions[index])
-        -- get the known skills for the current player
-        else
-            prof_skills = MTSL_LOGIC_PLAYER_NPC:GetLearnedSkillsForPlayerForProfession(self.current_player.NAME, self.current_player.REALM, self.shown_professions[index])
-        end
         if self.filter_frame ~= nil then
             self.filter_frame:ChangeProfession(self.shown_professions[index])
+            if self.current_player == nil then
+                self.filter_frame:InitialiseData()
+                self.filter_frame:InitFilters()
+                self.filter_frame:UpdateFilters()
+            end
+        end
+
+        local prof_skills
+        if self.current_player == nil then
+            prof_skills = MTSL_LOGIC_PROFESSION:GetAllSkillsAndLevelsForProfession(self.shown_professions[index])
+        else
+            prof_skills = MTSL_LOGIC_PLAYER_NPC:GetLearnedSkillsForPlayerForProfession(self.current_player.NAME, self.current_player.REALM, self.shown_professions[index])
         end
         self.list_item_frame:ChangeProfession(self.shown_professions[index], prof_skills)
     end
