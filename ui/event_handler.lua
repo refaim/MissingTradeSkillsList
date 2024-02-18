@@ -53,6 +53,8 @@ function MTSLUI_EVENT_HANDLER:PLAYER_LOGIN()
     MTSLUI_SAVED_VARIABLES:LoadSavedUIScales()
     MTSLUI_SAVED_VARIABLES:LoadSavedSplitModes()
 
+    UIDropDownMenu_Initialize()
+
     -- print loaded message if possible
     if MTSLUI_SAVED_VARIABLES:GetShowWelcomeMessage() then
         MTSL_TOOLS:Print(MTSLUI_FONTS.COLORS.TEXT.TITLE .. MTSLUI_ADDON.NAME .. MTSLUI_FONTS.COLORS.TEXT.NORMAL .. " (by " .. MTSLUI_ADDON.AUTHOR .. ")" .. MTSLUI_FONTS.COLORS.TEXT.TITLE .. " v" .. MTSLUI_ADDON.VERSION .. " loaded!")
@@ -85,6 +87,7 @@ end
 function MTSLUI_EVENT_HANDLER:CRAFT_SHOW()
     -- Check if we effectively opened a CraftFrame
     if CraftFrame then
+        UIDropDownMenu_Initialize()
         -- make it drageable
         MTSLUI_TOOLS:AddDragToFrame(CraftFrame)
         local localised_name, current_skill_level, max_level = GetCraftDisplaySkillLine()
@@ -148,6 +151,7 @@ end
 function MTSLUI_EVENT_HANDLER:TRADE_SKILL_SHOW()
     -- If we have a tradeskillframe
     if TradeSkillFrame then
+        UIDropDownMenu_Initialize()
         -- make it drageable
         MTSLUI_TOOLS:AddDragToFrame(TradeSkillFrame)
         local localised_name, current_skill_level, max_level = GetTradeSkillLine()

@@ -2,7 +2,7 @@
 ## Title: Missing TradeSkills List
 ## Author: Thumbkin
 ## Notes: Shows missing skills & recipes for a profession and where to get them.
-## Version: 1.17.2
+## Version: 1.17.3
 ## Dependencies: TradeSkillsData
 ## OptionalDeps: TradeSkillsData-turtle
 ## SavedVariables: MTSL_PLAYERS, MTSLUI_PLAYER

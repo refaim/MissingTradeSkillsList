@@ -1,5 +1,9 @@
 ## Version History
 
+### v1.17.3 (Feb 18, 2024)
+
+* Fix default profession window dropdown list contamination with addon values
+
 ### v1.17.2 (Feb 18, 2024)
 
 * Display skills for all specialisations in the database window by default
