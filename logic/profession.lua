@@ -212,6 +212,9 @@ MTSL_LOGIC_PROFESSION = {
             if skill_type ~= "header" then
                 local itemLink = GetCraftItemLink(i)
                 local itemID = string.gfind(itemLink, "enchant:(%d+)")()
+                if SetAutoloot then --is superwow active?
+                    itemID = string.gfind(itemLink, "spell:(%d+)")() --superwow uses spell: instead of enchant: in its item links
+                end
                 table.insert(learned_skill_ids, itemID)
             end
         end
