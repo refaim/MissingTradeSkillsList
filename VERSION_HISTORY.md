@@ -1,5 +1,9 @@
 ## Version History
 
+### v1.17.4 (Dec 12, 2024)
+
+* Remove SuperWoW difference, which was fixed in SuperWoW 1.2 (makes it incompatble with SuperWoW < 1.2)
+
 ### v1.17.3 (Feb 18, 2024)
 
 * Fix default profession window dropdown list contamination with addon values
