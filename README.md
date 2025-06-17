@@ -1,3 +1,8 @@
+### ⚠️ Notice
+**This addon is no longer maintained.** Development has been discontinued. Please consider using **[MissingCrafts](https://github.com/refaim/MissingCrafts)** instead.
+
+---
+
 # MissingTradeSkillsList
 Shows the missing recipes/skills for a tradeskill and where to get them
 
